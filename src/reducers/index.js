@@ -2,7 +2,8 @@ import { combineReducers } from 'redux';
 //import todos, * as fromTodos from './todos';
 
 const wanderApp = combineReducers({
- // todos,
+ // toVisit,
+ //	places
 });
 
 export default wanderApp;

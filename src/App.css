@@ -29,6 +29,10 @@
     transition: 0.3s;
 }
 
+.ToVisitPanelItem :hover, .offcanvas :focus{
+    color: #f1f1f1;
+}
+
 .ToVisitFooter{
     margin-left: 17px;
     transition: 0.3s;
