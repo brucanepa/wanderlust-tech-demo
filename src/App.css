@@ -1,24 +1,57 @@
-.App {
-  text-align: center;
+.ToVisitPanel {
+    height: 100%; /* 100% Full-height */
+    width: 250px; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the ToVisitPanel */
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.ToVisitPanelTitle {
+    padding: 5px 5px 5px 32px;
+    text-decoration: none;
+    font-size: 35px;
+    color: #FFFFFF;
+    display: block;
+    transition: 0.3s;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.ToVisitPanelItem {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
 }
 
-.App-intro {
-  font-size: large;
+.ToVisitFooter{
+    margin-left: 17px;
+    transition: 0.3s;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.ToVisitFooterItem {
+    margin-left: 5px;
+    font-size: 20px;
+    color: #818181;
+    transition: 0.3s;
 }
+
+
+/* On smaller screens, where height is less than 450px, change the style of the ToVisitPanel (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .ToVisitPanel {padding-top: 15px;}
+    .ToVisitPanel a {font-size: 18px;}
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+.Main {
+    transition: margin-left .5s;
+    padding-left: 275px;
+}
+
+
