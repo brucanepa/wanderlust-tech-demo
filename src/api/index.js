@@ -39,7 +39,7 @@ export const addPlaceToVisit = (placeId) => delay(500).then(() => {
   const place = {
     id: generateId(),
     placeId,
-    name: fakeDatabase.places.filter((place) => { return place.id === placeId })[0].name
+    name: fakeDatabase.places.filter((place) => { return place.id == placeId })[0].name
   };
   fakeDatabase.placesToVisit.push(place);
   return place;

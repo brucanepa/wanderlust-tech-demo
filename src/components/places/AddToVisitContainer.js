@@ -13,7 +13,7 @@ class AddToVisitContainer extends Component {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onClick: () => {
-      return dispatch(placesActions.add(ownProps.id));
+      return dispatch(placesActions.add(parseInt(ownProps.id)));
     }
   };
 };
