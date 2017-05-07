@@ -1,4 +1,3 @@
-import { generateId } from '../utils/helpers';
 import * as api from '../api';
 import { normalize } from 'normalizr';
 import * as schema from './schema';
@@ -33,18 +32,25 @@ export const add = (placeId) => (dispatch) => api.addPlaceToVisit(placeId)
     });
   });
 
-export const positionChangeUp = (index) => (dispatch) => api.positionChangeUp(index)
+export const swapPositionUp = ({selectedId}) => (dispatch) => api.swapPositionUpPlaceToVisit(selectedId)
   .then(response => {
     dispatch({
-      type: 'POSITION_CHANGE_UP_PLACE_TO_VISIT_SUCCESS',
-      response: normalize(response, schema.placeToVisit),
+      type: 'SWAP_POSITION_UP_PLACE_TO_VISIT',
+      selectedId
     });
   });
 
-export const positionChangeDown = (index) => (dispatch) => api.positionChangeUp(index)
+export const swapPositionDown = ({selectedId}) => (dispatch) => api.swapPositionDownPlaceToVisit(selectedId)
   .then(response => {
     dispatch({
-      type: 'POSITION_CHANGE_DOWN_PLACE_TO_VISIT_SUCCESS',
-      response: normalize(response, schema.placeToVisit),
+      type: 'SWAP_POSITION_DOWN_PLACE_TO_VISIT',
+      selectedId
     });
   });
+
+export const setSelected = (id) => (dispatch) => {
+  dispatch({
+    type: 'SELECTED_PLACE_TO_VISIT',
+    selectedId: id,
+  });
+};

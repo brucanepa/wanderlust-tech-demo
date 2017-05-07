@@ -1,4 +1,4 @@
-import { generateId } from '../utils/helpers';
+import { generateId, swapArrayPosition } from '../utils/helpers';
 
 var id1 = generateId();
 var id2 = generateId();
@@ -38,23 +38,26 @@ export const fetchPlaces = () => delay(500).then(() => {
 export const addPlaceToVisit = (placeId) => delay(500).then(() => {
   const place = {
     id: generateId(),
-    placeId
+    placeId,
+    name: fakeDatabase.places.filter((place) => { return place.id === placeId })[0].name
   };
   fakeDatabase.placesToVisit.push(place);
   return place;
 });
 
-/*export const changePositionUpPlaceToVisit = (index) => delay(500).then(() => {
-  //A[x] = A.splice(y, 1, A[x])[0];
-  const places = fakeDatabase.placesToVisit.find(t => t.id === id); //todo
-  return places;
+const findIndexOfPlaceToVisit = (array, id) => {
+  return array.map((place) => { return place.id}).indexOf(id);
+};
+
+export const swapPositionUpPlaceToVisit = (selectedId) => delay(500).then(() => {  
+  const index = findIndexOfPlaceToVisit(fakeDatabase.placesToVisit, selectedId);
+  fakeDatabase.placesToVisit = swapArrayPosition(fakeDatabase.placesToVisit, index, index-1);
 });
 
-export const changePositionDownPlaceToVisit = (id) => delay(500).then(() => {
-  //A[x] = A.splice(y, 1, A[x])[0];
-  const places = fakeDatabase.placesToVisit.find(t => t.id === id); //todo
-  return places;
-});*/
+export const swapPositionDownPlaceToVisit = (selectedId) => delay(500).then(() => {
+  const index = findIndexOfPlaceToVisit(fakeDatabase.placesToVisit, selectedId);
+  fakeDatabase.placesToVisit = swapArrayPosition(fakeDatabase.placesToVisit, index, index+1);
+});
 
 export const fetchPlacesToVisit = () => delay(500).then(() => {
   return fakeDatabase.placesToVisit;

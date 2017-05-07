@@ -1,16 +1,13 @@
 import React, { PropTypes } from 'react';
 
-const ToVisit = ({ onClick, name }) => (
-  <li
-    onClick={onClick}
-  >
+const PlaceToVisit = ({ name, onClick }) => (
+  <li onClick={() => {onClick()} }>
     {name}
   </li>
 );
 
-ToVisit.propTypes = {
-  onClick: PropTypes.func.isRequired,
+PlaceToVisit.propTypes = {
   name: PropTypes.string.isRequired,
 };
 
-export default ToVisit;
+export default PlaceToVisit;

@@ -1,8 +1,8 @@
 import React from 'react';
 
-const AddToVisit = () => (
+const AddToVisit = ({onClick}) => (
 	<div>
-		<button type="button">Agregar</button>
+		<button type="button" onClick={onClick}>Agregar</button>
 	</div>
 );
 

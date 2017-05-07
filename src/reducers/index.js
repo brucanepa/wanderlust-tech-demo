@@ -14,3 +14,6 @@ export const getVisiblePlaces = (state, filter) =>
 
 export const getVisiblePlacesToVisit = (state) =>
   fromPlacesToVisit.getVisiblePlacesToVisit(state.placesToVisit);
+
+export const getSelectedIdPlaceToVisit = (state) =>
+  fromPlacesToVisit.getSelectedIdPlaceToVisit(state.placesToVisit);

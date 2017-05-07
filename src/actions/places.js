@@ -1,4 +1,3 @@
-import { generateId } from '../utils/helpers';
 import * as api from '../api';
 import { normalize } from 'normalizr';
 import * as schema from './schema';

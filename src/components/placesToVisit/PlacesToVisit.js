@@ -1,12 +1,13 @@
 import React, { PropTypes } from 'react';
 import PlaceToVisit from './PlaceToVisit';
 
-const PlacesToVisit = ({ placesToVisit }) => (
+const PlacesToVisit = ({ placesToVisit, onClick }) => (
   <ul>
-    {placesToVisit.map(toVisit =>
+    {placesToVisit.map(placeToVisit =>
       <PlaceToVisit
-        key={toVisit.id}
-        {...toVisit}
+        key={placeToVisit.id}
+        {...placeToVisit}
+        onClick = {() => {onClick(placeToVisit.id)}}
       />
     )}
   </ul>

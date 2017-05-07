@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../App.css';
 import VisiblePlacesToVisit from './VisiblePlacesToVisit';
-import PlacesToVisitFooter from './PlacesToVisitFooter';
+import PlacesToVisitFooterContainer from './PlacesToVisitFooterContainer';
 
 let onToVisitClick = () => { return };
 
@@ -13,7 +13,7 @@ const PlacesToVisitPanel = ({ match }) => (
     <div className="ToVisitPanelItem">
       <VisiblePlacesToVisit />
     </div>
-    <PlacesToVisitFooter/>
+    <PlacesToVisitFooterContainer/>
   </div>
 );
 

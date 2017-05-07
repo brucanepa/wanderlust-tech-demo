@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AddToVisit from './AddToVisit';
+import AddToVisitContainer from './AddToVisitContainer';
 
 const Place = ({ match, id, name }) => (
 	<li>
 	    <Link to={`${match.url}/${id}`}>
 		    Place: {name}
 		</Link>
-		<AddToVisit/>
+		<AddToVisitContainer id={id}/>
 	</li>
 );
 

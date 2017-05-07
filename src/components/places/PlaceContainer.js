@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { placesToVisit as placesActions } from '../../actions';
-import PlacesToVisit from './PlacesToVisit';
-import { getVisiblePlacesToVisit } from '../../reducers';
+import { places as placesActions } from '../../actions';
+import Places from './Places';
+import { getVisiblePlaces } from '../../reducers';
 
-class VisiblePlacesToVisit extends Component {
+class PlaceContainer extends Component {
   componentDidMount() {
     this.fetchData();
   }
@@ -18,13 +18,13 @@ class VisiblePlacesToVisit extends Component {
     this.props.fetchPlaces(filter);
   }
   render() {
-    return <PlacesToVisit {...this.props} />
+    return <Places {...this.props} />
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    placesToVisit: getVisiblePlacesToVisit(state)
+    places: getPlaceContainer(state)
   };
 };
 
@@ -32,16 +32,13 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchPlaces: (filter) => {
       return dispatch(placesActions.fetchPlaces(filter));
-    },
-    onClick: (id) => {
-      return dispatch(placesActions.setSelected(id));
     }
-   };
+  };
 };
 
-VisiblePlacesToVisit = connect(
+PlaceContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(VisiblePlacesToVisit);
+)(PlaceContainer);
 
-export default VisiblePlacesToVisit;
+export default PlaceContainer;
