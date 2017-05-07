@@ -1,16 +1,16 @@
 import React, { PropTypes } from 'react';
 
-const ToVisit = ({ onClick, text }) => (
+const ToVisit = ({ onClick, name }) => (
   <li
     onClick={onClick}
   >
-    {text}
+    {name}
   </li>
 );
 
 ToVisit.propTypes = {
   onClick: PropTypes.func.isRequired,
-  text: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default ToVisit;

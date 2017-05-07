@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import AddToVisit from './AddToVisit';
 
-const Place = ({ match }) => (
+const Place = ({ match, id, name }) => (
 	<li>
-	    <Link to={`${match.url}/placeNumberOne`}>
-		    Hey look at this place
+	    <Link to={`${match.url}/${id}`}>
+		    Place: {name}
 		</Link>
 		<AddToVisit/>
 	</li>

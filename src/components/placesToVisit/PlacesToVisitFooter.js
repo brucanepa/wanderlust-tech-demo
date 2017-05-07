@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const ToVisitFooter = () => (
   <div className="ToVisitFooter">
     <button className="ToVisitFooterItem" type="button">Subir</button>

@@ -1,18 +1,18 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import ToVisitPanel from './toVisit/ToVisitPanel';
-import Places from './places/Places';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import PlacesToVisitPanel from './placesToVisit/PlacesToVisitPanel';
+import VisiblePlaces from './places/VisiblePlaces';
 import PlaceDetail from './places/PlaceDetail';
 
 const Root = ({store}) => (
   <Provider store={store}>
     <Router>
       <MainRoot>
-        <ToVisitPanel/>
+        <PlacesToVisitPanel/>
         <MainApp>
-	        <Route exact={true} path='/' render={() => (<h1> Welcome </h1>)} />
-	      	<Route exact={true} path='/places' component={Places}/>
+	        <Route exact={true} path='/' render={() => (<Redirect to="/places"> </Redirect>)} />
+	      	<Route exact={true} path='/places' component={VisiblePlaces}/>
 	      	<Route path='/places/:placeId' component={PlaceDetail}/>
      	</MainApp>
       </MainRoot>

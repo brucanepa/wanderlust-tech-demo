@@ -1,12 +1,16 @@
 import { combineReducers } from 'redux';
-//import todos, * as fromTodos from './todos';
+import places, * as fromPlaces from './places';
+import placesToVisit, * as fromPlacesToVisit from './placesToVisit';
 
 const wanderApp = combineReducers({
- // toVisit,
- //	places
+  places,
+  placesToVisit
 });
 
 export default wanderApp;
 
-//export const getVisibleTodos = (state, filter) =>
-//  fromTodos.getVisibleTodos(state.todos, filter);
+export const getVisiblePlaces = (state, filter) =>
+  fromPlaces.getVisiblePlaces(state.places, filter);
+
+export const getVisiblePlacesToVisit = (state) =>
+  fromPlacesToVisit.getVisiblePlacesToVisit(state.placesToVisit);
