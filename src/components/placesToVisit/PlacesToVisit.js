@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
-import PlaceToVisit from './PlaceToVisit';
+import PlaceToVisitContainer from './PlaceToVisitContainer';
 
 const PlacesToVisit = ({ placesToVisit, onClick }) => (
   <ul>
     {placesToVisit.map(placeToVisit =>
-      <PlaceToVisit
+      <PlaceToVisitContainer
         key={placeToVisit.id}
         {...placeToVisit}
         onClick = {() => {onClick(placeToVisit.id)}}
