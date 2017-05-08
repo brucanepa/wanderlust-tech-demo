@@ -17,7 +17,7 @@ const receivePlaces = (filter, response) => {
 }
 
 export const fetchPlaces = (filter) => (dispatch) => {
-  dispatch(requestPlaces())
+  dispatch(requestPlaces());
   return api.fetchPlacesToVisit(filter)
     .then(places => {
       dispatch(receivePlaces(filter, normalize(places, schema.arrayOfPlacesToVisit)));
@@ -28,7 +28,7 @@ export const add = (placeId) => (dispatch) => api.addPlaceToVisit(placeId)
   .then(response => {
     dispatch({
       type: 'ADD_PLACE_TO_VISIT_SUCCESS',
-      response: normalize(response, schema.placeToVisit),
+      response: normalize(response, schema.placeToVisit)
     });
   });
 
@@ -51,6 +51,14 @@ export const swapPositionDown = ({selectedId}) => (dispatch) => api.swapPosition
 export const setSelected = (id) => (dispatch) => {
   dispatch({
     type: 'SELECTED_PLACE_TO_VISIT',
-    selectedId: id,
+    selectedId: id
   });
 };
+
+export const remove = ({selectedId}) => (dispatch) => api.removePlaceToVisit(selectedId)
+  .then(response => {
+    dispatch({
+      type: 'REMOVE_PLACE_TO_VISIT_SUCCESS',
+      selectedId
+    });
+  });

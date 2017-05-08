@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { getVisiblePlacesHash } from './places';
-import { swapArrayPosition } from '../utils/helpers';
+import { swapArrayPosition, removeArrayElement } from '../utils/helpers';
 
 const placesToVisitHashById = (state = {}, action) => {
   if (action.response) {
@@ -22,10 +22,13 @@ const createFilteredList = (filter) => {
         return [...state, action.response.result];
       case 'SWAP_POSITION_UP_PLACE_TO_VISIT':
         const indexUp = state.indexOf(action.selectedId);
-        return swapArrayPosition(state, indexUp, indexUp-1);
+        return swapArrayPosition(state, indexUp, indexUp - 1);
       case 'SWAP_POSITION_DOWN_PLACE_TO_VISIT':
         const indexDown = state.indexOf(action.selectedId);
-        return swapArrayPosition(state, indexDown, indexDown+1);
+        return swapArrayPosition(state, indexDown, indexDown + 1);
+      case 'REMOVE_PLACE_TO_VISIT_SUCCESS':
+        const indexToRemove = state.indexOf(action.selectedId);
+        return removeArrayElement(state, indexToRemove);
       default:
         return state;
     }
@@ -33,11 +36,11 @@ const createFilteredList = (filter) => {
 };
 
 const idsByFilter = combineReducers({
-  all: createFilteredList('all'),
+  all: createFilteredList('all')
 });
 
 const selectedId = (state = {}, action) => {
-  if (action.selectedId) {
+  if (action.selectedId && state.selectedId != action.selectedId) {
     return {
       selectedId: action.selectedId
     }

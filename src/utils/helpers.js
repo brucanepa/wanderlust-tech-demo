@@ -18,3 +18,12 @@ export const swapArrayPosition = (array, fromIndex, toIndex) => {
 export const findIndexOfPlaceToVisit = (array, id) => {
   return array.map((place) => { return place.id}).indexOf(id);
 };
+
+export const removeArrayElement = (array, index) => {
+	var result = array.slice();
+
+	if (invalidIndex(array, index)) return result;
+
+	result.splice(index, 1)
+	return result;
+};

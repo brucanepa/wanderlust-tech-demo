@@ -25,6 +25,9 @@ const mapDispatchToProps = (dispatch) => {
     onClickDown: (id) => {
       return dispatch(placesActions.swapPositionDown(id));
     },
+    onClickRemove: (id) => {
+      return dispatch(placesActions.remove(id));
+    }
   };
 };
 

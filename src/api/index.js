@@ -1,4 +1,4 @@
-import { generateId, swapArrayPosition } from '../utils/helpers';
+import { generateId, swapArrayPosition, removeArrayElement } from '../utils/helpers';
 
 var id1 = generateId();
 var id2 = generateId();
@@ -39,27 +39,35 @@ export const addPlaceToVisit = (placeId) => delay(500).then(() => {
   const place = {
     id: generateId(),
     placeId,
-    name: fakeDatabase.places.filter((place) => { return place.id == placeId })[0].name
+    name: fakeDatabase.places.filter((place) => {
+      return place.id == placeId })[0].name
   };
   fakeDatabase.placesToVisit.push(place);
   return place;
 });
 
 const findIndexOfPlaceToVisit = (array, id) => {
-  return array.map((place) => { return place.id}).indexOf(id);
+  return array.map((place) => {
+    return place.id }).indexOf(id);
 };
 
-export const swapPositionUpPlaceToVisit = (selectedId) => delay(500).then(() => {  
+export const swapPositionUpPlaceToVisit = (selectedId) => delay(500).then(() => {
   const index = findIndexOfPlaceToVisit(fakeDatabase.placesToVisit, selectedId);
-  fakeDatabase.placesToVisit = swapArrayPosition(fakeDatabase.placesToVisit, index, index-1);
+  fakeDatabase.placesToVisit = swapArrayPosition(fakeDatabase.placesToVisit, index, index - 1);
 });
 
 export const swapPositionDownPlaceToVisit = (selectedId) => delay(500).then(() => {
   const index = findIndexOfPlaceToVisit(fakeDatabase.placesToVisit, selectedId);
-  fakeDatabase.placesToVisit = swapArrayPosition(fakeDatabase.placesToVisit, index, index+1);
+  fakeDatabase.placesToVisit = swapArrayPosition(fakeDatabase.placesToVisit, index, index + 1);
 });
 
 export const fetchPlacesToVisit = () => delay(500).then(() => {
+  return fakeDatabase.placesToVisit;
+});
+
+export const removePlaceToVisit = (selectedId) => delay(500).then(() => {
+  const index = findIndexOfPlaceToVisit(fakeDatabase.placesToVisit, selectedId);
+  fakeDatabase.placesToVisit = removeArrayElement(fakeDatabase.placesToVisit, index);
   return fakeDatabase.placesToVisit;
 });
 // End Places To Visit
