@@ -16,17 +16,17 @@ const placesToVisitHashById = (state = {}, action) => {
 const createFilteredList = (filter) => {
   return (state = [], action) => {
     switch (action.type) {
-      case 'RECEIVE_PLACES_TO_VISIT':
+      case 'RECEIVE_PLACES_TO_VISIT_SUCCESS':
         return action.response.result;
-      case 'ADD_PLACE_TO_VISIT_SUCCESS':
+      case 'RECEIVE_ADD_PLACE_TO_VISIT_SUCCESS':
         return [...state, action.response.result];
-      case 'SWAP_POSITION_UP_PLACE_TO_VISIT':
+      case 'RECEIVE_SWAP_POSITION_UP_PLACE_TO_VISIT_SUCCESS':
         const indexUp = state.indexOf(action.selectedId);
         return swapArrayPosition(state, indexUp, indexUp - 1);
-      case 'SWAP_POSITION_DOWN_PLACE_TO_VISIT':
+      case 'RECEIVE_SWAP_POSITION_DOWN_PLACE_TO_VISIT_SUCCESS':
         const indexDown = state.indexOf(action.selectedId);
         return swapArrayPosition(state, indexDown, indexDown + 1);
-      case 'REMOVE_PLACE_TO_VISIT_SUCCESS':
+      case 'RECEIVE_REMOVE_PLACE_TO_VISIT_SUCCESS':
         const indexToRemove = state.indexOf(action.selectedId);
         return removeArrayElement(state, indexToRemove);
       default:

@@ -1,52 +1,39 @@
 import * as api from '../api';
 import { normalize } from 'normalizr';
 import * as schema from './schema';
-
-const requestPlaces = () => {
-  return {
-    type: 'REQUEST_PLACES_TO_VISIT'
-  }
-}
-
-const receivePlaces = (filter, response) => {
-  return {
-    type: 'RECEIVE_PLACES_TO_VISIT',
-    filter,
-    response
-  }
-}
+import { placesToVisit as requests } from './requests';
 
 export const fetchPlaces = (filter) => (dispatch) => {
-  dispatch(requestPlaces());
+  dispatch(requests.requestPlaces());
   return api.fetchPlacesToVisit(filter)
     .then(places => {
-      dispatch(receivePlaces(filter, normalize(places, schema.arrayOfPlacesToVisit)));
+      dispatch(requests.receivePlacesSuccess(filter, normalize(places, schema.arrayOfPlacesToVisit)));
     });
 }
 
-export const add = (placeId) => (dispatch) => api.addPlaceToVisit(placeId)
-  .then(response => {
-    dispatch({
-      type: 'ADD_PLACE_TO_VISIT_SUCCESS',
-      response: normalize(response, schema.placeToVisit)
+export const add = (placeId) => (dispatch) => {
+  dispatch(requests.requestAdd());
+  return api.addPlaceToVisit(placeId)
+    .then(response => {
+      dispatch(requests.receiveAddSuccess(normalize(response, schema.placeToVisit)));
     });
-  });
+}
 
-export const swapPositionUp = ({selectedId}) => (dispatch) => api.swapPositionUpPlaceToVisit(selectedId)
-  .then(response => {
-    dispatch({
-      type: 'SWAP_POSITION_UP_PLACE_TO_VISIT',
-      selectedId
-    });
-  });
+export const swapPositionUp = ({selectedId}) => (dispatch) => {
+  dispatch(requests.requestSwapPositionUp());
+  return api.swapPositionUpPlaceToVisit(selectedId)
+    .then(() => {
+      dispatch(requests.receiveSwapPositionUpSuccess(selectedId));
+    })
+}
 
-export const swapPositionDown = ({selectedId}) => (dispatch) => api.swapPositionDownPlaceToVisit(selectedId)
-  .then(response => {
-    dispatch({
-      type: 'SWAP_POSITION_DOWN_PLACE_TO_VISIT',
-      selectedId
-    });
-  });
+export const swapPositionDown = ({selectedId}) => (dispatch) => {
+  dispatch(requests.requestSwapPositionUp());
+  return api.swapPositionUpPlaceToVisit(selectedId)
+    .then(() => {
+      dispatch(requests.receiveSwapPositionDownSuccess(selectedId));
+    })
+}
 
 export const setSelected = (id) => (dispatch) => {
   dispatch({
@@ -55,10 +42,10 @@ export const setSelected = (id) => (dispatch) => {
   });
 };
 
-export const remove = ({selectedId}) => (dispatch) => api.removePlaceToVisit(selectedId)
-  .then(response => {
-    dispatch({
-      type: 'REMOVE_PLACE_TO_VISIT_SUCCESS',
-      selectedId
+export const remove = ({selectedId}) => (dispatch) => {
+  dispatch(requests.requestRemovePlaceToVisit());
+  api.removePlaceToVisit(selectedId)
+    .then(() => {
+      dispatch(requests.receiveRemovePlaceToVisitSuccess(selectedId));
     });
-  });
+}

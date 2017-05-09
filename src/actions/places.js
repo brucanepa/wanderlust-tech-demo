@@ -1,25 +1,12 @@
 import * as api from '../api';
 import { normalize } from 'normalizr';
 import * as schema from './schema';
-
-const requestPlaces = () => {
-  return {
-    type: 'REQUEST_PLACES'
-  }
-}
-
-const receivePlaces = (filter, response) => {
-  return {
-    type: 'RECEIVE_PLACES',
-    filter,
-    response
-  }
-}
+import { places as requests } from './requests';
 
 export const fetchPlaces = (filter) => (dispatch) => {
-  dispatch(requestPlaces());
+  dispatch(requests.requestPlaces());
   return api.fetchPlaces(filter)
     .then(places => {
-      dispatch(receivePlaces(filter, normalize(places, schema.arrayOfPlaces)));
+      dispatch(requests.receivePlacesSuccess(filter, normalize(places, schema.arrayOfPlaces)));
     });
 }
