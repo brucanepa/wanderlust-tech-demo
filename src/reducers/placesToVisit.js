@@ -9,8 +9,16 @@ const placesToVisitHashById = (state = {}, action) => {
       ...state,
       ...placesToVisit
     };
+  } else {
+    switch (action.type) {
+      case 'RECEIVE_REMOVE_PLACE_TO_VISIT_SUCCESS':
+        var newState = { ...state };
+        delete newState[action.selectedId];
+        return newState;
+      default:
+        return state;
+    }
   }
-  return state;
 };
 
 const createFilteredList = (filter) => {
@@ -27,8 +35,7 @@ const createFilteredList = (filter) => {
         const indexDown = state.indexOf(action.selectedId);
         return swapArrayPosition(state, indexDown, indexDown + 1);
       case 'RECEIVE_REMOVE_PLACE_TO_VISIT_SUCCESS':
-        const indexToRemove = state.indexOf(action.selectedId);
-        return removeArrayElement(state, indexToRemove);
+        return removeArrayElement(state, state.indexOf(action.selectedId));
       default:
         return state;
     }
