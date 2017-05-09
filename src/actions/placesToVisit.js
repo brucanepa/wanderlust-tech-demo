@@ -43,9 +43,9 @@ export const setSelected = (id) => (dispatch) => {
 };
 
 export const remove = ({selectedId}) => (dispatch) => {
-  dispatch(requests.requestRemovePlaceToVisit());
+  dispatch(requests.requestRemovePlace());
   api.removePlaceToVisit(selectedId)
     .then(() => {
-      dispatch(requests.receiveRemovePlaceToVisitSuccess(selectedId));
+      dispatch(requests.receiveRemovePlaceSuccess(selectedId));
     });
 }

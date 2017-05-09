@@ -3,8 +3,8 @@ import { getVisiblePlacesHash } from './places';
 import { swapArrayPosition, removeArrayElement } from '../utils/helpers';
 
 const placesToVisitHashById = (state = {}, action) => {
-  if (action.response) {
-    const placesToVisit = action.response.entities.placesToVisit;
+  if (action.placesToVisitResponse) {
+    const placesToVisit = action.placesToVisitResponse.entities.placesToVisit;
     return {
       ...state,
       ...placesToVisit
@@ -25,9 +25,9 @@ const createFilteredList = (filter) => {
   return (state = [], action) => {
     switch (action.type) {
       case 'RECEIVE_PLACES_TO_VISIT_SUCCESS':
-        return action.response.result;
+        return action.placesToVisitResponse.result;
       case 'RECEIVE_ADD_PLACE_TO_VISIT_SUCCESS':
-        return [...state, action.response.result];
+        return [...state, action.placesToVisitResponse.result];
       case 'RECEIVE_SWAP_POSITION_UP_PLACE_TO_VISIT_SUCCESS':
         const indexUp = state.indexOf(action.selectedId);
         return swapArrayPosition(state, indexUp, indexUp - 1);

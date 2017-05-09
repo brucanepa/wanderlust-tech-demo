@@ -5,7 +5,8 @@ import AddPlaceToVisitContainer from './AddPlaceToVisitContainer';
 import PlaceDescription from './PlaceDescription';
 import PlaceActivities from './PlaceActivities';
 import PlaceImages from './PlaceImages';
-import PlaceReviews from './PlaceReviews';
+import PlaceReviewsContainer from './PlaceReviewsContainer';
+
 import AddPlaceReview from './AddPlaceReview';
 
 const PlaceDetail = ({ match }) => (
@@ -20,7 +21,7 @@ const PlaceDetail = ({ match }) => (
 		<PlaceDescription/>
 		<PlaceActivities/>
 		<PlaceImages/>
-		<PlaceReviews/>
+		<PlaceReviewsContainer/>
 		<AddPlaceReview/>
 		
 	</div>

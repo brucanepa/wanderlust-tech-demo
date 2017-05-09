@@ -9,7 +9,7 @@ export const placesToVisit = {
     return {
       type: 'RECEIVE_PLACES_TO_VISIT_SUCCESS',
       filter,
-      response
+      placesToVisitResponse: response
     }
   },
   requestAdd: () => {
@@ -20,7 +20,7 @@ export const placesToVisit = {
   receiveAddSuccess: (response) => {
     return {
       type: 'RECEIVE_ADD_PLACE_TO_VISIT_SUCCESS',
-      response
+      placesToVisitResponse: response
     }
   },
   requestSwapPositionUp: () => {
@@ -45,12 +45,12 @@ export const placesToVisit = {
       selectedId
     }
   },
-  requestRemovePlaceToVisit: () => {
+  requestRemovePlace: () => {
     return {
       type: 'REQUEST_REMOVE_PLACE_TO_VISIT'
     }
   },
-  receiveRemovePlaceToVisitSuccess: (selectedId) => {
+  receiveRemovePlaceSuccess: (selectedId) => {
     return {
       type: 'RECEIVE_REMOVE_PLACE_TO_VISIT_SUCCESS',
       selectedId
@@ -68,7 +68,7 @@ export const places = {
     return {
       type: 'RECEIVE_PLACES_SUCCESS',
       filter,
-      response
+      placesResponse: response
     }
   }
 };

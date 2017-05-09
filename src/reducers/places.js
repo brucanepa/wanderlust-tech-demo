@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 
 const placesHashById = (state = {}, action) => {
-  if (action.response) {
+  if (action.placesResponse) {
     return {
       ...state,
-      ...action.response.entities.places
+      ...action.placesResponse.entities.places
     };
   }
   return state;
