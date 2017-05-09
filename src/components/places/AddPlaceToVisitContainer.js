@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { placesToVisit as placesActions } from '../../actions';
-import AddToVisit from './AddToVisit';
+import AddPlaceToVisit from './AddPlaceToVisit';
 
-
-class AddToVisitContainer extends Component {
+class AddPlaceToVisitContainer extends Component {
   render() {
-    return <AddToVisit {...this.props} />
+    return <AddPlaceToVisit {...this.props} />
   }
 }
 
@@ -18,9 +17,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-AddToVisitContainer = connect(
+AddPlaceToVisitContainer = connect(
   null,
   mapDispatchToProps
-)(AddToVisitContainer);
+)(AddPlaceToVisitContainer);
 
-export default AddToVisitContainer;
+export default AddPlaceToVisitContainer;

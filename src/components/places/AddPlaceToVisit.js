@@ -1,9 +1,9 @@
 import React from 'react';
 
-const AddToVisit = ({onClick}) => (
+const AddPlaceToVisit = ({onClick}) => (
 	<div>
 		<button type="button" onClick={onClick}>Agregar</button>
 	</div>
 );
 
-export default AddToVisit;
+export default AddPlaceToVisit;
