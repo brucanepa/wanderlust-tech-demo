@@ -1,4 +1,4 @@
-import * as api from '../api';
+import api from '../api';
 import { normalize } from 'normalizr';
 import * as schema from './schema';
 import { placesToVisit as requests } from './requests';
