@@ -15,7 +15,7 @@ export const swapArrayPosition = (array, fromIndex, toIndex) => {
 	return result;
 };
 
-export const findIndexOfPlaceToVisit = (array, id) => {
+export const findIndexOfDestination = (array, id) => {
   return array.map((place) => { return place.id}).indexOf(id);
 };
 

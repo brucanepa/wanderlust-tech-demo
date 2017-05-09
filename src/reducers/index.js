@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 import places, * as fromPlaces from './places';
-import placesToVisit, * as fromPlacesToVisit from './placesToVisit';
-import placeReviews, * as fromPlaceReviews from './placeReviews';
+import destinations, * as fromDestinations from './destinations';
+import reviews, * as fromReviews from './reviews';
 
 const wanderApp = combineReducers({
   places,
-  placesToVisit,
-  placeReviews
+  destinations,
+  reviews
 });
 
 export default wanderApp;
@@ -14,11 +14,11 @@ export default wanderApp;
 export const getVisiblePlaces = (state, filter) =>
   fromPlaces.getVisiblePlaces(state.places, filter);
 
-export const getVisiblePlacesToVisit = (state) =>
-  fromPlacesToVisit.getVisiblePlacesToVisit(state.placesToVisit);
+export const getVisibleDestinations = (state) =>
+  fromDestinations.getVisibleDestinations(state.destinations);
 
-export const getSelectedIdPlaceToVisit = (state) =>
-  fromPlacesToVisit.getSelectedIdPlaceToVisit(state.placesToVisit);
+export const getSelectedIdDestination = (state) =>
+  fromDestinations.getSelectedIdDestination(state.destinations);
 
 export const getVisibleReviews = (state, filter) =>
-  fromPlaceReviews.getVisibleReviews(state, filter);
+  fromReviews.getVisibleReviews(state, filter);

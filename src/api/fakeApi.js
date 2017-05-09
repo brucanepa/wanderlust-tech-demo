@@ -15,7 +15,7 @@ const fakeDatabase = {
     id: id3,
     name: 'Barcelona'
   }],
-  placesToVisit: [{
+  destinations: [{
     id: generateId(),
     placeId: id1,
     name: 'Paris'
@@ -42,7 +42,7 @@ export const fetchPlaces = () => delay(500).then(() => {
 // End Places
 
 // Begin Places To Visit
-export const addPlaceToVisit = (placeId) => delay(500).then(() => {
+export const addDestination = (placeId) => delay(500).then(() => {
   const place = {
     id: generateId(),
     placeId,
@@ -50,33 +50,33 @@ export const addPlaceToVisit = (placeId) => delay(500).then(() => {
       return place.id == placeId
     })[0].name
   };
-  fakeDatabase.placesToVisit.push(place);
+  fakeDatabase.destinations.push(place);
   return place;
 });
 
-const findIndexOfPlaceToVisit = (array, id) => {
+const findIndexOfDestination = (array, id) => {
   return array.map((place) => {
     return place.id
   }).indexOf(id);
 };
 
-export const swapPositionUpPlaceToVisit = (selectedId) => delay(500).then(() => {
-  const index = findIndexOfPlaceToVisit(fakeDatabase.placesToVisit, selectedId);
-  fakeDatabase.placesToVisit = swapArrayPosition(fakeDatabase.placesToVisit, index, index - 1);
+export const swapPositionUpDestination = (selectedId) => delay(500).then(() => {
+  const index = findIndexOfDestination(fakeDatabase.destinations, selectedId);
+  fakeDatabase.destinations = swapArrayPosition(fakeDatabase.destinations, index, index - 1);
 });
 
-export const swapPositionDownPlaceToVisit = (selectedId) => delay(500).then(() => {
-  const index = findIndexOfPlaceToVisit(fakeDatabase.placesToVisit, selectedId);
-  fakeDatabase.placesToVisit = swapArrayPosition(fakeDatabase.placesToVisit, index, index + 1);
+export const swapPositionDownDestination = (selectedId) => delay(500).then(() => {
+  const index = findIndexOfDestination(fakeDatabase.destinations, selectedId);
+  fakeDatabase.destinations = swapArrayPosition(fakeDatabase.destinations, index, index + 1);
 });
 
-export const fetchPlacesToVisit = () => delay(500).then(() => {
-  return fakeDatabase.placesToVisit;
+export const fetchDestinations = () => delay(500).then(() => {
+  return fakeDatabase.destinations;
 });
 
-export const removePlaceToVisit = (selectedId) => delay(500).then(() => {
-  const index = findIndexOfPlaceToVisit(fakeDatabase.placesToVisit, selectedId);
-  fakeDatabase.placesToVisit = removeArrayElement(fakeDatabase.placesToVisit, index);
-  return fakeDatabase.placesToVisit;
+export const removeDestination = (selectedId) => delay(500).then(() => {
+  const index = findIndexOfDestination(fakeDatabase.destinations, selectedId);
+  fakeDatabase.destinations = removeArrayElement(fakeDatabase.destinations, index);
+  return fakeDatabase.destinations;
 });
 // End Places To Visit

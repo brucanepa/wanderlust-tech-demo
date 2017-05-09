@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-import PlacesToVisitPanel from './placesToVisit/PlacesToVisitPanel';
+import DestinationsPanel from './destinations/DestinationsPanel';
 import VisiblePlaces from './places/VisiblePlaces';
 import PlaceDetail from './places/PlaceDetail';
 
@@ -9,7 +9,7 @@ const Root = ({store}) => (
   <Provider store={store}>
     <Router>
       <MainRoot>
-        <PlacesToVisitPanel/>
+        <DestinationsPanel/>
         <MainApp>
 	        <Route exact={true} path='/' render={() => (<Redirect to="/places"> </Redirect>)} />
 	      	<Route exact={true} path='/places' component={VisiblePlaces}/>

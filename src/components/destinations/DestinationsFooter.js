@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PlacesToVisitFooter = ( {selectedId, onClickUp, onClickDown, onClickRemove} ) => (
+const DestinationsFooter = ( {selectedId, onClickUp, onClickDown, onClickRemove} ) => (
   <div className="ToVisitFooter">
     <button className="ToVisitFooterItem" type="button" onClick={ () => onClickUp(selectedId) }>Subir</button>
     <button className="ToVisitFooterItem" type="button" onClick={ () => onClickDown(selectedId) }>Bajar</button>
@@ -8,4 +8,4 @@ const PlacesToVisitFooter = ( {selectedId, onClickUp, onClickDown, onClickRemove
   </div>
 );
 
-export default PlacesToVisitFooter;
+export default DestinationsFooter;

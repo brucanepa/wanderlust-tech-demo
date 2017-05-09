@@ -1,58 +1,58 @@
 
-export const placesToVisit = {
-  requestPlaces: () => {
+export const destinations = {
+  requestDestinations: () => {
     return {
-      type: 'REQUEST_PLACES_TO_VISIT'
+      type: 'REQUEST_DESTINATIONS'
     }
   },
-  receivePlacesSuccess: (filter, response) => {
+  receiveDestinationsSuccess: (filter, response) => {
     return {
-      type: 'RECEIVE_PLACES_TO_VISIT_SUCCESS',
+      type: 'RECEIVE_DESTINATIONS_SUCCESS',
       filter,
-      placesToVisitResponse: response
+      destinationResponse: response
     }
   },
   requestAdd: () => {
     return {
-      type: 'REQUEST_ADD_PLACE_TO_VISIT'
+      type: 'REQUEST_ADD_DESTINATION'
     }
   },
   receiveAddSuccess: (response) => {
     return {
-      type: 'RECEIVE_ADD_PLACE_TO_VISIT_SUCCESS',
-      placesToVisitResponse: response
+      type: 'RECEIVE_ADD_DESTINATION_SUCCESS',
+      destinationResponse: response
     }
   },
   requestSwapPositionUp: () => {
     return {
-      type: 'REQUEST_SWAP_POSITION_UP_PLACE_TO_VISIT'
+      type: 'REQUEST_SWAP_POSITION_UP_DESTINATION'
     }
   },
   receiveSwapPositionUpSuccess: (selectedId) => {
     return {
-      type: 'RECEIVE_SWAP_POSITION_UP_PLACE_TO_VISIT_SUCCESS',
+      type: 'RECEIVE_SWAP_POSITION_UP_DESTINATION_SUCCESS',
       selectedId
     }
   },
   requestSwapPositionDown: () => {
     return {
-      type: 'REQUEST_SWAP_POSITION_DOWN_PLACE_TO_VISIT'
+      type: 'REQUEST_SWAP_POSITION_DOWN_DESTINATION'
     }
   },
   receiveSwapPositionDownSuccess: (selectedId) => {
     return {
-      type: 'RECEIVE_SWAP_POSITION_DOWN_PLACE_TO_VISIT_SUCCESS',
+      type: 'RECEIVE_SWAP_POSITION_DOWN_DESTINATION_SUCCESS',
       selectedId
     }
   },
-  requestRemovePlace: () => {
+  requestRemoveDestination: () => {
     return {
-      type: 'REQUEST_REMOVE_PLACE_TO_VISIT'
+      type: 'REQUEST_REMOVE_DESTINATION'
     }
   },
-  receiveRemovePlaceSuccess: (selectedId) => {
+  receiveRemoveDestinationSuccess: (selectedId) => {
     return {
-      type: 'RECEIVE_REMOVE_PLACE_TO_VISIT_SUCCESS',
+      type: 'RECEIVE_REMOVE_DESTINATION_SUCCESS',
       selectedId
     }
   }

@@ -2,16 +2,16 @@ import { combineReducers } from 'redux';
 import { getVisiblePlacesHash } from './places';
 import { swapArrayPosition, removeArrayElement } from '../utils/helpers';
 
-const placesToVisitHashById = (state = {}, action) => {
-  if (action.placesToVisitResponse) {
-    const placesToVisit = action.placesToVisitResponse.entities.placesToVisit;
+const destinationsHashById = (state = {}, action) => {
+  if (action.destinationResponse) {
+    const destinations = action.destinationResponse.entities.destinations;
     return {
       ...state,
-      ...placesToVisit
+      ...destinations
     };
   } else {
     switch (action.type) {
-      case 'RECEIVE_REMOVE_PLACE_TO_VISIT_SUCCESS':
+      case 'RECEIVE_REMOVE_DESTINATION_SUCCESS':
         var newState = { ...state };
         delete newState[action.selectedId];
         return newState;
@@ -24,17 +24,17 @@ const placesToVisitHashById = (state = {}, action) => {
 const createFilteredList = (filter) => {
   return (state = [], action) => {
     switch (action.type) {
-      case 'RECEIVE_PLACES_TO_VISIT_SUCCESS':
-        return action.placesToVisitResponse.result;
-      case 'RECEIVE_ADD_PLACE_TO_VISIT_SUCCESS':
-        return [...state, action.placesToVisitResponse.result];
-      case 'RECEIVE_SWAP_POSITION_UP_PLACE_TO_VISIT_SUCCESS':
+      case 'RECEIVE_DESTINATIONS_SUCCESS':
+        return action.destinationResponse.result;
+      case 'RECEIVE_ADD_DESTINATION_SUCCESS':
+        return [...state, action.destinationResponse.result];
+      case 'RECEIVE_SWAP_POSITION_UP_DESTINATION_SUCCESS':
         const indexUp = state.indexOf(action.selectedId);
         return swapArrayPosition(state, indexUp, indexUp - 1);
-      case 'RECEIVE_SWAP_POSITION_DOWN_PLACE_TO_VISIT_SUCCESS':
+      case 'RECEIVE_SWAP_POSITION_DOWN_DESTINATION_SUCCESS':
         const indexDown = state.indexOf(action.selectedId);
         return swapArrayPosition(state, indexDown, indexDown + 1);
-      case 'RECEIVE_REMOVE_PLACE_TO_VISIT_SUCCESS':
+      case 'RECEIVE_REMOVE_DESTINATION_SUCCESS':
         return removeArrayElement(state, state.indexOf(action.selectedId));
       default:
         return state;
@@ -55,19 +55,19 @@ const selectedId = (state = {}, action) => {
   return state;
 };
 
-const placesToVisit = combineReducers({
-  placesToVisitHashById,
+const destinations = combineReducers({
+  destinationsHashById,
   idsByFilter,
   selectedId
 });
 
-export default placesToVisit;
+export default destinations;
 
-export const getVisiblePlacesToVisit = (state, filter) => {
+export const getVisibleDestinations = (state, filter) => {
   const ids = state.idsByFilter['all'];
-  return ids.map(id => state.placesToVisitHashById[id]);
+  return ids.map(id => state.destinationsHashById[id]);
 };
 
-export const getSelectedIdPlaceToVisit = (state) => {
+export const getSelectedIdDestination = (state) => {
   return state.selectedId;
 };

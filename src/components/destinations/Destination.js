@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const PlaceToVisit = ({ name, onClick, selected }) => (
+const Destination = ({ name, onClick, selected }) => (
   <li style={{
       color: selected ? 'red' : 'white',
     }}
@@ -9,10 +9,10 @@ const PlaceToVisit = ({ name, onClick, selected }) => (
   </li>
 );
 
-PlaceToVisit.propTypes = {
+Destination.propTypes = {
   name: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   selected: PropTypes.bool.isRequired
 };
 
-export default PlaceToVisit;
+export default Destination;

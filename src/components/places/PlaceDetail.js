@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PlaceRating from './PlaceRating';
-import AddPlaceToVisitContainer from './AddPlaceToVisitContainer';
+import AddDestinationContainer from './AddDestinationContainer';
 import PlaceDescription from './PlaceDescription';
 import PlaceActivities from './PlaceActivities';
 import PlaceImages from './PlaceImages';
@@ -17,7 +17,7 @@ const PlaceDetail = ({ match }) => (
 
 		<h3>Playa tremenda playa</h3>
 		<PlaceRating/>
-		<AddPlaceToVisitContainer id={match.params.placeId}/>
+		<AddDestinationContainer id={match.params.placeId}/>
 		<PlaceDescription/>
 		<PlaceActivities/>
 		<PlaceImages/>
