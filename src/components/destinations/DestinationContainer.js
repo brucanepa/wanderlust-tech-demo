@@ -16,8 +16,8 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    onClickUp(id) {
-      return dispatch(destinationsActions.swapPositionUp(id));
+    onClick(id) {
+      return dispatch(destinationsActions.setSelected(id));
     }
 });
 

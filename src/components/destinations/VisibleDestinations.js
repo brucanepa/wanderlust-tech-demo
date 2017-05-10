@@ -29,9 +29,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     fetchDestinations(filter) {
       return dispatch(destinationsActions.fetchDestinations(filter));
-    },
-    onClick(id) {
-      return dispatch(destinationsActions.setSelected(id));
     }
 });
 

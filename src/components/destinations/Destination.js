@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
 
-const Destination = ({ name, onClick, selected }) => (
+const Destination = ({ id, name, onClick, selected }) => (
   <li style={{
       color: selected ? 'red' : 'white',
     }}
-    onClick={() => {onClick()} }>
+    onClick={() => {onClick(id)} }>
     {name}
   </li>
 );
