@@ -11,25 +11,21 @@ class DestinationsFooterContainer extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
+const mapStateToProps = (state) => ({
     selectedId: getSelectedIdDestination(state)
-  };
-};
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onClickUp: (id) => {
+const mapDispatchToProps = (dispatch) => ({
+    onClickUp(id) {
       return dispatch(destinationsActions.swapPositionUp(id));
     },
-    onClickDown: (id) => {
+    onClickDown(id) {
       return dispatch(destinationsActions.swapPositionDown(id));
     },
-    onClickRemove: (id) => {
+    onClickRemove(id) {
       return dispatch(destinationsActions.remove(id));
     }
-  };
-};
+});
 
 DestinationsFooterContainer = connect(
   mapStateToProps,

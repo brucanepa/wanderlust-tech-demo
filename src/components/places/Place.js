@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AddDestinationContainer from './AddDestinationContainer';
+import AddDestinationContainer from '../destinations/AddDestinationContainer';
 
 const Place = ({ match, id, name }) => (
 	<li>

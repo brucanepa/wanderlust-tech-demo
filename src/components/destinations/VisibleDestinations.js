@@ -22,22 +22,18 @@ class VisibleDestinations extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
+const mapStateToProps = (state) => ({
     destinations: getVisibleDestinations(state)
-  };
-};
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchDestinations: (filter) => {
+const mapDispatchToProps = (dispatch) => ({
+    fetchDestinations(filter) {
       return dispatch(destinationsActions.fetchDestinations(filter));
     },
-    onClick: (id) => {
+    onClick(id) {
       return dispatch(destinationsActions.setSelected(id));
     }
-   };
-};
+});
 
 VisibleDestinations = connect(
   mapStateToProps,

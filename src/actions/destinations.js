@@ -22,17 +22,13 @@ export const add = (placeId) => (dispatch) => {
 export const swapPositionUp = ({selectedId}) => (dispatch) => {
   dispatch(requests.requestSwapPositionUp());
   return api.swapPositionUpDestination(selectedId)
-    .then(() => { //todo
-      dispatch(requests.receiveSwapPositionUpSuccess(selectedId));
-    })
+    .then(dispatch(requests.receiveSwapPositionUpSuccess(selectedId)))
 }
 
 export const swapPositionDown = ({selectedId}) => (dispatch) => {
   dispatch(requests.requestSwapPositionUp());
   return api.swapPositionDownDestination(selectedId)
-    .then(() => { //todo
-      dispatch(requests.receiveSwapPositionDownSuccess(selectedId));
-    })
+    .then(dispatch(requests.receiveSwapPositionDownSuccess(selectedId)))
 }
 
 export const setSelected = (id) => (dispatch) => {
@@ -45,7 +41,5 @@ export const setSelected = (id) => (dispatch) => {
 export const remove = ({selectedId}) => (dispatch) => {
   dispatch(requests.requestRemoveDestination());
   api.removeDestination(selectedId)
-    .then(() => {
-      dispatch(requests.receiveRemoveDestinationSuccess(selectedId));
-    });
+    .then(dispatch(requests.receiveRemoveDestinationSuccess(selectedId)));
 }

@@ -14,7 +14,7 @@ class VisiblePlaces extends Component {
     }
   }*/
   fetchData() {
-    const { filter } = this.props;
+    const {filter} = this.props;
     this.props.fetchPlaces(filter);
   }
   render() {
@@ -22,19 +22,15 @@ class VisiblePlaces extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    places: getVisiblePlaces(state)
-  };
-};
+const mapStateToProps = (state) => ({
+  places: getVisiblePlaces(state)
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchPlaces: (filter) => {
-      return dispatch(placesActions.fetchPlaces(filter));
-    }
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  fetchPlaces(filter) {
+    return dispatch(placesActions.fetchPlaces(filter));
+  }
+});
 
 VisiblePlaces = connect(
   mapStateToProps,

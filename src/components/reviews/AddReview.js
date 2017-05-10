@@ -1,7 +1,7 @@
 import React from 'react';
-import PlaceRating from './PlaceRating';
+import PlaceRating from '../places/PlaceRating';
 
-const AddPlaceReview = () => {
+const AddReview = () => {
 	let input;
 
 	return (
@@ -26,4 +26,4 @@ const AddPlaceReview = () => {
 	);
 };
 
-export default AddPlaceReview;
+export default AddReview;

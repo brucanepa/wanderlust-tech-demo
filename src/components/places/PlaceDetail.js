@@ -1,13 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PlaceRating from './PlaceRating';
-import AddDestinationContainer from './AddDestinationContainer';
+import AddDestinationContainer from '../destinations/AddDestinationContainer';
 import PlaceDescription from './PlaceDescription';
 import PlaceActivities from './PlaceActivities';
 import PlaceImages from './PlaceImages';
-import PlaceReviewsContainer from './PlaceReviewsContainer';
-
-import AddPlaceReview from './AddPlaceReview';
+import ReviewsContainer from '../reviews/ReviewsContainer';
+import AddReview from './AddReview';
 
 const PlaceDetail = ({ match }) => (
 	<div>
@@ -21,9 +20,8 @@ const PlaceDetail = ({ match }) => (
 		<PlaceDescription/>
 		<PlaceActivities/>
 		<PlaceImages/>
-		<PlaceReviewsContainer/>
-		<AddPlaceReview/>
-		
+		<ReviewsContainer/>
+		<AddReview/>
 	</div>
 );
 

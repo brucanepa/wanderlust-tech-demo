@@ -1,4 +1,19 @@
 
+export const places = {
+  requestPlaces: () => {
+    return {
+      type: 'REQUEST_PLACES'
+    }
+  },
+  receivePlacesSuccess: (filter, response) => {
+    return {
+      type: 'RECEIVE_PLACES_SUCCESS',
+      filter,
+      placesResponse: response
+    }
+  }
+};
+
 export const destinations = {
   requestDestinations: () => {
     return {
@@ -54,21 +69,6 @@ export const destinations = {
     return {
       type: 'RECEIVE_REMOVE_DESTINATION_SUCCESS',
       selectedId
-    }
-  }
-};
-
-export const places = {
-  requestPlaces: () => {
-    return {
-      type: 'REQUEST_PLACES'
-    }
-  },
-  receivePlacesSuccess: (filter, response) => {
-    return {
-      type: 'RECEIVE_PLACES_SUCCESS',
-      filter,
-      placesResponse: response
     }
   }
 };
