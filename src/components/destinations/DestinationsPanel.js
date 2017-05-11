@@ -3,8 +3,6 @@ import '../../App.css';
 import DestinationsContainer from './DestinationsContainer';
 import DestinationsFooterContainer from './DestinationsFooterContainer';
 
-let onDestinationClick = () => { return };
-
 const DestinationsPanel = ({ match }) => (
   <div className="ToVisitPanel">
   	<div className="ToVisitPanelTitle">

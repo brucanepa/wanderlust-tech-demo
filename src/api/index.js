@@ -1,4 +1,4 @@
-import * as fakeApi from './fakeApi';
+import * as fakeApi from './fakebase';
 
 const api = fakeApi;
 

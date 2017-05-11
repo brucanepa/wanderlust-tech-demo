@@ -4,7 +4,6 @@ import { destinations as destinationsActions } from '../../actions';
 import DestinationsFooter from './DestinationsFooter';
 import { getSelectedIdDestination } from '../../reducers';
 
-
 class DestinationsFooterContainer extends Component {
   render() {
     return <DestinationsFooter {...this.props} />
