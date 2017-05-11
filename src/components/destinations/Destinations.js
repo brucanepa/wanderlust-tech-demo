@@ -7,7 +7,6 @@ const Destinations = ({ destinations, onClick }) => (
       <DestinationContainer
         key={destination.id}
         {...destination}
-        onClick = {() => {onClick(destination.id)}}
       />
     )}
   </ul>

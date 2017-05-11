@@ -14,8 +14,8 @@ export default wanderApp;
 export const getVisiblePlaces = (state, filter) =>
   fromPlaces.getVisiblePlaces(state.places, filter);
 
-export const getVisibleDestinations = (state) =>
-  fromDestinations.getVisibleDestinations(state.destinations);
+export const getDestinations = (state) =>
+  fromDestinations.getDestinations(state.destinations);
 
 export const getSelectedIdDestination = (state) =>
   fromDestinations.getSelectedIdDestination(state.destinations);

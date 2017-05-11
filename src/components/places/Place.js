@@ -7,7 +7,7 @@ const Place = ({ match, id, name }) => (
 	    <Link to={`${match.url}/${id}`}>
 		    Place: {name}
 		</Link>
-		<AddDestinationContainer id={id}/>
+		<AddDestinationContainer placeId={id}/>
 	</li>
 );
 

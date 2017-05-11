@@ -16,9 +16,9 @@ const reviews = combineReducers({
 
 export default reviews;
 
- export const getVisibleReviews = (state, filter) => {
-   return state;
- };
+export const getVisibleReviews = (state, filter) => {
+  return state;
+};
 
 export const getVisibleReviewsHash = (state) => {
   return state.reviewsHashById;

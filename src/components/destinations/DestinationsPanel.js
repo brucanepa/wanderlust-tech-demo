@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../App.css';
-import VisibleDestinations from './VisibleDestinations';
+import DestinationsContainer from './DestinationsContainer';
 import DestinationsFooterContainer from './DestinationsFooterContainer';
 
 let onDestinationClick = () => { return };
@@ -11,7 +11,7 @@ const DestinationsPanel = ({ match }) => (
   		Plan your trip!
   	</div>
     <div className="ToVisitPanelItem">
-      <VisibleDestinations />
+      <DestinationsContainer />
     </div>
     <DestinationsFooterContainer/>
   </div>

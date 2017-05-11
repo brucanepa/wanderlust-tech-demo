@@ -63,7 +63,7 @@ const destinations = combineReducers({
 
 export default destinations;
 
-export const getVisibleDestinations = (state, filter) => {
+export const getDestinations = (state, filter) => {
   const ids = state.idsByFilter['all'];
   return ids.map(id => state.destinationsHashById[id]);
 };

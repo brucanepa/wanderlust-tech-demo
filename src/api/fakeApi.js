@@ -24,11 +24,12 @@ const fakeDatabase = {
     placeId: id2,
     name: 'Munich'
   }],
-  placesReviews: [{
+  reviews: [{
     id: generateId(),
     placeId: id1,
-    description: "muy lindo",
-    date: "20/3/2015"
+    comment: "muy lindo",
+    date: "20/3/2015 20:14",
+    rate: 5
   }]
 };
 

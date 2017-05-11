@@ -72,3 +72,18 @@ export const destinations = {
     }
   }
 };
+
+export const reviews = {
+  requestReviews: () => {
+    return {
+      type: 'REQUEST_REVIEWS'
+    }
+  },
+  receiveReviewsSuccess: (filter, response) => {
+    return {
+      type: 'RECEIVE_REVIEWS_SUCCESS',
+      filter,
+      reviewsResponse: response
+    }
+  }
+};

@@ -2,17 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { destinations as destinationsActions } from '../../actions';
 import Destinations from './Destinations';
-import { getVisibleDestinations } from '../../reducers';
+import { getDestinations } from '../../reducers';
 
-class VisibleDestinations extends Component {
+class DestinationsContainer extends Component {
   componentDidMount() {
     this.fetchData();
   }
-  /*componentDidUpdate(prevProps, prevState) {
-    if (this.props.filter !== prevProps.filter) {
-      this.fetchData();
-    }
-  }*/
   fetchData() {
     const { filter } = this.props;
     this.props.fetchDestinations(filter);
@@ -23,7 +18,7 @@ class VisibleDestinations extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    destinations: getVisibleDestinations(state)
+    destinations: getDestinations(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -32,9 +27,9 @@ const mapDispatchToProps = (dispatch) => ({
     }
 });
 
-VisibleDestinations = connect(
+DestinationsContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(VisibleDestinations);
+)(DestinationsContainer);
 
-export default VisibleDestinations;
+export default DestinationsContainer;

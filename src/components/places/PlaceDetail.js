@@ -5,8 +5,7 @@ import AddDestinationContainer from '../destinations/AddDestinationContainer';
 import PlaceDescription from './PlaceDescription';
 import PlaceActivities from './PlaceActivities';
 import PlaceImages from './PlaceImages';
-import ReviewsContainer from '../reviews/ReviewsContainer';
-import AddReview from '../reviews/AddReview';
+import VisibleReviews from '../reviews/VisibleReviews';
 
 const PlaceDetail = ({ match }) => (
 	<div>
@@ -16,12 +15,11 @@ const PlaceDetail = ({ match }) => (
 
 		<h3>Playa tremenda playa</h3>
 		<PlaceRating/>
-		<AddDestinationContainer id={match.params.placeId}/>
+		<AddDestinationContainer placeId={match.params.placeId}/>
 		<PlaceDescription/>
 		<PlaceActivities/>
 		<PlaceImages/>
-		<ReviewsContainer/>
-		<AddReview/>
+		<VisibleReviews placeId={match.params.placeId}/>
 	</div>
 );
 
