@@ -1,7 +1,13 @@
 import React from 'react';
 
-const PlaceActivities = () => (
-	<div>Activities</div>
+const PlaceActivities = ({activities}) => (
+	<div>Activities:
+	{/*activities.map(a => {
+		<div>
+			{a.name}
+		</div>
+	})*/}
+	</div>
 );
 
 export default PlaceActivities;

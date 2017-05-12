@@ -69,6 +69,38 @@ const fakeDatabase = {
       rate: 5
     }],
     rateAvarage: 5
+  },
+  {
+    id: id2,
+    description: 'Descripcion 2',
+    activities: [{
+      name: 'Actividad 2',
+      description: 'Descrpicion actividad 2'
+    }],
+    reviews: [{
+      id: generateId(),
+      userId: getUserId(),
+      comment: "muy feo",
+      date: "20/3/2015 20:14",
+      rate: 1
+    }],
+    rateAvarage: 5
+  },
+  {
+    id: id3,
+    description: 'Descripcion 3',
+    activities: [{
+      name: 'Actividad 3',
+      description: 'Descrpicion actividad 3'
+    }],
+    reviews: [{
+      id: generateId(),
+      userId: getUserId(),
+      comment: "muy mal",
+      date: "20/3/2015 20:14",
+      rate: 2
+    }],
+    rateAvarage: 5
   }]
 };
 
@@ -99,7 +131,7 @@ export const addDestination = (userId, placeId) => delay(500).then(() => {
       return place.id == placeId
     })[0].name
   };
-  let user = getUser(userId);
+  const user = getUser(userId);
   user && user.destinations.push(place);
 
   return place;
@@ -112,13 +144,13 @@ const findIndexOfDestination = (array, id) => {
 };
 
 export const swapPositionUpDestination = (userId, selectedId) => delay(500).then(() => {
-  let user = getUser(userId);
+  const user = getUser(userId);
   const index = findIndexOfDestination(user.destinations, selectedId);
   user.destinations = swapArrayPosition(user.destinations, index, index - 1);
 });
 
 export const swapPositionDownDestination = (userId, selectedId) => delay(500).then(() => {
-  let user = getUser(userId);
+  const user = getUser(userId);
   const index = findIndexOfDestination(user.destinations, selectedId);
   user.destinations = swapArrayPosition(user.destinations, index, index + 1);
 });
@@ -128,9 +160,28 @@ export const fetchDestinations = (userId) => delay(500).then(() => {
 });
 
 export const removeDestination = (userId, selectedId) => delay(500).then(() => {
-  let user = getUser(userId);
+  const user = getUser(userId);
   const index = findIndexOfDestination(user.destinations, selectedId);
   user.destinations = removeArrayElement(user.destinations, index);
   return user.destinations;
 });
 // End Destinations
+
+export const fetchPlaceDetail = (placeId) => delay(500).then(() => {
+  let placeDetail = null;
+  fakeDatabase.placesDetails.some((p) => {
+    placeDetail = p.id == placeId && p;
+    return placeDetail;
+  })
+  return placeDetail;
+});
+
+export const addReview = (userId, placeId, comment, rate) => delay(500).then(() => {
+  return {
+    id: generateId(),
+    userId: userId,
+    comment:  comment,
+    date: "20/3/2015 20:14",
+    rate: rate
+  };
+});

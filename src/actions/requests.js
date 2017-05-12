@@ -73,17 +73,27 @@ export const destinations = {
   }
 };
 
-export const reviews = {
-  requestReviews: () => {
+export const placeDetail = {
+  requestPlaceDetail: () => {
     return {
-      type: 'REQUEST_REVIEWS'
+      type: 'REQUEST_DETAIL'
     }
   },
-  receiveReviewsSuccess: (filter, response) => {
+  receivePlaceDetailSuccess: (response) => {
     return {
-      type: 'RECEIVE_REVIEWS_SUCCESS',
-      filter,
-      reviewsResponse: response
+      type: 'RECEIVE_PLACE_DETAIL_SUCCESS',
+      placeDetailResponse: response
+    }
+  },
+  requestAddReview: () => {
+    return {
+      type: 'REQUEST_ADD_REVIEW'
+    }
+  },
+  receiveAddReviewSuccess: (response) => {
+    return {
+      type: 'RECEIVE_ADD_REVIEW_SUCCESS',
+      reviewResponse: response
     }
   }
 };

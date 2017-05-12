@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import { getVisiblePlacesHash } from './places';
 import { swapArrayPosition, removeArrayElement } from '../utils/helpers';
 
 const destinationsHashById = (state = {}, action) => {
@@ -12,7 +11,7 @@ const destinationsHashById = (state = {}, action) => {
   } else {
     switch (action.type) {
       case 'RECEIVE_REMOVE_DESTINATION_SUCCESS':
-        var newState = { ...state };
+        var newState = {...state };
         delete newState[action.selectedId];
         return newState;
       default:
@@ -21,30 +20,24 @@ const destinationsHashById = (state = {}, action) => {
   }
 };
 
-const createFilteredList = (filter) => {
-  return (state = [], action) => {
-    switch (action.type) {
-      case 'RECEIVE_DESTINATIONS_SUCCESS':
-        return action.destinationResponse.result;
-      case 'RECEIVE_ADD_DESTINATION_SUCCESS':
-        return [...state, action.destinationResponse.result];
-      case 'RECEIVE_SWAP_POSITION_UP_DESTINATION_SUCCESS':
-        const indexUp = state.indexOf(action.selectedId);
-        return swapArrayPosition(state, indexUp, indexUp - 1);
-      case 'RECEIVE_SWAP_POSITION_DOWN_DESTINATION_SUCCESS':
-        const indexDown = state.indexOf(action.selectedId);
-        return swapArrayPosition(state, indexDown, indexDown + 1);
-      case 'RECEIVE_REMOVE_DESTINATION_SUCCESS':
-        return removeArrayElement(state, state.indexOf(action.selectedId));
-      default:
-        return state;
-    }
+const destinationList = (state = [], action) => {
+  switch (action.type) {
+    case 'RECEIVE_DESTINATIONS_SUCCESS':
+      return action.destinationResponse.result;
+    case 'RECEIVE_ADD_DESTINATION_SUCCESS':
+      return [...state, action.destinationResponse.result];
+    case 'RECEIVE_SWAP_POSITION_UP_DESTINATION_SUCCESS':
+      const indexUp = state.indexOf(action.selectedId);
+      return swapArrayPosition(state, indexUp, indexUp - 1);
+    case 'RECEIVE_SWAP_POSITION_DOWN_DESTINATION_SUCCESS':
+      const indexDown = state.indexOf(action.selectedId);
+      return swapArrayPosition(state, indexDown, indexDown + 1);
+    case 'RECEIVE_REMOVE_DESTINATION_SUCCESS':
+      return removeArrayElement(state, state.indexOf(action.selectedId));
+    default:
+      return state;
   }
 };
-
-const idsByFilter = combineReducers({
-  all: createFilteredList('all')
-});
 
 const selectedId = (state = {}, action) => {
   if (action.selectedId && state.selectedId != action.selectedId) {
@@ -57,14 +50,14 @@ const selectedId = (state = {}, action) => {
 
 const destinations = combineReducers({
   destinationsHashById,
-  idsByFilter,
+  destinationList,
   selectedId
 });
 
 export default destinations;
 
 export const getDestinations = (state, filter) => {
-  const ids = state.idsByFilter['all'];
+  const ids = state.destinationList;
   return ids.map(id => state.destinationsHashById[id]);
 };
 

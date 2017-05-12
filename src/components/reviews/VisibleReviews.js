@@ -1,31 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Reviews from './Reviews';
-import AddReviewContainer from './AddReviewContainer';
-import { getVisibleReviews } from '../../reducers';
-import { reviews as reviewsActions } from '../../actions';
+import AddReview from './AddReview';
+import { getPlaceReviews } from '../../reducers';
+import { placeDetail as placeDetailActions } from '../../actions';
 
 class VisibleReviews extends Component {
   render() {
     return <div>
-            {/*<Reviews {...this.props}/>
-             <AddReviewContainer placeId={ this.props.placeId } />*/}           </div>
+            <Reviews {...this.props}/>
+            <AddReview placeId={ this.props.placeId }/>
+        </div>
   }
 }
 
 const mapStateToProps = (state) => ({
-  reviews: getVisibleReviews(state)
-});
-
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  fetchPlaces(filter) {
-    return dispatch(reviewsActions.fetchReviews(filter));
-  }
+  reviews: getPlaceReviews(state)
 });
 
 VisibleReviews = connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(VisibleReviews);
 
 export default VisibleReviews;

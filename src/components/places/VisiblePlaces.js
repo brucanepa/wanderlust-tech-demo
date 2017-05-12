@@ -8,11 +8,6 @@ class VisiblePlaces extends Component {
   componentDidMount() {
     this.fetchData();
   }
-  /*componentDidUpdate(prevProps, prevState) {
-    if (this.props.filter !== prevProps.filter) {
-      this.fetchData();
-    }
-  }*/
   fetchData() {
     const {filter} = this.props;
     this.props.fetchPlaces(filter);

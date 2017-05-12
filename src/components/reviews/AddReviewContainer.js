@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { reviews as reviewsActions } from '../../actions';
+import { placeDetail as placeDetailActions } from '../../actions';
 import AddReview from './AddReview';
 
 class AddReviewContainer extends Component {
@@ -10,9 +10,9 @@ class AddReviewContainer extends Component {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    onClick() {
-      return dispatch(reviewsActions.add(ownProps.placeId));
-    }
+  addReview(comment, rate) {
+    return dispatch(placeDetailActions.addReview(ownProps.placeId, comment, rate));
+  }
 });
 
 AddReviewContainer = connect(

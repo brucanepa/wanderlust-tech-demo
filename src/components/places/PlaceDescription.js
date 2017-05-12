@@ -1,7 +1,7 @@
 import React from 'react';
 
-const PlaceDescription = () => (
-	<div>Description</div>
+const PlaceDescription = ({description}) => (
+	<div>{description}</div>
 );
 
 export default PlaceDescription;
