@@ -4,11 +4,11 @@ import * as schema from './schema';
 import { destinations as requests } from './requests';
 import { getUserId } from '../constants';
 
-export const fetchDestinations = (filter) => (dispatch) => {
+export const fetchDestinations = () => (dispatch) => {
   dispatch(requests.requestDestinations());
-  return api.fetchDestinations(getUserId(), filter)
+  return api.fetchDestinations(getUserId())
     .then(response => {
-      dispatch(requests.receiveDestinationsSuccess(filter, normalize(response, schema.arrayOfDestinations)));
+      dispatch(requests.receiveDestinationsSuccess(normalize(response, schema.arrayOfDestinations)));
     });
 }
 

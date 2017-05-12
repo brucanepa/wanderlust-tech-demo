@@ -23,4 +23,8 @@ const PlaceDetail = ({name, placeDetail, match }) => (
 	</div>
 );
 
+// handleOnClick = () => {
+//   this.context.router.push('/places');
+// }
+
 export default PlaceDetail;

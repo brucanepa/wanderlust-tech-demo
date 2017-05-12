@@ -5,11 +5,11 @@ export const places = {
       type: 'REQUEST_PLACES'
     }
   },
-  receivePlacesSuccess: (filter, response) => {
+  receivePlacesSuccess: (regionId, response) => {
     return {
       type: 'RECEIVE_PLACES_SUCCESS',
-      filter,
-      placesResponse: response
+      placesResponse: response,
+      regionId
     }
   }
 };
@@ -20,10 +20,9 @@ export const destinations = {
       type: 'REQUEST_DESTINATIONS'
     }
   },
-  receiveDestinationsSuccess: (filter, response) => {
+  receiveDestinationsSuccess: (response) => {
     return {
       type: 'RECEIVE_DESTINATIONS_SUCCESS',
-      filter,
       destinationResponse: response
     }
   },

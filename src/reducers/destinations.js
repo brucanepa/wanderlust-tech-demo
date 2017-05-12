@@ -11,7 +11,7 @@ const destinationsHashById = (state = {}, action) => {
   } else {
     switch (action.type) {
       case 'RECEIVE_REMOVE_DESTINATION_SUCCESS':
-        var newState = {...state };
+        const newState = { ...state };
         delete newState[action.selectedId];
         return newState;
       default:

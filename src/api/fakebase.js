@@ -12,6 +12,7 @@ const continents = [{
     1: 'America del Sur',
     2: 'America Central',
     3: 'America del Norte'
+
   }
 }, {
   id: 2,
@@ -70,38 +71,38 @@ const fakeDatabase = {
     }],
     rateAvarage: 5
   },
-  {
-    id: id2,
-    description: 'Descripcion 2',
-    activities: [{
-      name: 'Actividad 2',
-      description: 'Descrpicion actividad 2'
-    }],
-    reviews: [{
-      id: generateId(),
-      userId: getUserId(),
-      comment: "muy feo",
-      date: "20/3/2015 20:14",
-      rate: 1
-    }],
-    rateAvarage: 5
-  },
-  {
-    id: id3,
-    description: 'Descripcion 3',
-    activities: [{
-      name: 'Actividad 3',
-      description: 'Descrpicion actividad 3'
-    }],
-    reviews: [{
-      id: generateId(),
-      userId: getUserId(),
-      comment: "muy mal",
-      date: "20/3/2015 20:14",
-      rate: 2
-    }],
-    rateAvarage: 5
-  }]
+    {
+      id: id2,
+      description: 'Descripcion 2',
+      activities: [{
+        name: 'Actividad 2',
+        description: 'Descrpicion actividad 2'
+      }],
+      reviews: [{
+        id: generateId(),
+        userId: getUserId(),
+        comment: "muy feo",
+        date: "20/3/2015 20:14",
+        rate: 1
+      }],
+      rateAvarage: 5
+    },
+    {
+      id: id3,
+      description: 'Descripcion 3',
+      activities: [{
+        name: 'Actividad 3',
+        description: 'Descrpicion actividad 3'
+      }],
+      reviews: [{
+        id: generateId(),
+        userId: getUserId(),
+        comment: "muy mal",
+        date: "20/3/2015 20:14",
+        rate: 2
+      }],
+      rateAvarage: 5
+    }]
 };
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
@@ -116,7 +117,7 @@ const getUser = (userId) => {
 };
 
 // Begin Places
-export const fetchPlaces = () => delay(500).then(() => {
+export const fetchPlaces = (regionId) => delay(500).then(() => {
   return fakeDatabase.places;
 });
 
@@ -180,7 +181,7 @@ export const addReview = (userId, placeId, comment, rate) => delay(500).then(() 
   return {
     id: generateId(),
     userId: userId,
-    comment:  comment,
+    comment: comment,
     date: "20/3/2015 20:14",
     rate: rate
   };

@@ -6,9 +6,9 @@ const invalidIndex = (array, index) => {
 }
 
 export const swapArrayPosition = (array, fromIndex, toIndex) => {
-	var result = array.slice();
+	const result = array.slice();
 	
-	var absDif = Math.abs(fromIndex - toIndex);
+	const absDif = Math.abs(fromIndex - toIndex);
 	if(absDif != 1 || invalidIndex(result, fromIndex) || invalidIndex(result, toIndex)) return result;
 
     result.splice(toIndex, 0, result.splice(fromIndex, 1)[0]);
@@ -20,9 +20,9 @@ export const findIndexOfDestination = (array, id) => {
 };
 
 export const removeArrayElement = (array, index) => {
-	var result = array.slice();
+	const result = array.slice();
 
-	if (invalidIndex(array, index)) return result;
+	if (invalidIndex(result, index)) return result;
 
 	result.splice(index, 1)
 	return result;
