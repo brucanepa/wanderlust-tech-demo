@@ -9,3 +9,6 @@ export const arrayOfDestinations = new schema.Array(destination);
 export const placeDetail = new schema.Entity('placeDetail');
 export const review = new schema.Entity('review');
 export const arrayOfPlaceDetails = new schema.Array(placeDetail);
+
+export const continent = new schema.Entity('continents');
+export const arrayOfContinents = new schema.Array(continent);

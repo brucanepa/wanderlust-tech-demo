@@ -4,15 +4,15 @@ import AddReview from './AddReview';
 
 const Reviews = ({reviews}) => (
   <div>
-  		Reviews:
+		Reviews:
 		<ul>
-		{reviews.map(review =>
-			<Review
-				key={review.id}
-				{...review}
-			/>
-        )}
-      </ul> 
+			{reviews.map(review =>
+				<Review
+					key={review.id}
+					{...review}
+				/>
+			)}
+		</ul> 
  </div>
 );
 

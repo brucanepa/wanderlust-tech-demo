@@ -6,24 +6,31 @@ const id2 = generateId();
 const id3 = generateId();
 
 const continents = [{
-  id: 1,
-  name: 'America',
-  regions: {
-    1: 'America del Sur',
-    2: 'America Central',
-    3: 'America del Norte'
-
-  }
-}, {
   id: 2,
   name: 'Europa',
-  regions: {
-    4: 'America del Sur',
-    5: 'America Central',
-    6: 'America Central',
-    7: 'America Central',
-    8: 'America del Norte'
-  }
+  regions: [{
+    id: 4,
+    name: 'Europa Sur'
+  }, {
+    id: 5,
+    name: 'Europa Central'
+  }, {
+    id: 6,
+    name: 'Europa Sur'
+  }]
+}, {
+  id: 1,
+  name: 'America',
+  regions: [{
+    id: 1,
+    name: 'America del Sur'
+  }, {
+    id: 2,
+    name: 'America Central'
+  }, {
+    id: 3,
+    name: 'America del Norte'
+  }]
 }];
 
 const user = {
@@ -44,15 +51,15 @@ const fakeDatabase = {
   places: [{
     id: id1,
     name: 'Barcelona',
-    region: 4
+    regionId: 4
   }, {
     id: id2,
     name: 'Montevideo',
-    region: 1
+    regionId: 1
   }, {
     id: id3,
     name: 'Miami',
-    region: 3
+    regionId: 3
   }],
   users: [user],
   placesDetails: [{
@@ -118,7 +125,7 @@ const getUser = (userId) => {
 
 // Begin Places
 export const fetchPlaces = (regionId) => delay(500).then(() => {
-  return fakeDatabase.places;
+  return fakeDatabase.places.filter((place) => (place.regionId == regionId));
 });
 
 // End Places
@@ -168,6 +175,7 @@ export const removeDestination = (userId, selectedId) => delay(500).then(() => {
 });
 // End Destinations
 
+// Begin Places Details
 export const fetchPlaceDetail = (placeId) => delay(500).then(() => {
   let placeDetail = null;
   fakeDatabase.placesDetails.some((p) => {
@@ -186,3 +194,10 @@ export const addReview = (userId, placeId, comment, rate) => delay(500).then(() 
     rate: rate
   };
 });
+// End Places Details
+
+// Begin Continents
+export const fetchContinents = () => delay(500).then(() => {
+  return fakeDatabase.continents;
+});
+// End Continents

@@ -96,3 +96,17 @@ export const placeDetail = {
     }
   }
 };
+
+export const continents = {
+  requestContinents: () => {
+    return {
+      type: 'REQUEST_CONTINENTS'
+    }
+  },
+  receiveContinentsSuccess: (response) => {
+    return {
+      type: 'RECEIVE_CONTINENTS_SUCCESS',
+      continentsResponse: response,
+    }
+  }
+};

@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import DestinationsPanel from './destinations/DestinationsPanel';
 import VisiblePlaces from './places/VisiblePlaces';
 import PlaceDetailContainer from './places/PlaceDetailContainer';
+import ContinentsContainer from './continents/ContinentsContainer';
 
 const Root = ({store}) => (
   <Provider store={store}>
@@ -11,10 +12,11 @@ const Root = ({store}) => (
       <MainRoot>
         <DestinationsPanel/>
         <MainApp>
-	        <Route exact={true} path='/' render={() => (<Redirect to="/places"> </Redirect>)} />
-	      	<Route exact={true} path='/places' component={VisiblePlaces}/>
+	        <Route exact={true} path='/' render={() => (<Redirect to="/continents"> </Redirect>)} />
+	      	<Route path='/regions/:regionId' component={VisiblePlaces}/>
+	      	<Route exact={true} path='/continents' component={ContinentsContainer}/>
 	      	<Route path='/places/:placeId' component={PlaceDetailContainer}/>
-     	</MainApp>
+     	  </MainApp>
       </MainRoot>
     </Router>
   </Provider>

@@ -1,8 +1,12 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router-dom';
 import Place from './Place';
 
 const Places = ({ places, match }) => (
   <div>
+      <Link to={`/continents`}>
+		    Back
+  		</Link>
       <h2>Places</h2>
       <ul>
           {places.map(place =>

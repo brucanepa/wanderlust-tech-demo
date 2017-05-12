@@ -4,7 +4,7 @@ import AddDestinationContainer from '../destinations/AddDestinationContainer';
 
 const Place = ({ match, id, name }) => (
 	<li>
-	    <Link to={`${match.url}/${id}`}>
+	    <Link to={`/places/${id}`}>
 		    Place: {name}
 		</Link>
 		<AddDestinationContainer placeId={id}/>

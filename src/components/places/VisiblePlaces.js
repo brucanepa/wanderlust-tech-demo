@@ -9,7 +9,7 @@ class VisiblePlaces extends Component {
     this.fetchData();
   }
   fetchData() {
-    const {regionId} = this.props;
+    const {regionId} = this.props.match.params;
     this.props.fetchPlaces(regionId);
   }
   render() {

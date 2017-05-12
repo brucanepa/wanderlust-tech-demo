@@ -16,10 +16,6 @@ const updatePlaces = (state, response) => {
 const placesHashById = (state = {}, action) => {
   if (action.placesResponse) {
     return updatePlaces(state, action.placesResponse);
-  // return {
-  //   //ToDo...state, Rompe al volver atras
-  //   ...action.placesResponse.entities.places
-  // };
   }
   return state;
 };
@@ -40,7 +36,7 @@ const places = combineReducers({
 
 export default places;
 
-export const getVisiblePlaces = (state, filter) => {
+export const getVisiblePlaces = (state) => {
   return state.placesIdByName.map((placeId) => (state.placesHashById[placeId]));
 };
 

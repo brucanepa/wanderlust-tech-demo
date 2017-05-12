@@ -7,9 +7,9 @@ import PlaceActivities from './PlaceActivities';
 import PlaceImages from './PlaceImages';
 import VisibleReviews from '../reviews/VisibleReviews';
 
-const PlaceDetail = ({name, placeDetail, match }) => (
+const PlaceDetail = ({name, placeDetail, match, regionId }) => (
 	<div>
- 		<Link to="/places">
+ 		 <Link to={`/regions/${regionId}`}>
 		    Back
 		</Link>
 
