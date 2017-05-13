@@ -8,9 +8,11 @@ class PlaceDetailContainer extends Component {
   componentDidMount() {
     this.fetchData();
   }
+
   fetchData() {
     this.props.fetchPlaceDetail(this.props.match.params.placeId);
   }
+
   render() {
     return <PlaceDetail {...this.props} />
   }
