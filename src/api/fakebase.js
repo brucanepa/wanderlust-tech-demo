@@ -78,41 +78,39 @@ const fakeDatabase = {
       rate: 5
     }],
     rateAvarage: 5
-  },
-    {
-      id: id2,
-      description: 'Descripcion 2',
-      activities: [{
-        id: generateId(),
-        name: 'Actividad 2',
-        description: 'Descrpicion actividad 2'
-      }],
-      reviews: [{
-        id: generateId(),
-        userId: getUserId(),
-        comment: "muy feo",
-        date: "20/3/2015 20:14",
-        rate: 1
-      }],
-      rateAvarage: 5
-    },
-    {
-      id: id3,
-      description: 'Descripcion 3',
-      activities: [{
-        id: generateId(),
-        name: 'Actividad 3',
-        description: 'Descrpicion actividad 3'
-      }],
-      reviews: [{
-        id: generateId(),
-        userId: getUserId(),
-        comment: "muy mal",
-        date: "20/3/2015 20:14",
-        rate: 2
-      }],
-      rateAvarage: 5
-    }]
+  }, {
+    id: id2,
+    description: 'Descripcion 2',
+    activities: [{
+      id: generateId(),
+      name: 'Actividad 2',
+      description: 'Descrpicion actividad 2'
+    }],
+    reviews: [{
+      id: generateId(),
+      userId: getUserId(),
+      comment: "muy feo",
+      date: "20/3/2015 20:14",
+      rate: 1
+    }],
+    rateAvarage: 5
+  }, {
+    id: id3,
+    description: 'Descripcion 3',
+    activities: [{
+      id: generateId(),
+      name: 'Actividad 3',
+      description: 'Descrpicion actividad 3'
+    }],
+    reviews: [{
+      id: generateId(),
+      userId: getUserId(),
+      comment: "muy mal",
+      date: "20/3/2015 20:14",
+      rate: 2
+    }],
+    rateAvarage: 5
+  }]
 };
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
@@ -179,23 +177,29 @@ export const removeDestination = (userId, selectedId) => delay(500).then(() => {
 // End Destinations
 
 // Begin Places Details
-export const fetchPlaceDetail = (placeId) => delay(500).then(() => {
+const getPlaceDetail = (placeId) => {
   let placeDetail = null;
   fakeDatabase.placesDetails.some((p) => {
     placeDetail = p.id == placeId && p;
     return placeDetail;
   })
   return placeDetail;
+}
+
+export const fetchPlaceDetail = (placeId) => delay(500).then(() => {
+  return getPlaceDetail(placeId);
 });
 
 export const addReview = (userId, placeId, comment, rate) => delay(500).then(() => {
-  return {
+  const review = {
     id: generateId(),
     userId: userId,
     comment: comment,
     date: "20/3/2015 20:14",
     rate: rate
   };
+  getPlaceDetail(placeId).reviews.push(review);
+  return review;
 });
 // End Places Details
 

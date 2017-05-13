@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { placeDetail as placeDetailActions } from '../../actions';
-import PlaceRating from '../places/PlaceRating';
+//import PlaceRating from '../places/PlaceRating';
 
 const AddReview = ({ dispatch, placeId }) => {
   let input;
@@ -16,7 +16,7 @@ const AddReview = ({ dispatch, placeId }) => {
 
   return (
 	<div>
-		<PlaceRating/>
+		{/*<PlaceRating/>*/}
 		<form onSubmit={ (e) => onSubmit(e) }>
 			<input ref={node => { input = node; }} />
 			<button type="submit">

@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import DestinationsPanel from './destinations/DestinationsPanel';
-import VisiblePlaces from './places/VisiblePlaces';
+import PlacesContainer from './places/PlacesContainer';
 import PlaceDetailContainer from './places/PlaceDetailContainer';
 import ContinentsContainer from './continents/ContinentsContainer';
 
@@ -13,7 +13,7 @@ const Root = ({store}) => (
         <DestinationsPanel/>
         <MainApp>
 	        <Route exact={true} path='/' render={() => (<Redirect to="/continents"> </Redirect>)} />
-	      	<Route path='/regions/:regionId' component={VisiblePlaces}/>
+	      	<Route path='/regions/:regionId' component={PlacesContainer}/>
 	      	<Route exact={true} path='/continents' component={ContinentsContainer}/>
 	      	<Route path='/places/:placeId' component={PlaceDetailContainer}/>
      	  </MainApp>

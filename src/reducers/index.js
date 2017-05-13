@@ -28,11 +28,6 @@ export const getSelectedIdDestination = (state) =>
 export const getPlaceDetail = (state) =>
 	state.placeDetail;
 
-export const getPlaceReviews = (state) =>
-	state.placeDetail.reviewList;
-
 export const getContinents = (state) =>
   fromContinents.getContinents(state.continents);
 
-export const getPlaceActivities = (state) =>
-  fromDetails.getActivities(state.placeDetail);

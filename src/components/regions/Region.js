@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import VisiblePlaces from '../places/VisiblePlaces';
+import PlacesContainer from '../places/PlacesContainer';
 
 const Region = ({ match, id, name }) => (
 	<li>

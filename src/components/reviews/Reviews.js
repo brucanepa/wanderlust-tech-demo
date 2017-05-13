@@ -1,6 +1,5 @@
 import React from 'react';
 import Review from './Review';
-import AddReview from './AddReview';
 
 const Reviews = ({reviews}) => (
   <div>
