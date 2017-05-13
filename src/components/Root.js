@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import DestinationsPanel from './destinations/DestinationsPanel';
 import PlacesContainer from './places/PlacesContainer';
-import PlaceDetailContainer from './places/PlaceDetailContainer';
+import PlaceDetailContainer from './placeDetail/PlaceDetailContainer';
 import ContinentsContainer from './continents/ContinentsContainer';
 
 const Root = ({store}) => (

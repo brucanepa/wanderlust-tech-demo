@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { placeDetail as placeDetailActions } from '../../actions';
-//import PlaceRating from '../places/PlaceRating';
+//import PlaceRating from './PlaceRating';
 
 const AddReview = ({ dispatch, placeId }) => {
   let input;

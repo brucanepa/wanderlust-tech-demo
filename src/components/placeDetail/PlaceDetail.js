@@ -5,8 +5,8 @@ import PlaceDescription from './PlaceDescription';
 import PlaceActivities from './PlaceActivities';
 import PlaceImages from './PlaceImages';
 import PlaceRating from './PlaceRating';
-import AddReview from '../reviews/AddReview';
-import Reviews from '../reviews/Reviews';
+import AddReview from '../placeDetail/AddReview';
+import Reviews from '../placeDetail/Reviews';
 
 const PlaceDetail = ({ name, placeDetail, regionId, match }) => (
   <div>
