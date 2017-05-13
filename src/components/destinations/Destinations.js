@@ -1,15 +1,16 @@
 import React, { PropTypes } from 'react';
 import DestinationContainer from './DestinationContainer';
+import styled from 'styled-components';
 
 const Destinations = ({ destinations, onClick }) => (
-  <ul>
+  <ListStylized>
     {destinations.map(destination =>
       <DestinationContainer
         key={destination.id}
         {...destination}
       />
     )}
-  </ul>
+  </ListStylized>
 );
 
 Destinations.propTypes = {
@@ -20,4 +21,11 @@ Destinations.propTypes = {
   }).isRequired).isRequired
 };
 
+const ListStylized = styled.ul`
+  list-style-type: none,
+  padding: 0px
+  transition: 0.3s;
+`;
+
 export default Destinations;
+

@@ -7,9 +7,10 @@ import PlaceImages from './PlaceImages';
 import PlaceRating from './PlaceRating';
 import AddReview from '../placeDetail/AddReview';
 import Reviews from '../placeDetail/Reviews';
+import styled from 'styled-components';
 
 const PlaceDetail = ({ name, placeDetail, regionId, match }) => (
-  <div>
+  <PlaceDetailStylized>
 		<Link to={`/regions/${regionId}`}>
 		    Back
 		</Link>
@@ -22,10 +23,28 @@ const PlaceDetail = ({ name, placeDetail, regionId, match }) => (
 		<PlaceImages/>
 		<Reviews reviews={placeDetail.reviewList} />
 		<AddReview placeId={match.params.placeId}/>
-	</div>
+	</PlaceDetailStylized>
 );
 
 export default PlaceDetail;
+
+const PlaceDetailStylized = styled.div`
+    height: 93%;
+    background-color: #dadada;
+    overflow-x: hidden;
+    margin: 5px 5px;
+    transition: 0.5s;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+    color: #757575;
+    width: 98%;
+    padding-left: 265px;
+    float: left;
+    @media only screen and (max-width: 650px) {
+      width: 98%;
+      padding-left: 0px;
+    }
+`;
+
 
 PlaceDetail.propTypes = {
   name: PropTypes.string.isRequired,

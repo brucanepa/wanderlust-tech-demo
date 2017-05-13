@@ -5,13 +5,15 @@ import DestinationsPanel from './destinations/DestinationsPanel';
 import PlacesContainer from './places/PlacesContainer';
 import PlaceDetailContainer from './placeDetail/PlaceDetailContainer';
 import ContinentsContainer from './continents/ContinentsContainer';
+import styled from 'styled-components';
 
 const Root = ({store}) => (
   <Provider store={store}>
     <Router>
       <MainRoot>
-        <DestinationsPanel/>
+        
         <MainApp>
+          <DestinationsPanel/>
 	        <Route exact={true} path='/' render={() => (<Redirect to="/continents"> </Redirect>)} />
 	      	<Route path='/regions/:regionId' component={PlacesContainer}/>
 	      	<Route exact={true} path='/continents' component={ContinentsContainer}/>
@@ -26,8 +28,9 @@ const MainRoot = (props) => (
 	<div {...props}/>
 );
 
-const MainApp = (props) => (
-	<div className="Main" {...props}/>
-);
+const MainApp = styled.div`
+    transition: 0.5s;
+`;
+
 
 export default Root;

@@ -1,12 +1,11 @@
 import React, { PropTypes } from 'react';
+import styled from 'styled-components';
 
 const Destination = ({ id, name, onClick, selected }) => (
-  <li style={{
-      color: selected ? 'red' : 'white',
-    }}
-    onClick={() => {onClick(id)} }>
+  <DestinationStylized
+    onClick={() => {onClick(id)} } selected={selected}>
     {name}
-  </li>
+  </DestinationStylized>
 );
 
 Destination.propTypes = {
@@ -15,4 +14,19 @@ Destination.propTypes = {
   selected: PropTypes.bool.isRequired
 };
 
+const DestinationStylized = styled.li`
+	height: 35px;
+	padding-top: 5px;
+    font-size: 20px;
+    background-color: ${({ selected }) => selected ? '#21999e' : '#5f9ea0'};
+    transition: 0.3s;
+    text-align: center;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+    margin: 4px 0px;
+    color: white;
+`;
+
 export default Destination;
+
+
+
