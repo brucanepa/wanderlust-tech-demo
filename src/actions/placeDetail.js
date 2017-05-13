@@ -12,9 +12,9 @@ export const fetchPlaceDetail = (placeId) => (dispatch) => {
     });
 }
 
-export const addReview = (placeId, comment, rate) => (dispatch) => {
+export const addReview = (placeId, comment, rating) => (dispatch) => {
   dispatch(requests.requestAddReview());
-  return api.addReview(getUserId(), placeId, comment, rate)
+  return api.addReview(getUserId(), placeId, comment, rating)
     .then(response => {
       dispatch(requests.receiveAddReviewSuccess(normalize(response, schema.review)));
     });

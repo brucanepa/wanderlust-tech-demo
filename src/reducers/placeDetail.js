@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { swapArrayPosition, removeArrayElement } from '../utils/helpers';
 
-const placeInformation = (state = { activities: [], description: ''}, action) => {
+const placeInformation = (state = { activities: [], description: '' }, action) => {
   if (action.placeDetailResponse) {
     const result = action.placeDetailResponse.result
     return {
@@ -16,7 +16,6 @@ const reviewList = (state = [], action) => {
     case 'RECEIVE_PLACE_DETAIL_SUCCESS':
       const result = action.placeDetailResponse.result
       const reviews = action.placeDetailResponse.entities.placeDetail[result].reviews;
-      const sumOfRates = reviews.map((review) => review.rate).reduce((a, b) => a + b, 0);
       return [...reviews];
     case 'RECEIVE_ADD_REVIEW_SUCCESS':
       const reviewId = action.reviewResponse.result;
@@ -26,22 +25,24 @@ const reviewList = (state = [], action) => {
   }
 };
 
-const placeRating = (state = { sumOfRates: 0, ratesCount: 0}, action) => {
-  let sumOfRates = 0;
-  let ratesCount = 0; 
+const placeRating = (state = { sumOfRatings: 0, ratingsCount: 0, rating: 0 }, action) => {
+  let sumOfRatings = 0;
+  let ratingsCount = 0;
   switch (action.type) {
     case 'RECEIVE_PLACE_DETAIL_SUCCESS':
       const result = action.placeDetailResponse.result
       const reviews = action.placeDetailResponse.entities.placeDetail[result].reviews;
-      sumOfRates = state.sumOfRates + reviews.map((review) => review.rate).reduce((a, b) => a + b, 0);
-      ratesCount = state.ratesCount + reviews.length;
-      return {sumOfRates, ratesCount};
+      sumOfRatings = state.sumOfRatings + reviews.map((review) => review.rating).reduce((a, b) => a + b, 0);
+      ratingsCount = state.ratingsCount + reviews.length;
+      rating = ratingsCount > 0 ? (sumOfRatings / ratingsCount) : 0;
+      return { sumOfRatings, ratingsCount, rating };
     case 'RECEIVE_ADD_REVIEW_SUCCESS':
       const reviewId = action.reviewResponse.result;
-      const rate = action.reviewResponse.entities.review[reviewId].rate;
-      sumOfRates = state.sumOfRates + rate;
-      ratesCount = state.ratesCount + 1;
-      return {sumOfRates, ratesCount};
+      const rating = action.reviewResponse.entities.review[reviewId].rating;
+      sumOfRatings = state.sumOfRatings + rating;
+      ratingsCount = state.ratingsCount + 1;
+      rating = ratingsCount > 0 ? (sumOfRatings / ratingsCount) : 0;
+      return { sumOfRatings, ratingsCount, rating };
     default:
       return state;
   }
@@ -54,4 +55,3 @@ const placeDetail = combineReducers({
 });
 
 export default placeDetail;
-

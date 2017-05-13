@@ -75,9 +75,8 @@ const fakeDatabase = {
       userId: getUserId(),
       comment: "muy lindo",
       date: "20/3/2015 20:14",
-      rate: 5
-    }],
-    rateAvarage: 5
+      rating: 5
+    }]
   }, {
     id: id2,
     description: 'Descripcion 2',
@@ -91,9 +90,8 @@ const fakeDatabase = {
       userId: getUserId(),
       comment: "muy feo",
       date: "20/3/2015 20:14",
-      rate: 1
-    }],
-    rateAvarage: 5
+      rating: 1
+    }]
   }, {
     id: id3,
     description: 'Descripcion 3',
@@ -107,9 +105,8 @@ const fakeDatabase = {
       userId: getUserId(),
       comment: "muy mal",
       date: "20/3/2015 20:14",
-      rate: 2
-    }],
-    rateAvarage: 5
+      rating: 2
+    }]
   }]
 };
 
@@ -190,13 +187,13 @@ export const fetchPlaceDetail = (placeId) => delay(500).then(() => {
   return getPlaceDetail(placeId);
 });
 
-export const addReview = (userId, placeId, comment, rate) => delay(500).then(() => {
+export const addReview = (userId, placeId, comment, rating) => delay(500).then(() => {
   const review = {
     id: generateId(),
     userId: userId,
     comment: comment,
     date: "20/3/2015 20:14",
-    rate: rate
+    rating: rating
   };
   getPlaceDetail(placeId).reviews.push(review);
   return review;

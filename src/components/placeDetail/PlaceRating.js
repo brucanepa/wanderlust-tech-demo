@@ -1,8 +1,8 @@
 import React from 'react';
 
-const PlaceRating = ({ ratesCount, sumOfRates }) => (
+const PlaceRating = ({ rating }) => (
   <div>
-	Rating: {ratesCount > 0 ? (sumOfRates / ratesCount) : 0}
+	Rating: {rating} 
 	</div>
 );
 

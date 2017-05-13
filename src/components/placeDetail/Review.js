@@ -1,8 +1,10 @@
 import React from 'react';
+import PlaceRating from './PlaceRating';
 
-const Review = ({ id, comment, rate }) => (
+const Review = ({ id, comment, rating }) => (
 	<li>
-    	{comment} {rate}
+    	{comment}
+    	<PlaceRating rating={rating}/>
 	</li>
 );
 
