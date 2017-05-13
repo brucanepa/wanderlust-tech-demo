@@ -1,10 +1,17 @@
 import { combineReducers } from 'redux';
 import { swapArrayPosition, removeArrayElement } from '../utils/helpers';
 
-const placeInformation = (state = {}, action) => {
+const placeInformationInitialState = () => ({
+  activities: [],
+  description: ''
+})
+
+const placeInformation = (state = placeInformationInitialState(), action) => {
   if (action.placeDetailResponse) {
     const result = action.placeDetailResponse.result
-    return action.placeDetailResponse.entities.placeDetail[result];
+    return {
+      ...action.placeDetailResponse.entities.placeDetail[result]
+    }
   }
   return state;
 };
@@ -60,4 +67,7 @@ export const getReviews = (state) => {
   return ids.map(id => state.reviewsHashById[id]);
 };
 
+export const getActivities = (state) => {
+  return state.placeInformation.activities;
+}
 

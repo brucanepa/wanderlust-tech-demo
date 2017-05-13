@@ -4,20 +4,20 @@ import Place from './Place';
 
 const Places = ({ places, match }) => (
   <div>
-      <Link to={`/continents`}>
-		    Back
-  		</Link>
-      <h2>Places</h2>
-      <ul>
-          {places.map(place =>
-          <Place
-            key={place.id}
-            match={match}
-            {...place}
-          />
-        )}
-      </ul> 
-    </div>
+    <Link to={`/continents`}>
+      Back
+    </Link>
+    <h2>Places</h2>
+    <ul>
+        {places.map(place =>
+        <Place
+          key={place.id}
+          match={match}
+          {...place}
+        />
+      )}
+    </ul> 
+  </div>
 );
 
 Places.propTypes = {

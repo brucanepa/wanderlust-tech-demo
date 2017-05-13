@@ -66,8 +66,9 @@ const fakeDatabase = {
     id: id1,
     description: 'Descripcion 1',
     activities: [{
+      id: generateId(),
       name: 'Actividad 1',
-      description: 'Descrpicion actividad 1'
+      description: 'Descripcion actividad 1'
     }],
     reviews: [{
       id: generateId(),
@@ -82,6 +83,7 @@ const fakeDatabase = {
       id: id2,
       description: 'Descripcion 2',
       activities: [{
+        id: generateId(),
         name: 'Actividad 2',
         description: 'Descrpicion actividad 2'
       }],
@@ -98,6 +100,7 @@ const fakeDatabase = {
       id: id3,
       description: 'Descripcion 3',
       activities: [{
+        id: generateId(),
         name: 'Actividad 3',
         description: 'Descrpicion actividad 3'
       }],

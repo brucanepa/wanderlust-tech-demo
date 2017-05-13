@@ -33,3 +33,6 @@ export const getPlaceReviews = (state) =>
 
 export const getContinents = (state) =>
   fromContinents.getContinents(state.continents);
+
+export const getPlaceActivities = (state) =>
+  fromDetails.getActivities(state.placeDetail);
