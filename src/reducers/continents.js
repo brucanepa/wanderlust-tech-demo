@@ -3,7 +3,6 @@ import { combineReducers } from 'redux';
 const continentsHashById = (state = {}, action) => {
   if (action.continentsResponse) {
     return {
-      ...state,
       ...action.continentsResponse.entities.continents
     };
   }
@@ -13,7 +12,7 @@ const continentsHashById = (state = {}, action) => {
 const continentsIdByName = (state = [], action) => {
   if (action.continentsResponse) {
     const continents = action.continentsResponse.entities.continents;
-    const newState = [...state, ...action.continentsResponse.result];
+    const newState = [...action.continentsResponse.result];
     return newState.sort((a, b) => (continents[a].name > continents[b].name));
   }
   return state;

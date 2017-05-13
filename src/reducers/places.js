@@ -1,21 +1,10 @@
 import { combineReducers } from 'redux';
 
-const updatePlaces = (state, response) => {
-  let shouldUpdate = false;
-
-  response.result.some((placeId) => {
-    shouldUpdate = !state[placeId];
-    return shouldUpdate;
-  });
-
-  return shouldUpdate ? { //ToDo: Warning al hacer Back
-    ...response.entities.places
-  } : state;
-};
-
 const placesHashById = (state = {}, action) => {
   if (action.placesResponse) {
-    return updatePlaces(state, action.placesResponse);
+    return {
+      ...action.placesResponse.entities.places
+    };
   }
   return state;
 };
@@ -23,7 +12,7 @@ const placesHashById = (state = {}, action) => {
 const placesIdByName = (state = [], action) => {
   if (action.placesResponse) {
     const places = action.placesResponse.entities.places;
-    const newState = [...state, ...action.placesResponse.result];
+    const newState = [...action.placesResponse.result];
     return newState.sort((a, b) => (places[a].name > places[b].name));
   }
   return state;
