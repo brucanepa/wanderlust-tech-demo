@@ -1,0 +1,161 @@
+{
+  "continents": [
+    {
+      "id": 2,
+      "name": "Europa",
+      "regions": [
+        {
+          "id": 4,
+          "name": "Europa Sur"
+        },
+        {
+          "id": 5,
+          "name": "Europa Central"
+        },
+        {
+          "id": 6,
+          "name": "Europa Sur"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "America",
+      "regions": [
+        {
+          "id": 1,
+          "name": "America del Sur"
+        },
+        {
+          "id": 2,
+          "name": "America Central"
+        },
+        {
+          "id": 3,
+          "name": "America del Norte"
+        }
+      ]
+    }
+  ],
+  "places": [
+    {
+      "id": 1,
+      "name": "Barcelona",
+      "regionId": 4
+    },
+    {
+      "id": 2,
+      "name": "Montevideo",
+      "regionId": 1
+    },
+    {
+      "id": 3,
+      "name": "Miami",
+      "regionId": 3
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "destinations": [
+        {
+          "id": 1123123872,
+          "placeId": 1,
+          "name": "Barcelona"
+        }
+      ]
+    }
+  ],
+  "placesDetails": [
+    {
+      "id": 1,
+      "description": "Descripcion 1",
+      "activities": [
+        {
+          "id": 1,
+          "name": "Actividad 1",
+          "description": "Descripcion actividad 1"
+        },
+        {
+          "id": 2,
+          "name": "Actividad 2",
+          "description": "Descripcion actividad 2"
+        },
+        {
+          "id": 3,
+          "name": "Actividad 3",
+          "description": "Descripcion actividad 3"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 1283112317823,
+          "userId": 1,
+          "comment": "Excelente",
+          "date": "20/3/2015 20:14",
+          "rating": 3
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "description": "Descripcion 2",
+      "activities": [
+        {
+          "id": 1,
+          "name": "Actividad 1",
+          "description": "Descripcion actividad 1"
+        },
+        {
+          "id": 2,
+          "name": "Actividad 2",
+          "description": "Descripcion actividad 2"
+        },
+        {
+          "id": 3,
+          "name": "Actividad 3",
+          "description": "Descripcion actividad 3"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 1212317823,
+          "userId": 1,
+          "comment": "Excelente",
+          "date": "20/3/2015 20:14",
+          "rating": 2
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "description": "Descripcion 3",
+      "activities": [
+        {
+          "id": 1,
+          "name": "Actividad 1",
+          "description": "Descripcion actividad 1"
+        },
+        {
+          "id": 2,
+          "name": "Actividad 2",
+          "description": "Descripcion actividad 2"
+        },
+        {
+          "id": 3,
+          "name": "Actividad 3",
+          "description": "Descripcion actividad 3"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 1283112317,
+          "userId": 1,
+          "comment": "Excelente",
+          "date": "20/3/2015 20:14",
+          "rating": 5
+        }
+      ]
+    }
+  ]
+}

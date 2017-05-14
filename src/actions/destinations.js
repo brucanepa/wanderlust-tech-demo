@@ -1,4 +1,4 @@
-import api from '../api';
+import { fakeApi } from '../api';
 import { normalize } from 'normalizr';
 import * as schema from './schema';
 import { destinations as requests } from './requests';
@@ -6,7 +6,7 @@ import { getUserId } from '../constants';
 
 export const fetchDestinations = () => (dispatch) => {
   dispatch(requests.requestDestinations());
-  return api.fetchDestinations(getUserId())
+  return fakeApi.fetchDestinations(getUserId())
     .then(response => {
       dispatch(requests.receiveDestinationsSuccess(normalize(response, schema.arrayOfDestinations)));
     });
@@ -14,7 +14,7 @@ export const fetchDestinations = () => (dispatch) => {
 
 export const add = (placeId) => (dispatch) => {
   dispatch(requests.requestAdd());
-  return api.addDestination(getUserId(), placeId)
+  return fakeApi.addDestination(getUserId(), placeId)
     .then(response => {
       dispatch(requests.receiveAddSuccess(normalize(response, schema.destination)));
     });
@@ -22,13 +22,13 @@ export const add = (placeId) => (dispatch) => {
 
 export const swapPositionUp = ({selectedId}) => (dispatch) => {
   dispatch(requests.requestSwapPositionUp());
-  return api.swapPositionUpDestination(getUserId(), selectedId)
+  return fakeApi.swapPositionUpDestination(getUserId(), selectedId)
     .then(dispatch(requests.receiveSwapPositionUpSuccess(selectedId)))
 }
 
 export const swapPositionDown = ({selectedId}) => (dispatch) => {
   dispatch(requests.requestSwapPositionUp());
-  return api.swapPositionDownDestination(getUserId(), selectedId)
+  return fakeApi.swapPositionDownDestination(getUserId(), selectedId)
     .then(dispatch(requests.receiveSwapPositionDownSuccess(selectedId)))
 }
 
@@ -41,6 +41,6 @@ export const setSelected = (id) => (dispatch) => {
 
 export const remove = ({selectedId}) => (dispatch) => {
   dispatch(requests.requestRemoveDestination());
-  api.removeDestination(getUserId(), selectedId)
+  fakeApi.removeDestination(getUserId(), selectedId)
     .then(dispatch(requests.receiveRemoveDestinationSuccess(selectedId)));
 }

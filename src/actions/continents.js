@@ -8,5 +8,5 @@ export const fetchContinents = () => (dispatch) => {
   return api.fetchContinents()
     .then(continents => {
       dispatch(requests.receiveContinentsSuccess(normalize(continents, schema.arrayOfContinents)));
-    });
+    }, error => console.log(error));
 }
