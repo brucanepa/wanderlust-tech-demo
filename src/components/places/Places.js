@@ -21,6 +21,8 @@ const Places = ({ places, match }) => (
   </PlacesStylized>
 );
 
+export default Places;
+
 Places.propTypes = {
   places: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
@@ -40,10 +42,9 @@ const PlacesStylized = styled.div`
     width: 98%;
     padding-left: 265px;
     float: left;
+    box-sizing: border-box;
     @media only screen and (max-width: 650px) {
-      width: 98%;
       padding-left: 0px;
     }
 `;
 
-export default Places;

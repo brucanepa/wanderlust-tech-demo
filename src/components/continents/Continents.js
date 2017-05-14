@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const Continents = ({ continents, match }) => (
   <ContinentsStylized>
-    <h2>Continents</h2>
+    <HeaderContinentStylized>Regions by continents</HeaderContinentStylized>
     <ul>
       {continents.map(continent =>
         <Continent
@@ -16,6 +16,8 @@ const Continents = ({ continents, match }) => (
     </ul> 
   </ContinentsStylized>
 );
+
+export default Continents;
 
 Continents.propTypes = {
   continents: PropTypes.arrayOf(PropTypes.shape({
@@ -40,10 +42,13 @@ const ContinentsStylized = styled.div`
     width: 98%;
     padding-left: 265px;
     float: left;
+    box-sizing: border-box;
     @media only screen and (max-width: 650px) {
-      width: 98%;
       padding-left: 0px;
     }
 `;
 
-export default Continents;
+const HeaderContinentStylized = styled.h2`
+  padding-left: 25px;
+  font-size: 2em;
+`;

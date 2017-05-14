@@ -3,14 +3,14 @@ import DestinationContainer from './DestinationContainer';
 import styled from 'styled-components';
 
 const Destinations = ({ destinations, onClick }) => (
-  <ListStylized>
+  <DestinationsStylized>
     {destinations.map(destination =>
       <DestinationContainer
         key={destination.id}
         {...destination}
       />
     )}
-  </ListStylized>
+  </DestinationsStylized>
 );
 
 Destinations.propTypes = {
@@ -21,9 +21,9 @@ Destinations.propTypes = {
   }).isRequired).isRequired
 };
 
-const ListStylized = styled.ul`
-  list-style-type: none,
-  padding: 0px
+const DestinationsStylized = styled.ul`
+  list-style-type: none;
+  padding: 0px;
   transition: 0.3s;
 `;
 
