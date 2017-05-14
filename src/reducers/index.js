@@ -17,7 +17,7 @@ export const getVisiblePlaces = (state) =>
   fromPlaces.getVisiblePlaces(state.places);
 
  export const getPlace = (state, placeId) =>
-  fromPlaces.getPlace(state.places, placeId);
+  fromPlaces.getPlace(state.places, placeId) || {};
 
 export const getDestinations = (state) =>
   fromDestinations.getDestinations(state.destinations);
@@ -30,6 +30,3 @@ export const getPlaceDetail = (state) =>
 
 export const getContinents = (state) =>
   fromContinents.getContinents(state.continents);
-
-export const getNextDestinationPosition = (state) =>
-  getDestinations(state).length + 1;

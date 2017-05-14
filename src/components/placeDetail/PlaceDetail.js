@@ -11,7 +11,7 @@ import styled from 'styled-components';
 
 const PlaceDetail = ({ name, placeDetail, regionId, match }) => (
   <PlaceDetailStylized>
-		<Link to={`/regions/${regionId}`}>
+		<Link to={regionId? `/regions/${regionId}` : '/continents'}>
 		    Back
 		</Link>
 

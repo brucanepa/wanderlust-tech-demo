@@ -1,8 +1,8 @@
 import React from 'react';
 
-const AddDestination = ({onClick, nextDestinationPosition}) => (
+const AddDestination = ({onClick}) => (
 	<div>
-		<button type="button" onClick={() => {onClick(nextDestinationPosition)}}>Agregar</button>
+		<button type="button" onClick={onClick}>Agregar</button>
 	</div>
 );
 

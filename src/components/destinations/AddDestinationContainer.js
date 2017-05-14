@@ -11,23 +11,18 @@ class AddDestinationContainer extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-    nextDestinationPosition: getNextDestinationPosition(state)
-});
-
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  onClick(order) {
+  onClick() {
     const destination = {
       placeId: parseInt(ownProps.placeId),
-      name: ownProps.name,
-      order
+      name: ownProps.name
     }
     return dispatch(destinationsActions.add(destination));
   }
 });
 
 AddDestinationContainer = connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(AddDestinationContainer);
 
