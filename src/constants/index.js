@@ -6,5 +6,6 @@ export const getUserId = () => (defaultUserId);
 export const uris = {
   continents: '/continents',
   regions: '/regions',
-  places: '/places'
+  places: '/places',
+  placesDetails: '/placesDetails'
 }

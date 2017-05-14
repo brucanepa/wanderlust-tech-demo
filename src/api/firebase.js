@@ -1,27 +1,40 @@
 import * as firebase from 'firebase';
 import { uris } from '../constants';
+import { normalize } from 'normalizr';
+import * as schema from '../actions/schema';
+import { continents as requests } from '../actions/requests';
 
 const config = {
-  
+ 
 };
 firebase.initializeApp(config);
 const database = firebase.database();
 const value = 'value';
 
+const continentsRef = database.ref(uris.continents);
+const placesRef = database.ref(uris.places);
+const placesDetailsRef = database.ref(uris.placesDetails);
+
 // Begin Continents
-export const fetchContinents = () => {
-  return database.ref(uris.continents).once(value)
-    .then(function(snapshot) {
-      return snapshot.val();
-    }, () => ([]));
+export const fetchContinents = (dispatch) => {
+  const promise = new Promise((resolve, reject) => {
+    continentsRef
+      .on(value, (snapshot) => {
+        resolve(snapshot.val());
+      }, () => (reject([])));
+  });
+  return promise;
 };
 // End Continents
 
 // Begin Places
 export const fetchPlaces = (regionId) => {
-  return database.ref(uris.places).orderByChild('regionId').equalTo(parseInt(regionId)).once(value)
+  return placesRef
+    .orderByChild('regionId')
+    .equalTo(parseInt(regionId))
+    .once(value)
     .then((snapshot) => {
-      return snapshot.val();
+      return snapshot.val() || [];
     })
 };
 // End Places
@@ -75,20 +88,38 @@ export const fetchPlaces = (regionId) => {
 //   return placeDetail;
 // }
 
-// export const fetchPlaceDetail = (placeId) => delay(500).then(() => {
-//   return getPlaceDetail(placeId);
-// });
+export const fetchPlaceDetail = (placeId) => {
+  return placesDetailsRef
+    .orderByChild('id')
+    .equalTo(parseInt(placeId))
+    .once(value)
+    .then((snapshot) => {
+      const response = snapshot.val();
+      const placeDetail = (response.length ? response.filter((value) => {
+        return !!value
+      })[0] : response[Object.keys(response)[0]]) || {};
+      placeDetail.reviews = placeDetail.reviews ?
+        placeDetail.reviews = Object.keys(placeDetail.reviews).map((key) => {
+          placeDetail.reviews[key].id = key;
+          return placeDetail.reviews[key];
+        })
+        : [];
+      return placeDetail;
+    })
+};
 
-// export const addReview = (userId, placeId, comment, rating) => delay(500).then(() => {
-//   const review = {
-//     id: generateId(),
-//     userId: userId,
-//     comment: comment,
-//     date: "20/3/2015 20:14",
-//     rating: rating
-//   };
-//   getPlaceDetail(placeId).reviews.push(review);
-//   return review;
-// });
-// // End Places Details
+export const addReview = (userId, placeId, comment, rating) => {
+  const review = {
+    userId,
+    comment,
+    date: "20/3/2015 20:14",
+    rating
+  };
+  return database.ref(uris.placesDetails + '/' + placeId + '/reviews')
+    .push(review)
+    .then((snapshot) => {
+      return snapshot;
+    });
+};
+// End Places Details
 

@@ -7,6 +7,6 @@ export const fetchContinents = () => (dispatch) => {
   dispatch(requests.requestContinents());
   return api.fetchContinents()
     .then(continents => {
-      dispatch(requests.receiveContinentsSuccess(normalize(continents, schema.arrayOfContinents)));
-    }, error => console.log(error));
+    dispatch(requests.receiveContinentsSuccess(normalize(continents, schema.arrayOfContinents)));
+  }, error => console.log(error));;
 }
