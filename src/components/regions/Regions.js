@@ -24,7 +24,7 @@ Regions.propTypes = {
 
 export default Regions;
 
-const RegionsStylized = styled.ul`
-  list-style-type: none;
-  display: block;
+const RegionsStylized = styled.div`
+  margin: 0;
+  padding: 0;
 `;

@@ -17,7 +17,7 @@ const DestinationsPanel = ({ match }) => (
 export default DestinationsPanel;
 
 const ResponsivePanel = styled.div`
-	  height: 93%;
+	  height: 99%;
     width: 250px;
     z-index: 1;
     position: fixed;

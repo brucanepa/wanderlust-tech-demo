@@ -4,8 +4,8 @@ import styled from 'styled-components';
 
 const Continents = ({ continents, match }) => (
   <ContinentsStylized>
-    <HeaderContinentStylized>Regions by continents</HeaderContinentStylized>
-    <ul>
+    <ContinentNameStylized>FIND YOUR NEXT DESTINY</ContinentNameStylized>
+    <ContinentsListStylized>
       {continents.map(continent =>
         <Continent
           key={continent.id}
@@ -13,7 +13,7 @@ const Continents = ({ continents, match }) => (
           {...continent}
         />
       )}
-    </ul> 
+    </ContinentsListStylized> 
   </ContinentsStylized>
 );
 
@@ -33,22 +33,37 @@ Continents.propTypes = {
 
 const ContinentsStylized = styled.div`
     height: 93%;
-    background-color: #dadada;
+    background-color: aliceblue;
     overflow-x: hidden;
     margin: 5px 5px;
     transition: 0.5s;
     box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
     color: #757575;
-    width: 98%;
-    padding-left: 265px;
+    width: 99%;
+    padding-left: 250px;
     float: left;
     box-sizing: border-box;
+    overflow: hidden;
     @media only screen and (max-width: 650px) {
       padding-left: 0px;
     }
 `;
 
-const HeaderContinentStylized = styled.h2`
-  padding-left: 25px;
-  font-size: 2em;
+const ContinentsListStylized = styled.div` 
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+    display: grid;
+`;
+
+const ContinentNameStylized = styled.h1`
+  padding: 30px 0px;
+  font-size: 4em;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  box-sizing: border-box;
+  background-color: #ffd535;
+  margin: 0 0;
+  box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19)
 `;

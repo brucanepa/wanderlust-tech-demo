@@ -17,6 +17,10 @@ const continents = [{
   }, {
     id: 6,
     name: 'Europa Sur'
+  },
+  {
+    id: 7,
+    name: 'Mediterraneo'
   }]
 }, {
   id: 1,
@@ -30,6 +34,20 @@ const continents = [{
   }, {
     id: 3,
     name: 'America del Norte'
+  }]
+},
+{
+  id: 3,
+  name: 'Asia',
+  regions: [{
+    id: 8,
+    name: 'Asia Sur'
+  }, {
+    id: 9,
+    name: 'Asia Central'
+  }, {
+    id: 10,
+    name: 'Asia Sur'
   }]
 }];
 

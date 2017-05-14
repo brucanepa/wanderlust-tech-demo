@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const Continent = ({ name, regions, match }) => (
   <ContinentStylized>
-    <h2>{name}</h2>
+    <ContinetNameStylized>{name}</ContinetNameStylized>
     <Regions
       match={match}
       regions={regions}
@@ -23,6 +23,15 @@ Continent.propTypes = {
 
 export default Continent;
 
-const ContinentStylized = styled.li`
-  display: inline-block;
+const ContinentStylized = styled.div`
+  margin: 0 0;
+  padding: 0 0;
+`;
+
+const ContinetNameStylized = styled.h2`
+    text-align: center;
+    font-size: 3em;
+    padding-top: 30px;
+    margin-top: 0px;
+    color: cadetblue;
 `;
