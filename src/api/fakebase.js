@@ -129,18 +129,10 @@ export const fetchPlaces = (regionId) => delay(500).then(() => {
 // End Places
 
 // Begin Destinations
-export const addDestination = (userId, placeId) => delay(500).then(() => {
-  const place = {
-    id: generateId(),
-    placeId,
-    name: fakeDatabase.places.filter((place) => {
-      return place.id == placeId
-    })[0].name
-  };
-  const user = getUser(userId);
-  user && user.destinations.push(place);
-
-  return place;
+export const addDestination = (destination) => delay(500).then(() => {
+  destination.id = generateId().toString();
+  const user = getUser(getUserId());
+  user && user.destinations.push(destination);
 });
 
 const findIndexOfDestination = (array, id) => {
@@ -149,24 +141,24 @@ const findIndexOfDestination = (array, id) => {
   }).indexOf(id);
 };
 
-export const swapPositionUpDestination = (userId, selectedId) => delay(500).then(() => {
-  const user = getUser(userId);
+export const swapPositionUpDestination = (selectedId) => delay(500).then(() => {
+  const user = getUser(getUserId());
   const index = findIndexOfDestination(user.destinations, selectedId);
   user.destinations = swapArrayPosition(user.destinations, index, index - 1);
 });
 
-export const swapPositionDownDestination = (userId, selectedId) => delay(500).then(() => {
-  const user = getUser(userId);
+export const swapPositionDownDestination = (selectedId) => delay(500).then(() => {
+  const user = getUser(getUserId());
   const index = findIndexOfDestination(user.destinations, selectedId);
   user.destinations = swapArrayPosition(user.destinations, index, index + 1);
 });
 
-export const fetchDestinations = (userId) => delay(500).then(() => {
-  return getUser(userId).destinations;
+export const fetchDestinations = () => delay(500).then(() => {
+  return getUser(getUserId()).destinations;
 });
 
-export const removeDestination = (userId, selectedId) => delay(500).then(() => {
-  const user = getUser(userId);
+export const removeDestination = (selectedId) => delay(500).then(() => {
+  const user = getUser(getUserId());
   const index = findIndexOfDestination(user.destinations, selectedId);
   user.destinations = removeArrayElement(user.destinations, index);
   return user.destinations;
@@ -187,15 +179,11 @@ export const fetchPlaceDetail = (placeId) => delay(500).then(() => {
   return getPlaceDetail(placeId);
 });
 
-export const addReview = (userId, placeId, comment, rating) => delay(500).then(() => {
-  const review = {
-    id: generateId(),
-    userId: userId,
-    comment: comment,
-    date: "20/3/2015 20:14",
-    rating: rating
-  };
-  getPlaceDetail(placeId).reviews.push(review);
+export const addReview = (review) => delay(500).then(() => {
+  review.date = "20/3/2015 20:14"
+  review.userId = getUserId();
+
+  getPlaceDetail(review.placeId).reviews.push(review);
   return review;
 });
 // End Places Details

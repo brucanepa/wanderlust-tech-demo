@@ -15,7 +15,7 @@ const Destinations = ({ destinations, onClick }) => (
 
 Destinations.propTypes = {
   destinations: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     placeId: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
   }).isRequired).isRequired

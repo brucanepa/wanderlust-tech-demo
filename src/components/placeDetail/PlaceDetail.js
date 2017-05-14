@@ -17,12 +17,12 @@ const PlaceDetail = ({ name, placeDetail, regionId, match }) => (
 
 		<h3>{name}</h3>
 		<PlaceRating {...placeDetail.placeRating}/>
-		<AddDestinationContainer placeId={match.params.placeId}/>
+		<AddDestinationContainer placeId={match.params.placeId} name={name}/>
 		<PlaceDescription description={placeDetail.placeInformation.description}/>
 		<PlaceActivities activities={placeDetail.placeInformation.activities}/>
 		<PlaceImages/>
 		<Reviews reviews={placeDetail.reviewList} />
-		<AddReview placeId={match.params.placeId}/>
+		<AddReview placeId={match.params.placeId} />
 	</PlaceDetailStylized>
 );
 

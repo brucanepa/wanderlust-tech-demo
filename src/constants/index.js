@@ -7,5 +7,6 @@ export const uris = {
   continents: '/continents',
   regions: '/regions',
   places: '/places',
+  users: '/users',
   placesDetails: '/placesDetails'
 }

@@ -56,7 +56,7 @@ const destinations = combineReducers({
 
 export default destinations;
 
-export const getDestinations = (state, filter) => {
+export const getDestinations = (state) => {
   const ids = state.destinationList;
   return ids.map(id => state.destinationsHashById[id]);
 };

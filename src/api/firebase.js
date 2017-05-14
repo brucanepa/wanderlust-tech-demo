@@ -1,19 +1,15 @@
 import * as firebase from 'firebase';
 import { uris } from '../constants';
-import { normalize } from 'normalizr';
-import * as schema from '../actions/schema';
-import { continents as requests } from '../actions/requests';
+import { getUserId } from '../constants';
 
 const config = {
- 
+  
 };
 firebase.initializeApp(config);
 const database = firebase.database();
 const value = 'value';
 
 const continentsRef = database.ref(uris.continents);
-const placesRef = database.ref(uris.places);
-const placesDetailsRef = database.ref(uris.placesDetails);
 
 // Begin Continents
 export const fetchContinents = (dispatch) => {
@@ -29,7 +25,7 @@ export const fetchContinents = (dispatch) => {
 
 // Begin Places
 export const fetchPlaces = (regionId) => {
-  return placesRef
+  return database.ref(uris.places)
     .orderByChild('regionId')
     .equalTo(parseInt(regionId))
     .once(value)
@@ -40,23 +36,35 @@ export const fetchPlaces = (regionId) => {
 // End Places
 
 // // Begin Destinations
-// export const fetchDestinations = (userId) => delay(500).then(() => {
-//   return getUser(userId).destinations;
-// });
+export const fetchDestinations = () => {
+  const promise = new Promise((resolve, reject) => {
+    continentsRef
+      .on(value, database.ref(uris.users)
+        .orderByChild('id')
+        .equalTo(getUserId())
+        .on(value, (snapshot) => {
+          const response = snapshot.val();
+          const destinations = response && response[0] && response[0].destinations;
+          resolve(destinations ? destinations.sort((a, b) => (a.order > b.order)) : []);
+        }), () => (reject([])));
+  });
+  return promise;
+};
 
-// export const addDestination = (userId, placeId) => delay(500).then(() => {
-//   const place = {
-//     id: generateId(),
-//     placeId,
-//     name: fakeDatabase.places.filter((place) => {
-//       return place.id == placeId
-//     })[0].name
-//   };
-//   const user = getUser(userId);
-//   user && user.destinations.push(place);
-
-//   return place;
-// });
+export const addDestination = (destination) => {
+  const usersRef = database.ref(uris.users);
+  // .orderByChild('id')
+  // .equalTo(parseInt(destination.placeId))
+  // .once(value)
+  // .then();
+  const pushRef = usersRef.child('destinations').push(destination);
+  const destinationKey = pushRef.key;
+  return usersRef.child('destinations')
+    .push(destination)
+    .then((snapshot) => {
+      destination.id = destinationKey;
+    });
+};
 
 // export const swapPositionUpDestination = (userId, selectedId) => delay(500).then(() => {
 //   const user = getUser(userId);
@@ -89,7 +97,7 @@ export const fetchPlaces = (regionId) => {
 // }
 
 export const fetchPlaceDetail = (placeId) => {
-  return placesDetailsRef
+  return database.ref(uris.placesDetails)
     .orderByChild('id')
     .equalTo(parseInt(placeId))
     .once(value)
@@ -108,17 +116,20 @@ export const fetchPlaceDetail = (placeId) => {
     })
 };
 
-export const addReview = (userId, placeId, comment, rating) => {
-  const review = {
-    userId,
-    comment,
-    date: "20/3/2015 20:14",
-    rating
-  };
-  return database.ref(uris.placesDetails + '/' + placeId + '/reviews')
+export const addReview = (review) => {
+  review.date = "20/3/2015 20:14"
+  review.userId = getUserId();
+  const detailRef = database.ref(uris.placesDetails)
+  // .orderByChild('id')
+  // .equalTo(parseInt(review.placeId))
+  // .once(value)
+  // .then();
+  const pushRef = detailRef.child('reviews').push(review);
+  const reviewKey = pushRef.key;
+  return detailRef.child('reviews')
     .push(review)
     .then((snapshot) => {
-      return snapshot;
+      review.id = reviewKey;
     });
 };
 // End Places Details

@@ -31,3 +31,5 @@ export const getPlaceDetail = (state) =>
 export const getContinents = (state) =>
   fromContinents.getContinents(state.continents);
 
+export const getNextDestinationPosition = (state) =>
+  getDestinations(state).length + 1;

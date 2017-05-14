@@ -1,34 +1,33 @@
-import { fakeApi } from '../api';
+import api, { fakeApi } from '../api';
 import { normalize } from 'normalizr';
 import * as schema from './schema';
 import { destinations as requests } from './requests';
-import { getUserId } from '../constants';
 
 export const fetchDestinations = () => (dispatch) => {
   dispatch(requests.requestDestinations());
-  return fakeApi.fetchDestinations(getUserId())
+  return api.fetchDestinations()
     .then(response => {
       dispatch(requests.receiveDestinationsSuccess(normalize(response, schema.arrayOfDestinations)));
     });
 }
 
-export const add = (placeId) => (dispatch) => {
+export const add = (destination) => (dispatch) => {
   dispatch(requests.requestAdd());
-  return fakeApi.addDestination(getUserId(), placeId)
-    .then(response => {
-      dispatch(requests.receiveAddSuccess(normalize(response, schema.destination)));
+  return api.addDestination(destination)
+    .then(() => {
+      dispatch(requests.receiveAddSuccess(normalize(destination, schema.destination)));
     });
 }
 
 export const swapPositionUp = ({selectedId}) => (dispatch) => {
   dispatch(requests.requestSwapPositionUp());
-  return fakeApi.swapPositionUpDestination(getUserId(), selectedId)
+  return fakeApi.swapPositionUpDestination(selectedId)
     .then(dispatch(requests.receiveSwapPositionUpSuccess(selectedId)))
 }
 
 export const swapPositionDown = ({selectedId}) => (dispatch) => {
   dispatch(requests.requestSwapPositionUp());
-  return fakeApi.swapPositionDownDestination(getUserId(), selectedId)
+  return fakeApi.swapPositionDownDestination(selectedId)
     .then(dispatch(requests.receiveSwapPositionDownSuccess(selectedId)))
 }
 
@@ -41,6 +40,6 @@ export const setSelected = (id) => (dispatch) => {
 
 export const remove = ({selectedId}) => (dispatch) => {
   dispatch(requests.requestRemoveDestination());
-  fakeApi.removeDestination(getUserId(), selectedId)
+  fakeApi.removeDestination(selectedId)
     .then(dispatch(requests.receiveRemoveDestinationSuccess(selectedId)));
 }

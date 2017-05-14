@@ -12,7 +12,7 @@ const AddReview = ({ dispatch, placeId }) => {
     if (!input.value.trim()) {
       return;
     }
-    dispatch(placeDetailActions.addReview(placeId, input.value, rating));
+    dispatch(placeDetailActions.addReview({placeId, comment: input.value, rating}));
     input.value = '';
   }
 

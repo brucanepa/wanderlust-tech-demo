@@ -7,7 +7,7 @@ const Place = ({id, name, match}) => (
    <Link to={ `/places/${id}` }> 
     Place: { name }
    </Link>
-   <AddDestinationContainer placeId={ id } />
+   <AddDestinationContainer placeId={ id } name={name}/>
  </li>
 );
 
