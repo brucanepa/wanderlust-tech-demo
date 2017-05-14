@@ -82,8 +82,7 @@ export const fetchDestinations = () => {
 
 export const addDestination = (destination) => {
   destination.order = nextDestinationPosition++;
-  const userRef = database.ref(uris.users + '/' + userKey);
-  const destinationsRef = userRef.child('destinations').push(destination);
+  const destinationsRef = database.ref(uris.users + '/' + userKey).child('destinations').push(destination);
   const destinationKey = destinationsRef.key;
   return destinationsRef
     .then((snapshot) => {
@@ -103,13 +102,10 @@ export const addDestination = (destination) => {
 //   user.destinations = swapArrayPosition(user.destinations, index, index + 1);
 // });
 
-// export const removeDestination = (userId, selectedId) => delay(500).then(() => {
-//   const user = getUser(userId);
-//   const index = findIndexOfDestination(user.destinations, selectedId);
-//   user.destinations = removeArrayElement(user.destinations, index);
-//   return user.destinations;
-// });
-// // End Destinations
+export const removeDestination = (destinationId) => {
+  
+};
+// End Destinations
 
 // // Begin Places Details
 export const fetchPlaceDetail = (placeId) => {

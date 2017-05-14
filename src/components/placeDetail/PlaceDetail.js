@@ -15,9 +15,9 @@ const PlaceDetail = ({ name, placeDetail, regionId, match }) => (
 		    Back
 		</Link>
 
-		<h3>{name}</h3>
+		<h3>{name || placeDetail.placeInformation.name}</h3>
 		<PlaceRating {...placeDetail.placeRating}/>
-		<AddDestinationContainer placeId={match.params.placeId} name={name}/>
+		<AddDestinationContainer placeId={match.params.placeId} name={name || placeDetail.placeInformation.name}/>
 		<PlaceDescription description={placeDetail.placeInformation.description}/>
 		<PlaceActivities activities={placeDetail.placeInformation.activities}/>
 		<PlaceImages/>

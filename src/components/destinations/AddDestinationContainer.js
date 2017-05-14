@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { destinations as destinationsActions } from '../../actions';
 import AddDestination from './AddDestination';
-import { getNextDestinationPosition } from '../../reducers';
 
 
 class AddDestinationContainer extends Component {
