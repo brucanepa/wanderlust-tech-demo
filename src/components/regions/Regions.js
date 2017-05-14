@@ -1,19 +1,17 @@
 import React, { PropTypes } from 'react';
 import Region from './Region';
+import styled from 'styled-components';
 
 const Regions = ({ regions, match }) => (
-  <div>
-      <h2>Regions</h2>
-      <ul>
-          {regions.map(region =>
-            <Region
-              key={region.id}
-              match={match}
-              {...region}
-            />
-          )}
-      </ul> 
-    </div>
+    <RegionsStylized>
+        {regions.map(region =>
+          <Region
+            key={region.id}
+            match={match}
+            {...region}
+          />
+        )}
+    </RegionsStylized> 
 );
 
 Regions.propTypes = {
@@ -25,3 +23,8 @@ Regions.propTypes = {
 };
 
 export default Regions;
+
+const RegionsStylized = styled.ul`
+  list-style-type: none;
+  display: block;
+`;

@@ -28,9 +28,11 @@ const ResponsivePanel = styled.div`
     transition: 0.5s;
     box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
     color: #757575;
+    box-sizing: border-box;
     @media only screen and (max-width: 650px) {
       position: initial;
       width: 98%
     }
+
 `;
 

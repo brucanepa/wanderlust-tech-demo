@@ -39,9 +39,9 @@ const PlaceDetailStylized = styled.div`
     width: 98%;
     padding-left: 265px;
     float: left;
+    box-sizing: border-box;
     @media only screen and (max-width: 650px) {
-      width: 98%;
-      padding-left: 0px;
+       padding-left: 0px;
     }
 `;
 

@@ -1,14 +1,15 @@
 import React, { PropTypes } from 'react';
 import Regions from '../regions/Regions';
+import styled from 'styled-components';
 
 const Continent = ({ name, regions, match }) => (
-  <li>
+  <ContinentStylized>
     <h2>{name}</h2>
     <Regions
       match={match}
       regions={regions}
     />
-  </li>
+  </ContinentStylized>
 );
 
 Continent.propTypes = {
@@ -21,3 +22,7 @@ Continent.propTypes = {
 };
 
 export default Continent;
+
+const ContinentStylized = styled.li`
+  display: inline-block;
+`;
