@@ -9,8 +9,7 @@ class DestinationsContainer extends Component {
     this.fetchData();
   }
   fetchData() {
-    const { filter } = this.props;
-    this.props.fetchDestinations(filter);
+    this.props.fetchDestinations();
   }
   render() {
     return <Destinations {...this.props} />

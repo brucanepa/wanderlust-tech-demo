@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PlacesContainer from '../places/PlacesContainer';
 import styled from 'styled-components';
+import { getRegionTitle } from '../../utils/helpers';
 
 const Region = ({match, id, name, image, placesCount}) => (
     <Link to={ `regions/${id}` }>
@@ -9,8 +10,8 @@ const Region = ({match, id, name, image, placesCount}) => (
       <Gallery>
         <Image/>
         <Description>
-          { name } (
-          { placesCount })</Description>
+          { name } 
+          { getRegionTitle(name, placesCount) }</Description>
       </Gallery>
     </Responsive>
     </Link>

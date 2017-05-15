@@ -1,7 +1,5 @@
 import * as firebase from 'firebase';
 import { uris, getUserId } from '../constants';
-import { normalize } from 'normalizr';
-import * as schema from '../actions/schema';
 
 const config = {
   apiKey: 'AIzaSyBHlOtH4VOI-9WB1YgZEC1ZW5xO4dIKriQ',
@@ -9,10 +7,10 @@ const config = {
   databaseURL: 'https://wander-lust-visca-canepa.firebaseio.com/',
   storageBucket: 'gs://wander-lust-visca-canepa.appspot.com'
 };
-firebase.initializeApp(config);
 
+firebase.initializeApp(config);
 const database = firebase.database();
-const value = 'value';
+const storage = firebase.storage();
 
 let userKey = '';
 let nextDestinationPosition = 0;
@@ -21,7 +19,7 @@ let nextDestinationPosition = 0;
   database.ref(uris.users)
     .orderByChild('id')
     .equalTo(getUserId())
-    .once(value)
+    .once('value')
     .then((snapshot) => {
       userKey = Object.keys(snapshot.val())[0];
     });
@@ -34,7 +32,7 @@ const getPlaceDetailUri = (placeId) => (uris.placesDetails + '/' + (placeId - 1)
 // Begin Continents
 export const fetchContinents = (dispatch) => {
   return database.ref(uris.continents)
-    .once(value)
+    .once('value')
     .then((snapshot) => {
       return snapshot.val();
     }, () => ([]));
@@ -46,7 +44,7 @@ export const fetchPlaces = (regionId) => {
   return database.ref(uris.places)
     .orderByChild('regionId')
     .equalTo(parseInt(regionId))
-    .once(value)
+    .once('value')
     .then((snapshot) => {
       return snapshot.val() || [];
     })
@@ -62,7 +60,7 @@ const updateNextDestinationPosition = (number) => {
 
 export const fetchDestinations = () => {
   return database.ref(getActualUserUri())
-    .once(value)
+    .once('value')
     .then((snapshot) => {
       const response = snapshot.val();
       const destinations = response && response[0] && response[0].destinations;
@@ -92,6 +90,7 @@ export const addDestination = (destination) => {
 };
 
 const orderUri = '/order';
+
 export const swapPositionUpDestination = (selected, selectedUp) => {
   const updatedObjects = {};
   updatedObjects[selected.id + orderUri] = selectedUp.order;
@@ -120,7 +119,7 @@ export const removeDestination = (destinationId) => {
 // // Begin Places Details
 export const fetchPlaceDetail = (placeId) => {
   return database.ref(getPlaceDetailUri(placeId))
-    .once(value)
+    .once('value')
     .then((snapshot) => {
       const placeDetail = snapshot.val();
       placeDetail.reviews = placeDetail.reviews ?

@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import places, * as fromPlaces from './places';
 import destinations, * as fromDestinations from './destinations';
-import placeDetail, * as fromDetails from './placeDetail';
+import placeDetail from './placeDetail';
 import continents, * as fromContinents from './continents';
 
 const wanderApp = combineReducers({

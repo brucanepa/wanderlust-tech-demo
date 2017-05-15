@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import { swapArrayPosition, removeArrayElement } from '../utils/helpers';
 
 const placeInformation = (state = { activities: [], description: '' }, action) => {
   if (action.placeDetailResponse) {

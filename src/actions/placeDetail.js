@@ -1,4 +1,4 @@
-import api, { fakeApi } from '../api';
+import api from '../api';
 import { normalize } from 'normalizr';
 import * as schema from './schema';
 import { placeDetail as requests } from './requests';

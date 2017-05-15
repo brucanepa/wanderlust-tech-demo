@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { getRegionTitle } from '../utils/helpers';
 
 const placesHashById = (state = {}, action) => {
   if (action.placesResponse) {
@@ -36,5 +37,6 @@ export const getPlace = (state, placeId) => {
 export const getPlacesRegionName = (state) => {
   const firstId = state.placesIdByName[0];
   const placesCount = state.placesIdByName.length;
-  return firstId && state.placesHashById[firstId].regionName.toUpperCase() + ' (' + placesCount + ')';
+  return firstId && getRegionTitle(state.placesHashById[firstId].regionName, placesCount);
 };
+

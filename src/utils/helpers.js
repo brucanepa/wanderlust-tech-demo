@@ -9,7 +9,7 @@ export const swapArrayPosition = (array, fromIndex, toIndex) => {
 	const result = array.slice();
 	
 	const absDif = Math.abs(fromIndex - toIndex);
-	if(absDif != 1 || invalidIndex(result, fromIndex) || invalidIndex(result, toIndex)) return result;
+	if(absDif !== 1 || invalidIndex(result, fromIndex) || invalidIndex(result, toIndex)) return result;
 
     result.splice(toIndex, 0, result.splice(fromIndex, 1)[0]);
 	return result;
@@ -26,4 +26,10 @@ export const removeArrayElement = (array, index) => {
 
 	result.splice(index, 1)
 	return result;
+};
+
+export const getRegionTitle = (name, placesCount) => {
+	if (!name || (!placesCount && placesCount !== 0)) return '';
+  const title = name.toUpperCase() + ' (' + placesCount + ' place';
+  return (placesCount === 1 ? title : title + 's') + ')';
 };
