@@ -24,8 +24,12 @@ Continent.propTypes = {
 export default Continent;
 
 const ContinentStylized = styled.div`
-  margin: 0 0;
-  padding: 0 0;
+    box-sizing: border-box;
+    &:after {
+      content: "";
+      clear: both;
+      display: table;
+    }
 `;
 
 const ContinetNameStylized = styled.h2`

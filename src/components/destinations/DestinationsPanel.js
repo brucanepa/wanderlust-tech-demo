@@ -17,22 +17,19 @@ const DestinationsPanel = ({ match }) => (
 export default DestinationsPanel;
 
 const ResponsivePanel = styled.div`
-	  height: 99%;
-    width: 250px;
-    z-index: 1;
-    position: fixed;
-    margin: 5px 5px;
-    background-color: #1e7f7e;
-    overflow-x: hidden;
-    padding-top: 20px;
-    transition: 0.5s;
-    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
-    color: #757575;
     box-sizing: border-box;
-    @media only screen and (max-width: 650px) {
-      position: initial;
-      width: 98%
+    float: left;
+    width: 100%;
+    z-index: 1;
+    padding-top: 20px;
+    overflow-x: hidden;
+    background-color: #1e7f7e;
+    color: #757575;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+    transition: 0.5s;
+    @media only screen and (min-width: 768px) {
+      width: 16.66%;
+      height: 100vh;
     }
-
 `;
 
