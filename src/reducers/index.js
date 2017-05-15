@@ -33,3 +33,6 @@ export const getContinents = (state) =>
 
 export const getSelectedDestinationInfo = (state) =>
   fromDestinations.getSelectedInfo(state.destinations);
+
+export const getPlacesRegionName = (state) =>
+  fromPlaces.getPlacesRegionName(state.places);

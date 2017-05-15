@@ -7,7 +7,7 @@ const Places = ({ places, region, match }) => (
   <PlacesStylized>
     
     
-    <PlacesNameStylized>PLACES OF {region}
+    <PlacesNameStylized>{region}
     <Back to={`/continents`}>
        🡠
     </Back></PlacesNameStylized>

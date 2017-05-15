@@ -32,3 +32,9 @@ export const getVisiblePlaces = (state) => {
 export const getPlace = (state, placeId) => {
   return state.placesHashById[placeId];
 };
+
+export const getPlacesRegionName = (state) => {
+  const firstId = state.placesIdByName[0];
+  const placesCount = state.placesIdByName.length;
+  return firstId && state.placesHashById[firstId].regionName.toUpperCase() + ' (' + placesCount + ')';
+};
