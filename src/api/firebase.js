@@ -10,10 +10,9 @@ const config = {
   storageBucket: 'gs://wander-lust-visca-canepa.appspot.com'
 };
 firebase.initializeApp(config);
+
 const database = firebase.database();
 const value = 'value';
-
-const continentsRef = database.ref(uris.continents);
 
 let userKey = '';
 let nextDestinationPosition = 0;
@@ -28,15 +27,17 @@ let nextDestinationPosition = 0;
     });
 })();
 
+const getActualUserUri = () => (uris.users + '/' + userKey);
+
+const getPlaceDetailUri = (placeId) => (uris.placesDetails + '/' + (placeId - 1));
+
 // Begin Continents
 export const fetchContinents = (dispatch) => {
-  const promise = new Promise((resolve, reject) => {
-    continentsRef
-      .on(value, (snapshot) => {
-        resolve(snapshot.val());
-      }, () => (reject([])));
-  });
-  return promise;
+  return database.ref(uris.continents)
+    .once(value)
+    .then((snapshot) => {
+      return snapshot.val();
+    }, () => ([]));
 };
 // End Continents
 
@@ -60,9 +61,7 @@ const updateNextDestinationPosition = (number) => {
 };
 
 export const fetchDestinations = () => {
-  return database.ref(uris.users)
-    .orderByChild('id')
-    .equalTo(getUserId())
+  return database.ref(getActualUserUri())
     .once(value)
     .then((snapshot) => {
       const response = snapshot.val();
@@ -81,8 +80,10 @@ export const fetchDestinations = () => {
 };
 
 export const addDestination = (destination) => {
-  destination.order = nextDestinationPosition++;
-  const destinationsRef = database.ref(uris.users + '/' + userKey).child('destinations').push(destination);
+  destination.order = ++nextDestinationPosition;
+  const destinationsRef = database.ref(getActualUserUri())
+    .child('destinations')
+    .push(destination);
   const destinationKey = destinationsRef.key;
   return destinationsRef
     .then((snapshot) => {
@@ -90,20 +91,27 @@ export const addDestination = (destination) => {
     });
 };
 
-// export const swapPositionUpDestination = (userId, selectedId) => delay(500).then(() => {
-//   const user = getUser(userId);
-//   const index = findIndexOfDestination(user.destinations, selectedId);
-//   user.destinations = swapArrayPosition(user.destinations, index, index - 1);
-// });
+const orderUri = '/order';
+export const swapPositionUpDestination = (selected, selectedUp) => {
+  const updatedObjects = {};
+  updatedObjects[selected.id + orderUri] = selectedUp.order;
+  updatedObjects[selectedUp.id + orderUri] = selected.order;
+  return database.ref(getActualUserUri())
+    .child('destinations')
+    .update(updatedObjects);
+};
 
-// export const swapPositionDownDestination = (userId, selectedId) => delay(500).then(() => {
-//   const user = getUser(userId);
-//   const index = findIndexOfDestination(user.destinations, selectedId);
-//   user.destinations = swapArrayPosition(user.destinations, index, index + 1);
-// });
+ export const swapPositionDownDestination  = (selected, selectedDown) => {
+  const updatedObjects = {};
+  updatedObjects[selected.id + orderUri] = selectedDown.order;
+  updatedObjects[selectedDown.id + orderUri] = selected.order;
+  return database.ref(getActualUserUri())
+    .child('destinations')
+    .update(updatedObjects);
+};
 
 export const removeDestination = (destinationId) => {
-  return database.ref(uris.users + '/' + userKey)
+  return database.ref(getActualUserUri())
     .child('destinations/' + destinationId)
     .remove();
 };
@@ -111,15 +119,10 @@ export const removeDestination = (destinationId) => {
 
 // // Begin Places Details
 export const fetchPlaceDetail = (placeId) => {
-  return database.ref(uris.placesDetails)
-    .orderByChild('id')
-    .equalTo(parseInt(placeId))
+  return database.ref(getPlaceDetailUri(placeId))
     .once(value)
     .then((snapshot) => {
-      const response = snapshot.val();
-      const placeDetail = (response.length ? response.filter((value) => {
-        return !!value
-      })[0] : response[Object.keys(response)[0]]) || {};
+      const placeDetail = snapshot.val();
       placeDetail.reviews = placeDetail.reviews ?
         placeDetail.reviews = Object.keys(placeDetail.reviews).map((key) => {
           placeDetail.reviews[key].id = key;
@@ -134,7 +137,7 @@ export const addReview = (review) => {
   review.date = "20/3/2015 20:14"
   review.userId = getUserId();
   review.placeId = parseInt(review.placeId);
-  const reviewRef = database.ref(uris.placesDetails + '/' + (review.placeId - 1))
+  const reviewRef = database.ref(getPlaceDetailUri(review.placeId))
     .child('reviews')
     .push(review);
   return reviewRef.then(() => {

@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 
-const Destination = ({ id, name, onClick, selected }) => (
+const Destination = ({ id, name, onClick, selected, index }) => (
   <DestinationStylized
-    onClick={() => {onClick(id)} } selected={selected}>
+    onClick={() => {onClick(id, index)} } selected={selected}>
     {name}
   </DestinationStylized>
 );

@@ -42,10 +42,11 @@ export const destinations = {
       type: 'REQUEST_SWAP_POSITION_UP_DESTINATION'
     }
   },
-  receiveSwapPositionUpSuccess: (selectedId) => {
+  receiveSwapPositionUpSuccess: (selectedId, otherSelectedId) => {
     return {
       type: 'RECEIVE_SWAP_POSITION_UP_DESTINATION_SUCCESS',
-      selectedId
+      selectedId,
+      otherSelectedId
     }
   },
   requestSwapPositionDown: () => {
@@ -53,10 +54,11 @@ export const destinations = {
       type: 'REQUEST_SWAP_POSITION_DOWN_DESTINATION'
     }
   },
-  receiveSwapPositionDownSuccess: (selectedId) => {
+  receiveSwapPositionDownSuccess: (selectedId, otherSelectedId) => {
     return {
       type: 'RECEIVE_SWAP_POSITION_DOWN_DESTINATION_SUCCESS',
-      selectedId
+      selectedId,
+      otherSelectedId
     }
   },
   requestRemoveDestination: () => {

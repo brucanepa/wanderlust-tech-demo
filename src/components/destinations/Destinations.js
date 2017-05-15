@@ -4,10 +4,11 @@ import styled from 'styled-components';
 
 const Destinations = ({ destinations, onClick }) => (
   <DestinationsStylized>
-    {destinations.map(destination =>
+    {destinations.map((destination, index) =>
       <DestinationContainer
         key={destination.id}
         {...destination}
+        index={index}
       />
     )}
   </DestinationsStylized>

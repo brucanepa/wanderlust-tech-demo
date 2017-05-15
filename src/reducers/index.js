@@ -22,11 +22,14 @@ export const getVisiblePlaces = (state) =>
 export const getDestinations = (state) =>
   fromDestinations.getDestinations(state.destinations);
 
-export const getSelectedIdDestination = (state) =>
-  fromDestinations.getSelectedIdDestination(state.destinations);
+export const getSelectedDestinationId = (state) =>
+  fromDestinations.getSelectedDestinationId(state.destinations);
 
 export const getPlaceDetail = (state) =>
 	state.placeDetail;
 
 export const getContinents = (state) =>
   fromContinents.getContinents(state.continents);
+
+export const getSelectedDestinationInfo = (state) =>
+  fromDestinations.getSelectedInfo(state.destinations);

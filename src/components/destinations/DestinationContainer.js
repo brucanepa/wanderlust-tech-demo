@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Destination from './Destination'
 import { destinations as destinationsActions } from '../../actions';
-import { getSelectedIdDestination } from '../../reducers';
+import { getSelectedDestinationId } from '../../reducers';
 
 
 class DestinationContainer extends Component {
@@ -12,12 +12,12 @@ class DestinationContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    selected: getSelectedIdDestination(state).selectedId === ownProps.id
+    selected: getSelectedDestinationId(state) === ownProps.id
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    onClick(id) {
-      return dispatch(destinationsActions.setSelected(id));
+    onClick(id, index) {
+      return dispatch(destinationsActions.setSelected(id, index));
     }
 });
 

@@ -1,4 +1,4 @@
-import api, { fakeApi } from '../api';
+import api from '../api';
 import { normalize } from 'normalizr';
 import * as schema from './schema';
 import { destinations as requests } from './requests';
@@ -19,29 +19,38 @@ export const add = (destination) => (dispatch) => {
     });
 }
 
-export const swapPositionUp = ({selectedId}) => (dispatch) => {
-  dispatch(requests.requestSwapPositionUp());
-  return fakeApi.swapPositionUpDestination(selectedId)
-    .then(dispatch(requests.receiveSwapPositionUpSuccess(selectedId)))
+const shouldSwapPositions = (selectedInfo) => {
+  return selectedInfo && selectedInfo.id;
+};
+
+export const swapPositionUp = (selectedInfo, selectedUpInfo) => (dispatch) => {
+  if (shouldSwapPositions(selectedInfo) && shouldSwapPositions(selectedUpInfo)) {
+    dispatch(requests.requestSwapPositionUp());
+    return api.swapPositionUpDestination(selectedInfo, selectedUpInfo)
+      .then(dispatch(requests.receiveSwapPositionUpSuccess(selectedInfo.id, selectedUpInfo.id)))
+  }
 }
 
-export const swapPositionDown = ({selectedId}) => (dispatch) => {
-  dispatch(requests.requestSwapPositionUp());
-  return fakeApi.swapPositionDownDestination(selectedId)
-    .then(dispatch(requests.receiveSwapPositionDownSuccess(selectedId)))
+export const swapPositionDown = (selectedInfo, selectedDownInfo) => (dispatch) => {
+  if (shouldSwapPositions(selectedInfo) && shouldSwapPositions(selectedDownInfo)) {
+    dispatch(requests.requestSwapPositionUp());
+    return api.swapPositionDownDestination(selectedInfo, selectedDownInfo)
+      .then(dispatch(requests.receiveSwapPositionDownSuccess(selectedInfo.id, selectedDownInfo.id)))
+  }
 }
 
-export const setSelected = (id) => (dispatch) => {
+export const setSelected = (id, index) => (dispatch) => {
   dispatch({
     type: 'SELECTED_DESTINATION',
-    selectedId: id
+    selectedId: id,
+    index
   });
 };
 
-export const remove = ({selectedId}) => (dispatch) => {
-  if (selectedId) {
+export const remove = ({id}) => (dispatch) => {
+  if (id) {
     dispatch(requests.requestRemoveDestination());
-    api.removeDestination(selectedId)
-      .then(dispatch(requests.receiveRemoveDestinationSuccess(selectedId)));
+    api.removeDestination(id)
+      .then(dispatch(requests.receiveRemoveDestinationSuccess(id)));
   }
 }
