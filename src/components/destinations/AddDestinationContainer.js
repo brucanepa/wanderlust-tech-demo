@@ -11,7 +11,8 @@ class AddDestinationContainer extends Component {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  onClick() {
+  onClick(e) {
+    e.preventDefault();
     const destination = {
       placeId: parseInt(ownProps.placeId),
       name: ownProps.name

@@ -69,7 +69,7 @@ const fakeDatabase = {
   places: [{
     id: id1,
     name: 'Barcelona',
-    regionId: 4
+    regionId: 1
   }, {
     id: id2,
     name: 'Montevideo',
@@ -77,7 +77,7 @@ const fakeDatabase = {
   }, {
     id: id3,
     name: 'Miami',
-    regionId: 3
+    regionId: 1
   }],
   users: [user],
   placesDetails: [{

@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PlacesContainer from '../places/PlacesContainer';
-import america from '../../america.jpg';
 import styled from 'styled-components';
 
-const Region = ({ match, id, name }) => (		
+const Region = ({ match, id, name, image}) => (		
 	    <Link to={`regions/${id}`}>
         <Responsive>
           <Gallery>
@@ -30,8 +29,9 @@ const Gallery = styled.div`
 const Image = styled.div` {
   height: 250px;
   box-sizing: border-box;
-  background-image:url('https://a0.muscache.com/airbnb/guidebook/v1_san_francisco_carousel@2x.jpg');
+  background-image:url(${({ image }) => image ? image : 'https://a0.muscache.com/airbnb/guidebook/v1_san_francisco_carousel@2x.jpg'});
 `
+
 
 const Description = styled.div`
     padding: 15px;
@@ -42,43 +42,63 @@ const Description = styled.div`
 const Responsive = styled.div`
     padding: 0 10px;
     float: left;
-    width: 25%;
-    min-width: 350px
+    width: 30%;
+    min-width: 500px;
     box-sizing: border-box;
     margin-top: 10px;
     margin-bottom: 10px;
     transition: 0.8s;
 
-    @media only screen and (max-width: 1660px){
-        margin: 10px 2%;
+    @media only screen and (max-width: 1350px){
+        width: 60%;
     }
 
-     @media only screen and (max-width: 1480px){
+     
+    @media only screen and (max-width: 750px){
+        max-width: 350px;
+        min-width: 350px;
+    }
+
+
+
+    @media only screen and (max-width: 650px){
+      padding: 0 0;
+              max-width: 500px;
+        min-width: 350px;
+    }
+     
+
+    @media only screen and (max-width: 450x){
+      padding: 0 0;
+      max-width: 350px;
+      min-width: 350px;
+    }
+
+   
+`
+
+/*
+
+ @media only screen and (max-width: 1480px){
         width: 40%;
-        margin: 10px 5%;
     }
 
-    @media only screen and (max-width: 1200px){
+    @media only screen and (max-width: 1300px){
         width: 50%;
-        margin: 10px 25%;
     }
 
     @media only screen and (max-width: 810px){
         width: 50%;
-        margin: 10px 15%;
     }
 
     @media only screen and (max-width: 450px){
-      margin: 10px 10%;
+      margin: 10px 0%;
+         padding: 0 0;
     }
-
-    @media only screen and (max-width: 350px){
+    @media only screen and (max-width: 400px){
       margin: 10px 0;
       padding: 0 0;
     }
-`
-
-/*
 
 const ImageWrap = styled.div`
   position: relative;

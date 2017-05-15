@@ -3,13 +3,15 @@ import { Link } from 'react-router-dom';
 import Place from './Place';
 import styled from 'styled-components';
 
-const Places = ({ places, match }) => (
+const Places = ({ places, region, match }) => (
   <PlacesStylized>
-    <Link to={`/continents`}>
-      Back
-    </Link>
-    <h2>Places</h2>
-    <ul>
+    
+    
+    <PlacesNameStylized>PLACES OF {region}
+    <Back to={`/continents`}>
+       🡠
+    </Back></PlacesNameStylized>
+    <PlacesListStylized>
         {places.map(place =>
         <Place
           key={place.id}
@@ -17,7 +19,7 @@ const Places = ({ places, match }) => (
           {...place}
         />
       )}
-    </ul> 
+    </PlacesListStylized> 
   </PlacesStylized>
 );
 
@@ -31,20 +33,93 @@ Places.propTypes = {
   match: PropTypes.any
 };
 
+const Back = styled(Link)`
+    background-color: #1e7f7e;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    padding-top: 10px;
+    padding-left: 10px;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+    margin: -12px 2%;
+    text-align: left;
+    float: left;
+`
+
 const PlacesStylized = styled.div`
     height: 93%;
-    background-color: #dadada;
+    background-color: aliceblue;
     overflow-x: hidden;
     margin: 5px 5px;
     transition: 0.5s;
     box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
     color: #757575;
-    width: 98%;
-    padding-left: 265px;
+    width: 99%;
+    padding-left: 250px;
     float: left;
     box-sizing: border-box;
+    overflow: hidden;
     @media only screen and (max-width: 650px) {
       padding-left: 0px;
     }
 `;
 
+
+const PlacesNameStylized = styled.h1`
+  padding: 30px 0px;
+  font-size: 5vm;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  box-sizing: border-box;
+  background-color: #ffd535;
+  margin: 0 0;
+  box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19)
+   @media only screen and (max-width: 650px) {
+       font-size: 3em;
+    }
+`;
+
+const PlacesListStylized = styled.div`
+    margin: 0;
+    padding: 0;
+    float: left;
+    transition: 0.8s;
+
+    @media only screen and (max-width: 1480px){
+        margin: 10px 4%;
+    }
+
+    @media only screen and (max-width: 1350px){
+        margin: 10px 28%;
+    }
+
+    @media only screen and (max-width: 1200px){
+        margin: 10px 15%;
+    }
+
+    @media only screen and (max-width: 900px){
+      margin: 10px 10%;
+    }
+
+    @media only screen and (max-width: 800px){
+      margin: 10px 0%;
+    }
+    
+
+    @media only screen and (max-width: 750px){
+      margin: 10px 15%;
+    }
+
+    @media only screen and (max-width: 650px){
+      margin: 10px 20%;
+      padding: 0;
+    }
+      
+    @media only screen and (max-width: 450px){
+      margin: 0;
+      padding: 0;
+    }
+`;

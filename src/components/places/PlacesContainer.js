@@ -18,7 +18,8 @@ class VisiblePlaces extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  places: getVisiblePlaces(state)
+  places: getVisiblePlaces(state),
+  region: 'Test'
 });
 
 const mapDispatchToProps = (dispatch) => ({
