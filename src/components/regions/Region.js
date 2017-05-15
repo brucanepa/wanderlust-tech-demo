@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import PlacesContainer from '../places/PlacesContainer';
 import styled from 'styled-components';
 
-const Region = ({ match, id, name, image}) => (		
+const Region = ({ match, id, name, image, placesCount}) => (		
 	    <Link to={`regions/${id}`}>
         <Responsive>
           <Gallery>
               <Image/>
-              <Description>{name}</Description>
+              <Description>{name} ({placesCount})</Description>
           </Gallery>
         </Responsive>
 	    </Link>
