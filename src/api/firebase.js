@@ -103,7 +103,9 @@ export const addDestination = (destination) => {
 // });
 
 export const removeDestination = (destinationId) => {
-  
+  return database.ref(uris.users + '/' + userKey)
+    .child('destinations/' + destinationId)
+    .remove();
 };
 // End Destinations
 
