@@ -39,7 +39,9 @@ export const setSelected = (id) => (dispatch) => {
 };
 
 export const remove = ({selectedId}) => (dispatch) => {
-  dispatch(requests.requestRemoveDestination());
-  fakeApi.removeDestination(selectedId)
-    .then(dispatch(requests.receiveRemoveDestinationSuccess(selectedId)));
+  if (selectedId) {
+    dispatch(requests.requestRemoveDestination());
+    api.removeDestination(selectedId)
+      .then(dispatch(requests.receiveRemoveDestinationSuccess(selectedId)));
+  }
 }
