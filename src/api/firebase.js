@@ -10,7 +10,6 @@ const config = {
 
 firebase.initializeApp(config);
 const database = firebase.database();
-const storage = firebase.storage();
 
 let userKey = '';
 let nextDestinationPosition = 0;
@@ -133,7 +132,6 @@ export const fetchPlaceDetail = (placeId) => {
 };
 
 export const addReview = (review) => {
-  review.date = "20/3/2015 20:14"
   review.userId = getUserId();
   review.placeId = parseInt(review.placeId);
   const reviewRef = database.ref(getPlaceDetailUri(review.placeId))

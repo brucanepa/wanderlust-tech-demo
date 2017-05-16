@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PlacesContainer from '../places/PlacesContainer';
 import styled from 'styled-components';
-import { getRegionTitle } from '../../utils/helpers';
+import { getRegionTitle } from '../../utils/textHelper';
 
 const Region = ({match, id, name, image, placesCount}) => (
     <Link to={ `regions/${id}` }>

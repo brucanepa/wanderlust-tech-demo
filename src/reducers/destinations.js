@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { swapArrayPosition, removeArrayElement } from '../utils/helpers';
+import { swapArrayPosition, removeArrayElement } from '../utils/arrayHelper';
 
 const swapOrders = (state, selectedId, otherSelectedId) => {
   const newState = {

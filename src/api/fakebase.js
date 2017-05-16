@@ -1,5 +1,8 @@
-import { generateId, swapArrayPosition, removeArrayElement } from '../utils/helpers';
+import { swapArrayPosition, removeArrayElement } from '../utils/arrayHelper';
 import { getUserId } from '../constants';
+
+const generateId = () => Math.floor(Math.random()*1000000)
+
 
 const id1 = generateId();
 const id2 = generateId();

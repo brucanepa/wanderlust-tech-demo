@@ -1,6 +1,4 @@
 
-export const generateId = () => Math.floor(Math.random()*1000000)
-
 const invalidIndex = (array, index) => {
 	return index >= array.length || index < 0; 
 }
@@ -15,10 +13,6 @@ export const swapArrayPosition = (array, fromIndex, toIndex) => {
 	return result;
 };
 
-export const findIndexOfDestination = (array, id) => {
-  return array.map((place) => { return place.id}).indexOf(id);
-};
-
 export const removeArrayElement = (array, index) => {
 	const result = array.slice();
 
@@ -26,10 +20,4 @@ export const removeArrayElement = (array, index) => {
 
 	result.splice(index, 1)
 	return result;
-};
-
-export const getRegionTitle = (name, placesCount) => {
-	if (!name || (!placesCount && placesCount !== 0)) return '';
-  const title = name.toUpperCase() + ' (' + placesCount + ' place';
-  return (placesCount === 1 ? title : title + 's') + ')';
 };
