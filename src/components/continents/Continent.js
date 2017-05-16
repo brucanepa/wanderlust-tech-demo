@@ -2,13 +2,12 @@ import React, { PropTypes } from 'react';
 import Regions from '../regions/Regions';
 import styled from 'styled-components';
 
-const Continent = ({ name, regions, match }) => (
+const Continent = ({name, regions, match}) => (
   <ContinentStylized>
-    <ContinetNameStylized>{name}</ContinetNameStylized>
-    <Regions
-      match={match}
-      regions={regions}
-    />
+    <ContinetNameStylized>
+      { name }
+    </ContinetNameStylized>
+    <Regions match={ match } regions={ regions } />
   </ContinentStylized>
 );
 

@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 
-const Destination = ({ id, name, onClick, selected, index }) => (
-  <DestinationStylized
-    onClick={() => {onClick(id, index)} } selected={selected}>
-    {name}
+const Destination = ({id, name, onClick, selected, index}) => (
+  <DestinationStylized 
+    onClick={ () => {onClick(id, index)} } 
+    selected={ selected }>
+    { name }
   </DestinationStylized>
 );
 
@@ -26,7 +27,6 @@ const DestinationStylized = styled.li`
     color: white;
     &:hover { 
         background-color: #2aaba9;
-
     }
 `;
 

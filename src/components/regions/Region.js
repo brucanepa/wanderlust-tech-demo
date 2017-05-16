@@ -3,17 +3,19 @@ import { Link } from 'react-router-dom';
 import PlacesContainer from '../places/PlacesContainer';
 import styled from 'styled-components';
 import { getRegionTitle } from '../../utils/textHelper';
+import { defaultImage } from '../../constants';
 
 const Region = ({match, id, name, image, placesCount}) => (
-    <Link to={ `regions/${id}` }>
-    <ResponsiveGallery>
-      <Gallery>
-        <Image image={image}/>
-        <ImageFooter>
-          { getRegionTitle(name, placesCount) }</ImageFooter>
-      </Gallery>
-    </ResponsiveGallery>
-    </Link>
+  <Link to={ `regions/${id}` }>
+  <ResponsiveGallery>
+    <Gallery>
+      <Image image={ image || defaultImage } />
+      <ImageFooter>
+        { getRegionTitle(name, placesCount) }
+      </ImageFooter>
+    </Gallery>
+  </ResponsiveGallery>
+  </Link>
 );
 
 export default Region;
@@ -32,7 +34,7 @@ const Image = styled.div` {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  background-image:url(${({ image }) => image ? image : 'http://cdn.wallpapersafari.com/6/52/ied8HY.jpeg'});
+  background-image:url(${({ image }) => image });
 `
 
 const ImageFooter = styled.div`

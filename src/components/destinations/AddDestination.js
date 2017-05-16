@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 const AddDestination = ({onClick}) => (
-	<div>
-		<Button type="button" onClick={(e) => onClick(e)}>add</Button>
-	</div>
+    <div>
+      <Button type="button" onClick={ (e) => onClick(e) }>add</Button>
+    </div>
 );
 
 export default AddDestination;

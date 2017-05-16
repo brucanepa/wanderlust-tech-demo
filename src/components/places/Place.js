@@ -4,16 +4,15 @@ import AddDestinationContainer from '../destinations/AddDestinationContainer';
 import styled from 'styled-components';
 
 const Place = ({id, name, match}) => (
-
 	<Link to={ `/places/${id}` }>
-        <ResponsiveGallery>
-          <Gallery>
-              <Image/>
-              <ImageFooter>{name}</ImageFooter>
-              <AddDestinationContainer placeId={ id } name={name}/> 
-          </Gallery>
-        </ResponsiveGallery>
-    </Link>
+    <ResponsiveGallery>
+      <Gallery>
+        <Image/>
+        <ImageFooter>{name}</ImageFooter>
+        <AddDestinationContainer placeId={ id } name={name}/> 
+      </Gallery>
+    </ResponsiveGallery>
+  </Link>
 );
 
 export default Place;

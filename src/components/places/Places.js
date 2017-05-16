@@ -5,7 +5,6 @@ import styled from 'styled-components';
 
 const Places = ({ places, regionName, match, regionImage }) => (
   <PlacesStylized>
-    
     <PlacesNameStylized image={regionImage}>{regionName}
       <Back to={`/continents`}>
           arrow_back
@@ -14,9 +13,9 @@ const Places = ({ places, regionName, match, regionImage }) => (
     <PlacesListStylized>
         {places.map(place =>
         <Place
-          key={place.id}
-          match={match}
-          {...place}
+            key={place.id}
+            match={match}
+            {...place}
         />
       )}
     </PlacesListStylized> 

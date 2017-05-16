@@ -12,13 +12,13 @@ class DestinationContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    selected: getSelectedDestinationId(state) === ownProps.id
+  selected: getSelectedDestinationId(state) === ownProps.id
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    onClick(id, index) {
-      return dispatch(destinationsActions.setSelected(id, index));
-    }
+  onClick(id, index) {
+    return dispatch(destinationsActions.setSelected(id, index));
+  }
 });
 
 DestinationContainer = connect(

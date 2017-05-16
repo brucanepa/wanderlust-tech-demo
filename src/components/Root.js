@@ -13,10 +13,10 @@ const Root = ({store}) => (
       <MainRoot>
         <MainApp>
           <DestinationsPanel/>
-	        <Route exact={true} path='/' render={() => (<Redirect to="/continents"> </Redirect>)} />
 	      	<Route path='/regions/:regionId' component={PlacesContainer}/>
 	      	<Route exact={true} path='/continents' component={ContinentsContainer}/>
 	      	<Route path='/places/:placeId' component={PlaceDetailContainer}/>
+	        <Route exact={true} path='*' render={() => (<Redirect to="/continents"> </Redirect>)} />
      	  </MainApp>
       </MainRoot>
     </Router>

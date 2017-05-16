@@ -1,8 +1,7 @@
 import { swapArrayPosition, removeArrayElement } from '../utils/arrayHelper';
 import { getUserId } from '../constants';
 
-const generateId = () => Math.floor(Math.random()*1000000)
-
+const generateId = () => Math.floor(Math.random() * 1000000)
 
 const id1 = generateId();
 const id2 = generateId();
@@ -20,8 +19,7 @@ const continents = [{
   }, {
     id: 6,
     name: 'Europa Sur'
-  },
-  {
+  }, {
     id: 7,
     name: 'Mediterraneo'
   }]
@@ -39,20 +37,20 @@ const continents = [{
     name: 'America del Norte'
   }]
 },
-{
-  id: 3,
-  name: 'Asia',
-  regions: [{
-    id: 8,
-    name: 'Asia Sur'
-  }, {
-    id: 9,
-    name: 'Asia Central'
-  }, {
-    id: 10,
-    name: 'Asia Sur'
-  }]
-}];
+  {
+    id: 3,
+    name: 'Asia',
+    regions: [{
+      id: 8,
+      name: 'Asia Sur'
+    }, {
+      id: 9,
+      name: 'Asia Central'
+    }, {
+      id: 10,
+      name: 'Asia Sur'
+    }]
+  }];
 
 const user = {
   id: getUserId(),

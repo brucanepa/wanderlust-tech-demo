@@ -10,3 +10,5 @@ export const uris = {
   users: '/users',
   placesDetails: '/placesDetails'
 }
+
+export const defaultImage = 'http://cdn.wallpapersafari.com/6/52/ied8HY.jpeg';

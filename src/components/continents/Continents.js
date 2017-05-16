@@ -2,18 +2,17 @@ import React, { PropTypes } from 'react';
 import Continent from './Continent';
 import styled from 'styled-components';
 
-const Continents = ({ continents, match }) => (
+const Continents = ({continents, match}) => (
   <ContinentsStylized>
     <ContinentNameStylized>FIND YOUR NEXT DESTINY</ContinentNameStylized>
     <div>
-      {continents.map(continent =>
-        <Continent
-          key={continent.id}
-          match={match}
-          {...continent}
-        />
-      )}
-    </div> 
+      { 
+        continents.map(continent => 
+        <Continent key={ continent.id } 
+          match={ match } 
+          {...continent} />)
+      }
+    </div>
   </ContinentsStylized>
 );
 

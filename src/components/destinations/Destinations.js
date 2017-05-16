@@ -9,8 +9,8 @@ const Destinations = ({ destinations, onClick }) => (
         key={destination.id}
         {...destination}
         index={index}
-      />
-    )}
+      />)
+    }
   </DestinationsStylized>
 );
 
