@@ -32,7 +32,7 @@ const Image = styled.div` {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  background-image:url(${({ image }) => image ? image : 'https://a0.muscache.com/airbnb/guidebook/v1_san_francisco_carousel@2x.jpg'});
+  background-image:url(${({ image }) => image ? image : 'http://cdn.wallpapersafari.com/6/52/ied8HY.jpeg'});
 `
 
 const ImageFooter = styled.div`
