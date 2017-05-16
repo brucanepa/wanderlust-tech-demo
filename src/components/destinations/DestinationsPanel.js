@@ -6,9 +6,9 @@ import styled from 'styled-components';
 
 const DestinationsPanel = ({ match }) => (
   <ResponsivePanel>
-  	<div className="toVisitPanelTitle">
+  	<PanelTitle>
   		Plan your trip!
-  	</div>
+  	</PanelTitle>
     <DestinationsContainer />
     <DestinationsFooterContainer/>
   </ResponsivePanel>
@@ -33,3 +33,10 @@ const ResponsivePanel = styled.div`
     }
 `;
 
+
+const PanelTitle = styled.div`
+    font-size: 2em;
+    text-align: center;
+    color: #FFFFFF;
+    transition: 0.3s;
+`;

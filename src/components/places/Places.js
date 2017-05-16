@@ -6,11 +6,11 @@ import styled from 'styled-components';
 const Places = ({ places, region, match }) => (
   <PlacesStylized>
     
-    
     <PlacesNameStylized>{region}
-    <Back to={`/continents`}>
-        arrow_back
-    </Back></PlacesNameStylized>
+      <Back to={`/continents`}>
+          arrow_back
+      </Back>
+    </PlacesNameStylized>
     <PlacesListStylized>
         {places.map(place =>
         <Place
@@ -43,10 +43,15 @@ const Back = styled(Link)`
     color: white;
     text-decoration: none;
     box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
-    margin: -12px 2%;
+    margin: 8px 2%;
     text-align: left;
     float: left;
     font-family: Material Icons;
+    font-size: 35px;
+
+    &:hover {
+        background-color: #2aaba9;
+    }
 `
 
 const PlacesStylized = styled.div`
@@ -68,8 +73,8 @@ const PlacesStylized = styled.div`
 const PlacesNameStylized = styled.h1`
     box-sizing: border-box;
     padding: 30px 0px;
-    font-size: 5vm;
     font-weight: bold;
+    font-size: 4em;
     text-align: center;
     color: white;
     background-color: cadetblue;
@@ -78,6 +83,10 @@ const PlacesNameStylized = styled.h1`
     @media only screen and (max-width: 650px) {
        font-size: 3em;
     }
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-image:url(${({ image }) => image ? image : 'https://a0.muscache.com/airbnb/guidebook/v1_san_francisco_carousel@2x.jpg'});
 `;
 
 const PlacesListStylized = styled.div`

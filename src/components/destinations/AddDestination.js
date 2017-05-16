@@ -18,8 +18,10 @@ const Button = styled.button`
     background-color: #1e7f7e;
     border-radius: 50%;
     border: none;
+    outline:none;
     font-family: Material Icons;
     &:hover { 
+        background-color: #2aaba9;
   		box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
     }
 `;
