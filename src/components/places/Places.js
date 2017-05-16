@@ -9,7 +9,7 @@ const Places = ({ places, region, match }) => (
     
     <PlacesNameStylized>{region}
     <Back to={`/continents`}>
-       🡠
+        arrow_back
     </Back></PlacesNameStylized>
     <PlacesListStylized>
         {places.map(place =>
@@ -36,16 +36,17 @@ Places.propTypes = {
 const Back = styled(Link)`
     background-color: #1e7f7e;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    padding-top: 10px;
-    padding-left: 10px;
+    width: 47px;
+    height: 45px;
+    padding-top: 15px;
+    padding-left: 13px;
     color: white;
     text-decoration: none;
     box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
     margin: -12px 2%;
     text-align: left;
     float: left;
+    font-family: Material Icons;
 `
 
 const PlacesStylized = styled.div`
@@ -53,7 +54,7 @@ const PlacesStylized = styled.div`
     float: left;
     width: 100%;
     height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
     background-color: aliceblue;
     color: #757575;
     box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
@@ -65,58 +66,20 @@ const PlacesStylized = styled.div`
 
 
 const PlacesNameStylized = styled.h1`
-  padding: 30px 0px;
-  font-size: 5vm;
-  font-weight: bold;
-  text-align: center;
-  color: white;
-  box-sizing: border-box;
-  background-color: #ffd535;
-  margin: 0 0;
-  box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19)
-   @media only screen and (max-width: 650px) {
+    box-sizing: border-box;
+    padding: 30px 0px;
+    font-size: 5vm;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    background-color: cadetblue;
+    margin: 0 0;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19)
+    @media only screen and (max-width: 650px) {
        font-size: 3em;
     }
 `;
 
 const PlacesListStylized = styled.div`
-    margin: 0;
-    padding: 0;
-    float: left;
-    transition: 0.8s;
-
-    @media only screen and (max-width: 1480px){
-        margin: 10px 4%;
-    }
-
-    @media only screen and (max-width: 1350px){
-        margin: 10px 28%;
-    }
-
-    @media only screen and (max-width: 1200px){
-        margin: 10px 15%;
-    }
-
-    @media only screen and (max-width: 900px){
-      margin: 10px 10%;
-    }
-
-    @media only screen and (max-width: 800px){
-      margin: 10px 0%;
-    }
-    
-
-    @media only screen and (max-width: 750px){
-      margin: 10px 15%;
-    }
-
-    @media only screen and (max-width: 650px){
-      margin: 10px 20%;
-      padding: 0;
-    }
-      
-    @media only screen and (max-width: 450px){
-      margin: 0;
-      padding: 0;
-    }
+    margin: 1%;
 `;

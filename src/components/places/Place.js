@@ -5,17 +5,14 @@ import styled from 'styled-components';
 
 const Place = ({id, name, match}) => (
 
-
 	<Link to={ `/places/${id}` }>
- 		
-        <Responsive>
+        <ResponsiveGallery>
           <Gallery>
               <Image/>
-              <Description>{name}</Description>
+              <ImageFooter>{name}</ImageFooter>
               <AddDestinationContainer placeId={ id } name={name}/> 
           </Gallery>
-        </Responsive>
-	  
+        </ResponsiveGallery>
     </Link>
 );
 
@@ -29,65 +26,43 @@ Place.propTypes = {
 
 
 const Gallery = styled.div`
-    border: 1px solid #ccc;
-    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19)
-    box-sizing: border-box;
-    &:hover {
-       border: 1px solid #777;
-    }
-`
-
-const Image = styled.div` {
-  height: 250px;
   box-sizing: border-box;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+  &:hover {
+     border: 1px solid #777;
+  }
+`
+const Image = styled.div` {
+  box-sizing: border-box;
+  height: 300px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
   background-image:url(${({ image }) => image ? image : 'https://a0.muscache.com/airbnb/guidebook/v1_san_francisco_carousel@2x.jpg'});
 `
 
-const Description = styled.div`
-    padding: 15px;
-    text-align: center;
-    box-sizing: border-box;
+const ImageFooter = styled.div`
+  padding-top: 8px;
+  text-align: center;
+  box-sizing: border-box;
+  float: left;
+  text-align: center;
+  width: 83%;
+  font-size: 25px;
 `
-
-const Responsive = styled.div`
-    padding: 0 10px;
+const ResponsiveGallery = styled.div`
     float: left;
-    width: 30%;
-    min-width: 500px;
+    width: 100%;
     box-sizing: border-box;
-    margin-top: 10px;
-    margin-bottom: 10px;
     transition: 0.8s;
-
-    @media only screen and (max-width: 1350px){
-        width: 60%;
+    z-index: 1;
+  
+    @media only screen and (min-width: 768px) {
+       width: 49%;
     }
 
-     
-    @media only screen and (max-width: 750px){
-        max-width: 350px;
-        min-width: 350px;
+    @media only screen and (min-width: 1000px) {
+      width: 33%;
     }
-
-
-
-    @media only screen and (max-width: 650px){
-      padding: 0 0;
-              max-width: 500px;
-        min-width: 350px;
-    }
-     
-
-    @media only screen and (max-width: 450x){
-      padding: 0 0;
-      max-width: 350px;
-      min-width: 350px;
-    }  
 `
-
-/*	<li>
-   <Link to={ `/places/${id}` }> 
-    Place: { name }
-   </Link>
-   <AddDestinationContainer placeId={ id } name={name}/>
- </li>*/
