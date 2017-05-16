@@ -35,8 +35,7 @@ export const getPlace = (state, placeId) => {
 };
 
 export const getPlacesRegionName = (state) => {
-  const firstId = state.placesIdByName[0];
+  const regionId = state.placesIdByName[0];
   const placesCount = state.placesIdByName.length;
-  return firstId && getRegionTitle(state.placesHashById[firstId].regionName, placesCount);
+  return regionId && getRegionTitle(state.placesHashById[regionId].regionName, placesCount);
 };
-

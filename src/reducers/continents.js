@@ -28,3 +28,17 @@ export default continents;
 export const getContinents = (state) => {
   return state.continentsIdByName.map((continentId) => (state.continentsHashById[continentId]));
 };
+
+export const getRegionImageById = (state, regionId) => {
+  let image = '';
+  state.continentsIdByName.some((continentId) => {
+    state.continentsHashById[continentId].regions.some((region) => {
+      if (region.id == regionId) {
+        image = region.image;
+      }
+      return image;
+    });
+    return image;
+  });
+  return image;
+};

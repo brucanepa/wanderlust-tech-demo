@@ -36,3 +36,7 @@ export const getSelectedDestinationInfo = (state) =>
 
 export const getPlacesRegionName = (state) =>
   fromPlaces.getPlacesRegionName(state.places);
+
+export const getRegionImageById = (state, regionId) =>
+  fromContinents.getRegionImageById(state.continents, regionId);
+  

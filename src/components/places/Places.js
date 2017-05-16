@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import Place from './Place';
 import styled from 'styled-components';
 
-const Places = ({ places, region, match }) => (
+const Places = ({ places, regionName, match, regionImage }) => (
   <PlacesStylized>
     
-    <PlacesNameStylized>{region}
+    <PlacesNameStylized image={regionImage}>{regionName}
       <Back to={`/continents`}>
           arrow_back
       </Back>

@@ -10,7 +10,6 @@ const Regions = ({ regions, match }) => (
             key={region.id}
             match={match}
             {...region}
-            image={america}
           />
         )}
     </RegionsStylized> 
@@ -20,6 +19,7 @@ Regions.propTypes = {
   regions: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired
   }).isRequired).isRequired,
   match: PropTypes.any
 };

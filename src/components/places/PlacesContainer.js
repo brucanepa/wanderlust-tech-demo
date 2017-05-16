@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { places as placesActions } from '../../actions';
 import Places from './Places';
-import { getVisiblePlaces, getPlacesRegionName } from '../../reducers';
+import { getVisiblePlaces, getPlacesRegionName, getRegionImageById } from '../../reducers';
 
 class VisiblePlaces extends Component {
   componentDidMount() {
@@ -17,9 +17,10 @@ class VisiblePlaces extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
   places: getVisiblePlaces(state),
-  region: getPlacesRegionName(state)
+  regionName: getPlacesRegionName(state),
+  regionImage: getRegionImageById(state, ownProps.match.params.regionId)
 });
 
 const mapDispatchToProps = (dispatch) => ({

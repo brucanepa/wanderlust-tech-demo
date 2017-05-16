@@ -8,7 +8,7 @@ const Region = ({match, id, name, image, placesCount}) => (
     <Link to={ `regions/${id}` }>
     <ResponsiveGallery>
       <Gallery>
-        <Image/>
+        <Image image={image}/>
         <ImageFooter>
           { getRegionTitle(name, placesCount) }</ImageFooter>
       </Gallery>
