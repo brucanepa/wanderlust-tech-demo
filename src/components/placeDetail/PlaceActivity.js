@@ -1,10 +1,12 @@
 import React, { PropTypes } from 'react';
+import styled from 'styled-components';
 
 const PlaceActivity = ({name, description, price}) => (
   <li>
-    Activity: {name} 
-    Description: {description}
-    Price: {price}
+  	<h2>{name}</h2>
+  	<Description>{description}</Description>
+    <Description>Precio: {price}</Description>
+    <Subseparator/>
   </li>
 );
 
@@ -15,3 +17,11 @@ PlaceActivity.propTypes = {
   description: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired
 };
+
+const Description = styled.p`
+	font-size: 1.4em;
+`;
+
+const Subseparator = styled.hr`
+    border-top: 1px solid #5f9ea0;
+`;
