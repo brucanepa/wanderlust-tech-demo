@@ -1,11 +1,12 @@
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 
-const Destination = ({id, name, onClick, selected, index}) => (
+const Destination = ({id, name, onClick, selected, index, onClickRemove}) => (
   <DestinationStylized 
     onClick={ () => {onClick(id, index)} } 
     selected={ selected }>
     { name }
+    <Button type="button" onClick={ () => onClickRemove(id) }>delete</Button>
   </DestinationStylized>
 );
 
@@ -31,6 +32,25 @@ const DestinationStylized = styled.li`
         background-color: #2aaba9;
     }
 `;
+
+const Button = styled.button`
+	  height: 20px;
+    width: 20px;
+    margin: 1%;
+    font-size: 14px;
+    color: white;
+    background-color: #5f9ea0;
+    border-radius: 50%;
+    border: none;
+    outline:none;
+    font-family: Material Icons;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+    margin: 20px 20px;
+
+    &:hover {
+        background-color: #2aaba9;
+    }
+`
 
 export default Destination;
 

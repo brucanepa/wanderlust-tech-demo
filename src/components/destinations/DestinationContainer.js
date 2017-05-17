@@ -4,7 +4,6 @@ import Destination from './Destination'
 import { destinations as destinationsActions } from '../../actions';
 import { getSelectedDestinationId } from '../../reducers';
 
-
 class DestinationContainer extends Component {
   render() {
     return <Destination {...this.props} />
@@ -18,6 +17,9 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch) => ({
   onClick(id, index) {
     return dispatch(destinationsActions.setSelected(id, index));
+  },
+  onClickRemove(id) {
+    return dispatch(destinationsActions.remove({id}));
   }
 });
 
