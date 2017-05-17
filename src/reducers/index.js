@@ -3,12 +3,14 @@ import places, * as fromPlaces from './places';
 import destinations, * as fromDestinations from './destinations';
 import placeDetail from './placeDetail';
 import continents, * as fromContinents from './continents';
+import requesting, * as fromRequesting from './requesting';
 
 const wanderApp = combineReducers({
   places,
   destinations,
   placeDetail,
-  continents
+  continents,
+  requesting
 });
 
 export default wanderApp;
@@ -40,3 +42,8 @@ export const getPlacesRegionName = (state) =>
 export const getRegionImageById = (state, regionId) =>
   fromContinents.getRegionImageById(state.continents, regionId);
   
+export const showLoading = (state) =>
+  fromRequesting.showLoading(state.requesting);
+
+export const showError = (state) =>
+  fromRequesting.showError(state.requesting);

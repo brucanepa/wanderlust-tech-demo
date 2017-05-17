@@ -33,8 +33,16 @@ export const fetchContinents = (dispatch) => {
   return database.ref(apiUris.continents)
     .once('value')
     .then((snapshot) => {
-      return snapshot.val();
-    }, () => ([]));
+      const continents = snapshot.val();
+      if (continents) {
+        continents.forEach((continent) => {
+          continent.regions.sort((a, b)=> {
+            return a.name > b.name;
+          })
+        });
+      }
+      return continents || [];
+    });
 };
 // End Continents
 

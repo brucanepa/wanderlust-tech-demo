@@ -1,124 +1,138 @@
 import { actionsTypes as types } from '../constants';
 
 export const places = {
-  requestPlaces: () => {
+  requestPlaces() {
     return {
       type: types.requestPlaces,
       requesting: true
     }
   },
-  receivePlacesSuccess: (regionId, response) => {
+  receivePlacesSuccess(regionId, response) {
     return {
       type: types.receivePlacesSuccess,
       placesResponse: response,
-      regionId
+      regionId,
+      receive: true
     }
   }
 };
 
 export const destinations = {
-  requestDestinations: () => {
+  requestDestinations() {
     return {
       type: types.requestDestinations,
       requesting: true
     }
   },
-  receiveDestinationsSuccess: (response) => {
+  receiveDestinationsSuccess(response) {
     return {
       type: types.receiveDestinationsSuccess,
-      destinationResponse: response
+      destinationResponse: response,
+      receive: true
     }
   },
-  requestAdd: () => {
+  requestAdd() {
     return {
       type: types.requestAdd,
       requesting: true
     }
   },
-  receiveAddSuccess: (response) => {
+  receiveAddSuccess(response) {
     return {
       type: types.receiveAddSuccess,
-      destinationResponse: response
+      destinationResponse: response,
+      receive: true
     }
   },
-  requestSwapPositionUp: () => {
+  requestSwapPositionUp() {
     return {
-      type: types.requestSwapPositionUp,
-      requesting: true
+      type: types.requestSwapPositionUp
     }
   },
-  receiveSwapPositionUpSuccess: (selectedId, otherSelectedId) => {
+  receiveSwapPositionUpSuccess(selectedId, otherSelectedId) {
     return {
       type: types.receiveSwapPositionUpSuccess,
       selectedId,
       otherSelectedId
     }
   },
-  requestSwapPositionDown: () => {
+  requestSwapPositionDown() {
     return {
-      type: types.requestSwapPositionDown,
-      requesting: true
+      type: types.requestSwapPositionDown
     }
   },
-  receiveSwapPositionDownSuccess: (selectedId, otherSelectedId) => {
+  receiveSwapPositionDownSuccess(selectedId, otherSelectedId) {
     return {
       type: types.receiveSwapPositionDownSuccess,
       selectedId,
       otherSelectedId
     }
   },
-  requestRemoveDestination: () => {
+  requestRemoveDestination() {
     return {
       type: types.requestRemoveDestination,
       requesting: true
     }
   },
-  receiveRemoveDestinationSuccess: (selectedId) => {
+  receiveRemoveDestinationSuccess(selectedId) {
     return {
       type: types.receiveRemoveDestinationSuccess,
-      selectedId
+      selectedId,
+      receive: true
     }
   }
 };
 
 export const placeDetail = {
-  requestPlaceDetail: () => {
+  requestPlaceDetail() {
     return {
       type: types.requestPlaceDetail,
       requesting: true
     }
   },
-  receivePlaceDetailSuccess: (response) => {
+  receivePlaceDetailSuccess(response) {
     return {
       type: types.receivePlaceDetailSuccess,
-      placeDetailResponse: response
+      placeDetailResponse: response,
+      receive: true
     }
   },
-  requestAddReview: () => {
+  requestAddReview() {
     return {
       type: types.requestAddReview,
       requesting: true
     }
   },
-  receiveAddReviewSuccess: (response) => {
+  receiveAddReviewSuccess(response) {
     return {
       type: types.receiveAddReviewSuccess,
-      reviewResponse: response
+      reviewResponse: response,
+      receive: true
     }
   }
 };
 
 export const continents = {
-  requestContinents: () => {
+  requestContinents() {
     return {
       type: types.requestContinents,
       requesting: true
     }
   },
-  receiveContinentsSuccess: (response) => {
+  receiveContinentsSuccess(response) {
     return {
       type: types.receiveContinentsSuccess,
       continentsResponse: response,
+      receive: true
+    }
+  }
+};
+
+export const errors = {
+  generic(actionType) {
+    return {
+      type: actionType,
+      error: true
     }
   }
 };

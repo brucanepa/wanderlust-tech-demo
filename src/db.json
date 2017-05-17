@@ -18,27 +18,27 @@
         },
         {
           "id": 3,
-          "name": "Europa Ibérica",
-          "placesCount": 1,
-          "image": "http://4.bp.blogspot.com/_apTf63ffIlg/SxdmEuEcF2I/AAAAAAAAAz0/vccQKg05GWQ/s400/Spain+Tourist+Attractions+%26+Must+See+Places+in+Spain3.jpg"
-        },
-        {
-          "id": 4,
           "name": "Reino Unido",
           "placesCount": 0,
           "image": "https://d16teuje7e44sv.cloudfront.net/spa/cities/united-kingdom/london-medium.jpg"
         },
         {
-          "id": 5,
+          "id": 4,
           "name": "Norte de Francia",
-          "placesCount": 1,
+          "placesCount": 0,
           "image": "http://www.eurocamp.co.uk/images/northern-france-brittany-mont-st-michel_tcm13-30975.jpg"
         },
         {
-          "id": 6,
+          "id": 5,
           "name": "Norte de Europa",
           "placesCount": 0,
           "image": "https://d36tnp772eyphs.cloudfront.net/blogs/1/2011/05/Germany.jpg"
+        },
+        {
+          "id": 6,
+          "name": "Otros Lugares",
+          "placesCount": 0,
+          "image": "http://media.salemwebnetwork.com/cms/CW/faith/30378-heaven-clouds-light.1200w.tn.jpg"
         }
       ]
     },
@@ -70,6 +70,12 @@
           "id": 11,
           "name": "Centro de África",
           "placesCount": 0
+        },
+        {
+          "id": 12,
+          "name": "Otros Lugares",
+          "placesCount": 0,
+          "image": "http://media.salemwebnetwork.com/cms/CW/faith/30378-heaven-clouds-light.1200w.tn.jpg"
         }
       ]
     },
@@ -78,70 +84,35 @@
       "name": "Asia",
       "regions": [
         {
-          "id": 12,
+          "id": 13,
           "name": "Medio Oriente",
           "placesCount": 0
         },
         {
-          "id": 13,
+          "id": 14,
           "name": "Este de China",
           "placesCount": 0
         },
         {
-          "id": 14,
+          "id": 15,
           "name": "Sureste de Asia",
           "placesCount": 0
         },
         {
-          "id": 15,
-          "name": "Siberia",
-          "placesCount": 0
-        },
-        {
           "id": 16,
-          "name": "Península de Indostán",
+          "name": "Siberia",
           "placesCount": 0
         },
         {
           "id": 17,
           "name": "Península de Corea",
-          "placesCount": 0
-        }
-      ]
-    },
-    {
-      "id": 4,
-      "name": "Otros lugares",
-      "regions": [
-        {
-          "id": 13,
-          "name": "Medio Oriente",
-          "placesCount": 0
-        },
-        {
-          "id": 14,
-          "name": "Este de China",
-          "placesCount": 0
-        },
-        {
-          "id": 15,
-          "name": "Sureste de Asia",
-          "placesCount": 0
-        },
-        {
-          "id": 16,
-          "name": "Siberia",
-          "placesCount": 0
-        },
-        {
-          "id": 17,
-          "name": "Península de Indostán",
           "placesCount": 0
         },
         {
           "id": 18,
-          "name": "Península de Corea",
-          "placesCount": 0
+          "name": "Otros Lugares",
+          "placesCount": 0,
+          "image": "http://media.salemwebnetwork.com/cms/CW/faith/30378-heaven-clouds-light.1200w.tn.jpg"
         }
       ]
     }
