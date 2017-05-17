@@ -33,17 +33,17 @@ const Button = styled.button`
     width: 45px;
     margin: 1%;
     font-size: 31px;
-    color: white;
-    background-color: #5f9ea0;
+    color: #1e7f7e;
+    background-color: white;
     border-radius: 50%;
     border: none;
     outline:none;
     font-family: Material Icons;
     box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
     margin: 20px 20px;
-
     &:hover {
         background-color: #2aaba9;
+        color: white;
     }
 `
 

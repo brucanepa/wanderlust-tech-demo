@@ -1,7 +1,7 @@
 
 const texts = {
   noDestinations: 'No hay destinos en tu itinerario',
-  destinationsTitle: 'Planifica tu viaje!',
+  destinationsTitle: '¡WanderLust!',
   pageTitle: 'Encuentra tu próximo destino',
   descriptionTitle: 'Descripción',
   priceTitle: 'Precio',
