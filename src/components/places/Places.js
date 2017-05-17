@@ -2,10 +2,11 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router-dom';
 import Place from './Place';
 import styled from 'styled-components';
+import { defaultImage } from '../../constants';
 
 const Places = ({ places, regionName, match, regionImage }) => (
   <PlacesStylized>
-    <PlacesNameStylized image={regionImage}>{regionName}
+    <PlacesNameStylized image={regionImage || defaultImage}>{regionName}
       <Back to={`/continents`}>
           arrow_back
       </Back>
@@ -85,7 +86,7 @@ const PlacesNameStylized = styled.h1`
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 50%;
-    background-image:url(${({ image }) => image ? image : 'http://cdn.wallpapersafari.com/6/52/ied8HY.jpeg'});
+    background-image:url(${({ image }) => image});
 `;
 
 const PlacesListStylized = styled.div`
