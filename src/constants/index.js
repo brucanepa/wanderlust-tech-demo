@@ -15,3 +15,7 @@ export const apiUris = {
 export const defaultImage = 'http://cdn.wallpapersafari.com/6/52/ied8HY.jpeg';
 
 export const actionsTypes = actions;
+
+export const messages = {
+  noDestinations: 'No hay destinos en tu itirenario'
+};
