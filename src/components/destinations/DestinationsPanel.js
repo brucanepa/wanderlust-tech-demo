@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import '../../App.css';
 import DestinationsContainer from './DestinationsContainer';
 import DestinationsFooterContainer from './DestinationsFooterContainer';
@@ -15,6 +15,10 @@ const DestinationsPanel = ({ match }) => (
 );
 
 export default DestinationsPanel;
+
+DestinationsPanel.propTypes = {
+  match: PropTypes.any
+};
 
 const ResponsivePanel = styled.div`
     box-sizing: border-box;

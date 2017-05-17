@@ -166,18 +166,20 @@
         {
           "id": 1,
           "name": "Actividad 1",
-          "description": "Descripcion actividad 1"
+          "description": "Descripcion actividad 1",
+          "price": 200
         },
         {
           "id": 2,
           "name": "Actividad 2",
-          "description": "Descripcion actividad 2"
+          "description": "Descripcion actividad 2",
+          "price": 210
         },
         {
           "id": 3,
           "name": "Actividad 3",
           "description": "Descripcion actividad 3",
-          "images": []
+          "price": 100
         }
       ]
     },
@@ -194,17 +196,20 @@
         {
           "id": 1,
           "name": "Actividad 1",
-          "description": "Descripcion actividad 1"
+          "description": "Descripcion actividad 1",
+          "price": 1023
         },
         {
           "id": 2,
           "name": "Actividad 2",
-          "description": "Descripcion actividad 2"
+          "description": "Descripcion actividad 2",
+          "price": 103
         },
         {
           "id": 3,
           "name": "Actividad 3",
-          "description": "Descripcion actividad 3"
+          "description": "Descripcion actividad 3",
+          "price": 323
         }
       ]
     },
@@ -221,17 +226,20 @@
         {
           "id": 1,
           "name": "Actividad 1",
-          "description": "Descripcion actividad 1"
+          "description": "Descripcion actividad 1",
+          "price": 323
         },
         {
           "id": 2,
           "name": "Actividad 2",
-          "description": "Descripcion actividad 2"
+          "description": "Descripcion actividad 2",
+          "price": 9000
         },
         {
           "id": 3,
           "name": "Actividad 3",
-          "description": "Descripcion actividad 3"
+          "description": "Descripcion actividad 3",
+          "price": 477
         }
       ]
     }

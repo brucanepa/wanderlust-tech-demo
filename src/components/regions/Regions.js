@@ -18,7 +18,7 @@ Regions.propTypes = {
   regions: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired
+    image: PropTypes.string
   }).isRequired).isRequired,
   match: PropTypes.any
 };

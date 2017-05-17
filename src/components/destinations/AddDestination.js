@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 
 const AddDestination = ({onClick}) => (
@@ -8,6 +8,10 @@ const AddDestination = ({onClick}) => (
 );
 
 export default AddDestination;
+
+AddDestination.propTypes = {
+  onClick: PropTypes.func.isRequired
+};
 
 const Button = styled.button`
 	height: 45px;

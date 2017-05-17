@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Review from './Review';
 
 const Reviews = ({reviews}) => (
@@ -16,3 +16,11 @@ const Reviews = ({reviews}) => (
 );
 
 export default Reviews;
+
+Reviews.propTypes = {
+  reviews: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+		comment: PropTypes.string.isRequired,
+		rating: PropTypes.number.isRequired
+  })).isRequired
+};

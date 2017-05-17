@@ -10,9 +10,11 @@ const Destination = ({id, name, onClick, selected, index}) => (
 );
 
 Destination.propTypes = {
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-  selected: PropTypes.bool.isRequired
+  selected: PropTypes.bool.isRequired,
+  index: PropTypes.number.isRequired
 };
 
 const DestinationStylized = styled.li`

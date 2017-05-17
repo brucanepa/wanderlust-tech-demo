@@ -134,7 +134,7 @@ const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 const getUser = (userId) => {
   let user = null;
   fakeDatabase.users.some((u) => {
-    user = u.id == userId && u;
+    user = u.id === userId && u;
     return user;
   })
   return user;
@@ -142,7 +142,7 @@ const getUser = (userId) => {
 
 // Begin Places
 export const fetchPlaces = (regionId) => delay(500).then(() => {
-  return fakeDatabase.places.filter((place) => (place.regionId == regionId));
+  return fakeDatabase.places.filter((place) => (place.regionId === regionId));
 });
 
 // End Places
@@ -188,7 +188,7 @@ export const removeDestination = (selectedId) => delay(500).then(() => {
 const getPlaceDetail = (placeId) => {
   let placeDetail = null;
   fakeDatabase.placesDetails.some((p) => {
-    placeDetail = p.id == placeId && p;
+    placeDetail = p.id === placeId && p;
     return placeDetail;
   })
   return placeDetail;

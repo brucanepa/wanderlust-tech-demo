@@ -61,7 +61,7 @@ const getSelectedDestination = (selectedId, index) => {
 };
 
 const selectedDestination = (state = {}, action) => {
-  if ((action.selectedId && state.selectedId != action.selectedId) || action.otherSelectedId) {
+  if ((action.selectedId && state.selectedId !== action.selectedId) || action.otherSelectedId) {
     switch (action.type) {
       case actions.selectedDestination:
         return getSelectedDestination(action.selectedId, action.index);
@@ -104,7 +104,6 @@ const getSelectedInfoByIndex = (state, index) => {
   return destination ? {
     id: destination.id,
     order: destination.order,
-    name: destination.name,
     index
   } : {};
 };

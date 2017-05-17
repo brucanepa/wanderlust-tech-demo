@@ -9,24 +9,38 @@ import AddReview from '../placeDetail/AddReview';
 import Reviews from '../placeDetail/Reviews';
 import styled from 'styled-components';
 
-const PlaceDetail = ({ name, placeDetail, regionId, images, match }) => (
+const PlaceDetail = ({name, placeDetail, regionId, images, match}) => (
   <PlaceDetailStylized>
-		<Link to={regionId? `/regions/${regionId}` : '/continents'}>
-		    Back
-		</Link>
-
-		<h3>{name || placeDetail.placeInformation.name}</h3>
-		<PlaceRating {...placeDetail.placeRating}/>
-		<AddDestinationContainer placeId={match.params.placeId} name={name || placeDetail.placeInformation.name}/>
-		<PlaceDescription description={placeDetail.placeInformation.description}/>
-		<PlaceActivities activities={placeDetail.placeInformation.activities}/>
-		<PlaceImages images={images}/>
-		<Reviews reviews={placeDetail.reviewList} />
-		<AddReview placeId={match.params.placeId} />
-	</PlaceDetailStylized>
+    <Link to={ regionId ? `/regions/${regionId}` : '/continents' }> Back
+    </Link>
+    <h3>{ name || placeDetail.placeInformation.name }</h3>
+    <PlaceRating {...placeDetail.placeRating}/>
+    <AddDestinationContainer placeId={ match.params.placeId } name={ name || placeDetail.placeInformation.name } />
+    <PlaceDescription description={ placeDetail.placeInformation.description } />
+    <PlaceActivities activities={ placeDetail.placeInformation.activities } />
+    <PlaceImages images={ images } />
+    <Reviews reviews={ placeDetail.reviewList } />
+    <AddReview placeId={ match.params.placeId } />
+  </PlaceDetailStylized>
 );
 
 export default PlaceDetail;
+
+PlaceDetail.propTypes = {
+  name: PropTypes.string,
+  placeDetail: PropTypes.shape({
+    placeInformation: PropTypes.shape({
+      activities: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired
+      }).isRequired).isRequired,
+      description: PropTypes.string.isRequired
+    })
+  }),
+  regionId: PropTypes.number.isRequired,
+  match: PropTypes.any
+};
 
 const PlaceDetailStylized = styled.div`
     height: 93%;
@@ -46,18 +60,4 @@ const PlaceDetailStylized = styled.div`
 `;
 
 
-PlaceDetail.propTypes = {
-  name: PropTypes.string.isRequired,
-  placeDetail: PropTypes.shape({
-    placeInformation: PropTypes.shape({
-      activities: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired
-      }).isRequired).isRequired,
-      description: PropTypes.string.isRequired
-    })
-  }),
-  regionId: PropTypes.number.isRequired,
-  match: PropTypes.any
-};
+

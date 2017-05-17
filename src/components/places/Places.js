@@ -30,6 +30,7 @@ Places.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
   }).isRequired).isRequired,
+  regionImage: PropTypes.string.isRequired,
   match: PropTypes.any
 };
 

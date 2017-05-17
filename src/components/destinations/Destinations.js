@@ -19,7 +19,8 @@ Destinations.propTypes = {
     id: PropTypes.string.isRequired,
     placeId: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
-  }).isRequired).isRequired
+  }).isRequired).isRequired,
+  onClick: PropTypes.func
 };
 
 const DestinationsStylized = styled.ul`

@@ -1,15 +1,32 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 
-const DestinationsFooter = ( {onClickUp, onClickDown, onClickRemove, selectedInfo} ) => (
-  <Footer>
-    <Button type="button" onClick={ () => onClickUp(selectedInfo) }>arrow_upward</Button>
-    <Button type="button" onClick={ () => onClickDown(selectedInfo) }>arrow_downward</Button>
-    <Button type="button" onClick={ () => onClickRemove(selectedInfo) }>delete</Button>
-  </Footer>
+const DestinationsFooter = ({onClickUp, onClickDown, onClickRemove, selectedInfo}) => (
+    <Footer>
+        <Button type="button" onClick={ () => onClickUp(selectedInfo) }>arrow_upward</Button>
+        <Button type="button" onClick={ () => onClickDown(selectedInfo) }>arrow_downward</Button>
+        <Button type="button" onClick={ () => onClickRemove(selectedInfo) }>delete</Button>
+    </Footer>
 );
 
 export default DestinationsFooter;
+
+const selectedInfoShape = {
+    id: PropTypes.string,
+    order: PropTypes.number,
+    index: PropTypes.number
+};
+
+DestinationsFooter.propTypes = {
+    onClickUp: PropTypes.func.isRequired,
+    onClickDown: PropTypes.func.isRequired,
+    onClickRemove: PropTypes.func.isRequired,
+    selectedInfo: PropTypes.shape({
+        selected: PropTypes.shape(selectedInfoShape),
+        selectedUp: PropTypes.shape(selectedInfoShape),
+        selectedDown: PropTypes.shape(selectedInfoShape),
+    })
+};
 
 const Button = styled.button`
 	height: 45px;

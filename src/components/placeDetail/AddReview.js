@@ -35,6 +35,7 @@ const AddReview = ({ dispatch, placeId }) => {
 
 AddReview.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  placeId: PropTypes.number.isRequired
 };
 
 export default connect()(AddReview);

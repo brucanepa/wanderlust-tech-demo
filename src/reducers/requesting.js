@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import { actionsTypes as actions } from '../constants';
 
 const hide = (state, receive, specific) => {
   return (specific || receive) && state.show
@@ -38,10 +37,10 @@ const requesting = combineReducers({
 
 export default requesting;
 
-const showLoading = (state) => {
+export const showLoading = (state) => {
   return state.loading.show;
 };
 
-const showError = (state) => {
+export const showError = (state) => {
   return state.error.show;
 };

@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router-dom';
-import PlacesContainer from '../places/PlacesContainer';
 import styled from 'styled-components';
 import { getRegionTitle } from '../../utils/textHelper';
 import { defaultImage } from '../../constants';
@@ -19,6 +18,13 @@ const Region = ({match, id, name, image, placesCount}) => (
 );
 
 export default Region;
+
+Region.prototype = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  match: PropTypes.any.isRequired
+};
 
 const Gallery = styled.div`
   box-sizing: border-box;
