@@ -18,9 +18,9 @@ Destination.propTypes = {
   index: PropTypes.number.isRequired
 };
 
+
 const DestinationStylized = styled.li`
-	  height: 35px;
-	  padding-top: 5px;
+    padding-top: 15px;
     font-size: 20px;
     background-color: ${({ selected }) => selected ? '#21999e' : '#5f9ea0'};
     transition: 0.3s;
@@ -28,27 +28,33 @@ const DestinationStylized = styled.li`
     box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
     margin: 4px 0px;
     color: white;
+    display: table;
+    width: 100%;
+    box-sizing: border-box;
     &:hover { 
         background-color: #2aaba9;
+        margin-bottom: 15px;
     }
 `;
 
 const Button = styled.button`
-	  height: 20px;
-    width: 20px;
-    margin: 1%;
-    font-size: 14px;
-    color: white;
-    background-color: #5f9ea0;
+    height: 34px;
+    float: right;
+    margin: -4px 12px;
+    margin-bottom: 11px;
+    padding-right: 5px;
+    font-size: 24px;
     border-radius: 50%;
     border: none;
-    outline:none;
+    outline: none;
     font-family: Material Icons;
     box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
-    margin: 20px 20px;
-
+    color: #1e7f7e;
+    background-color: white;
+    transition: 0.3s;
     &:hover {
-        background-color: #2aaba9;
+        background-color: #1e7f7e;
+        color: white;
     }
 `
 

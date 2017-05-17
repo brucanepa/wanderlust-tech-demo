@@ -5,6 +5,7 @@ import Destinations from './Destinations';
 import { getDestinations } from '../../reducers';
 import { texts} from '../../constants';
 
+
 class DestinationsContainer extends Component {
   componentDidMount() {
     this.fetchData();
@@ -12,13 +13,8 @@ class DestinationsContainer extends Component {
   fetchData() {
     this.props.fetchDestinations();
   }
-  showDestinations() {
-    return this.props.destinations && this.props.destinations.length > 0;
-  }
   render() {
-    return this.showDestinations() ?
-      <Destinations {...this.props} /> :
-      <label>{texts.noDestinations}</label> //ToDo
+    return <Destinations {...this.props}/>
   }
 }
 
