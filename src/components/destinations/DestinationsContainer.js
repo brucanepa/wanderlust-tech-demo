@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { destinations as destinationsActions } from '../../actions';
 import Destinations from './Destinations';
 import { getDestinations } from '../../reducers';
-import { messages} from '../../constants';
+import { texts} from '../../constants';
 
 class DestinationsContainer extends Component {
   componentDidMount() {
@@ -18,7 +18,7 @@ class DestinationsContainer extends Component {
   render() {
     return this.showDestinations() ?
       <Destinations {...this.props} /> :
-      <label>{messages.noDestinations}</label> //ToDo
+      <label>{texts.noDestinations}</label> //ToDo
   }
 }
 

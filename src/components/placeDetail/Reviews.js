@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react';
 import Review from './Review';
 import styled from 'styled-components';
+import { texts } from '../../constants';
 
 const Reviews = ({reviews}) => (
 	<PlaceReviewsStylized>
-		<h1>Opiniones</h1>
+		<h1>{texts.reviewsTitle}</h1>
 		<Separator></Separator>
 		<ul>
 			{reviews.map(review =>

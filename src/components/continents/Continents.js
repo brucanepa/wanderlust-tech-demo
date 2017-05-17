@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react';
 import Continent from './Continent';
 import styled from 'styled-components';
+import { texts } from '../../constants';
 
 const Continents = ({continents, match}) => (
   <ContinentsStylized>
-    <ContinentNameStylized>FIND YOUR NEXT DESTINY</ContinentNameStylized>
+    <ContinentNameStylized>{texts.pageTitle}</ContinentNameStylized>
     <div>
       { 
         continents.map(continent => 

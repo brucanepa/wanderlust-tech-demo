@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react';
 import PlaceActivity from './PlaceActivity'
 import styled from 'styled-components';
+import { texts } from '../../constants';
 
 const PlaceActivities = ({ activities }) => (
   <PlaceActivitiesStylized>
-    <h1>Actividades</h1>
+    <h1>{texts.activitiesTitle}</h1>
     <Separator/>
     <ul>
       { activities.map(activitiy => 

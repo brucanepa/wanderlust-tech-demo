@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
+import { texts } from '../../constants';
 
 const PlaceDescription = ({ description }) => (
   <PlaceDescriptionStylized>
-		<h1>Descripción</h1>
+		<h1>{texts.descriptionTitle}</h1>
 		<Separator/>
 		<Description>{description}</Description>
 	</PlaceDescriptionStylized>

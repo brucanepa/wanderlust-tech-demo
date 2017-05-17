@@ -3,11 +3,12 @@ import '../../App.css';
 import DestinationsContainer from './DestinationsContainer';
 import DestinationsFooterContainer from './DestinationsFooterContainer';
 import styled from 'styled-components';
+import { texts } from '../../constants';
 
 const DestinationsPanel = ({ match }) => (
   <ResponsivePanel>
   	<PanelTitle>
-  		Plan your trip!
+  		{texts.destinationsTitle}
   	</PanelTitle>
     <DestinationsContainer />
     <DestinationsFooterContainer/>

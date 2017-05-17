@@ -1,11 +1,12 @@
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
+import { texts } from '../../constants';
 
 const PlaceActivity = ({name, description, price}) => (
   <li>
   	<h2>{name}</h2>
   	<Description>{description}</Description>
-    <Description>Precio: {price}</Description>
+    <Description>{texts.priceTitle}: {price}</Description>
     <Subseparator/>
   </li>
 );

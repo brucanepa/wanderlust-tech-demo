@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { placeDetail as placeDetailActions } from '../../actions';
 import PlaceRating from './PlaceRating';
 import styled from 'styled-components';
+import { texts } from '../../constants';
 
 const AddReview = ({ dispatch, placeId }) => {
   let input;
@@ -23,12 +24,12 @@ const AddReview = ({ dispatch, placeId }) => {
 
   return (
     <AddReviewStylized>
-      <Description>Dejanos tu comentario...</Description>
+      <Description>{texts.reviewsComment}</Description>
       <PlaceRating onRateClick={onRateClick} interactive={true}/>
       <form onSubmit={ (e) => onSubmit(e) }>
         <InputStylized innerRef={node => { input = node; }} />
         <button type="submit">
-        Agregar
+        {texts.add}
         </button>
       </form>
     </AddReviewStylized>

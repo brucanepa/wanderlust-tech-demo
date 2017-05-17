@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react';
 import PlaceRating from './PlaceRating';
 import styled from 'styled-components';
+import { texts } from '../../constants';
 
 const Review = ({id, comment, rating}) => (
 	<li>
-   <RatingName>Puntuación </RatingName>
+   <RatingName>{texts.ratingTitle} </RatingName>
    <PlaceRating rating={ rating } />
    <Description>
      { comment }
