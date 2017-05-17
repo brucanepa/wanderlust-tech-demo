@@ -1,5 +1,5 @@
 import * as firebase from 'firebase';
-import { uris, getUserId } from '../constants';
+import { apiUris, getUserId } from '../constants';
 
 const config = {
   apiKey: 'AIzaSyBHlOtH4VOI-9WB1YgZEC1ZW5xO4dIKriQ',
@@ -15,7 +15,7 @@ let userKey = '';
 let nextDestinationPosition = 0;
 
 (() => {
-  database.ref(uris.users)
+  database.ref(apiUris.users)
     .orderByChild('id')
     .equalTo(getUserId())
     .once('value')
@@ -24,13 +24,13 @@ let nextDestinationPosition = 0;
     });
 })();
 
-const getActualUserUri = () => (uris.users + '/' + userKey);
+const getActualUserUri = () => (apiUris.users + '/' + userKey);
 
-const getPlaceDetailUri = (placeId) => (uris.placesDetails + '/' + (placeId - 1));
+const getPlaceDetailUri = (placeId) => (apiUris.placesDetails + '/' + (placeId - 1));
 
 // Begin Continents
 export const fetchContinents = (dispatch) => {
-  return database.ref(uris.continents)
+  return database.ref(apiUris.continents)
     .once('value')
     .then((snapshot) => {
       return snapshot.val();
@@ -40,7 +40,7 @@ export const fetchContinents = (dispatch) => {
 
 // Begin Places
 export const fetchPlaces = (regionId) => {
-  return database.ref(uris.places)
+  return database.ref(apiUris.places)
     .orderByChild('regionId')
     .equalTo(parseInt(regionId))
     .once('value')

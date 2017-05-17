@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { swapArrayPosition, removeArrayElement } from '../utils/arrayHelper';
+import { actionsTypes as actions } from '../constants';
 
 const swapOrders = (state, selectedId, otherSelectedId) => {
   const newState = {
@@ -21,7 +22,7 @@ const destinationsHashById = (state = {}, action) => {
     return swapOrders(state, action.selectedId, action.otherSelectedId);
   } else {
     switch (action.type) {
-      case 'RECEIVE_REMOVE_DESTINATION_SUCCESS':
+      case actions.receiveRemoveDestinationSuccess:
         const newState = {
           ...state
         };
@@ -35,17 +36,17 @@ const destinationsHashById = (state = {}, action) => {
 
 const destinationList = (state = [], action) => {
   switch (action.type) {
-    case 'RECEIVE_DESTINATIONS_SUCCESS':
+    case actions.receiveDestinationsSuccess:
       return action.destinationResponse.result;
-    case 'RECEIVE_ADD_DESTINATION_SUCCESS':
+    case actions.receiveAddSuccess:
       return [...state, action.destinationResponse.result];
-    case 'RECEIVE_SWAP_POSITION_UP_DESTINATION_SUCCESS':
+    case actions.receiveSwapPositionUpSuccess:
       const indexUp = state.indexOf(action.selectedId);
       return swapArrayPosition(state, indexUp, indexUp - 1);
-    case 'RECEIVE_SWAP_POSITION_DOWN_DESTINATION_SUCCESS':
+    case actions.receiveSwapPositionDownSuccess:
       const indexDown = state.indexOf(action.selectedId);
       return swapArrayPosition(state, indexDown, indexDown + 1);
-    case 'RECEIVE_REMOVE_DESTINATION_SUCCESS':
+    case actions.receiveRemoveDestinationSuccess:
       return removeArrayElement(state, state.indexOf(action.selectedId));
     default:
       return state;
@@ -62,18 +63,18 @@ const getSelectedDestination = (selectedId, index) => {
 const selectedDestination = (state = {}, action) => {
   if ((action.selectedId && state.selectedId != action.selectedId) || action.otherSelectedId) {
     switch (action.type) {
-      case 'SELECTED_DESTINATION':
+      case actions.selectedDestination:
         return getSelectedDestination(action.selectedId, action.index);
-      case 'RECEIVE_SWAP_POSITION_UP_DESTINATION_SUCCESS':
+      case actions.receiveSwapPositionUpSuccess:
         return getSelectedDestination(action.selectedId, state.index - 1);
-      case 'RECEIVE_SWAP_POSITION_DOWN_DESTINATION_SUCCESS':
+      case actions.receiveSwapPositionDownSuccess:
         return getSelectedDestination(action.selectedId, state.index + 1);
       default:
         return getSelectedDestination(0, -1);
     }
   } else {
     switch (action.type) {
-      case 'RECEIVE_REMOVE_DESTINATION_SUCCESS':
+      case actions.receiveRemoveDestinationSuccess:
         return getSelectedDestination(0, -1);
     }
   }

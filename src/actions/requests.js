@@ -1,13 +1,15 @@
+import { actionsTypes as types } from '../constants';
 
 export const places = {
   requestPlaces: () => {
     return {
-      type: 'REQUEST_PLACES'
+      type: types.requestPlaces,
+      requesting: true
     }
   },
   receivePlacesSuccess: (regionId, response) => {
     return {
-      type: 'RECEIVE_PLACES_SUCCESS',
+      type: types.receivePlacesSuccess,
       placesResponse: response,
       regionId
     }
@@ -17,58 +19,63 @@ export const places = {
 export const destinations = {
   requestDestinations: () => {
     return {
-      type: 'REQUEST_DESTINATIONS'
+      type: types.requestDestinations,
+      requesting: true
     }
   },
   receiveDestinationsSuccess: (response) => {
     return {
-      type: 'RECEIVE_DESTINATIONS_SUCCESS',
+      type: types.receiveDestinationsSuccess,
       destinationResponse: response
     }
   },
   requestAdd: () => {
     return {
-      type: 'REQUEST_ADD_DESTINATION'
+      type: types.requestAdd,
+      requesting: true
     }
   },
   receiveAddSuccess: (response) => {
     return {
-      type: 'RECEIVE_ADD_DESTINATION_SUCCESS',
+      type: types.receiveAddSuccess,
       destinationResponse: response
     }
   },
   requestSwapPositionUp: () => {
     return {
-      type: 'REQUEST_SWAP_POSITION_UP_DESTINATION'
+      type: types.requestSwapPositionUp,
+      requesting: true
     }
   },
   receiveSwapPositionUpSuccess: (selectedId, otherSelectedId) => {
     return {
-      type: 'RECEIVE_SWAP_POSITION_UP_DESTINATION_SUCCESS',
+      type: types.receiveSwapPositionUpSuccess,
       selectedId,
       otherSelectedId
     }
   },
   requestSwapPositionDown: () => {
     return {
-      type: 'REQUEST_SWAP_POSITION_DOWN_DESTINATION'
+      type: types.requestSwapPositionDown,
+      requesting: true
     }
   },
   receiveSwapPositionDownSuccess: (selectedId, otherSelectedId) => {
     return {
-      type: 'RECEIVE_SWAP_POSITION_DOWN_DESTINATION_SUCCESS',
+      type: types.receiveSwapPositionDownSuccess,
       selectedId,
       otherSelectedId
     }
   },
   requestRemoveDestination: () => {
     return {
-      type: 'REQUEST_REMOVE_DESTINATION'
+      type: types.requestRemoveDestination,
+      requesting: true
     }
   },
   receiveRemoveDestinationSuccess: (selectedId) => {
     return {
-      type: 'RECEIVE_REMOVE_DESTINATION_SUCCESS',
+      type: types.receiveRemoveDestinationSuccess,
       selectedId
     }
   }
@@ -77,23 +84,25 @@ export const destinations = {
 export const placeDetail = {
   requestPlaceDetail: () => {
     return {
-      type: 'REQUEST_DETAIL'
+      type: types.requestPlaceDetail,
+      requesting: true
     }
   },
   receivePlaceDetailSuccess: (response) => {
     return {
-      type: 'RECEIVE_PLACE_DETAIL_SUCCESS',
+      type: types.receivePlaceDetailSuccess,
       placeDetailResponse: response
     }
   },
   requestAddReview: () => {
     return {
-      type: 'REQUEST_ADD_REVIEW'
+      type: types.requestAddReview,
+      requesting: true
     }
   },
   receiveAddReviewSuccess: (response) => {
     return {
-      type: 'RECEIVE_ADD_REVIEW_SUCCESS',
+      type: types.receiveAddReviewSuccess,
       reviewResponse: response
     }
   }
@@ -102,12 +111,13 @@ export const placeDetail = {
 export const continents = {
   requestContinents: () => {
     return {
-      type: 'REQUEST_CONTINENTS'
+      type: types.requestContinents,
+      requesting: true
     }
   },
   receiveContinentsSuccess: (response) => {
     return {
-      type: 'RECEIVE_CONTINENTS_SUCCESS',
+      type: types.receiveContinentsSuccess,
       continentsResponse: response,
     }
   }

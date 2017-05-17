@@ -9,7 +9,7 @@ import AddReview from '../placeDetail/AddReview';
 import Reviews from '../placeDetail/Reviews';
 import styled from 'styled-components';
 
-const PlaceDetail = ({ name, placeDetail, regionId, match }) => (
+const PlaceDetail = ({ name, placeDetail, regionId, images, match }) => (
   <PlaceDetailStylized>
 		<Link to={regionId? `/regions/${regionId}` : '/continents'}>
 		    Back
@@ -20,7 +20,7 @@ const PlaceDetail = ({ name, placeDetail, regionId, match }) => (
 		<AddDestinationContainer placeId={match.params.placeId} name={name || placeDetail.placeInformation.name}/>
 		<PlaceDescription description={placeDetail.placeInformation.description}/>
 		<PlaceActivities activities={placeDetail.placeInformation.activities}/>
-		<PlaceImages/>
+		<PlaceImages images={images}/>
 		<Reviews reviews={placeDetail.reviewList} />
 		<AddReview placeId={match.params.placeId} />
 	</PlaceDetailStylized>

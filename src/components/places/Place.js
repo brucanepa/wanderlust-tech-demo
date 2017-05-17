@@ -2,12 +2,13 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router-dom';
 import AddDestinationContainer from '../destinations/AddDestinationContainer';
 import styled from 'styled-components';
+import { defaultImage } from '../../constants';
 
-const Place = ({id, name, match}) => (
+const Place = ({id, name, image, match}) => (
 	<Link to={ `/places/${id}` }>
     <ResponsiveGallery>
       <Gallery>
-        <Image/>
+        <Image image={image || defaultImage}/>
         <ImageFooter>{name}</ImageFooter>
         <AddDestinationContainer placeId={ id } name={name}/> 
       </Gallery>
@@ -38,7 +39,7 @@ const Image = styled.div` {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  background-image:url(${({ image }) => image ? image : 'https://a0.muscache.com/airbnb/guidebook/v1_san_francisco_carousel@2x.jpg'});
+  background-image:url(${({ image }) => image });
 `
 
 const ImageFooter = styled.div`

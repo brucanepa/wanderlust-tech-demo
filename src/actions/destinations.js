@@ -2,6 +2,7 @@ import api from '../api';
 import { normalize } from 'normalizr';
 import * as schema from './schema';
 import { destinations as requests } from './requests';
+import { actionsTypes as actions } from '../constants';
 
 export const fetchDestinations = () => (dispatch) => {
   dispatch(requests.requestDestinations());
@@ -41,7 +42,7 @@ export const swapPositionDown = (selectedInfo, selectedDownInfo) => (dispatch) =
 
 export const setSelected = (id, index) => (dispatch) => {
   dispatch({
-    type: 'SELECTED_DESTINATION',
+    type: actions.selectedDestination,
     selectedId: id,
     index
   });
