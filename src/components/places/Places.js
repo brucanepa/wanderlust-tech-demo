@@ -74,14 +74,14 @@ const PlacesNameStylized = styled.h1`
     box-sizing: border-box;
     padding: 30px 0px;
     font-weight: bold;
-    font-size: 4em;
+    font-size: 3em;
     text-align: center;
     color: white;
     background-color: cadetblue;
     margin: 0 0;
     box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19)
-    @media only screen and (max-width: 768px) {
-       font-size: 3em;
+    @media only screen and (min-width: 768px) {
+       font-size: 4em;
     }
     background-size: cover;
     background-repeat: no-repeat;
