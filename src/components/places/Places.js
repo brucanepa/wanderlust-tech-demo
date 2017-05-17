@@ -80,7 +80,7 @@ const PlacesNameStylized = styled.h1`
     background-color: cadetblue;
     margin: 0 0;
     box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19)
-    @media only screen and (max-width: 650px) {
+    @media only screen and (max-width: 768px) {
        font-size: 3em;
     }
     background-size: cover;

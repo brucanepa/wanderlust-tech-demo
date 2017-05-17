@@ -36,5 +36,4 @@ const ContinetNameStylized = styled.h2`
     font-size: 3em;
     padding-top: 30px;
     margin-top: 0px;
-    color: cadetblue;
 `;

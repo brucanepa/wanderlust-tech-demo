@@ -8,19 +8,20 @@ import PlaceRating from './PlaceRating';
 import AddReview from '../placeDetail/AddReview';
 import Reviews from '../placeDetail/Reviews';
 import styled from 'styled-components';
+import { defaultImage } from '../../constants';
 
 const PlaceDetail = ({ name, placeDetail, regionId, images, match }) => (
   <PlaceDetailStylized>
-		<Link to={regionId? `/regions/${regionId}` : '/continents'}>
-		    Back
-		</Link>
-
-		<h3>{name || placeDetail.placeInformation.name}</h3>
+    <PlaceDetailNameStylized image={images && images[0] || defaultImage}>{name}
+      <Back to={regionId ? `/regions/${regionId}` : '/continents'}>
+          arrow_back
+      </Back>
+    </PlaceDetailNameStylized>
 		<PlaceRating {...placeDetail.placeRating}/>
 		<AddDestinationContainer placeId={match.params.placeId} name={name || placeDetail.placeInformation.name}/>
 		<PlaceDescription description={placeDetail.placeInformation.description}/>
 		<PlaceActivities activities={placeDetail.placeInformation.activities}/>
-		<PlaceImages images={images}/>
+    <PlaceImages images={images}/>
 		<Reviews reviews={placeDetail.reviewList} />
 		<AddReview placeId={match.params.placeId} />
 	</PlaceDetailStylized>
@@ -28,21 +29,60 @@ const PlaceDetail = ({ name, placeDetail, regionId, images, match }) => (
 
 export default PlaceDetail;
 
-const PlaceDetailStylized = styled.div`
-    height: 93%;
-    background-color: #dadada;
-    overflow-x: hidden;
-    margin: 5px 5px;
-    transition: 0.5s;
+
+const Back = styled(Link)`
+    background-color: #1e7f7e;
+    border-radius: 50%;
+    width: 47px;
+    height: 45px;
+    padding-top: 15px;
+    padding-left: 13px;
+    color: white;
+    text-decoration: none;
     box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
-    color: #757575;
-    width: 98%;
-    padding-left: 265px;
+    margin: 8px 2%;
+    text-align: left;
     float: left;
-    box-sizing: border-box;
-    @media only screen and (max-width: 650px) {
-       padding-left: 0px;
+    font-family: Material Icons;
+    font-size: 35px;
+
+    &:hover {
+        background-color: #2aaba9;
     }
+`
+
+const PlaceDetailStylized = styled.div`
+    box-sizing: border-box;
+    float: left;
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+    background-color: aliceblue;
+    color: #757575;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+    transition: 0.5s;
+    @media only screen and (min-width: 768px) {
+        width: 83.33%
+    }
+`;
+
+const PlaceDetailNameStylized = styled.h1`
+    box-sizing: border-box;
+    padding: 30px 0px;
+    font-weight: bold;
+    font-size: 4em;
+    text-align: center;
+    color: white;
+    background-color: cadetblue;
+    margin: 0 0;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19)
+    @media only screen and (max-width: 768px) {
+       font-size: 3em;
+    }
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-image:url(${({ image }) => image});
 `;
 
 
@@ -55,7 +95,8 @@ PlaceDetail.propTypes = {
         name: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired
       }).isRequired).isRequired,
-      description: PropTypes.string.isRequired
+      description: PropTypes.string.isRequired,
+      images: PropTypes.arrayOf(PropTypes.string.isRequired)
     })
   }),
   regionId: PropTypes.number.isRequired,
