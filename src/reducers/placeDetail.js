@@ -25,6 +25,10 @@ const reviewList = (state = [], action) => {
   }
 };
 
+const getRoundNumber = (number) => {
+  return Math.round( number * 10 ) / 10;
+};
+
 const placeRating = (state = { sumOfRatings: 0, ratingsCount: 0, rating: 0 }, action) => {
   let sumOfRatings = 0;
   let ratingsCount = 0;
@@ -35,14 +39,14 @@ const placeRating = (state = { sumOfRatings: 0, ratingsCount: 0, rating: 0 }, ac
       sumOfRatings = state.sumOfRatings + reviews.map((review) => review.rating).reduce((a, b) => a + b, 0);
       ratingsCount = state.ratingsCount + reviews.length;
       rating = ratingsCount > 0 ? (sumOfRatings / ratingsCount) : 0;
-      return { sumOfRatings, ratingsCount, rating };
+      return { sumOfRatings, ratingsCount, rating: getRoundNumber(rating) };
     case actions.receiveAddReviewSuccess:
       const reviewId = action.reviewResponse.result;
       const rating = action.reviewResponse.entities.review[reviewId].rating;
       sumOfRatings = state.sumOfRatings + rating;
       ratingsCount = state.ratingsCount + 1;
       rating = ratingsCount > 0 ? (sumOfRatings / ratingsCount) : 0;
-      return { sumOfRatings, ratingsCount, rating };
+      return { sumOfRatings, ratingsCount, rating: getRoundNumber(rating) };
     default:
       return state;
   }

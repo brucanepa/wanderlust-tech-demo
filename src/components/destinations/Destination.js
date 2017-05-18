@@ -14,6 +14,7 @@ Destination.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
+  onClickRemove: PropTypes.func.isRequired,
   selected: PropTypes.bool.isRequired,
   index: PropTypes.number.isRequired
 };

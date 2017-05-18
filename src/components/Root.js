@@ -15,9 +15,9 @@ const Root = ({store}) => (
           <DestinationsPanel/>
           <Switch>
             <Route exact={true} path='/regions/:regionId' component={ PlacesContainer } />
-            <Route exact={ true } path='/continents' component={ ContinentsContainer } />
+            <Route exact={true} path='/continents' component={ ContinentsContainer } />
             <Route exact={true} path='/places/:placeId' component={ PlaceDetailContainer } />
-            <Route exact={ true } path='*' render={ () => (<Redirect to="/continents"> </Redirect>) } />
+            <Route exact={true} path='*' render={ () => (<Redirect to="/continents"> </Redirect>) } />
           </Switch>
         </MainApp>
       </MainRoot>
