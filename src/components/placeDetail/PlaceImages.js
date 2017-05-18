@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { defaultImage } from '../../constants';
 
 const PlaceImages = ({images}) => (
-	<PlaceImagesStylized>
+	<div>
 		{images && images.map(image => 
 			<ResponsiveGallery>
 				<Gallery>
@@ -11,14 +11,10 @@ const PlaceImages = ({images}) => (
 				</Gallery>
 			</ResponsiveGallery> 
 		)}
-	</PlaceImagesStylized>
+	</div>
 );
 
 export default PlaceImages;
-
-const PlaceImagesStylized = styled.div`
-    margin-left: 1%;
-`; 
 
 const Gallery = styled.div`
   box-sizing: border-box;

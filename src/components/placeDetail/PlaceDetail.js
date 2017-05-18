@@ -107,10 +107,11 @@ const PlaceDetailNameStylized = styled.h1`
 `;
 
 const Column = styled.div`
-    margin: 2%;
+    margin: 0%;
     float: left;
     width: 100%;
     @media only screen and (min-width: 768px) {
        width: 45%;
+       margin: 2%;
     }
 `;
