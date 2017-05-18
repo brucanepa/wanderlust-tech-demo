@@ -3,18 +3,21 @@ import { connect } from 'react-redux';
 import { placeDetail as placeDetailActions } from '../../actions';
 import { getPlace, getPlaceDetail} from '../../reducers';
 import PlaceDetail from './PlaceDetail';
+import NotFound from '../NotFound';
 
 class PlaceDetailContainer extends Component {
   componentDidMount() {
     this.fetchData();
   }
-
   fetchData() {
     this.props.fetchPlaceDetail(this.props.match.params.placeId);
   }
-
+  show() {
+    const placeDetail = this.props.placeDetail;
+    return placeDetail && placeDetail.placeInformation.description;
+  }
   render() {
-    return <PlaceDetail {...this.props} />
+    return this.show() ? <PlaceDetail {...this.props}/> : <NotFound />
   }
 }
 

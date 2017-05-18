@@ -9,7 +9,9 @@ const texts = {
   reviewsTitle: 'Opiniones',
   reviewsComment: 'Dejanos tu comentario...',
   ratingTitle: 'Puntuación',
-  add: 'Agregar'
+  add: 'Agregar',
+  placeNotFound: 'Este lugar no pertenece a este planeta!',
+  yourTripTitle: 'Tu Viaje'
 };
 
 export default texts;

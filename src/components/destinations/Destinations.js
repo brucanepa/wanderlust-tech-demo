@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { texts } from '../../constants';
 
 const Destinations = ({ destinations }) => {
-
   if(destinations && destinations.length > 0) {
     return (
      <DestinationsStylized>

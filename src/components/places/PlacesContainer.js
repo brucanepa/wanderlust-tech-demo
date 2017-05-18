@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { places as placesActions } from '../../actions';
 import Places from './Places';
+import NotFound from '../NotFound';
 import { getVisiblePlaces, getPlacesRegionName, getRegionImageById } from '../../reducers';
 
 class VisiblePlaces extends Component {
@@ -12,8 +13,11 @@ class VisiblePlaces extends Component {
     const {regionId} = this.props.match.params;
     this.props.fetchPlaces(regionId);
   }
+  show() {
+    return !!this.props.regionName;
+  }
   render() {
-    return <Places {...this.props} />
+    return this.show() ?  <Places {...this.props} /> : <NotFound />
   }
 }
 

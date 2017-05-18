@@ -20,9 +20,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onClickDown(info) {
     return dispatch(destinationsActions.swapPositionDown(info.selected, info.selectedDown));
-  },
-  onClickRemove(info) {
-    return dispatch(destinationsActions.remove(info.selected));
   }
 });
 
