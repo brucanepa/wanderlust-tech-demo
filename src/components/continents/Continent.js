@@ -34,6 +34,4 @@ const ContinentStylized = styled.div`
 const ContinetNameStylized = styled.h2`
     text-align: center;
     font-size: 3em;
-    padding-top: 30px;
-    margin-top: 0px;
 `;

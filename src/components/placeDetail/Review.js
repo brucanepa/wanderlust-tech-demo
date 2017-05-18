@@ -27,11 +27,11 @@ const Subseparator = styled.hr`
 `;
 
 const Description = styled.p`
-	font-size: 1.4em;
+	  word-wrap: break-word;
 `;
 
 const RatingName = styled.h2`
-	font-size: 1.4em;
+	  font-size: 1.4em;
     display: inline-flex;
     margin: 0; 
  `;

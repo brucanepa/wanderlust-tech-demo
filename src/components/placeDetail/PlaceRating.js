@@ -19,6 +19,9 @@ class PlaceRating extends Component {
 
     if (type === 'click') {
     	this.props.onRateClick(rating);
+      this.setState({
+        rating: 0
+      })
     }
   }
 
@@ -26,7 +29,7 @@ class PlaceRating extends Component {
     return <Rater className={"react-rater"} 
       total={this.state.total} 
       interactive={this.state.interactive} 
-      rating={this.state.rating} 
+      rating={this.state.rating || 0} 
       onRate={this.handleRate.bind(this)} />
   }
 }

@@ -26,5 +26,8 @@ Regions.propTypes = {
 export default Regions;
 
 const RegionsStylized = styled.div`
-    margin-left: 1%;
+    margin-left: 0;
+    @media only screen and (min-width: 768px) {
+      margin-left: 1%;
+    }
 `; 

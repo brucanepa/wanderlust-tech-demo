@@ -10,6 +10,7 @@ const DestinationsPanel = ({ match }) => (
   	<PanelTitle>
   		{texts.destinationsTitle}
   	</PanelTitle>
+    <Separator/>
     <DestinationsContainer />
     <DestinationsFooterContainer/>
   </ResponsivePanel>
@@ -31,17 +32,24 @@ const ResponsivePanel = styled.div`
     background-color: #1e7f7e;
     color: #757575;
     box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
-    transition: 0.5s;
+    transition: 0.8s;
     @media only screen and (min-width: 768px) {
       width: 16.66%;
       height: 100vh;
     }
 `;
 
-
 const PanelTitle = styled.div`
-    font-size: 2em;
+    font-size: 4em;
     text-align: center;
     color: #FFFFFF;
-    transition: 0.3s;
+    transition: 0.8s;
+    @media only screen and (min-width: 768px) {
+      font-size: 2.5vw;
+    }
+`;
+
+const Separator = styled.hr`
+    border-top: 0px solid #ffffff;
+    width: 95%;
 `;

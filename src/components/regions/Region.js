@@ -44,18 +44,24 @@ const Image = styled.div` {
 `
 
 const ImageFooter = styled.div`
-  padding: 15px;
+  padding: 1em;
   text-align: center;
   box-sizing: border-box;
   font-size: 1.4em;
+  @media only screen and (max-width: 1260px) {
+    font-size: 1.0em;
+  }
+  @media only screen and (max-width: 768px) {
+    font-size: 1.4em;
+    padding: 2%;
+  }
 `
 const ResponsiveGallery = styled.div`
     float: left;
     width: 100%;
     box-sizing: border-box;
     transition: 0.8s;
-
-  
+    
     @media only screen and (min-width: 768px) {
        width: 49%;
     }

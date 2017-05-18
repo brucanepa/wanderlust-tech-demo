@@ -8,8 +8,9 @@ const texts = {
   activitiesTitle: 'Actividades',
   reviewsTitle: 'Opiniones',
   reviewsComment: 'Dejanos tu comentario...',
+  reviewsPlaceholder: 'Comentario...',
   ratingTitle: 'Puntuación',
-  add: 'Agregar',
+  comment: 'Comentar',
   placeNotFound: 'Este lugar no pertenece a este planeta!',
   yourTripTitle: 'Tu Viaje',
   addAsDestiantion: 'Agregar al viaje'

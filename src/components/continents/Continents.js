@@ -40,7 +40,7 @@ const ContinentsStylized = styled.div`
     background-color: aliceblue;
     color: #757575;
     box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
-    transition: 0.5s;
+    transition: 0.8s;
     @media only screen and (min-width: 768px) {
         width: 83.33%
     }
@@ -48,8 +48,8 @@ const ContinentsStylized = styled.div`
 
 const ContinentNameStylized = styled.h1`
     box-sizing: border-box;
-    padding: 30px 0px;
-    margin: 0 0;
+    padding: 2.5% 0;
+    margin: 0;
     text-align: center;
     font-size: 4em;
     font-weight: bold;

@@ -16,6 +16,7 @@ const AddReview = ({ dispatch, placeId }) => {
     }
     dispatch(placeDetailActions.addReview({placeId, comment: input.value, rating}));
     input.value = '';
+    rating = 0;
   }
 
   const onRateClick = (ratingSelected) => {
@@ -25,13 +26,16 @@ const AddReview = ({ dispatch, placeId }) => {
   return (
     <AddReviewStylized>
       <Description>{texts.reviewsComment}</Description>
-      <PlaceRating onRateClick={onRateClick} interactive={true}/>
+      <PlaceRatingStylized>
+        <PlaceRating onRateClick={onRateClick} interactive={true}/>
+      </PlaceRatingStylized>
       <form onSubmit={ (e) => onSubmit(e) }>
-        <InputStylized innerRef={node => { input = node; }} />
-        <button type="submit">
-        {texts.add}
-        </button>
+        <InputStylized innerRef={node => { input = node; }} placeholder={texts.reviewsPlaceholder} />
+        <AddButton type="submit">
+          {texts.comment}
+        </AddButton>
       </form>
+  
     </AddReviewStylized>
   );
 };
@@ -42,32 +46,60 @@ AddReview.propTypes = {
 };
 
 const AddReviewStylized = styled.div`
-  margin: 2%;
+  margin: 0;
+
+  @media only screen and (min-width: 768px) {
+      margin: 8%;
+  }
 `;
 
 const Description = styled.p`
   font-size: 1.4em;
+  margin: 2%;
+
+  @media only screen and (min-width: 768px) {
+      margin: 0;
+  }
 `;
 
 const InputStylized = styled.textarea`
-    margin: 0;
-    width: 80%;
-    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
     border-radius: 5px;
     outline: none;
     font-size: 1.2em;
-    padding: 0 10px 130px;
+    padding: 1% 2%;
+    height: 10em;
+    width: 96%;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+    border-radius: 5px;
+    outline: none;
     resize: none;
     &:hover {
       box-shadow: inset 1px 1px 2px rgba(0,0,0,0.1);
     }
-
-    @media only screen and (min-width: 768px) {
-        width: 50%
-    }
 `;
 
+const PlaceRatingStylized = styled.div`
+    font-size: 2em;
+`;
 
+const AddButton = styled.button`
+    float: right;
+    width: 100%;
+    padding: 2%;
+    font-size: 1.4em;
+    text-align: center;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: #1e7f7e;
+    transition: 0.8s;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+    margin-bottom: 5%;
+    &:hover {
+      background-color: #2aaba9;
+      color: white;
+    }
+`;
 export default connect()(AddReview);
 
 

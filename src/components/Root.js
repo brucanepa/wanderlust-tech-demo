@@ -31,7 +31,7 @@ const MainRoot = (props) => (
 
 const MainApp = styled.div`
     box-sizing: border-box;
-    transition: 0.5s;
+    transition: 0.8s;
     &:after {
       content: "";
       clear: both;

@@ -13,11 +13,11 @@ body {
 }
 
 .is-active {
-    transition: 0.75s;
+    transition: 0.8s;
     color: #f7a01a;
 }
 
 .will-be-active {
-    transition: 0.75s;
+    transition: 0.8s;
     color: #ffd535;
 }

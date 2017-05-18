@@ -33,8 +33,8 @@ Destinations.propTypes = {
 
 const DestinationsStylized = styled.ul`
   list-style-type: none;
-  padding: 0px;
-  transition: 0.3s;
+  padding: 0;
+  transition: 0.8s;
 `;
 
 const NoDestinationStylized = styled.div`

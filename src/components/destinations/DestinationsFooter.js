@@ -39,6 +39,7 @@ const Button = styled.button`
     font-family: Material Icons;
     box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
     margin: 20px 20px;
+    transition: 0.8s;
     &:hover {
         background-color: #2aaba9;
         color: white;
