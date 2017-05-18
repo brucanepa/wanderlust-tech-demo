@@ -5,6 +5,7 @@ const Destination = ({id, name, onClick, selected, index, onClickRemove}) => (
   <DestinationStylized 
     onClick={ () => {onClick(id, index)} } 
     selected={ selected }>
+    {index + 1 } - { " "}
     { name }
     <Button type="button" onClick={ () => onClickRemove(id) }>delete</Button>
   </DestinationStylized>
