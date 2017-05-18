@@ -7,7 +7,8 @@ class PlaceRating extends Component {
     super(props)
     this.state = {
       rating: props.rating || 0,
-      interactive: props.interactive || false
+      interactive: props.interactive || false,
+      total: props.total || 5
     }
   }
 
@@ -22,7 +23,11 @@ class PlaceRating extends Component {
   }
 
   render() {
-    return <Rater className={"react-rater"} interactive={this.state.interactive} rating={this.state.rating} onRate={this.handleRate.bind(this)} />
+    return <Rater className={"react-rater"} 
+      total={this.state.total} 
+      interactive={this.state.interactive} 
+      rating={this.state.rating} 
+      onRate={this.handleRate.bind(this)} />
   }
 }
 

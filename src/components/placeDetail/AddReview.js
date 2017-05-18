@@ -11,7 +11,7 @@ const AddReview = ({ dispatch, placeId }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (!input.value.trim()) {
+    if (!input.value.trim() || rating < 1) {
       return;
     }
     dispatch(placeDetailActions.addReview({placeId, comment: input.value, rating}));

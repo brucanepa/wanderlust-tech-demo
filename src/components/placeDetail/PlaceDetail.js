@@ -16,8 +16,9 @@ const PlaceDetail = ({ placeDetail, regionId, images, match}) => (
       <Back to={regionId ? `/regions/${regionId}` : '/continents'}>
           arrow_back
       </Back>
+  		<PlaceRating {...placeDetail.placeRating} rating={1} total={1}/>
+      {placeDetail.placeRating.rating}
     </PlaceDetailNameStylized>
-		<PlaceRating {...placeDetail.placeRating}/>
 		<AddDestinationContainer placeId={match.params.placeId} name={placeDetail.placeInformation.name}/>
 		<PlaceDescription description={placeDetail.placeInformation.description}/>
 		<PlaceActivities activities={placeDetail.placeInformation.activities}/>
