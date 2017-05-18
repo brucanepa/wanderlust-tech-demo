@@ -23,18 +23,19 @@ Destination.propTypes = {
 const DestinationStylized = styled.li`
     padding-top: 15px;
     font-size: 20px;
-    background-color: ${({ selected }) => selected ? '#21999e' : '#5f9ea0'};
+    background-color: ${({ selected }) => selected ? 'white' : '#5f9ea0'};
     transition: 0.3s;
     text-align: center;
     box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
     margin: 4px 0px;
-    color: white;
+    color: ${({ selected }) => selected ? '#1e7f7e' : 'white'};
     display: table;
     width: 100%;
     box-sizing: border-box;
     &:hover { 
         background-color: #2aaba9;
         margin-bottom: 15px;
+        color: white;
     }
 `;
 
