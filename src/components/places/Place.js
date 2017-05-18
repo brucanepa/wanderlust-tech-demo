@@ -50,7 +50,7 @@ const ImageFooter = styled.div`
   float: left;
   text-align: center;
   width: 83%;
-  font-size: 25px;
+  font-size: 1.4em;
 `
 const ResponsiveGallery = styled.div`
     float: left;

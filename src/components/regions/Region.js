@@ -47,7 +47,7 @@ const ImageFooter = styled.div`
   padding: 15px;
   text-align: center;
   box-sizing: border-box;
-  font-size: 25px;
+  font-size: 1.4em;
 `
 const ResponsiveGallery = styled.div`
     float: left;

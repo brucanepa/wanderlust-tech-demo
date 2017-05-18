@@ -48,13 +48,4 @@ const ResponsiveGallery = styled.div`
     width: 100%;
     box-sizing: border-box;
     transition: 0.8s;
-
-  
-    @media only screen and (min-width: 768px) {
-       width: 49%;
-    }
-
-    @media only screen and (min-width: 1000px) {
-      width: 33%;
-    }
 `

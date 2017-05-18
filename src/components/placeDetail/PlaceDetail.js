@@ -16,15 +16,20 @@ const PlaceDetail = ({ placeDetail, regionId, images, match}) => (
       <Back to={regionId ? `/regions/${regionId}` : '/continents'}>
           arrow_back
       </Back>
-  		<PlaceRating {...placeDetail.placeRating} rating={1} total={1}/>
+  	  <PlaceRating {...placeDetail.placeRating} rating={1} total={1}/>
       {placeDetail.placeRating.rating}
     </PlaceDetailNameStylized>
-		<AddDestinationContainer placeId={match.params.placeId} name={placeDetail.placeInformation.name}/>
-		<PlaceDescription description={placeDetail.placeInformation.description}/>
-		<PlaceActivities activities={placeDetail.placeInformation.activities}/>
-    <PlaceImages images={images}/>
-		<Reviews reviews={placeDetail.reviewList} />
-		<AddReview placeId={match.params.placeId} />
+        <Column>
+    		<PlaceRating {...placeDetail.placeRating}/>
+    		<AddDestinationContainer placeId={match.params.placeId} name={placeDetail.placeInformation.name}/>
+    		<PlaceDescription description={placeDetail.placeInformation.description}/>
+    		<PlaceActivities activities={placeDetail.placeInformation.activities}/>
+            <Reviews reviews={placeDetail.reviewList} />
+            <AddReview placeId={match.params.placeId} />
+        </Column>
+        <Column>
+            <PlaceImages images={images}/>
+        </Column>
 	</PlaceDetailStylized>
 );
 
@@ -99,4 +104,13 @@ const PlaceDetailNameStylized = styled.h1`
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-image:url(${({ image }) => image});
+`;
+
+const Column = styled.div`
+    margin: 2%;
+    float: left;
+    width: 100%;
+    @media only screen and (min-width: 768px) {
+       width: 45%;
+    }
 `;

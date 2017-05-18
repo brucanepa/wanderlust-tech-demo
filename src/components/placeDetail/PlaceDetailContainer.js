@@ -24,7 +24,7 @@ class PlaceDetailContainer extends Component {
 const mapStateToProps = (state, ownProps) => ({
   placeDetail: getPlaceDetail(state),
   regionId: getPlace(state, ownProps.match.params.placeId).regionId,
-  images: getPlaceDetail(state) && getPlaceDetail(state).images
+  images: getPlaceDetail(state) && getPlaceDetail(state).placeInformation &&  getPlaceDetail(state).placeInformation.images
 });
 
 const mapDispatchToProps = (dispatch) => ({
