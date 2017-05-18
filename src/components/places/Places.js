@@ -49,6 +49,7 @@ const Back = styled(Link)`
     float: left;
     font-family: Material Icons;
     font-size: 35px;
+    outline: none;
 
     &:hover {
         background-color: #2aaba9;

@@ -11,7 +11,8 @@ const texts = {
   ratingTitle: 'Puntuación',
   add: 'Agregar',
   placeNotFound: 'Este lugar no pertenece a este planeta!',
-  yourTripTitle: 'Tu Viaje'
+  yourTripTitle: 'Tu Viaje',
+  addAsDestiantion: 'Agregar al viaje'
 };
 
 export default texts;

@@ -5,7 +5,7 @@ import { defaultImage } from '../../constants';
 const PlaceImages = ({images}) => (
 	<div>
 		{images && images.map(image => 
-			<ResponsiveGallery>
+			<ResponsiveGallery key={image}>
 				<Gallery>
 				  <Image image={ image || defaultImage } />
 				</Gallery>

@@ -8,6 +8,7 @@ import PlaceRating from './PlaceRating';
 import AddReview from '../placeDetail/AddReview';
 import Reviews from '../placeDetail/Reviews';
 import styled from 'styled-components';
+import { texts } from '../../constants';
 import { defaultImage } from '../../constants';
 
 const PlaceDetail = ({ placeDetail, regionId, images, match}) => (
@@ -19,18 +20,20 @@ const PlaceDetail = ({ placeDetail, regionId, images, match}) => (
   	  <PlaceRating {...placeDetail.placeRating} rating={1} total={1}/>
       {placeDetail.placeRating.rating}
     </PlaceDetailNameStylized>
-        <Column>
-    		<PlaceRating {...placeDetail.placeRating}/>
-    		<AddDestinationContainer placeId={match.params.placeId} name={placeDetail.placeInformation.name}/>
-    		<PlaceDescription description={placeDetail.placeInformation.description}/>
-    		<PlaceActivities activities={placeDetail.placeInformation.activities}/>
-            <Reviews reviews={placeDetail.reviewList} />
-            <AddReview placeId={match.params.placeId} />
-        </Column>
-        <Column>
-            <PlaceImages images={images}/>
-        </Column>
-	</PlaceDetailStylized>
+    <Column>
+      <ButtonStylized>
+        <AddDestinationContainer placeId={match.params.placeId} name={placeDetail.placeInformation.name}/>
+        {texts.addAsDestiantion}
+      </ButtonStylized>
+      <PlaceDescription description={placeDetail.placeInformation.description}/>
+      <PlaceActivities activities={placeDetail.placeInformation.activities}/>
+      <Reviews reviews={placeDetail.reviewList} />
+      <AddReview placeId={match.params.placeId} />
+    </Column>
+    <Column>
+        <PlaceImages images={images}/>
+    </Column>
+  </PlaceDetailStylized>
 );
 
 export default PlaceDetail;
@@ -47,7 +50,6 @@ PlaceDetail.propTypes = {
       description: PropTypes.string.isRequired
     })
   }),
-  regionId: PropTypes.number.isRequired,
   match: PropTypes.any
 };
 
@@ -66,6 +68,7 @@ const Back = styled(Link)`
     float: left;
     font-family: Material Icons;
     font-size: 35px;
+    outline: none;
 
     &:hover {
         background-color: #2aaba9;
@@ -114,4 +117,10 @@ const Column = styled.div`
        width: 45%;
        margin: 2%;
     }
+`;
+
+const ButtonStylized = styled.div`
+  float: right;
+  margin: 1% 1%;
+  text-align: center;
 `;
