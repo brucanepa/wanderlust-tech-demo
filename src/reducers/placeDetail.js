@@ -30,23 +30,23 @@ const getRoundNumber = (number) => {
 };
 
 const placeRating = (state = { sumOfRatings: 0, ratingsCount: 0, rating: 0 }, action) => {
-  let sumOfRatings = 0;
-  let ratingsCount = 0;
+  let sum = 0;
+  let count = 0;
   switch (action.type) {
     case actions.receivePlaceDetailSuccess:
       const result = action.placeDetailResponse.result
       const reviews = action.placeDetailResponse.entities.placeDetail[result].reviews;
-      sumOfRatings = state.sumOfRatings + reviews.map((review) => review.rating).reduce((a, b) => a + b, 0);
-      ratingsCount = state.ratingsCount + reviews.length;
-      rating = ratingsCount > 0 ? (sumOfRatings / ratingsCount) : 0;
-      return { sumOfRatings, ratingsCount, rating: getRoundNumber(rating) };
+      sum = state.sumOfRatings + reviews.map((review) => review.rating).reduce((a, b) => a + b, 0);
+      count = state.ratingsCount + reviews.length;
+      const newRating = count > 0 ? (sum / count) : 0;
+      return { sumOfRatings: sum, ratingsCount: count, rating: getRoundNumber(newRating) };
     case actions.receiveAddReviewSuccess:
       const reviewId = action.reviewResponse.result;
-      const rating = action.reviewResponse.entities.review[reviewId].rating;
-      sumOfRatings = state.sumOfRatings + rating;
-      ratingsCount = state.ratingsCount + 1;
-      rating = ratingsCount > 0 ? (sumOfRatings / ratingsCount) : 0;
-      return { sumOfRatings, ratingsCount, rating: getRoundNumber(rating) };
+      const actualRating = action.reviewResponse.entities.review[reviewId].rating;
+      sum = state.sumOfRatings + actualRating;
+      count = state.ratingsCount + 1;
+      const newTotal = count > 0 ? (sum / count) : 0;
+      return { sumOfRatings: sum, ratingsCount: count, rating: getRoundNumber(newTotal) };
     default:
       return state;
   }
