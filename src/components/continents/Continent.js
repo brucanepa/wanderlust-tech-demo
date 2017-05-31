@@ -2,12 +2,12 @@ import React, { PropTypes } from 'react';
 import Regions from '../regions/Regions';
 import styled from 'styled-components';
 
-const Continent = ({name, regions, match}) => (
+const Continent = ({name, regions}) => (
   <ContinentStylized>
     <ContinetNameStylized>
       { name }
     </ContinetNameStylized>
-    <Regions match={ match } regions={ regions } />
+    <Regions regions={ regions } />
   </ContinentStylized>
 );
 
@@ -16,8 +16,7 @@ Continent.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
   }).isRequired).isRequired,
-  name: PropTypes.string.isRequired,
-  match: PropTypes.any
+  name: PropTypes.string.isRequired
 };
 
 export default Continent;

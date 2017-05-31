@@ -12,13 +12,11 @@ const configureStore = () => {
     middlewares.push(logger);
   }*/
 
-  const store = createStore(
+  return createStore(
     wanderApp,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
     applyMiddleware(...middlewares)
   );
-
-  return store;
 }
 
 export default configureStore;

@@ -4,7 +4,7 @@ import Place from './Place';
 import styled from 'styled-components';
 import { defaultImage } from '../../constants';
 
-const Places = ({ places, regionName, match, regionImage }) => (
+const Places = ({ places, regionName, regionImage }) => (
   <PlacesStylized>
     <PlacesNameStylized image={regionImage || defaultImage}>{regionName}
       <Back to={`/continents`}>
@@ -15,7 +15,6 @@ const Places = ({ places, regionName, match, regionImage }) => (
         {places.map(place =>
         <Place
             key={place.id}
-            match={match}
             {...place}
         />
       )}
@@ -30,8 +29,7 @@ Places.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
   }).isRequired).isRequired,
-  regionImage: PropTypes.string.isRequired,
-  match: PropTypes.any
+  regionImage: PropTypes.string.isRequired
 };
 
 const Back = styled(Link)`

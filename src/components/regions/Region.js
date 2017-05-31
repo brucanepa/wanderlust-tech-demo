@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { getRegionTitle } from '../../utils/textHelper';
 import { defaultImage } from '../../constants';
 
-const Region = ({match, id, name, image, placesCount}) => (
+const Region = ({id, name, image, placesCount}) => (
   <Link to={ `regions/${id}` }>
   <ResponsiveGallery>
     <Gallery>
@@ -22,8 +22,7 @@ export default Region;
 Region.prototype = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  match: PropTypes.any.isRequired
+  image: PropTypes.string.isRequired
 };
 
 const Gallery = styled.div`

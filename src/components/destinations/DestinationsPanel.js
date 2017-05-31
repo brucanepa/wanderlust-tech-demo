@@ -5,7 +5,7 @@ import DestinationsFooterContainer from './DestinationsFooterContainer';
 import styled from 'styled-components';
 import { texts } from '../../constants';
 
-const DestinationsPanel = ({ match }) => (
+const DestinationsPanel = () => (
   <ResponsivePanel>
   	<PanelTitle>
   		{texts.destinationsTitle}
@@ -17,10 +17,6 @@ const DestinationsPanel = ({ match }) => (
 );
 
 export default DestinationsPanel;
-
-DestinationsPanel.propTypes = {
-  match: PropTypes.any
-};
 
 const ResponsivePanel = styled.div`
     box-sizing: border-box;

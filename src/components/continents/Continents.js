@@ -3,14 +3,13 @@ import Continent from './Continent';
 import styled from 'styled-components';
 import { texts } from '../../constants';
 
-const Continents = ({continents, match}) => (
+const Continents = ({continents}) => (
   <ContinentsStylized>
     <ContinentNameStylized>{texts.pageTitle}</ContinentNameStylized>
     <div>
       { 
         continents.map(continent => 
         <Continent key={ continent.id } 
-          match={ match } 
           {...continent} />)
       }
     </div>
@@ -27,8 +26,7 @@ Continents.propTypes = {
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired
     }).isRequired).isRequired,
-  }).isRequired).isRequired,
-  match: PropTypes.any
+  }).isRequired).isRequired
 };
 
 const ContinentsStylized = styled.div`

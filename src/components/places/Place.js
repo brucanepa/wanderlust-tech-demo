@@ -4,7 +4,7 @@ import AddDestinationContainer from '../destinations/AddDestinationContainer';
 import styled from 'styled-components';
 import { defaultImage } from '../../constants';
 
-const Place = ({id, name, image, match}) => (
+const Place = ({id, name, image}) => (
 	<Link to={ `/places/${id}` }>
     <ResponsiveGallery>
       <Gallery>
@@ -21,8 +21,7 @@ export default Place;
 Place.propTypes = {
 	id: PropTypes.number.isRequired,
 	name: PropTypes.string.isRequired,
-	image: PropTypes.string.isRequired,
-	match: PropTypes.any
+	image: PropTypes.string.isRequired
 };
 
 
