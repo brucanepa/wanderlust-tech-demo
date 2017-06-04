@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import Regions from '../regions/Regions';
 import styled from 'styled-components';
 
@@ -10,14 +10,6 @@ const Continent = ({name, regions}) => (
     <Regions regions={ regions } />
   </ContinentStylized>
 );
-
-Continent.propTypes = {
-  regions: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-  }).isRequired).isRequired,
-  name: PropTypes.string.isRequired
-};
 
 export default Continent;
 

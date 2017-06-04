@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { destinations as destinationsActions } from '../../actions';
 import Destinations from './Destinations';
 import { getDestinations } from '../../reducers';
-import { texts} from '../../constants';
-
 
 class DestinationsContainer extends Component {
   componentDidMount() {

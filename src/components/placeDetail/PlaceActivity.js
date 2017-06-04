@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { texts } from '../../constants';
 
@@ -12,12 +12,6 @@ const PlaceActivity = ({name, description, price}) => (
 );
 
 export default PlaceActivity;
-
-PlaceActivity.propTypes = {
-  name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired
-};
 
 const Description = styled.p`
 	font-size: 1.4em;

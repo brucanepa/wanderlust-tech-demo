@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { placeDetail as placeDetailActions } from '../../actions';
 import PlaceRating from './PlaceRating';
@@ -38,11 +38,6 @@ const AddReview = ({ dispatch, placeId }) => {
   
     </AddReviewStylized>
   );
-};
-
-AddReview.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  placeId: PropTypes.string.isRequired
 };
 
 const AddReviewStylized = styled.div`

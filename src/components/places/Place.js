@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import AddDestinationContainer from '../destinations/AddDestinationContainer';
 import styled from 'styled-components';
@@ -17,13 +17,6 @@ const Place = ({id, name, image}) => (
 );
 
 export default Place;
-
-Place.propTypes = {
-	id: PropTypes.number.isRequired,
-	name: PropTypes.string.isRequired,
-	image: PropTypes.string.isRequired
-};
-
 
 const Gallery = styled.div`
   box-sizing: border-box;

@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import '../../App.css';
 import DestinationsContainer from './DestinationsContainer';
 import DestinationsFooterContainer from './DestinationsFooterContainer';

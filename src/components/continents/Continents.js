@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import Continent from './Continent';
 import styled from 'styled-components';
 import { texts } from '../../constants';
@@ -17,17 +17,6 @@ const Continents = ({continents}) => (
 );
 
 export default Continents;
-
-Continents.propTypes = {
-  continents: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    regions: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired
-    }).isRequired).isRequired,
-  }).isRequired).isRequired
-};
 
 const ContinentsStylized = styled.div`
     box-sizing: border-box;

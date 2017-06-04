@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { texts } from '../../constants';
 
@@ -11,10 +11,6 @@ const PlaceDescription = ({ description }) => (
 );
 
 export default PlaceDescription;
-
-PlaceDescription.propTypes = {
-  description: PropTypes.string.isRequired
-};
 
 const PlaceDescriptionStylized = styled.div`
 	margin: 2%;

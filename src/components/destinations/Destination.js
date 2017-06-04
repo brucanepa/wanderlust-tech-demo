@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const Destination = ({id, name, onClick, selected, index, onClickRemove}) => (
@@ -10,16 +10,6 @@ const Destination = ({id, name, onClick, selected, index, onClickRemove}) => (
     <Button type="button" onClick={ () => onClickRemove(id) }>delete</Button>
   </DestinationStylized>
 );
-
-Destination.propTypes = {
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-  onClickRemove: PropTypes.func.isRequired,
-  selected: PropTypes.bool.isRequired,
-  index: PropTypes.number.isRequired
-};
-
 
 const DestinationStylized = styled.li`
     padding-top: 15px;

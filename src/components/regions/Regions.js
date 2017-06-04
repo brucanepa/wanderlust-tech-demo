@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import Region from './Region';
 import styled from 'styled-components';
 
@@ -12,14 +12,6 @@ const Regions = ({ regions }) => (
     )}
   </RegionsStylized> 
 );
-
-Regions.propTypes = {
-  regions: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    image: PropTypes.string
-  }).isRequired).isRequired
-};
 
 export default Regions;
 

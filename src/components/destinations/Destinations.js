@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import DestinationContainer from './DestinationContainer';
 import styled from 'styled-components';
 import { texts } from '../../constants';
@@ -22,15 +22,6 @@ const Destinations = ({ destinations }) => {
   )
 }
  
-
-Destinations.propTypes = {
-  destinations: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    placeId: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-  }).isRequired).isRequired
-};
-
 const DestinationsStylized = styled.ul`
   list-style-type: none;
   padding: 0;

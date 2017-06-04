@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import PlaceActivity from './PlaceActivity'
 import styled from 'styled-components';
 import { texts } from '../../constants';
@@ -19,14 +19,6 @@ const PlaceActivities = ({ activities }) => (
 );
 
 export default PlaceActivities;
-
-PlaceActivities.propTypes = {
-  activities: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired
-  }).isRequired).isRequired
-};
 
 const PlaceActivitiesStylized = styled.div`
   margin: 2%;

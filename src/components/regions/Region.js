@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { getRegionTitle } from '../../utils/textHelper';
@@ -18,12 +18,6 @@ const Region = ({id, name, image, placesCount}) => (
 );
 
 export default Region;
-
-Region.prototype = {
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired
-};
 
 const Gallery = styled.div`
   box-sizing: border-box;

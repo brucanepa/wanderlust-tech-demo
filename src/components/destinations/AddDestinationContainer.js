@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { destinations as destinationsActions } from '../../actions';
 import AddDestination from './AddDestination';
 
-
 class AddDestinationContainer extends Component {
   render() {
     return <AddDestination {...this.props} />

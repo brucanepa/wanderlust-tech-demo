@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import PlaceRating from './PlaceRating';
 import styled from 'styled-components';
 import { texts } from '../../constants';
@@ -15,12 +15,6 @@ const Review = ({id, comment, rating}) => (
 );
 
 export default Review;
-
-Review.propTypes = {
-	id: PropTypes.string.isRequired,
-	comment: PropTypes.string.isRequired,
-	rating: PropTypes.number.isRequired
-};
 
 const Subseparator = styled.hr`
     border-top: 1px solid #5f9ea0;

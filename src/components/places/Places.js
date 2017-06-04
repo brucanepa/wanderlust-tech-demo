@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Place from './Place';
 import styled from 'styled-components';
@@ -23,14 +23,6 @@ const Places = ({ places, regionName, regionImage }) => (
 );
 
 export default Places;
-
-Places.propTypes = {
-  places: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-  }).isRequired).isRequired,
-  regionImage: PropTypes.string.isRequired
-};
 
 const Back = styled(Link)`
     background-color: #1e7f7e;

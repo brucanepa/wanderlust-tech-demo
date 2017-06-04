@@ -33,12 +33,12 @@ const Image = styled.div` {
   background-image:url(${({ image }) => image });
 `
 
-const ImageFooter = styled.div`
-  padding: 15px;
-  text-align: center;
-  box-sizing: border-box;
-  font-size: 25px;
-`
+// const ImageFooter = styled.div`
+//   padding: 15px;
+//   text-align: center;
+//   box-sizing: border-box;
+//   font-size: 25px;
+// `
 const ResponsiveGallery = styled.div`
     float: left;
     width: 100%;

@@ -76,9 +76,10 @@ const selectedDestination = (state = {}, action) => {
     switch (action.type) {
       case actions.receiveRemoveDestinationSuccess:
         return getSelectedDestination(0, -1);
+      default:
+        return state;
     }
   }
-  return state;
 };
 
 const destinations = combineReducers({

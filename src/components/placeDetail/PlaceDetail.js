@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import AddDestinationContainer from '../destinations/AddDestinationContainer';
 import PlaceDescription from './PlaceDescription';
@@ -40,21 +40,6 @@ const PlaceDetail = ({ placeDetail, regionId, images, match}) => (
 );
 
 export default PlaceDetail;
-
-PlaceDetail.propTypes = {
-  name: PropTypes.string,
-  placeDetail: PropTypes.shape({
-    placeInformation: PropTypes.shape({
-      activities: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired
-      }).isRequired).isRequired,
-      description: PropTypes.string.isRequired
-    })
-  }),
-  match: PropTypes.any
-};
 
 const Back = styled(Link)`
     background-color: #1e7f7e;

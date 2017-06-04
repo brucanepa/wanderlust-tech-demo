@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import Review from './Review';
 import styled from 'styled-components';
 import { texts } from '../../constants';
@@ -19,14 +19,6 @@ const Reviews = ({reviews}) => (
 );
 
 export default Reviews;
-
-Reviews.propTypes = {
-  reviews: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-		comment: PropTypes.string.isRequired,
-		rating: PropTypes.number.isRequired
-  })).isRequired
-};
 
 const PlaceReviewsStylized = styled.div`
 	margin: 2%;

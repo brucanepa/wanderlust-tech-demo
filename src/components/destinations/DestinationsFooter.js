@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const DestinationsFooter = ({onClickUp, onClickDown, selectedInfo}) => (
@@ -9,22 +9,6 @@ const DestinationsFooter = ({onClickUp, onClickDown, selectedInfo}) => (
 );
 
 export default DestinationsFooter;
-
-const selectedInfoShape = {
-    id: PropTypes.string,
-    order: PropTypes.number,
-    index: PropTypes.number
-};
-
-DestinationsFooter.propTypes = {
-    onClickUp: PropTypes.func.isRequired,
-    onClickDown: PropTypes.func.isRequired,
-    selectedInfo: PropTypes.shape({
-        selected: PropTypes.shape(selectedInfoShape),
-        selectedUp: PropTypes.shape(selectedInfoShape),
-        selectedDown: PropTypes.shape(selectedInfoShape),
-    })
-};
 
 const Button = styled.button`
 	height: 45px;
