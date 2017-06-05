@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { texts } from '../../constants';
+import { texts } from '../../../constants';
 
 const PlaceActivity = ({name, description, price}) => (
   <li>

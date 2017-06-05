@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { placeDetail as placeDetailActions } from '../../actions';
 import { getPlace, getPlaceDetail} from '../../reducers';
-import PlaceDetail from './PlaceDetail';
-import NotFound from '../NotFound';
+import WebPlaceDetail from '../web/placeDetail/PlaceDetail';
+import WebNotFound from '../web/NotFound';
 
 class PlaceDetailContainer extends Component {
   componentDidMount() {
@@ -17,7 +17,7 @@ class PlaceDetailContainer extends Component {
     return placeDetail && placeDetail.placeInformation.description;
   }
   render() {
-    return this.show() ? <PlaceDetail {...this.props}/> : <NotFound />
+    return this.show() ? <WebPlaceDetail {...this.props}/> : <WebNotFound />
   }
 }
 

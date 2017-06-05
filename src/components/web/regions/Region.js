@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { getRegionTitle } from '../../utils/textHelper';
-import { defaultImage } from '../../constants';
+import { getRegionTitle } from '../../../utils/textHelper';
+import { defaultImage } from '../../../constants';
 
 const Region = ({id, name, image, placesCount}) => (
   <Link to={ `regions/${id}` }>

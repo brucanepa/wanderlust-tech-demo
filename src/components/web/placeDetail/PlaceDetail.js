@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AddDestinationContainer from '../destinations/AddDestinationContainer';
+import AddDestinationContainer from '../../shared/AddDestinationContainer';
 import PlaceDescription from './PlaceDescription';
 import PlaceActivities from './PlaceActivities';
 import PlaceImages from './PlaceImages';
@@ -8,8 +8,7 @@ import PlaceRating from './PlaceRating';
 import AddReview from '../placeDetail/AddReview';
 import Reviews from '../placeDetail/Reviews';
 import styled from 'styled-components';
-import { texts } from '../../constants';
-import { defaultImage } from '../../constants';
+import { texts, defaultImage } from '../../../constants';
 
 const PlaceDetail = ({ placeDetail, regionId, images, match}) => (
   <PlaceDetailStylized>

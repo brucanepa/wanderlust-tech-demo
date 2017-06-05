@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Place from './Place';
 import styled from 'styled-components';
-import { defaultImage } from '../../constants';
+import { defaultImage } from '../../../constants';
 
 const Places = ({ places, regionName, regionImage }) => (
   <PlacesStylized>

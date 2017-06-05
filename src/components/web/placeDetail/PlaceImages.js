@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { defaultImage } from '../../constants';
+import { defaultImage } from '../../../constants';
 
 const PlaceImages = ({images}) => (
 	<div>

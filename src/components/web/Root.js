@@ -1,10 +1,10 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
-import DestinationsPanel from './destinations/DestinationsPanel';
-import PlacesContainer from './places/PlacesContainer';
-import PlaceDetailContainer from './placeDetail/PlaceDetailContainer';
-import ContinentsContainer from './continents/ContinentsContainer';
+import WebDestinationsPanel from '../web/destinations/DestinationsPanel';
+import PlacesContainer from '../shared/PlacesContainer';
+import PlaceDetailContainer from '../shared/PlaceDetailContainer';
+import ContinentsContainer from '../shared/ContinentsContainer';
 import styled from 'styled-components';
 
 const Root = ({store}) => (
@@ -12,7 +12,7 @@ const Root = ({store}) => (
     <Router>
       <MainRoot>
         <MainApp>
-          <DestinationsPanel/>
+          <WebDestinationsPanel/>
           <Switch>
             <Route exact={true} path='/regions/:regionId' component={ PlacesContainer } />
             <Route exact={true} path='/continents' component={ ContinentsContainer } />
@@ -38,6 +38,5 @@ const MainApp = styled.div`
       display: table;
     }
 `;
-
 
 export default Root;

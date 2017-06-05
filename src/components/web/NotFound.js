@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { texts } from '../constants';
-import { notFoundImage } from '../constants';
 import { Link } from 'react-router-dom';
+import { texts, notFoundImage } from '../../constants';
 
 const NotFound = () => (
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AddDestinationContainer from '../destinations/AddDestinationContainer';
+import AddDestinationContainer from '../../shared/AddDestinationContainer';
 import styled from 'styled-components';
-import { defaultImage } from '../../constants';
+import { defaultImage } from '../../../constants';
 
 const Place = ({id, name, image}) => (
 	<Link to={ `/places/${id}` }>

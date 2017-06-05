@@ -1,7 +1,7 @@
 import React from 'react';
-import DestinationContainer from './DestinationContainer';
+import DestinationContainer from '../../shared/DestinationContainer';
 import styled from 'styled-components';
-import { texts } from '../../constants';
+import { texts } from '../../../constants';
 
 const Destinations = ({ destinations }) => {
   if(destinations && destinations.length > 0) {

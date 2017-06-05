@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { placeDetail as placeDetailActions } from '../../actions';
+import { placeDetail as placeDetailActions } from '../../../actions';
 import PlaceRating from './PlaceRating';
 import styled from 'styled-components';
-import { texts } from '../../constants';
+import { texts } from '../../../constants';
 
 const AddReview = ({ dispatch, placeId }) => {
   let input;

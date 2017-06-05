@@ -1,7 +1,7 @@
 import React from 'react';
 import PlaceRating from './PlaceRating';
 import styled from 'styled-components';
-import { texts } from '../../constants';
+import { texts } from '../../../constants';
 
 const Review = ({id, comment, rating}) => (
 	<li>

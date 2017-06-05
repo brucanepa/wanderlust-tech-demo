@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { continents as continentsActions } from '../../actions';
-import Continents from './Continents';
+import WebContinents from '../web/continents/Continents';
 import { getContinents } from '../../reducers';
 
 class ContinentsContainer extends Component {
@@ -12,7 +12,7 @@ class ContinentsContainer extends Component {
     this.props.fetchContinents();
   }
   render() {
-    return <Continents {...this.props} />
+    return <WebContinents {...this.props} />
   }
 }
 

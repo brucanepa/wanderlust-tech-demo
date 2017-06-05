@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { places as placesActions } from '../../actions';
-import Places from './Places';
-import NotFound from '../NotFound';
+import WebPlaces from '../web/places/Places';
+import WebNotFound from '../web/NotFound';
 import { getVisiblePlaces, getPlacesRegionName, getRegionImageById } from '../../reducers';
 
 class VisiblePlaces extends Component {
@@ -17,7 +17,7 @@ class VisiblePlaces extends Component {
     return !!this.props.regionName;
   }
   render() {
-    return this.show() ?  <Places {...this.props} /> : <NotFound />
+    return this.show() ?  <WebPlaces {...this.props} /> : <WebNotFound />
   }
 }
 

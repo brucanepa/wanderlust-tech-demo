@@ -1,7 +1,7 @@
 import React from 'react';
 import Review from './Review';
 import styled from 'styled-components';
-import { texts } from '../../constants';
+import { texts } from '../../../constants';
 
 const Reviews = ({reviews}) => (
 	<PlaceReviewsStylized>

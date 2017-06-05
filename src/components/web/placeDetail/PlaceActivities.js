@@ -1,7 +1,7 @@
 import React from 'react';
 import PlaceActivity from './PlaceActivity'
 import styled from 'styled-components';
-import { texts } from '../../constants';
+import { texts } from '../../../constants';
 
 const PlaceActivities = ({ activities }) => (
   <PlaceActivitiesStylized>

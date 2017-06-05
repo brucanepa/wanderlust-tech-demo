@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { destinations as destinationsActions } from '../../actions';
-import Destinations from './Destinations';
+import WebDestinations from '../web/destinations/Destinations';
 import { getDestinations } from '../../reducers';
 
 class DestinationsContainer extends Component {
@@ -12,7 +12,7 @@ class DestinationsContainer extends Component {
     this.props.fetchDestinations();
   }
   render() {
-    return <Destinations {...this.props}/>
+    return <WebDestinations {...this.props}/>
   }
 }
 

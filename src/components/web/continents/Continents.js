@@ -1,7 +1,7 @@
 import React from 'react';
 import Continent from './Continent';
 import styled from 'styled-components';
-import { texts } from '../../constants';
+import { texts } from '../../../constants';
 
 const Continents = ({continents}) => (
   <ContinentsStylized>

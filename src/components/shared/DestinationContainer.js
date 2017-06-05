@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Destination from './Destination'
+import WebDestination from '../web/destinations/Destination'
 import { destinations as destinationsActions } from '../../actions';
 import { getSelectedDestinationId } from '../../reducers';
 
 class DestinationContainer extends Component {
   render() {
-    return <Destination {...this.props} />
+    return <WebDestination {...this.props} />
   }
 }
 

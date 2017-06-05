@@ -1,9 +1,9 @@
 import React from 'react';
-import '../../App.css';
-import DestinationsContainer from './DestinationsContainer';
-import DestinationsFooterContainer from './DestinationsFooterContainer';
+import '../../../App.css';
+import DestinationsContainer from '../../shared/DestinationsContainer';
+import DestinationsFooterContainer from '../../shared/DestinationsFooterContainer';
 import styled from 'styled-components';
-import { texts } from '../../constants';
+import { texts } from '../../../constants';
 
 const DestinationsPanel = () => (
   <ResponsivePanel>

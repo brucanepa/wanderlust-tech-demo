@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Rater from 'react-rater';
-import '../../App.css';
+import '../../../App.css';
 
 class PlaceRating extends Component {
   constructor(props) {
