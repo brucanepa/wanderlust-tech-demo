@@ -13,7 +13,9 @@ const texts = {
   comment: 'Comentar',
   placeNotFound: 'Este lugar no pertenece a este planeta!',
   yourTripTitle: 'Tu Viaje',
-  addAsDestiantion: 'Agregar al viaje'
+  addAsDestiantion: 'Agregar al viaje',
+  signIn: 'Ingresar',
+  signOut: 'Salir'
 };
 
 export default texts;

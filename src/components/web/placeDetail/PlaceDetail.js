@@ -10,7 +10,7 @@ import Reviews from '../placeDetail/Reviews';
 import styled from 'styled-components';
 import { texts, defaultImage } from '../../../constants';
 
-const PlaceDetail = ({ placeDetail, regionId, images, match}) => (
+const PlaceDetail = ({ placeDetail, regionId, images, signedIn, match}) => (
   <PlaceDetailStylized>
     <PlaceDetailNameStylized image={images && images[0] || defaultImage}>{placeDetail.placeInformation.name}
       <Back to={regionId ? `/regions/${regionId}` : '/continents'}>
@@ -25,7 +25,7 @@ const PlaceDetail = ({ placeDetail, regionId, images, match}) => (
     <Column>
       <AddStylized>
         <AddDestinationContainer placeId={match.params.placeId} name={placeDetail.placeInformation.name}/>
-        {texts.addAsDestiantion}
+        {signedIn ? texts.addAsDestiantion : ""}
       </AddStylized>
       <PlaceDescription description={placeDetail.placeInformation.description}/>
       <PlaceActivities activities={placeDetail.placeInformation.activities}/>

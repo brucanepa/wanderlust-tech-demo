@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { placeDetail as placeDetailActions } from '../../actions';
-import { getPlace, getPlaceDetail} from '../../reducers';
+import { getPlace, getPlaceDetail, signedIn} from '../../reducers';
 import WebPlaceDetail from '../web/placeDetail/PlaceDetail';
 import WebNotFound from '../web/NotFound';
 
@@ -24,7 +24,8 @@ class PlaceDetailContainer extends Component {
 const mapStateToProps = (state, ownProps) => ({
   placeDetail: getPlaceDetail(state),
   regionId: getPlace(state, ownProps.match.params.placeId).regionId,
-  images: getPlaceDetail(state) && getPlaceDetail(state).placeInformation &&  getPlaceDetail(state).placeInformation.images
+  images: getPlaceDetail(state) && getPlaceDetail(state).placeInformation &&  getPlaceDetail(state).placeInformation.images,
+  signedIn: signedIn(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

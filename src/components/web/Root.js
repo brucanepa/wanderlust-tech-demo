@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
-import WebDestinationsPanel from '../web/destinations/DestinationsPanel';
+import SessionContainer from '../shared/SessionContainer';
 import PlacesContainer from '../shared/PlacesContainer';
 import PlaceDetailContainer from '../shared/PlaceDetailContainer';
 import ContinentsContainer from '../shared/ContinentsContainer';
@@ -12,7 +12,7 @@ const Root = ({store}) => (
     <Router>
       <MainRoot>
         <MainApp>
-          <WebDestinationsPanel/>
+          <SessionContainer/>
           <Switch>
             <Route exact={true} path='/regions/:regionId' component={ PlacesContainer } />
             <Route exact={true} path='/continents' component={ ContinentsContainer } />

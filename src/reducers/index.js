@@ -4,13 +4,15 @@ import destinations, * as fromDestinations from './destinations';
 import placeDetail from './placeDetail';
 import continents, * as fromContinents from './continents';
 import requesting, * as fromRequesting from './requesting';
+import session, * as fromSession from './session';
 
 const wanderApp = combineReducers({
+  session,
+  requesting,
+  continents,
   places,
   destinations,
-  placeDetail,
-  continents,
-  requesting
+  placeDetail
 });
 
 export default wanderApp;
@@ -47,3 +49,10 @@ export const showLoading = (state) =>
 
 export const showError = (state) =>
   fromRequesting.showError(state.requesting);
+
+export const getUser = (state) => 
+  fromSession.getUser(state.session);  
+
+export const signedIn = (state) => 
+  fromSession.isSignedIn(state.session);
+  

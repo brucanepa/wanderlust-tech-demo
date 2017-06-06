@@ -5,10 +5,13 @@ import DestinationsFooterContainer from '../../shared/DestinationsFooterContaine
 import styled from 'styled-components';
 import { texts } from '../../../constants';
 
-const DestinationsPanel = () => (
+const DestinationsPanel = ({name}) => (
   <ResponsivePanel>
   	<PanelTitle>
   		{texts.destinationsTitle}
+  	</PanelTitle>
+    <PanelTitle>
+  		{name}
   	</PanelTitle>
     <Separator/>
     <DestinationsContainer />

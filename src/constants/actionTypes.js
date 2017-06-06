@@ -18,7 +18,11 @@ const types = {
   receiveAddReviewSuccess:'RECEIVE_ADD_REVIEW_SUCCESS',
   requestContinents:'REQUEST_CONTINENTS',
   receiveContinentsSuccess:'RECEIVE_CONTINENTS_SUCCESS',
-  selectedDestination: 'SELECTED_DESTINATION'
+  selectedDestination: 'SELECTED_DESTINATION',
+  requestSignIn: 'REQUEST_SIGN_IN',
+  receiveSignInSucces: 'RECEIVE_SIGN_IN_SUCCESS',
+  requestSignOut: 'REQUEST_SIGN_OUT',
+  receiveSignOutSucces: 'RECEIVE_SIGN_OUT_SUCCESS'
 };
 
 export default types;

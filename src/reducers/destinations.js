@@ -28,6 +28,8 @@ const destinationsHashById = (state = {}, action) => {
         };
         delete newState[action.selectedId];
         return newState;
+      case actions.requestSignOut:
+        return {};
       default:
         return state;
     }
@@ -48,6 +50,8 @@ const destinationList = (state = [], action) => {
       return swapArrayPosition(state, indexDown, indexDown + 1);
     case actions.receiveRemoveDestinationSuccess:
       return removeArrayElement(state, state.indexOf(action.selectedId));
+    case actions.requestSignOut:
+      return [];
     default:
       return state;
   }
@@ -75,6 +79,7 @@ const selectedDestination = (state = {}, action) => {
   } else {
     switch (action.type) {
       case actions.receiveRemoveDestinationSuccess:
+      case actions.requestSignOut:
         return getSelectedDestination(0, -1);
       default:
         return state;

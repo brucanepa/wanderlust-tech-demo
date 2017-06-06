@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { destinations as destinationsActions } from '../../actions';
 import WebAddDestination from '../web/destinations/AddDestination';
+import { destinations as destinationsActions } from '../../actions';
+import { signedIn } from '../../reducers';
 
 class AddDestinationContainer extends Component {
   render() {
-    return <WebAddDestination {...this.props} />
+    return this.props.signedIn ? 
+      <WebAddDestination {...this.props} /> :
+      <div></div>
   }
 }
+
+const mapStateToProps = (state) => ({
+  signedIn: signedIn(state)
+});
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onClick(e) {
@@ -21,7 +28,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 });
 
 AddDestinationContainer = connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(AddDestinationContainer);
 
