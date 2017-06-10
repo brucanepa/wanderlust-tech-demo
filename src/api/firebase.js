@@ -1,5 +1,6 @@
-import * as firebase from 'firebase';
-import { apiUris } from '../constants';
+import * as firebase from 'firebase'
+import { apiUris } from '../constants'
+import { loadState } from '../utils/localStorage'
 
 const config = {
   apiKey: 'AIzaSyBHlOtH4VOI-9WB1YgZEC1ZW5xO4dIKriQ',
@@ -43,14 +44,6 @@ const setSession = (apiUser) => {
 };
 setSession();
 
-// firebase.auth().onAuthStateChanged((user) => {
-//   if (user) {
-//     // User is signed in.
-//   } else {
-//     // User is signed out.
-//   }
-// });
-
 const getActualUserUri = () => (apiUris.users + '/' + user.key);
 
 const getPlaceDetailUri = (placeId) => (apiUris.placesDetails + '/' + (placeId - 1));
@@ -74,18 +67,22 @@ const getUserFromApi = (username) => {
     });
 };
 
+const setSessionFromApi = (session) => {
+  return getUserFromApi(session.email)
+    .then((user) => {
+      return {
+        ...setSession({
+          ...session,
+          ...user
+        })
+      }
+    });
+};
+
 export const signIn = (email, password) => {
   return firebase.auth().signInWithEmailAndPassword(email, password)
     .then((response) => {
-      return getUserFromApi(response.email)
-        .then((user) => {
-          return {
-            ...setSession({
-              ...response,
-              ...user
-            })
-          }
-        });
+      return setSessionFromApi(response);
     }, (error) => {
       setSession();
       return {
@@ -143,17 +140,38 @@ const updateNextDestinationPosition = (order) => {
   }
 };
 
+const mapDestinations = (destinations) => {
+  return Object.keys(destinations)
+    .map((key) => {
+      const destination = destinations[key];
+      destination.id = key;
+      updateNextDestinationPosition(destination.order);
+      return destination;
+    })
+    .sort((a, b) => (a.order > b.order));
+};
+
+const anyUserDestinations = () => {
+  return userDestinations && Object.keys(userDestinations).length;
+};
+
 export const fetchDestinations = () => {
-  return new Promise((resolve, reject) => {
-    resolve(Object.keys(userDestinations)
-      .map((key) => {
-        const destination = userDestinations[key];
-        destination.id = key;
-        updateNextDestinationPosition(destination.order);
-        return destination;
-      })
-      .sort((a, b) => (a.order > b.order)));
-  });
+  if (anyUserDestinations()) {
+    return new Promise((resolve, reject) => {
+      resolve(mapDestinations(userDestinations));
+    });
+  } else {
+    const stateInStorage = loadState();
+    const userInStorage = stateInStorage && stateInStorage.session && stateInStorage.session.user;
+    return getUserFromApi(userInStorage.email)
+      .then((user) => {
+        setSession({
+          ...userInStorage,
+          ...user
+        });
+        return mapDestinations(user.destinations);
+      });
+  }
 };
 
 export const addDestination = (destination) => {
