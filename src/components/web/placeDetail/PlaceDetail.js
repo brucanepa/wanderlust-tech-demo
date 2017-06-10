@@ -30,7 +30,7 @@ const PlaceDetail = ({ placeDetail, regionId, images, signedIn, match}) => (
       <PlaceDescription description={placeDetail.placeInformation.description}/>
       <PlaceActivities activities={placeDetail.placeInformation.activities}/>
       <Reviews reviews={placeDetail.reviewList} />
-      <AddReview placeId={match.params.placeId} />
+      <AddReview placeId={match.params.placeId} signedIn={signedIn}/>
     </Column>
     <Column>
         <PlaceImages images={images}/>

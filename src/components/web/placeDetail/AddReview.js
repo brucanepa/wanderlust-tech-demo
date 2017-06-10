@@ -1,11 +1,11 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { placeDetail as placeDetailActions } from '../../../actions';
-import PlaceRating from './PlaceRating';
-import styled from 'styled-components';
-import { texts } from '../../../constants';
+import React from 'react'
+import { connect } from 'react-redux'
+import { placeDetail as placeDetailActions } from '../../../actions'
+import PlaceRating from './PlaceRating'
+import styled from 'styled-components'
+import { texts } from '../../../constants'
 
-const AddReview = ({ dispatch, placeId }) => {
+const AddReview = ({ dispatch, placeId, signedIn }) => {
   let input;
   let rating = 0;
 
@@ -23,7 +23,7 @@ const AddReview = ({ dispatch, placeId }) => {
     rating = ratingSelected;
   }
 
-  return (
+  return signedIn ? (
     <AddReviewStylized>
       <Description>{texts.reviewsComment}</Description>
       <PlaceRatingStylized>
@@ -37,7 +37,7 @@ const AddReview = ({ dispatch, placeId }) => {
       </form>
   
     </AddReviewStylized>
-  );
+  ) : <AddReviewStylized/>;
 };
 
 const AddReviewStylized = styled.div`
