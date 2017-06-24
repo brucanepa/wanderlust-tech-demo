@@ -17,7 +17,7 @@ class VisiblePlaces extends Component {
     return !!this.props.regionName;
   }
   render() {
-    return this.show() ?  <Places {...this.props} /> : <NotFound />
+    return this.show() ? <Places {...this.props} /> : <NotFound />
   }
 }
 

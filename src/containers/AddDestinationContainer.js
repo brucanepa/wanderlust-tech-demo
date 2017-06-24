@@ -18,7 +18,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onClick(e) {
-    e.preventDefault();
+    e && e.preventDefault();
     const destination = {
       placeId: parseInt(ownProps.placeId),
       name: ownProps.name

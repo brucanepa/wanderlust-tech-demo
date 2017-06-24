@@ -162,15 +162,22 @@ export const fetchDestinations = () => {
     });
   } else {
     const stateInStorage = loadState();
-    const userInStorage = stateInStorage && stateInStorage.session && stateInStorage.session.user;
-    return getUserFromApi(userInStorage.email)
-      .then((user) => {
-        setSession({
-          ...userInStorage,
-          ...user
+    const sessionInStorage = stateInStorage && stateInStorage.session;
+    const userInStorage = sessionInStorage && sessionInStorage.user;
+    if (userInStorage && sessionInStorage.signedIn) {
+      return getUserFromApi(userInStorage.email)
+        .then((user) => {
+          setSession({
+            ...userInStorage,
+            ...user
+          });
+          return mapDestinations(user.destinations);
         });
-        return mapDestinations(user.destinations);
+    } else {
+      return new Promise((resolve, reject) => {
+        reject();
       });
+    }
   }
 };
 
