@@ -2,7 +2,6 @@ import api from '../api';
 import { normalize } from 'normalizr';
 import * as schema from './schema';
 import { destinations as requests } from './requests';
-import { actionsTypes as actions } from '../constants';
 import errorHandler from './errorHandler';
 
 export const fetchDestinations = () => (dispatch) => {

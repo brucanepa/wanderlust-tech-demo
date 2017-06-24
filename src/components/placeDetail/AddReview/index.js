@@ -10,7 +10,7 @@ const AddReview = ({ dispatch, placeId, signedIn }) => {
   let rating = 0;
 
   const onSubmit = (e) => {
-    e.preventDefault();
+    e && e.preventDefault();
     if (!input.value.trim() || rating < 1) {
       return;
     }
@@ -95,6 +95,5 @@ const AddButton = styled.button`
       color: white;
     }
 `;
+
 export default connect()(AddReview);
-
-

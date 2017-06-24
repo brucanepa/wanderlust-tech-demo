@@ -12,7 +12,8 @@ import Reviews from '../../placeDetail/Reviews'
 
 const PlaceDetail = ({ placeDetail, regionId, images, signedIn, match}) => (
   <PlaceDetailStylized>
-    <PlaceDetailNameStylized image={images && images[0] || defaultImage}>{placeDetail.placeInformation.name}
+    <PlaceDetailNameStylized image={images && images[0] || defaultImage}>
+      {placeDetail.placeInformation.name}
       <Back to={regionId ? `/regions/${regionId}` : '/continents'}>
           arrow_back
       </Back>

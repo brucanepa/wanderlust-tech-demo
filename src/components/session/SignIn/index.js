@@ -1,7 +1,7 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { session as sessionActions } from '../../../actions'
-import { texts } from '../../../constants'
+import React from 'react';
+import { connect } from 'react-redux';
+import { session as sessionActions } from '../../../actions';
+import { texts } from '../../../constants';
 
 const SignIn = ({dispatch}) => {
   let username = '';
@@ -28,7 +28,7 @@ const SignIn = ({dispatch}) => {
       <input type="password" onChange={onPasswordChange}/>
       <button type="button" 
         onClick={ (e) => { 
-          const result = onSignInClick(e, username, password);
+          const result = onSignInClick(e);
           if (!result) {
             password = '';
           }

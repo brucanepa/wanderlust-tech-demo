@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { texts, notFoundImage } from '../../constants';
 
 const NotFound = () => (
-
   <NotFoundStylized> 
 	<Back to={'/continents'}>
 		home

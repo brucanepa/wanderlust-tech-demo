@@ -15,7 +15,11 @@ const texts = {
   yourTripTitle: 'Tu Viaje',
   addAsDestiantion: 'Agregar al viaje',
   signIn: 'Ingresar',
-  signOut: 'Salir'
+  signOut: 'Salir',
+  add: 'Agregar',
+  delete: 'Borrar',
+  up: 'Subir',
+  down: 'Bajar'
 };
 
 export default texts;

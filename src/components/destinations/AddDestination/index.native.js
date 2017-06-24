@@ -1,12 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View, Button } from 'react-native';
+import { texts } from '../../../constants';
 
 const AddDestination = ({onClick}) => (
   <View>
-    <Button type="button" onClick={ (e) => onClick(e) }>add</Button>
+    <Button onPress={ onClick }
+      title={texts.add}
+    />
   </View>
 );
 
 export default AddDestination;
-
-
