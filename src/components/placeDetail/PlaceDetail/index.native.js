@@ -29,7 +29,7 @@ const PlaceDetail = ({placeDetail, regionId, images, signedIn, match}) => (
     <View>
       <View>
         <AddDestinationContainer placeId={ match.params.placeId } name={ placeDetail.placeInformation.name } />
-        { signedIn ? texts.addAsDestiantion : "" }
+        {signedIn ? texts.addAsDestiantion : texts.signInToAddDestination}
       </View>
       <PlaceDescription description={ placeDetail.placeInformation.description } />
       <PlaceActivities activities={ placeDetail.placeInformation.activities } />
