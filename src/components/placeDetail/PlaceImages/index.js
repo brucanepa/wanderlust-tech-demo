@@ -1,9 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import { defaultImage } from '../../../constants';
+import { defaultImage, wanderLustVR } from '../../../constants';
 
-const PlaceImages = ({images}) => (
+const PlaceImages = ({images, vrImage}) => (
 	<div>
+    {vrImage && 
+      <ResponsiveGallery>
+        <Gallery>
+          <ContainerVR src={wanderLustVR + vrImage} width="300" height="300" frameborder="0" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"/>
+        </Gallery>
+      </ResponsiveGallery> 
+    }
 		{images && images.map(image => 
 			<ResponsiveGallery key={image}>
 				<Gallery>
@@ -16,6 +23,12 @@ const PlaceImages = ({images}) => (
 
 export default PlaceImages;
 
+const ContainerVR = styled.iframe`
+  box-sizing: border-box;
+  border: none;
+  height: 300px;
+  width: 100%;
+`
 const Gallery = styled.div`
   box-sizing: border-box;
   border: 1px solid #ccc;
@@ -32,13 +45,6 @@ const Image = styled.div` {
   background-position: 50% 50%;
   background-image:url(${({ image }) => image });
 `
-
-// const ImageFooter = styled.div`
-//   padding: 15px;
-//   text-align: center;
-//   box-sizing: border-box;
-//   font-size: 25px;
-// `
 const ResponsiveGallery = styled.div`
     float: left;
     width: 100%;

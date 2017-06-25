@@ -10,7 +10,7 @@ import PlaceRating from '../PlaceRating'
 import AddReview from '../../placeDetail/AddReview'
 import Reviews from '../../placeDetail/Reviews'
 
-const PlaceDetail = ({ placeDetail, regionId, images, signedIn, match}) => (
+const PlaceDetail = ({ placeDetail, regionId, images, signedIn, match, vrImage}) => (
   <PlaceDetailStylized>
     <PlaceDetailNameStylized image={images && images[0] || defaultImage}>
       {placeDetail.placeInformation.name}
@@ -34,7 +34,7 @@ const PlaceDetail = ({ placeDetail, regionId, images, signedIn, match}) => (
       <AddReview placeId={match.params.placeId} signedIn={signedIn}/>
     </Column>
     <Column>
-        <PlaceImages images={images}/>
+        <PlaceImages images={images} vrImage={vrImage}/>
     </Column>
   </PlaceDetailStylized>
 );

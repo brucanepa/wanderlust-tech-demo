@@ -3,6 +3,7 @@ import { normalize } from 'normalizr';
 import * as schema from './schema';
 import { destinations as requests } from './requests';
 import errorHandler from './errorHandler';
+import actions from '../constants/actionTypes';
 
 export const fetchDestinations = () => (dispatch) => {
   dispatch(requests.requestDestinations());

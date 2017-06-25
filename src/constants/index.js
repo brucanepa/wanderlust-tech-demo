@@ -20,3 +20,5 @@ export const notFoundImage = 'https://cdn1.iconfinder.com/data/icons/earth-set/5
 export const actionsTypes = actions;
 
 export const texts = textMessages;
+
+export const wanderLustVR = "http://localhost:8081/vr/?image=";
