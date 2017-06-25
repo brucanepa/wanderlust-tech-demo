@@ -6,9 +6,8 @@ import { signedIn } from '../reducers';
 
 class AddDestinationContainer extends Component {
   render() {
-    return this.props.signedIn ? 
-      <AddDestination {...this.props} /> :
-      <div></div>
+    return <AddDestination {...this.props} /> 
+
   }
 }
 
@@ -33,3 +32,6 @@ AddDestinationContainer = connect(
 )(AddDestinationContainer);
 
 export default AddDestinationContainer;
+/* this.props.signedIn ? 
+      <AddDestination {...this.props} /> :
+      <div></div>*/

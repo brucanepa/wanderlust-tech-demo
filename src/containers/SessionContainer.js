@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import SignIn from '../components/session/SignIn';
-import SignedInContainer from './SignedInContainer'
-import { signedIn } from '../reducers';
+import { signedIn, getUser } from '../reducers';
+import { session as sessionActions } from '../actions';
+import Session from '../components/session/Session';
 
 class SessionContainer extends Component {
   render() {
-    return this.props.signedIn ?
-      <SignedInContainer {...this.props}/> :
-      <SignIn {...this.props} />
+    return <Session {...this.props}/>
   }
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  signedIn: signedIn(state)
+  signedIn: signedIn(state),
+  name: getUser(state).name
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  onSignOutClick() {
+    return dispatch(sessionActions.signOut());
+  }
 });
 
 SessionContainer = connect(

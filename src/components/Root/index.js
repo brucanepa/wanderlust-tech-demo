@@ -5,6 +5,7 @@ import SessionContainer from '../../containers/SessionContainer';
 import PlacesContainer from '../../containers/PlacesContainer';
 import PlaceDetailContainer from '../../containers/PlaceDetailContainer';
 import ContinentsContainer from '../../containers/ContinentsContainer';
+
 import styled from 'styled-components';
 
 const Root = ({store}) => (

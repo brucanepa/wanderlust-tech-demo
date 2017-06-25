@@ -17,9 +17,12 @@ const texts = {
   signIn: 'Ingresar',
   signOut: 'Salir',
   add: 'Agregar',
+  signInToAddDestination: 'Inicia sesión para agregar',
   delete: 'Borrar',
   up: 'Subir',
-  down: 'Bajar'
+  down: 'Bajar',
+  username: 'Username:',
+  password: 'Password:'
 };
 
 export default texts;

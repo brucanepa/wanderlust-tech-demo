@@ -26,7 +26,7 @@ const PlaceDetail = ({ placeDetail, regionId, images, signedIn, match, vrImage})
     <Column>
       <AddStylized>
         <AddDestinationContainer placeId={match.params.placeId} name={placeDetail.placeInformation.name}/>
-        {signedIn ? texts.addAsDestiantion : ""}
+        {signedIn ? texts.addAsDestiantion : texts.signInToAddDestination}
       </AddStylized>
       <PlaceDescription description={placeDetail.placeInformation.description}/>
       <PlaceActivities activities={placeDetail.placeInformation.activities}/>
