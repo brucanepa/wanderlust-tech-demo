@@ -1,18 +1,21 @@
 import React from 'react'
+import { Provider } from 'react-redux';
+import { ScrollView, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types'
-import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import SessionContainer from '../../containers/SessionContainer';
+import PlacesContainer from '../../containers/PlacesContainer';
+import PlaceDetailContainer from '../../containers/PlaceDetailContainer';
+import ContinentsContainer from '../../containers/ContinentsContainer';
 
 const Root = ({store}) => (
-  <ScrollView
-    contentInset={{ top: 20 }}
-    style={styles.container}
-  >
-  </ScrollView>
+  <Provider store={ store }>
+    <ScrollView contentInset={ { top: 20 } } style={ styles.container }>
+      <SessionContainer/>
+      { /*<PlacesContainer/>*/ }
+      <ContinentsContainer/>
+      { /*<PlaceDetailContainer/>*/ }
+    </ScrollView>
+  </Provider>
 )
 
 Root.propTypes = {

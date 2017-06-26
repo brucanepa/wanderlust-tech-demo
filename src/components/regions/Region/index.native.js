@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { StyleSheet, View, Text, Image } from 'react-native';
 import { getRegionTitle } from '../../../utils/textHelper';
 import { defaultImage } from '../../../constants';
 

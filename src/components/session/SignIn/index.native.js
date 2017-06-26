@@ -3,7 +3,8 @@ import { StyleSheet, View, Button, TextInput, Text } from 'react-native';
 import { session as sessionActions } from '../../../actions';
 import { texts } from '../../../constants';
 
-const SignIn = ({dispatch}) => {let username = '';
+const SignIn = ({dispatch}) => {
+  let username = 'bruno@gmail.com';
   let password = '';
 
   const onUsernameChange = (text) => {
@@ -38,7 +39,20 @@ const SignIn = ({dispatch}) => {let username = '';
         } }
         title={ texts.signIn } />
     </View>
-  )
+  );
 };
 
 export default SignIn;
+
+const styles = StyleSheet.create({
+  input: {
+    flex: 1,
+    height: 44,
+    borderWidth: 0.5,
+    borderColor: '#fafafa',
+    padding: 8,
+    marginLeft: 16,
+    marginRight: 16,
+    backgroundColor: 'white',
+  },
+})
