@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import container from '../../../containers/AddDestinationContainer';
 
 const AddDestination = ({onClick, signedIn}) => (
     <div>
@@ -7,7 +8,7 @@ const AddDestination = ({onClick, signedIn}) => (
     </div>
 );
 
-export default AddDestination;
+export default container(AddDestination);
 
 const Button = styled.button`
 	height: 45px;

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Continent from '../Continent';
 import { texts } from '../../../constants';
+import container from '../../../containers/ContinentsContainer';
 
 const Continents = ({continents}) => (
   <ContinentsStylized>
@@ -16,7 +17,7 @@ const Continents = ({continents}) => (
   </ContinentsStylized>
 );
 
-export default Continents;
+export default container(Continents);
 
 const ContinentsStylized = styled.div`
     box-sizing: border-box;

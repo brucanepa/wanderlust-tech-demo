@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { signedIn, getUser } from '../reducers';
 import { session as sessionActions } from '../actions';
-import Session from '../components/session/Session';
 
-class SessionContainer extends Component {
+const container = T => class SessionContainer extends Component {
   render() {
-    return <Session {...this.props}/>
+    return <T {...this.props}/>
   }
 }
 
@@ -21,9 +20,7 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-SessionContainer = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(SessionContainer);
-
-export default SessionContainer;
+);

@@ -1,14 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import DestinationContainer from '../../../containers/DestinationContainer';
 import { texts } from '../../../constants';
+import Destination from '../Destination';
+import container from '../../../containers/DestinationsContainer';
 
 const Destinations = ({ destinations }) => {
   if(destinations && destinations.length > 0) {
     return (
      <DestinationsStylized>
       {destinations.map((destination, index) =>
-        <DestinationContainer
+        <Destination
           key={destination.id}
           {...destination}
           index={index}
@@ -22,6 +23,8 @@ const Destinations = ({ destinations }) => {
   )
 }
  
+export default container(Destinations);
+
 const DestinationsStylized = styled.ul`
   list-style-type: none;
   padding: 0;
@@ -38,5 +41,4 @@ const NoDestinationStylized = styled.div`
     margin-top: 20px;
 `;
 
-export default Destinations;
 

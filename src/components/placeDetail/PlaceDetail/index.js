@@ -2,16 +2,18 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { texts, defaultImage } from '../../../constants'
-import AddDestinationContainer from '../../../containers/AddDestinationContainer'
+import AddDestination from '../../destinations/AddDestination'
 import PlaceDescription from '../PlaceDescription'
 import PlaceActivities from '../PlaceActivities'
 import PlaceImages from '../PlaceImages'
 import PlaceRating from '../PlaceRating'
-import AddReview from '../../placeDetail/AddReview'
-import Reviews from '../../placeDetail/Reviews'
+import AddReview from '../AddReview'
+import Reviews from '../Reviews'
+import container from '../../../containers/PlaceDetailContainer';
 
 const PlaceDetail = ({ placeDetail, regionId, images, signedIn, match, vrImage}) => (
   <PlaceDetailStylized>
+    
     <PlaceDetailNameStylized image={images && images[0] || defaultImage}>
       {placeDetail.placeInformation.name}
       <Back to={regionId ? `/regions/${regionId}` : '/continents'}>
@@ -21,11 +23,11 @@ const PlaceDetail = ({ placeDetail, regionId, images, signedIn, match, vrImage})
           <PlaceRating {...placeDetail.placeRating} rating={1} total={1}/>
           {placeDetail.placeRating.rating}
       </HeaderRating>
-      
     </PlaceDetailNameStylized>
+
     <Column>
       <AddStylized>
-        <AddDestinationContainer placeId={match.params.placeId} name={placeDetail.placeInformation.name}/>
+        <AddDestination placeId={match.params.placeId} name={placeDetail.placeInformation.name}/>
         {signedIn ? texts.addAsDestiantion : texts.signInToAddDestination}
       </AddStylized>
       <PlaceDescription description={placeDetail.placeInformation.description}/>
@@ -33,13 +35,15 @@ const PlaceDetail = ({ placeDetail, regionId, images, signedIn, match, vrImage})
       <Reviews reviews={placeDetail.reviewList} />
       <AddReview placeId={match.params.placeId} signedIn={signedIn}/>
     </Column>
+
     <Column>
         <PlaceImages images={images} vrImage={vrImage}/>
     </Column>
+    
   </PlaceDetailStylized>
 );
 
-export default PlaceDetail;
+export default container(PlaceDetail);
 
 const Back = styled(Link)`
     background-color: #1e7f7e;

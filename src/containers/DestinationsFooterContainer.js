@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { destinations as destinationsActions } from '../actions';
-import DestinationsFooter from '../components/destinations/DestinationsFooter';
 import { getSelectedDestinationInfo } from '../reducers';
 
-class DestinationsFooterContainer extends Component {
+const container = T => class DestinationsFooterContainer extends Component {
   render() {
-    return <DestinationsFooter {...this.props} />
+    return <T {...this.props} />
   }
 }
 
@@ -23,9 +22,8 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-DestinationsFooterContainer = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(DestinationsFooterContainer);
+);
 
-export default DestinationsFooterContainer;

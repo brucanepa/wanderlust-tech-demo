@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import container from '../../../containers/DestinationContainer';
 
 const Destination = ({id, name, onClick, selected, index, onClickRemove}) => (
   <DestinationStylized 
@@ -10,6 +11,8 @@ const Destination = ({id, name, onClick, selected, index, onClickRemove}) => (
     <Button type="button" onClick={ () => onClickRemove(id) }>delete</Button>
   </DestinationStylized>
 );
+
+export default container(Destination);
 
 const DestinationStylized = styled.li`
     padding-top: 15px;
@@ -51,7 +54,6 @@ const Button = styled.button`
     }
 `
 
-export default Destination;
 
 
 

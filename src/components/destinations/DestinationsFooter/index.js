@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import container from '../../../containers/DestinationsFooterContainer';
 
 const DestinationsFooter = ({onClickUp, onClickDown, selectedInfo}) => (
     <Footer>
@@ -8,7 +9,7 @@ const DestinationsFooter = ({onClickUp, onClickDown, selectedInfo}) => (
     </Footer>
 );
 
-export default DestinationsFooter;
+export default container(DestinationsFooter);
 
 const Button = styled.button`
 	height: 45px;

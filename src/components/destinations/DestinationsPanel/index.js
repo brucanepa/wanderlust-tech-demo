@@ -1,11 +1,11 @@
 import React from 'react';
-import DestinationsContainer from '../../../containers/DestinationsContainer';
-import DestinationsFooterContainer from '../../../containers/DestinationsFooterContainer';
+import Destinations from '../Destinations';
+import DestinationsFooter from '../DestinationsFooter';
 
 const DestinationsPanel = () => (
   <div>
-    <DestinationsContainer />
-    <DestinationsFooterContainer/>
+    <Destinations/>
+    <DestinationsFooter/>
   </div>
 );
 

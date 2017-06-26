@@ -1,23 +1,22 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
-import SessionContainer from '../../containers/SessionContainer';
-import PlacesContainer from '../../containers/PlacesContainer';
-import PlaceDetailContainer from '../../containers/PlaceDetailContainer';
-import ContinentsContainer from '../../containers/ContinentsContainer';
-
 import styled from 'styled-components';
+import Session from '../../components/session/Session';
+import Places from '../../components/places/Places';
+import PlaceDetail from '../../components/placeDetail/PlaceDetail';
+import Continents from '../../components/continents/Continents';
 
 const Root = ({store}) => (
   <Provider store={ store }>
     <Router>
       <MainRoot>
         <MainApp>
-          <SessionContainer/>
+          <Session/>
           <Switch>
-            <Route exact={true} path='/regions/:regionId' component={ PlacesContainer } />
-            <Route exact={true} path='/continents' component={ ContinentsContainer } />
-            <Route exact={true} path='/places/:placeId' component={ PlaceDetailContainer } />
+            <Route exact={true} path='/regions/:regionId' component={ Places } />
+            <Route exact={true} path='/continents' component={ Continents } />
+            <Route exact={true} path='/places/:placeId' component={ PlaceDetail } />
             <Route exact={true} path='*' render={ () => (<Redirect to="/continents"> </Redirect>) } />
           </Switch>
         </MainApp>

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import { compose } from 'recompose';
 import { connect } from 'react-redux';
 import { destinations as destinationsActions } from '../actions';
-import Destinations from '../components/destinations/Destinations';
 import { getDestinations } from '../reducers';
 
-class DestinationsContainer extends Component {
+const container = T => class DestinationsContainer extends Component {
   componentDidMount() {
     this.fetchData();
   }
@@ -12,7 +12,7 @@ class DestinationsContainer extends Component {
     this.props.fetchDestinations();
   }
   render() {
-    return <Destinations {...this.props}/>
+    return <T {...this.props}/>
   }
 }
 
@@ -26,9 +26,8 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-DestinationsContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(DestinationsContainer);
+export default compose(
+  connect(mapStateToProps,mapDispatchToProps), 
+  container
+);
 
-export default DestinationsContainer;

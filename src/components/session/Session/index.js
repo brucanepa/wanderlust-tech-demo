@@ -4,6 +4,7 @@ import DestinationsPanel from '../../destinations/DestinationsPanel';
 import SignedIn from '../SignedIn';
 import SignIn from '../SignIn';
 import { texts } from '../../../constants';
+import container from '../../../containers/SessionContainer';
 
 const Session = (props) => (
   <ResponsivePanel>  
@@ -19,7 +20,7 @@ const Session = (props) => (
   </ResponsivePanel>
 );
 
-export default Session;
+export default container(Session);
 
 const ResponsivePanel = styled.div`
     box-sizing: border-box;

@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Place from '../Place';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { defaultImage } from '../../../constants';
+import Place from '../Place';
+import container from '../../../containers/PlacesContainer';
 
 const Places = ({ places, regionName, regionImage }) => (
   <PlacesStylized>
@@ -22,7 +23,7 @@ const Places = ({ places, regionName, regionImage }) => (
   </PlacesStylized>
 );
 
-export default Places;
+export default container(Places);
 
 const Back = styled(Link)`
     background-color: #1e7f7e;

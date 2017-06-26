@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { compose } from 'recompose';
 import { places as placesActions } from '../actions';
-import Places from '../components/places/Places';
-import NotFound from '../components/NotFound';
 import { getVisiblePlaces, getPlacesRegionName, getRegionImageById } from '../reducers';
+import NotFound from '../components/NotFound';
 
-class VisiblePlaces extends Component {
+const container = T => class PlacesContainer extends Component {
   componentDidMount() {
     this.fetchData();
   }
@@ -17,7 +17,7 @@ class VisiblePlaces extends Component {
     return !!this.props.regionName;
   }
   render() {
-    return this.show() ? <Places {...this.props} /> : <NotFound />
+    return this.show() ? <T {...this.props} /> : <NotFound />
   }
 }
 
@@ -33,9 +33,7 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-VisiblePlaces = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(VisiblePlaces);
-
-export default VisiblePlaces;
+export default compose(
+  connect(mapStateToProps,mapDispatchToProps), 
+  container
+);

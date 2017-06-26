@@ -40,6 +40,8 @@ const AddReview = ({ dispatch, placeId, signedIn }) => {
   ) : <AddReviewStylized/>;
 };
 
+export default connect()(AddReview);
+
 const AddReviewStylized = styled.div`
   margin: 0;
 
@@ -96,4 +98,4 @@ const AddButton = styled.button`
     }
 `;
 
-export default connect()(AddReview);
+

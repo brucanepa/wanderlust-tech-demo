@@ -1,6 +1,4 @@
 import api from '../api';
-import { normalize } from 'normalizr';
-import * as schema from './schema';
 import { session as requests } from './requests';
 import errorHandler from './errorHandler';
 

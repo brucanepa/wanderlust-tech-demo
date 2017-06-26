@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import AddDestinationContainer from '../../../containers/AddDestinationContainer';
 import { defaultImage } from '../../../constants';
+import AddDestination from '../../destinations/AddDestination'
 
 const Place = ({id, name, image}) => (
 	<Link to={ `/places/${id}` }>
@@ -10,7 +10,7 @@ const Place = ({id, name, image}) => (
       <Gallery>
         <Image image={image || defaultImage}/>
         <ImageFooter>{name}</ImageFooter>
-        <AddDestinationContainer placeId={ id } name={name}/> 
+        <AddDestination placeId={ id } name={name}/> 
       </Gallery>
     </ResponsiveGallery>
   </Link>

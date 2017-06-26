@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import { compose } from 'recompose';
 import { connect } from 'react-redux';
 import { continents as continentsActions } from '../actions';
-import Continents from '../components/continents/Continents';
 import { getContinents } from '../reducers';
 
-class ContinentsContainer extends Component {
+const container = T => class ContinentsContainer extends Component {
   componentDidMount() {
     this.fetchData();
   }
@@ -12,7 +12,7 @@ class ContinentsContainer extends Component {
     this.props.fetchContinents();
   }
   render() {
-    return <Continents {...this.props} />
+    return <T {...this.props} />
   }
 }
 
@@ -26,9 +26,7 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-ContinentsContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ContinentsContainer);
-
-export default ContinentsContainer;
+export default compose(
+  connect(mapStateToProps,mapDispatchToProps), 
+  container
+);

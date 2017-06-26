@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { compose } from 'recompose';
 import { placeDetail as placeDetailActions } from '../actions';
 import { getPlace, getPlaceDetail, signedIn} from '../reducers';
-import PlaceDetail from '../components/placeDetail/PlaceDetail';
 import NotFound from '../components/NotFound';
 
-class PlaceDetailContainer extends Component {
+const container = T => class PlaceDetailContainer extends Component {
   componentDidMount() {
     this.fetchData();
   }
@@ -17,7 +17,7 @@ class PlaceDetailContainer extends Component {
     return placeDetail && placeDetail.placeInformation.description;
   }
   render() {
-    return this.show() ? <PlaceDetail {...this.props}/> : <NotFound />
+    return this.show() ? <T {...this.props}/> : <NotFound />
   }
 }
 
@@ -35,9 +35,7 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-PlaceDetailContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PlaceDetailContainer);
-
-export default PlaceDetailContainer;
+export default compose(
+  connect(mapStateToProps,mapDispatchToProps), 
+  container
+);
