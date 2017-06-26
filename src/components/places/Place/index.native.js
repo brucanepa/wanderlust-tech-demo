@@ -7,7 +7,7 @@ const Place = ({id, name, image}) => (
 	// <Link to={ `/places/${id}` }>
     <View>
       <View>
-        <Image source={image || defaultImage}/>
+        <Image source={{uri: image}}/>
         <Text>{name}</Text>
         <AddDestinationContainer placeId={ id } name={name}/> 
       </View>

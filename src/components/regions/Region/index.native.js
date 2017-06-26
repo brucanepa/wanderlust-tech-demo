@@ -6,16 +6,21 @@ import { defaultImage } from '../../../constants';
 const Region = ({id, name, image, placesCount}) => (
   // <Link to={ `regions/${id}` }>
   <View>
-    <View>
-      <Image source={ image || defaultImage } />
-      <Text>
-        { getRegionTitle(name, placesCount) }
-      </Text>
-    </View>
+    <Image style={ styles.image } source={ { uri: image } } />
+    <Text>
+      { getRegionTitle(name, placesCount) }
+    </Text>
   </View>
-  // </Link>
+// </Link>
 );
 
 export default Region;
 
 //ToDo: navigation
+
+const styles = StyleSheet.create({
+  image: {
+    width: 50,
+    height: 50
+  }
+})

@@ -12,24 +12,25 @@ import { texts, defaultImage } from '../../../constants';
 const PlaceDetail = ({placeDetail, regionId, images, signedIn, match}) => (
   <View>
     <View>
-      <Image source={ images && images[0] || defaultImage } />
+      <Image style={styles.image}
+        source={ { uri: images && images[0] } } />
       <Text>
         { placeDetail.placeInformation.name }
       </Text>
       { /*<Back to={regionId ? `/regions/${regionId}` : '/continents'}>
-            arrow_back
-        </Back>*/ }
+                                    arrow_back
+                                </Back>*/ }
       <View>
         <PlaceRating {...placeDetail.placeRating} rating={ 1 } total={ 1 } />
         <Text>
-          { placeDetail.placeRating.rating } 
+          { placeDetail.placeRating.rating }
         </Text>
       </View>
     </View>
     <View>
       <View>
         <AddDestinationContainer placeId={ match.params.placeId } name={ placeDetail.placeInformation.name } />
-        {signedIn ? texts.addAsDestiantion : texts.signInToAddDestination}
+        { signedIn ? texts.addAsDestiantion : texts.signInToAddDestination }
       </View>
       <PlaceDescription description={ placeDetail.placeInformation.description } />
       <PlaceActivities activities={ placeDetail.placeInformation.activities } />
@@ -45,3 +46,10 @@ const PlaceDetail = ({placeDetail, regionId, images, signedIn, match}) => (
 export default PlaceDetail;
 
 //ToDo: implement router
+
+const styles = StyleSheet.create({
+  image: {
+    width: 50,
+    height: 50
+  }
+})
