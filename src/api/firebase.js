@@ -70,11 +70,12 @@ const getUserFromApi = (username) => {
 const setSessionFromApi = (session) => {
   return getUserFromApi(session.email)
     .then((user) => {
+      const session = setSession({
+        ...session,
+        ...user
+      });
       return {
-        ...setSession({
-          ...session,
-          ...user
-        })
+        ...session
       }
     });
 };
