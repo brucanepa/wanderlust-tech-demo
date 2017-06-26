@@ -4,7 +4,7 @@ import { session as sessionActions } from '../../../actions';
 import { texts } from '../../../constants';
 
 const SignIn = ({dispatch}) => {
-  let username = 'bruno@gmail.com';
+  let username = 'bruno@gmail.com'; //ToDo: delete default username
   let password = '';
 
   const onUsernameChange = (text) => {
@@ -23,12 +23,13 @@ const SignIn = ({dispatch}) => {
 
   return (
     <View>
-      <Text>{texts.username}</Text>
-      <TextInput onChangeText={(text) => onUsernameChange({text})}
-        value={this.state.text}  />
-      <Text>{texts.password}</Text>
-      <TextInput onChangeText={(text) => onPasswordChange({text})}
-          value={this.state.text}/>
+      <TextInput style={styles.input}
+        onChangeText={(text) => onUsernameChange(text)}
+        value={username} 
+        placeholder={texts.username} />
+      <TextInput style={styles.input}
+        onChangeText={(text) => onPasswordChange(text)}
+        placeholder={texts.password}/>
       <Button onPress={ (e) => {
           const result = onSignInClick();
           {
@@ -54,5 +55,5 @@ const styles = StyleSheet.create({
     marginLeft: 16,
     marginRight: 16,
     backgroundColor: 'white',
-  },
+  }
 })

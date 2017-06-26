@@ -21,8 +21,8 @@ const texts = {
   delete: 'Borrar',
   up: 'Subir',
   down: 'Bajar',
-  username: 'Username:',
-  password: 'Password:'
+  username: 'Usuario',
+  password: 'Contraseña'
 };
 
 export default texts;

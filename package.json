@@ -5,10 +5,12 @@
 	"scripts": {
 		"native-start": "node node_modules/react-native/local-cli/cli.js start",
 		"native-test": "jest",
-		"web-start": "react-scripts start",
+		"web": "react-scripts start",
 		"web-build": "react-scripts build",
 		"web-test": "react-scripts test --env=jsdom",
-		"web-eject": "react-scripts eject"
+		"web-eject": "react-scripts eject",
+		"ios": "react-native run-ios",
+		"android": "react-native run-android"
 	},
 	"dependencies": {
 		"firebase": "^4.1.2",

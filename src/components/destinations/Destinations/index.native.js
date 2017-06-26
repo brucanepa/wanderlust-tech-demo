@@ -18,7 +18,7 @@ const Destinations = ({ destinations }) => {
     )
   }
   return(
-    <NoDestinationStylized>{texts.noDestinations}</NoDestinationStylized>
+    <Text>{texts.noDestinations}</Text>
   )
 }
 
