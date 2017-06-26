@@ -1,9 +1,9 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import styled from 'styled-components'
-import { placeDetail as placeDetailActions } from '../../../actions'
-import PlaceRating from '../PlaceRating'
-import { texts } from '../../../constants'
+import React from 'react';
+import { connect } from 'react-redux';
+import styled from 'styled-components';
+import { placeDetail as placeDetailActions } from '../../../actions';
+import PlaceRating from '../PlaceRating';
+import { texts } from '../../../constants';
 
 const AddReview = ({ dispatch, placeId, signedIn }) => {
   let input;
@@ -32,7 +32,7 @@ const AddReview = ({ dispatch, placeId, signedIn }) => {
       <form onSubmit={ (e) => onSubmit(e) }>
         <InputStylized innerRef={node => { input = node; }} placeholder={texts.reviewsPlaceholder} />
         <AddButton type="submit">
-          {texts.comment}
+          {texts.newComment}
         </AddButton>
       </form>
   

@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Continent from '../Continent';
 import { texts } from '../../../constants';
+import container from '../../../containers/ContinentsContainer';
 
 const Continents = ({continents}) => (
   <View>
@@ -9,12 +10,9 @@ const Continents = ({continents}) => (
       { texts.pageTitle }
     </Text>
     <View>
-      { continents.map(continent => 
-        <Continent key={ continent.id } 
-        {...continent} />) 
-      }
+      { continents.map(continent => <Continent key={ continent.id } {...continent} />) }
     </View>
   </View>
 );
 
-export default Continents;
+export default container(Continents);

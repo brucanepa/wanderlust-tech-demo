@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Button } from 'react-native';
 import { texts } from '../../../constants';
+import container from '../../../containers/DestinationsFooterContainer';
 
 const DestinationsFooter = ({onClickUp, onClickDown, selectedInfo}) => (
   <View>
@@ -9,4 +10,4 @@ const DestinationsFooter = ({onClickUp, onClickDown, selectedInfo}) => (
   </View>
 );
 
-export default DestinationsFooter;
+export default container(DestinationsFooter);

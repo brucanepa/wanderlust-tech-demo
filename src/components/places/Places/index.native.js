@@ -1,12 +1,13 @@
 import React from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
-import Place from '../Place';
+import { StyleSheet, View, Text, Button, Image } from 'react-native';
 import { defaultImage } from '../../../constants';
+import Place from '../Place';
+import container from '../../../containers/PlacesContainer';
 
 const Places = ({ places, regionName, regionImage }) => (
   <View>
     <View >
-      <Image source={regionImage || defaultImage}/>
+      <Image source={{uri: regionImage}}/>
       <Text>{regionName}</Text>
       {/*<Back to={`/continents`}>
           arrow_back
@@ -23,6 +24,6 @@ const Places = ({ places, regionName, regionImage }) => (
   </View>
 );
 
-export default Places;
+export default container(Places);
 
 //ToDo: navigation

@@ -5,23 +5,23 @@ import Destination from '../Destination';
 import container from '../../../containers/DestinationsContainer';
 
 const Destinations = ({ destinations }) => {
-  if(destinations && destinations.length > 0) {
+  if (destinations && destinations.length > 0) {
     return (
-     <DestinationsStylized>
-      {destinations.map((destination, index) =>
-        <Destination
-          key={destination.id}
-          {...destination}
-          index={index}
-        />)
-      } 
+      <DestinationsStylized>
+        {destinations.map((destination, index) =>
+          <Destination
+            key={destination.id}
+            {...destination}
+            index={index}
+          />)
+        } 
       </DestinationsStylized>
     )
   }
   return(
     <NoDestinationStylized>{texts.noDestinations}</NoDestinationStylized>
   )
-}
+};
  
 export default container(Destinations);
 

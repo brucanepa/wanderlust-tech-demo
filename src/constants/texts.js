@@ -10,7 +10,7 @@ const texts = {
   reviewsComment: 'Dejanos tu comentario...',
   reviewsPlaceholder: 'Comentario...',
   ratingTitle: 'Puntuación',
-  comment: 'Comentar',
+  newComment: 'Comentar',
   placeNotFound: 'Este lugar no pertenece a este planeta!',
   yourTripTitle: 'Tu Viaje',
   addAsDestiantion: 'Agregar al viaje',
@@ -22,7 +22,8 @@ const texts = {
   up: 'Subir',
   down: 'Bajar',
   username: 'Usuario',
-  password: 'Contraseña'
+  password: 'Contraseña',
+  comment: 'Comentario'
 };
 
 export default texts;

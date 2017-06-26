@@ -7,7 +7,7 @@ const PlaceImages = ({images}) => (
 		{images && images.map(image => 
 			<View key={image}>
 				<View>
-				  <Image source={ image || defaultImage } />
+				  <Image source={ {uri: image} } />
 				</View>
 			</View> 
 		)}

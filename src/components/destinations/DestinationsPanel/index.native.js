@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import DestinationsContainer from '../../../containers/DestinationsContainer';
-import DestinationsFooterContainer from '../../../containers/DestinationsFooterContainer';
+import Destinations from '../Destinations';
+import DestinationsFooter from '../DestinationsFooter';
 
 const DestinationsPanel = () => (
   <View>
-    <DestinationsContainer />
-    <DestinationsFooterContainer/>
+    <Destinations />
+    <DestinationsFooter/>
   </View>
 );
 

@@ -2,15 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { defaultImage } from '../../../constants';
-import AddDestination from '../../destinations/AddDestination'
+import AddDestination from '../../destinations/AddDestination';
 
 const Place = ({id, name, image}) => (
-	<Link to={ `/places/${id}` }>
+  <Link to={ `/places/${id}` }>
     <ResponsiveGallery>
       <Gallery>
-        <Image image={image || defaultImage}/>
-        <ImageFooter>{name}</ImageFooter>
-        <AddDestination placeId={ id } name={name}/> 
+        <Image image={ image || defaultImage } />
+        <ImageFooter>
+          { name }
+        </ImageFooter>
+        <AddDestination placeId={ id } name={ name } />
       </Gallery>
     </ResponsiveGallery>
   </Link>

@@ -5,7 +5,7 @@ import { texts } from '../../../constants';
 const SignedIn = ({onSignOutClick, name}) => (
   <div>
     <Button type="button" onClick={ (e) => onSignOutClick(e) }>
-      {texts.signOut}
+      { texts.signOut }
     </Button>
   </div>
 );

@@ -6,13 +6,11 @@ import container from '../../../containers/ContinentsContainer';
 
 const Continents = ({continents}) => (
   <ContinentsStylized>
-    <ContinentNameStylized>{texts.pageTitle}</ContinentNameStylized>
+    <ContinentNameStylized>
+      { texts.pageTitle }
+    </ContinentNameStylized>
     <div>
-      { 
-        continents.map(continent => 
-        <Continent key={ continent.id } 
-          {...continent} />)
-      }
+      { continents.map(continent => <Continent key={ continent.id } {...continent} />) }
     </div>
   </ContinentsStylized>
 );

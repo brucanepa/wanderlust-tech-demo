@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Button } from 'react-native';
 import { texts } from '../../../constants';
+import container from '../../../containers/DestinationContainer';
 
 const Destination = ({id, name, onClick, selected, index, onClickRemove}) => (
   <View 
@@ -12,4 +13,4 @@ const Destination = ({id, name, onClick, selected, index, onClickRemove}) => (
   </View>
 );
 
-export default Destination;
+export default container(Destination);

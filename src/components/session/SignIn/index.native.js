@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { StyleSheet, View, Button, TextInput, Text } from 'react-native';
 import { session as sessionActions } from '../../../actions';
 import { texts } from '../../../constants';
@@ -43,7 +44,7 @@ const SignIn = ({dispatch}) => {
   );
 };
 
-export default SignIn;
+export default connect()(SignIn);
 
 const styles = StyleSheet.create({
   input: {

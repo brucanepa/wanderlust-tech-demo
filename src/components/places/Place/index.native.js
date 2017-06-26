@@ -1,18 +1,20 @@
 import React from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
-import AddDestinationContainer from '../../../containers/AddDestinationContainer';
 import { defaultImage } from '../../../constants';
+import AddDestination from '../../destinations/AddDestination';
 
 const Place = ({id, name, image}) => (
-	// <Link to={ `/places/${id}` }>
+  // <Link to={ `/places/${id}` }>
+  <View>
     <View>
-      <View>
-        <Image source={{uri: image}}/>
-        <Text>{name}</Text>
-        <AddDestinationContainer placeId={ id } name={name}/> 
-      </View>
+      <Image source={ { uri: image } } />
+      <Text>
+        { name }
+      </Text>
+      <AddDestination placeId={ id } name={ name } />
     </View>
-  // </Link>
+  </View>
+// </Link>
 );
 
 export default Place;

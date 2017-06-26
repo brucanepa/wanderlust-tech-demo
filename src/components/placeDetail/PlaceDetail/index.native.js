@@ -1,25 +1,26 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import AddDestinationContainer from '../../../containers/AddDestinationContainer';
+import { StyleSheet, View, Text, Image } from 'react-native';
+import { texts, defaultImage } from '../../../constants';
+import AddDestination from '../../destinations/AddDestination'
 import PlaceDescription from '../PlaceDescription';
 import PlaceActivities from '../PlaceActivities';
 import PlaceImages from '../PlaceImages';
 import PlaceRating from '../PlaceRating';
 import AddReview from '../../placeDetail/AddReview';
 import Reviews from '../../placeDetail/Reviews';
-import { texts, defaultImage } from '../../../constants';
+import container from '../../../containers/PlaceDetailContainer';
 
 const PlaceDetail = ({placeDetail, regionId, images, signedIn, match}) => (
   <View>
+
     <View>
-      <Image style={styles.image}
-        source={ { uri: images && images[0] } } />
+      <Image style={ styles.image } source={ { uri: images && images[0] } } />
       <Text>
         { placeDetail.placeInformation.name }
       </Text>
       { /*<Back to={regionId ? `/regions/${regionId}` : '/continents'}>
-                                    arrow_back
-                                </Back>*/ }
+                                                            arrow_back
+                                                        </Back>*/ }
       <View>
         <PlaceRating {...placeDetail.placeRating} rating={ 1 } total={ 1 } />
         <Text>
@@ -27,9 +28,10 @@ const PlaceDetail = ({placeDetail, regionId, images, signedIn, match}) => (
         </Text>
       </View>
     </View>
+
     <View>
       <View>
-        <AddDestinationContainer placeId={ match.params.placeId } name={ placeDetail.placeInformation.name } />
+        <AddDestination placeId={ match.params.placeId } name={ placeDetail.placeInformation.name } />
         { signedIn ? texts.addAsDestiantion : texts.signInToAddDestination }
       </View>
       <PlaceDescription description={ placeDetail.placeInformation.description } />
@@ -37,13 +39,15 @@ const PlaceDetail = ({placeDetail, regionId, images, signedIn, match}) => (
       <Reviews reviews={ placeDetail.reviewList } />
       <AddReview placeId={ match.params.placeId } signedIn={ signedIn } />
     </View>
+
     <View>
       <PlaceImages images={ images } />
     </View>
+    
   </View>
 );
 
-export default PlaceDetail;
+export default container(PlaceDetail);
 
 //ToDo: implement router
 

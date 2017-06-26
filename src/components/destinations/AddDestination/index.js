@@ -4,7 +4,9 @@ import container from '../../../containers/AddDestinationContainer';
 
 const AddDestination = ({onClick, signedIn}) => (
     <div>
-      <Button disabled={!signedIn} type="button" onClick={ (e) => onClick(e) }>add</Button>
+      <Button disabled={ !signedIn } type="button" onClick={ (e) => onClick(e) }>
+        add
+      </Button>
     </div>
 );
 

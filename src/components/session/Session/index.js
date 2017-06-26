@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { texts } from '../../../constants';
 import DestinationsPanel from '../../destinations/DestinationsPanel';
 import SignedIn from '../SignedIn';
 import SignIn from '../SignIn';
-import { texts } from '../../../constants';
 import container from '../../../containers/SessionContainer';
 
 const Session = (props) => (
