@@ -6,18 +6,29 @@ import SignedIn from '../SignedIn';
 import SignIn from '../SignIn';
 import container from '../../../containers/SessionContainer';
 
-const Session = (props) => (
-  <View>  
-    <Text>
-      {texts.destinationsTitle}
-    </Text>
-    <Text>
-      {props.name}
-    </Text>
-    <Text/>
-    {props.signedIn && <DestinationsPanel/>}
-    {props.signedIn ? <SignedIn {...props}/> : <SignIn {...props} />}
-  </View>
-);
+const Session = (props) => {
+  props.navigation.name = 'asd';
+  props.navigation.title = 'asdt';
+  
+  return (
+    <View style={ styles.container }>
+      <Text>
+        { texts.destinationsTitle }
+      </Text>
+      <Text>
+        { props.name }
+      </Text>
+      <Text/>
+      { props.signedIn && <DestinationsPanel/> }
+      { props.signedIn ? <SignedIn {...props}/> : <SignIn {...props} /> }
+    </View>
+  )
+};
+
+const styles = StyleSheet.create({
+  container: {
+    marginTop: 20,
+  }
+});
 
 export default container(Session);

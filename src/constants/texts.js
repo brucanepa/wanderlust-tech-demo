@@ -13,6 +13,7 @@ const texts = {
   newComment: 'Comentar',
   placeNotFound: 'Este lugar no pertenece a este planeta!',
   yourTripTitle: 'Tu Viaje',
+  myTripTitle: 'Mi Viaje',
   addAsDestiantion: 'Agregar al viaje',
   signIn: 'Ingresar',
   signOut: 'Salir',
@@ -23,7 +24,9 @@ const texts = {
   down: 'Bajar',
   username: 'Usuario',
   password: 'Contraseña',
-  comment: 'Comentario'
+  comment: 'Comentario',
+  find: 'Buscar',
+  chooseAContinent: 'Elige un continente'
 };
 
 export default texts;

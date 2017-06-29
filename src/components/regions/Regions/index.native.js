@@ -4,7 +4,7 @@ import Region from '../Region';
 
 const Regions = ({ regions }) => (
   <View>
-    {regions.map(region =>
+    {regions && regions.map(region =>
       <Region
         key={region.id}
         {...region}

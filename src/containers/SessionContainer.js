@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { compose } from 'recompose';
 import { signedIn, getUser } from '../reducers';
 import { session as sessionActions } from '../actions';
+import { texts } from '../constants';
 
 const container = T => class SessionContainer extends Component {
+  static navigationOptions = {
+    title: texts.myTripTitle
+  };
   render() {
     return <T {...this.props}/>
   }
@@ -20,7 +25,7 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  container
 );

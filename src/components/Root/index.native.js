@@ -1,6 +1,6 @@
 import React from 'react'
 import { Provider } from 'react-redux';
-import { ScrollView, StyleSheet } from 'react-native';
+import { TabNavigator } from 'react-navigation';
 import PropTypes from 'prop-types'
 import Session from '../../components/session/Session';
 import Places from '../../components/places/Places';
@@ -9,27 +9,21 @@ import Continents from '../../components/continents/Continents';
 
 const Root = ({store}) => (
   <Provider store={ store }>
-    <ScrollView contentInset={ { top: 20 } } style={ styles.container }>
-      <Session/>
-      { /*<Places/>*/ }
-      <Continents/>
-      { /*<PlaceDetail/>*/ }
-    </ScrollView>
+    <WanderLustNav/>
   </Provider>
-)
+);
+
+const WanderLustNav = TabNavigator({
+  SessionTab: {
+    screen: Session
+  },
+  ContinentsTab: {
+    screen: Continents
+  }
+});
 
 Root.propTypes = {
   store: PropTypes.object.isRequired
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'whitesmoke',
-  },
-  todo: {
-    backgroundColor: 'red'
-  }
-});
 
 export default Root
