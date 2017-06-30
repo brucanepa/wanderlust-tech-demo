@@ -28,7 +28,10 @@ const texts = {
   find: 'Buscar',
   chooseAContinent: 'Elige un continente',
   places: 'Lugares',
-  placeDetail: 'Detalle'
+  placeDetail: 'Detalle',
+  added: 'Agregado',
+  error: 'Error',
+  signInError: 'Usuario o contraseña incorrecta'
 };
 
 export default texts;

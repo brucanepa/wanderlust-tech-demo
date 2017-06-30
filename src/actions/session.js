@@ -7,9 +7,11 @@ export const signIn = (email, password) => (dispatch) => {
   return api.signIn(email, password)
     .then((response) => {
       if (response.errorCode) {
-        errorHandler(dispatch, requests.requestSignIn().type)
+        errorHandler(dispatch, requests.requestSignIn().type);
+        return false;
       } else {
-        dispatch(requests.receiveSignInSuccess(response))
+        dispatch(requests.receiveSignInSuccess(response));
+        return true;
       }
     });
 }

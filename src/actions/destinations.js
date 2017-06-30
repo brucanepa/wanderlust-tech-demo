@@ -19,7 +19,8 @@ export const add = (destination) => (dispatch) => {
   dispatch(requests.requestAdd());
   return api.addDestination(destination)
     .then(() => {
-      dispatch(requests.receiveAddSuccess(normalize(destination, schema.destination)))
+      dispatch(requests.receiveAddSuccess(normalize(destination, schema.destination)));
+      return true;
     }, () => {
       errorHandler(dispatch, requests.requestAdd().type);
     });

@@ -26,7 +26,7 @@ const signedIn = (state = false, action) => {
 const signingIn = (state = false, action) => {
   switch (action.type) {
     case actions.requestSignIn:
-      return true;
+      return !action.error;
     case actions.receiveSignInSucces:
       return false;
     default:

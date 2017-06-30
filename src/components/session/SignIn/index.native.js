@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, View, Button, TextInput, Text, Image } from 'react-native';
+import { StyleSheet, View, Button, TextInput, Alert } from 'react-native';
 import { session as sessionActions } from '../../../actions';
 import { texts } from '../../../constants';
 
@@ -18,14 +18,22 @@ const SignIn = ({dispatch}) => {
 
   const onSignInClick = () => {
     if (username && password && username.trim() && password.trim()) {
-      return dispatch(sessionActions.signIn(username, password));
+      return dispatch(sessionActions.signIn(username, password))
     }
   }
 
   const onPress = () => {
     const result = onSignInClick();
-    if (!result) {
-      password = '';
+    password = '';
+    if (result) {
+      result.then(result => {
+        if (!result) {
+          Alert.alert('', texts.signInError, [{
+            text: 'OK',
+            onPress: () => console.log('OK Pressed')
+          }])
+        }
+      })
     }
   };
 
