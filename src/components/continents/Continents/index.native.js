@@ -38,7 +38,7 @@ class Continents extends Component {
         <Picker selectedValue={ this.state.selected } onValueChange={ (value) => this.setState({selected: value}) }>
           { this.state.continents.map((continent) => <Picker.Item key={ continent.id } label={ continent.name } value={ continent.id } />) }
         </Picker>
-        <Continent {...this.getSelectedContinent()}/>
+        <Continent {...this.getSelectedContinent()} navigation={this.props.navigation}/>
       </View>);
   }
 };

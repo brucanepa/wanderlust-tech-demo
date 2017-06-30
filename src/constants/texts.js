@@ -26,7 +26,9 @@ const texts = {
   password: 'Contraseña',
   comment: 'Comentario',
   find: 'Buscar',
-  chooseAContinent: 'Elige un continente'
+  chooseAContinent: 'Elige un continente',
+  places: 'Lugares',
+  placeDetail: 'Detalle'
 };
 
 export default texts;

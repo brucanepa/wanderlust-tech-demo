@@ -1,17 +1,23 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { StyleSheet, View, TouchableHighlight, Text, Image } from 'react-native';
 import { getRegionTitle } from '../../../utils/textHelper';
 import { defaultImage } from '../../../constants';
 
-const Region = ({id, name, image, placesCount}) => (
-  // <Link to={ `regions/${id}` }>
+const onPress = (id, navigation) => {
+  navigation.navigate('Places', {
+    regionId: id
+  })
+};
+
+const Region = ({id, name, image, placesCount, navigation}) => (
   <View>
-    <Image style={ styles.image } source={ { uri: image } } />
     <Text>
       { getRegionTitle(name, placesCount) }
     </Text>
+    <TouchableHighlight onPress={ () => onPress(id, navigation) }>
+      <Image style={ styles.image } source={ { uri: image } } />
+    </TouchableHighlight>
   </View>
-// </Link>
 );
 
 export default Region;

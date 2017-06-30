@@ -5,7 +5,7 @@ import container from '../../../containers/AddDestinationContainer';
 
 const AddDestination = ({onClick, signedIn}) => (
   <View>
-    <Button onPress={ onClick } title={ texts.add } disabled={signedIn} />
+    <Button onPress={ onClick } title={ texts.add } disabled={!signedIn} />
   </View>
 );
 

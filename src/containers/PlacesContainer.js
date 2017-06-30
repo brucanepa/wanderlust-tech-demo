@@ -5,12 +5,19 @@ import { places as placesActions } from '../actions';
 import { getVisiblePlaces, getPlacesRegionName, getRegionImageById } from '../reducers';
 import NotFound from '../components/NotFound';
 
+const getRegionId = (props) => {
+  return props.match ? props.match.params.regionId : props.navigation.state.params.regionId;
+}
+
 const container = T => class PlacesContainer extends Component {
   componentDidMount() {
     this.fetchData();
   }
+  getRegionId() {
+    return this.props.match ? this.props.match.params : this.props.navigation.state.params.regionId;
+  }
   fetchData() {
-    const {regionId} = this.props.match.params;
+    const regionId = getRegionId(this.props);
     this.props.fetchPlaces(regionId);
   }
   show() {
@@ -24,7 +31,7 @@ const container = T => class PlacesContainer extends Component {
 const mapStateToProps = (state, ownProps) => ({
   places: getVisiblePlaces(state),
   regionName: getPlacesRegionName(state),
-  regionImage: getRegionImageById(state, ownProps.match.params.regionId)
+  regionImage: getRegionImageById(state, getRegionId(ownProps))
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -34,6 +41,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default compose(
-  connect(mapStateToProps,mapDispatchToProps), 
+  connect(mapStateToProps, mapDispatchToProps),
   container
 );

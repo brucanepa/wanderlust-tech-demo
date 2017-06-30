@@ -2,15 +2,10 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import Region from '../Region';
 
-const Regions = ({ regions }) => (
+const Regions = (props) => (
   <View>
-    {regions && regions.map(region =>
-      <Region
-        key={region.id}
-        {...region}
-      />
-    )}
-  </View> 
+    { props.regions && props.regions.map(region => <Region key={ region.id } {...region} navigation={ props.navigation } />) }
+  </View>
 );
 
 export default Regions;

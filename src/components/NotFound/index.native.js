@@ -7,11 +7,11 @@ const NotFound = () => (
     {/*<Back to={'/continents'}>
       home
     </Back>*/}
-    <Button title={ 'Inicio' } /> 
+    <Button onPress={ () => 'a'} title={ 'Inicio' } /> 
     <Text>
       { texts.placeNotFound }
     </Text>
-    <Image source={notFoundImage}/>
+    {/*<Image source={notFoundImage}/>*/}
   </View>
 );
 

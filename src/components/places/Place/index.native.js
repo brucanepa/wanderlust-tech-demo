@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { StyleSheet, View, Text, Button, Image } from 'react-native';
 import { defaultImage } from '../../../constants';
 import AddDestination from '../../destinations/AddDestination';
 
