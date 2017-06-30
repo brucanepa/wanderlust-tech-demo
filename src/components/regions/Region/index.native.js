@@ -22,8 +22,6 @@ const Region = ({id, name, image, placesCount, navigation}) => (
 
 export default Region;
 
-//ToDo: navigation
-
 const styles = StyleSheet.create({
   image: {
     width: 50,

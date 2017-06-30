@@ -1,22 +1,31 @@
 import React from 'react';
-import { StyleSheet, View, Text, Button, Image } from 'react-native';
+import { StyleSheet, View, Text, TouchableHighlight, Image } from 'react-native';
 import { defaultImage } from '../../../constants';
 import AddDestination from '../../destinations/AddDestination';
 
-const Place = ({id, name, image}) => (
-  // <Link to={ `/places/${id}` }>
+const onPress = (id, navigation) => {
+  navigation.navigate('PlaceDetail', {
+    placeId: id
+  })
+};
+
+const Place = ({id, name, image, navigation}) => (
   <View>
-    <View>
-      <Image source={ { uri: image } } />
-      <Text>
-        { name }
-      </Text>
-      <AddDestination placeId={ id } name={ name } />
-    </View>
+    <TouchableHighlight onPress={ () => onPress(id, navigation) }>
+      <Image style={ styles.image } source={ { uri: image } } />
+    </TouchableHighlight>
+    <Text>
+      { name }
+    </Text>
+    <AddDestination placeId={ id } name={ name } />
   </View>
-// </Link>
 );
 
 export default Place;
 
-//ToDo: navigation
+const styles = StyleSheet.create({
+  image: {
+    width: 50,
+    height: 50
+  }
+})

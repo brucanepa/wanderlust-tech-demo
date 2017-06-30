@@ -5,17 +5,16 @@ import PropTypes from 'prop-types'
 import { texts } from '../../constants';
 import Session from '../../components/session/Session';
 import Places from '../../components/places/Places';
-import Regions from '../../components/regions/Regions';
 import PlaceDetail from '../../components/placeDetail/PlaceDetail';
 import Continents from '../../components/continents/Continents';
 
 const Root = ({store}) => (
   <Provider store={ store }>
-    <WanderLustStackNavigator/>
+    <Stack/>
   </Provider>
 );
 
-const WanderLustTabNavigator = TabNavigator({
+const Tab = TabNavigator({
   SessionTab: {
     screen: Session,
     navigationOptions: {
@@ -30,24 +29,21 @@ const WanderLustTabNavigator = TabNavigator({
   }
 });
 
-const WanderLustStackNavigator = StackNavigator({
+const Stack = StackNavigator({
   Home: {
-    screen: WanderLustTabNavigator
+    screen: Tab
   },
   Places: {
     screen: Places,
     navigationOptions: {
       title: texts.places
-    }
+    },
   },
   PlaceDetail: {
     screen: PlaceDetail,
     navigationOptions: {
       title: texts.placeDetail
     }
-  },
-  Regions: {
-    screen: Regions
   }
 });
 

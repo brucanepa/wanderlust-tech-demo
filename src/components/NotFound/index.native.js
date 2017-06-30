@@ -1,13 +1,9 @@
 import React from 'react';
-import { StyleSheet, View, Text, Button, Image } from 'react-native';
+import { StyleSheet, View, Text, Image } from 'react-native';
 import { texts, notFoundImage } from '../../constants';
 
 const NotFound = () => (
   <View>
-    {/*<Back to={'/continents'}>
-      home
-    </Back>*/}
-    <Button onPress={ () => 'a'} title={ 'Inicio' } /> 
     <Text>
       { texts.placeNotFound }
     </Text>
@@ -17,4 +13,4 @@ const NotFound = () => (
 
 export default NotFound;
 
-// ToDo: implement router in button
+// ToDo: Image

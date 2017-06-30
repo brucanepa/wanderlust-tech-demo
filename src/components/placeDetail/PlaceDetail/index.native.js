@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { StyleSheet, ScrollView, View, Text, Image } from 'react-native';
 import { texts, defaultImage } from '../../../constants';
 import AddDestination from '../../destinations/AddDestination'
 import PlaceDescription from '../PlaceDescription';
@@ -10,17 +10,13 @@ import AddReview from '../../placeDetail/AddReview';
 import Reviews from '../../placeDetail/Reviews';
 import container from '../../../containers/PlaceDetailContainer';
 
-const PlaceDetail = ({placeDetail, regionId, images, signedIn, match}) => (
-  <View>
-
+const PlaceDetail = ({placeDetail, regionId, images, signedIn, navigation}) => (
+  <ScrollView>
     <View>
       <Image style={ styles.image } source={ { uri: images && images[0] } } />
       <Text>
         { placeDetail.placeInformation.name }
       </Text>
-      { /*<Back to={regionId ? `/regions/${regionId}` : '/continents'}>
-                                                            arrow_back
-                                                        </Back>*/ }
       <View>
         <PlaceRating {...placeDetail.placeRating} rating={ 1 } total={ 1 } />
         <Text>
@@ -28,28 +24,25 @@ const PlaceDetail = ({placeDetail, regionId, images, signedIn, match}) => (
         </Text>
       </View>
     </View>
-
     <View>
       <View>
-        <AddDestination placeId={ match.params.placeId } name={ placeDetail.placeInformation.name } />
-        { signedIn ? texts.addAsDestiantion : texts.signInToAddDestination }
+        <AddDestination placeId={ navigation.state.params.placeId } name={ placeDetail.placeInformation.name } />
+        <Text>
+          { signedIn ? texts.addAsDestiantion : texts.signInToAddDestination }
+        </Text>
       </View>
       <PlaceDescription description={ placeDetail.placeInformation.description } />
       <PlaceActivities activities={ placeDetail.placeInformation.activities } />
       <Reviews reviews={ placeDetail.reviewList } />
-      <AddReview placeId={ match.params.placeId } signedIn={ signedIn } />
+      <AddReview placeId={ navigation.state.params.placeId } signedIn={ signedIn } />
     </View>
-
     <View>
       <PlaceImages images={ images } />
     </View>
-    
-  </View>
+  </ScrollView>
 );
 
 export default container(PlaceDetail);
-
-//ToDo: implement router
 
 const styles = StyleSheet.create({
   image: {
