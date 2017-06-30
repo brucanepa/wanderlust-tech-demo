@@ -55,4 +55,6 @@ export const getUser = (state) =>
 
 export const signedIn = (state) => 
   fromSession.isSignedIn(state.session);
-  
+
+export const signingIn = (state) => 
+  fromSession.isSigningIn(state.session);

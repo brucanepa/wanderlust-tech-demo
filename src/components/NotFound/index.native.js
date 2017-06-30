@@ -4,13 +4,8 @@ import { texts, notFoundImage } from '../../constants';
 
 const NotFound = () => (
   <View>
-    <Text>
-      { texts.placeNotFound }
-    </Text>
-    {/*<Image source={notFoundImage}/>*/}
+    <Image source={require('../../resources/loading-gear.gif')}/>
   </View>
 );
 
 export default NotFound;
-
-// ToDo: Image

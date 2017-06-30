@@ -23,9 +23,21 @@ const signedIn = (state = false, action) => {
   }
 };
 
+const signingIn = (state = false, action) => {
+  switch (action.type) {
+    case actions.requestSignIn:
+      return true;
+    case actions.receiveSignInSucces:
+      return false;
+    default:
+      return state;
+  }
+};
+
 const session = combineReducers({
   user,
-  signedIn
+  signedIn,
+  signingIn
 });
 
 export default session;
@@ -36,4 +48,8 @@ export const getUser = (state) => {
 
 export const isSignedIn = (state) => {
   return state.signedIn;
+};
+
+export const isSigningIn = (state) => {
+  return state.signingIn;
 };

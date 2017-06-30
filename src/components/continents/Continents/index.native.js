@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Picker } from 'react-native';
+import { StyleSheet, Text, View, Picker, Image } from 'react-native';
 import Continent from '../Continent';
+import Loading from '../../NotFound';
 import container from '../../../containers/ContinentsContainer';
 import { texts } from '../../../constants';
 
@@ -23,23 +24,28 @@ class Continents extends Component {
   getSelectedContinent() {
     const continents = this.state.continents;
     return continents && continents.filter(continent => {
-      return continent.id == this.state.selected;
-    })[0];
+        return continent.id == this.state.selected;
+      })[0];
+  }
+  onValueChange(value) {
+    this.setState({
+      selected: value
+    })
   }
   render() {
-    return (
+    return !this.state.continents.length ? <Loading/> :
       <View style={ styles.container }>
         <Text>
-          { texts.pageTitle } 
+          { texts.pageTitle }
         </Text>
         <Text>
-          { texts.chooseAContinent}
+          { texts.chooseAContinent }
         </Text>
-        <Picker selectedValue={ this.state.selected } onValueChange={ (value) => this.setState({selected: value}) }>
+        <Picker selectedValue={ this.state.selected } onValueChange={ (value) => this.onValueChange(value) }>
           { this.state.continents.map((continent) => <Picker.Item key={ continent.id } label={ continent.name } value={ continent.id } />) }
         </Picker>
-        <Continent {...this.getSelectedContinent()} navigation={this.props.navigation}/>
-      </View>);
+        <Continent {...this.getSelectedContinent()} navigation={ this.props.navigation } />
+      </View>;
   }
 };
 
