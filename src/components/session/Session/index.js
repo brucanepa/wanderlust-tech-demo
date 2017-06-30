@@ -6,7 +6,7 @@ import SignedIn from '../SignedIn';
 import SignIn from '../SignIn';
 import container from '../../../containers/SessionContainer';
 
-const Session = (props, navigation) => (
+const Session = (props) => (
   <ResponsivePanel>  
     <PanelTitle>
       {texts.destinationsTitle}

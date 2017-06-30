@@ -2,6 +2,7 @@ import React from 'react'
 import { Provider } from 'react-redux';
 import { TabNavigator } from 'react-navigation';
 import PropTypes from 'prop-types'
+import { texts } from '../../constants';
 import Session from '../../components/session/Session';
 import Places from '../../components/places/Places';
 import PlaceDetail from '../../components/placeDetail/PlaceDetail';
@@ -15,10 +16,16 @@ const Root = ({store}) => (
 
 const WanderLustNav = TabNavigator({
   SessionTab: {
-    screen: Session
+    screen: Session,
+    navigationOptions: {
+      title: texts.myTripTitle
+    }
   },
   ContinentsTab: {
-    screen: Continents
+    screen: Continents,
+    navigationOptions: {
+      title: texts.find
+    }
   }
 });
 
