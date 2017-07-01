@@ -4,13 +4,15 @@ import { texts } from '../../../constants';
 import container from '../../../containers/DestinationContainer';
 
 const Destination = ({id, name, onClick, selected, index, onClickRemove}) => (
-  <Button 
-    onPress={ () => {onClick(id, index)} } 
-    selected={ selected }
-    title={(index + 1) + " - " + name }>
-    <Button onPress={ () => onClickRemove(id) }
+  <View>
+    <Button 
+      onPress={ () => {onClick(id, index)} } 
+      selected={ selected }
+      title={(index + 1) + " - " + name }/>
+    <Button 
+      onPress={ () => onClickRemove(id) }
       title={texts.delete} />
-  </Button>
+  </View>
 );
 
 export default container(Destination);

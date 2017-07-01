@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, ScrollView, Text } from 'react-native';
 import { texts } from '../../../constants';
 import Destination from '../Destination';
 import container from '../../../containers/DestinationsContainer';
@@ -7,7 +7,7 @@ import container from '../../../containers/DestinationsContainer';
 const Destinations = ({ destinations }) => {
   if (destinations && destinations.length > 0) {
     return (
-      <View>
+      <ScrollView>
         {destinations.map((destination, index) =>
           <Destination
             key={destination.id}
@@ -15,7 +15,7 @@ const Destinations = ({ destinations }) => {
             index={index}
           />)
         } 
-      </View>
+      </ScrollView>
     )
   }
   return(

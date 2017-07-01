@@ -31,7 +31,8 @@ const texts = {
   placeDetail: 'Detalle',
   added: 'Agregado',
   error: 'Error',
-  signInError: 'Usuario o contraseña incorrecta'
+  signInError: 'Usuario o contraseña incorrecta',
+  addPhoto: 'Agregar foto'
 };
 
 export default texts;
