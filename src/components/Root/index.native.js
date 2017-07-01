@@ -10,11 +10,11 @@ import Continents from '../../components/continents/Continents';
 
 const Root = ({store}) => (
   <Provider store={ store }>
-    <Stack/>
+    <Navigator/>
   </Provider>
 );
 
-const Tab = TabNavigator({
+const Navigator = TabNavigator({
   SessionTab: {
     screen: Session,
     navigationOptions: {
@@ -22,27 +22,28 @@ const Tab = TabNavigator({
     }
   },
   ContinentsTab: {
-    screen: Continents,
+    screen: StackNavigator({
+      Continents: {
+        screen: Continents,
+        navigationOptions: {
+          title: texts.pageTitle
+        }
+      },
+      Places: {
+        screen: Places,
+        navigationOptions: {
+          title: texts.places
+        },
+      },
+      PlaceDetail: {
+        screen: PlaceDetail,
+        navigationOptions: {
+          title: texts.placeDetail
+        }
+      }
+    }),
     navigationOptions: {
       title: texts.find
-    }
-  }
-});
-
-const Stack = StackNavigator({
-  Home: {
-    screen: Tab
-  },
-  Places: {
-    screen: Places,
-    navigationOptions: {
-      title: texts.places
-    },
-  },
-  PlaceDetail: {
-    screen: PlaceDetail,
-    navigationOptions: {
-      title: texts.placeDetail
     }
   }
 });

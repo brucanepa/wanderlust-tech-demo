@@ -36,9 +36,6 @@ class Continents extends Component {
     return !this.state.continents.length ? <Loading/> :
       <View style={ styles.container }>
         <Text>
-          { texts.pageTitle }
-        </Text>
-        <Text>
           { texts.chooseAContinent }
         </Text>
         <Picker selectedValue={ this.state.selected } onValueChange={ (value) => this.onValueChange(value) }>

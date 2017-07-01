@@ -29,10 +29,11 @@ const texts = {
   chooseAContinent: 'Elige un continente',
   places: 'Lugares',
   placeDetail: 'Detalle',
-  added: 'Agregado',
+  added: 'Se agregó exitosamente!',
   error: 'Error',
   signInError: 'Usuario o contraseña incorrecta',
-  addPhoto: 'Agregar foto'
+  addPhoto: 'Agregar foto',
+  regions: 'Regiones'
 };
 
 export default texts;
