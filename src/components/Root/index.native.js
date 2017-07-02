@@ -1,6 +1,7 @@
 import React from 'react'
 import { Provider } from 'react-redux';
 import { TabNavigator, StackNavigator } from 'react-navigation';
+import { StyleSheet } from 'react-native';
 import PropTypes from 'prop-types'
 import { texts } from '../../constants';
 import Session from '../../components/session/Session';
@@ -46,6 +47,13 @@ const Navigator = TabNavigator({
       title: texts.find
     }
   }
+}, 
+  {
+  tabBarOptions : {
+    style: {
+      backgroundColor: '#1e7f7e',
+    }
+  }
 });
 
 Root.propTypes = {
@@ -53,3 +61,9 @@ Root.propTypes = {
 }
 
 export default Root;
+
+const styles = StyleSheet.create({
+  tabBar: {
+    backgroundColor: '#1e7f7e'
+  }
+});
