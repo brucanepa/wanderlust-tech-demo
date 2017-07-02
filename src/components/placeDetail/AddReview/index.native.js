@@ -1,24 +1,50 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, View, Text, Button, TextInput, Alert } from 'react-native';
 import { placeDetail as placeDetailActions } from '../../../actions';
 import PlaceRating from '../PlaceRating';
 import { texts } from '../../../constants';
 
-const AddReview = ({dispatch, placeId, signedIn}) => {
-  let comment = '';
-  let rating = 1;
-
-  const onCommentChange = (text) => {
-    comment = text;
+class AddReview extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dispatch: props.dispatch,
+      placeId: props.placeId,
+      signedIn: props.signedIn,
+      comment: '',
+      rating: 1
+    }
+    this.onCommentChange = this.onCommentChange.bind(this);
+    this.onAddCommentPress = this.onAddCommentPress.bind(this);
+    this.onRateClick = this.onRateClick.bind(this);
+    this.onAddPhotoPress = this.onAddPhotoPress.bind(this);
+  }
+  componentWillReceiveProps(nextProps) {
+    if (this.state.signedIn !== nextProps.signedIn) {
+      this.setState({
+        signedIn: nextProps.signedIn
+      })
+    }
+  }
+  onCommentChange = (text) => {
+    this.setState({
+      comment: text
+    })
   };
-
-  const onAddCommentPress = (e) => {
+  onAddCommentPress = (e) => {
     e && e.preventDefault();
-    if (!comment.trim() || rating < 1) {
+    if (!this.state.comment.trim() || this.state.rating < 1) {
       return;
     }
-    const result = dispatch(placeDetailActions.addReview({ placeId, comment, rating }));
+    const result = this.state.dispatch(placeDetailActions.addReview({
+      placeId: this.state.placeId,
+      comment: this.state.comment,
+      rating: this.state.rating
+    }));
+    this.setState({
+      comment: '',
+    })
     if (result) {
       result.then(result => {
         Alert.alert('', texts.added, [{
@@ -27,38 +53,34 @@ const AddReview = ({dispatch, placeId, signedIn}) => {
         }])
       })
     }
-    comment = '';
-    rating = 0;
   }
+  onRateClick = (rating) => {
+    this.setState({
+      rating
+    })
+  }
+  onAddPhotoPress = () => {
 
-  const onRateClick = (ratingSelected) => {
-    rating = ratingSelected;
-  }
-  
-  const onAddPhotoPress = () => {
-    
   };
-
-  return signedIn ? (
-    <View>
-      <Text>
-        { texts.reviewsComment }
-      </Text>
+  render() {
+    return this.state.signedIn ? (
       <View>
-        <PlaceRating onRateClick={ onRateClick } />
+        <Text>
+          { texts.reviewsComment }
+        </Text>
+        <View>
+          <PlaceRating onRateClick={ this.onRateClick } />
+        </View>
+        <Button title={ texts.addPhoto } onPress={ this.onAddPhotoPress } />
+        <TextInput style={ styles.input } onChangeText={ this.onCommentChange } placeholder={ texts.comment } value={ this.state.comment } />
+        <Button title={ texts.newComment } onPress={ this.onAddCommentPress } />
       </View>
-      <Button title={ texts.addPhoto } onPress={onAddPhotoPress}/>
-      <TextInput style={styles.input}
-        onChangeText={(text) => onCommentChange(text)}
-        placeholder={texts.comment}/>
-      <Button title={ texts.newComment } onPress={ () => onAddCommentPress()}/>
-    </View>
-    ) : <View/>;
-};
+      ) : <View/>;
+  }
+}
+;
 
 export default connect()(AddReview);
-
-// ToDo: Place Rating
 
 const styles = StyleSheet.create({
   input: {
