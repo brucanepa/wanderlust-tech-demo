@@ -5,7 +5,7 @@ import DestinationsFooter from '../DestinationsFooter';
 
 const DestinationsPanel = () => (
   <View>
-    <Destinations />
+    <Destinations/>
     <DestinationsFooter/>
   </View>
 );

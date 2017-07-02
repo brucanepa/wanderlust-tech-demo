@@ -6,7 +6,7 @@ import { texts } from '../../../constants';
 
 const SignIn = ({dispatch}) => {
   let username = 'bruno@gmail.com'; //ToDo: delete default username
-  let password = '';
+  let password = '123456';
 
   const onUsernameChange = (text) => {
     username = text;
@@ -38,10 +38,10 @@ const SignIn = ({dispatch}) => {
   };
 
   return (
-    <View>
+    <View style={ styles.inputContainer }>
       <TextInput style={ styles.input } onChangeText={ (text) => onUsernameChange(text) } value={ username } placeholder={ texts.username } />
-      <TextInput style={ styles.input } onChangeText={ (text) => onPasswordChange(text) } placeholder={ texts.password } />
-      <Button onPress={ () => onPress() } title={ texts.signIn } />
+      <TextInput style={ styles.input } onChangeText={ (text) => onPasswordChange(text) } value={ password } placeholder={ texts.password } />
+      <Button color="#1e7f7e" onPress={ () => onPress() } title={ texts.signIn } />
     </View>
     );
 };
@@ -50,13 +50,12 @@ export default connect()(SignIn);
 
 const styles = StyleSheet.create({
   input: {
-    flex: 1,
-    height: 44,
-    borderWidth: 0.5,
-    borderColor: '#fafafa',
-    padding: 8,
-    marginLeft: 16,
-    marginRight: 16,
-    backgroundColor: 'white',
+    fontSize: 20,
+    width: '70%',
+    marginBottom: '3%',
+    marginLeft: '15%'
+  }, 
+  inputContainer: {
+    marginTop: '5%'
   }
 })

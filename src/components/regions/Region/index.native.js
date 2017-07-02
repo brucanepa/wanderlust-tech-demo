@@ -10,21 +10,32 @@ const onPress = (id, navigation) => {
 };
 
 const Region = ({id, name, image, placesCount, navigation}) => (
-  <View>
-    <Text>
-      { getRegionTitle(name, placesCount) }
+  <TouchableHighlight onPress={ () => onPress(id, navigation) }>
+    <Image style={ styles.image } source={ { uri: image } }>
+     <Text style= {styles.title}>
+        { getRegionTitle(name, placesCount) }
     </Text>
-    <TouchableHighlight onPress={ () => onPress(id, navigation) }>
-      <Image style={ styles.image } source={ { uri: image } } />
-    </TouchableHighlight>
-  </View>
+    </Image>
+  </TouchableHighlight>
 );
 
 export default Region;
 
 const styles = StyleSheet.create({
   image: {
-    width: 50,
-    height: 50
+    width: '100%',
+    height: 100,
+    marginTop: '1%'
+  },
+  title: { 
+    alignSelf: 'flex-end',
+    fontSize: 20,
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    textShadowColor : 'black',
+    textShadowOffset: {width: 1, height: 1},
+    textShadowRadius: 10,
+    marginTop: '20%'
   }
 })

@@ -7,7 +7,7 @@ import container from '../../../containers/DestinationsContainer';
 const Destinations = ({ destinations }) => {
   if (destinations && destinations.length > 0) {
     return (
-      <ScrollView>
+      <View style={ styles.containerScrollView }>
         {destinations.map((destination, index) =>
           <Destination
             key={destination.id}
@@ -15,14 +15,26 @@ const Destinations = ({ destinations }) => {
             index={index}
           />)
         } 
-      </ScrollView>
+      </View>
     )
   }
   return(
-    <View>
-      <Text>{texts.noDestinations}</Text>
-    </View>
+    <Text style={ styles.noDestinations }>{texts.noDestinations}</Text>
   )
 };
 
 export default container(Destinations);
+
+
+const styles = StyleSheet.create({
+  containerScrollView: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'stretch',
+    justifyContent: 'flex-start',
+    backgroundColor: '#1e7f7e'
+  },
+  noDestinations: {
+    textAlign: 'center'
+  }
+})

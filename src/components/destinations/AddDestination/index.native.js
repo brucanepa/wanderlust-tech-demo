@@ -12,9 +12,7 @@ const showResult = (onClick) => {
 };
 
 const AddDestination = ({onClick, signedIn}) => (
-  <View>
-    <Button onPress={ () => showResult(onClick) } title={ texts.add } disabled={ !signedIn } />
-  </View>
+	<Button color='#1e7f7e' onPress={ () => showResult(onClick) } title={ texts.add } disabled={ !signedIn } />
 );
 
 export default container(AddDestination);
