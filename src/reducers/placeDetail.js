@@ -36,7 +36,7 @@ const placeRating = (state = { sumOfRatings: 0, ratingsCount: 0, rating: 0 }, ac
     case actions.receivePlaceDetailSuccess:
       const result = action.placeDetailResponse.result
       const reviews = action.placeDetailResponse.entities.placeDetail[result].reviews;
-      sum = reviews.map((review) => review.rating).reduce((a, b) => a + b, 0);
+      sum = reviews.map((review) => review.rating).reduce((a, b) => parseInt(a) + parseInt(b), 0);
       count = reviews.length;
       const newRating = count > 0 ? (sum / count) : 0;
       return { sumOfRatings: sum, ratingsCount: count, rating: getRoundNumber(newRating) };
