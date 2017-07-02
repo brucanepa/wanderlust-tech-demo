@@ -5,8 +5,7 @@ import { texts } from '../../../constants';
 
 const Review = ({id, comment, rating}) => (
 	<View>
-   <Text>{texts.ratingTitle} </Text>
-   <PlaceRating rating={ rating } />
+   <Text>{texts.ratingTitle} {rating} </Text>
    <Text>
      { comment }
    </Text>

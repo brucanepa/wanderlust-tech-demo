@@ -2,35 +2,36 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, Picker, Image } from 'react-native';
 import Continent from '../Continent';
 import Loading from '../../NotFound';
+import CustomPicker from '../../CustomPicker';
 import container from '../../../containers/ContinentsContainer';
 import { texts } from '../../../constants';
-
-let selectedValue = 1;
 
 class Continents extends Component {
   constructor(props) {
     super(props);
     this.state = {
       continents: props.continents,
-      selected: 0
-    }
+      selected: 0,
+      continent: {}
+    };
+    this.setSelectedContinent = this.setSelectedContinent.bind(this);
   }
   componentWillReceiveProps(nextProps) {
+    const continent = nextProps.continents && nextProps.continents.length && nextProps.continents[0];
     this.setState({
       continents: nextProps.continents,
-      selected: nextProps.continents.length > 0 && nextProps.continents[0].id
+      selected: continent && continent.id,
+      continent: continent || {}
     })
   }
-  getSelectedContinent() {
-    const continents = this.state.continents;
-    return continents && continents.filter(continent => {
-        return continent.id == this.state.selected;
-      })[0];
-  }
-  onValueChange(value) {
+  setSelectedContinent(continents, selected) {
+    const continent = continents && continents.filter(continent => {
+      return continent.id == selected;
+    })[0];
     this.setState({
-      selected: value
-    })
+      continent,
+      selected
+    });
   }
   render() {
     return !this.state.continents.length ? <Loading/> :
@@ -38,13 +39,11 @@ class Continents extends Component {
         <Text>
           { texts.chooseAContinent }
         </Text>
-        <Picker selectedValue={ this.state.selected } onValueChange={ (value) => this.onValueChange(value) }>
-          { this.state.continents.map((continent) => <Picker.Item key={ continent.id } label={ continent.name } value={ continent.id } />) }
-        </Picker>
-        <Continent {...this.getSelectedContinent()} navigation={ this.props.navigation } />
+        <CustomPicker values={ this.state.continents } onSelect={ this.setSelectedContinent } />
+        <Continent {...this.state.continent} navigation={ this.props.navigation } />
       </View>;
   }
-};
+}
 
 export default container(Continents);
 
