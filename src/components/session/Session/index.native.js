@@ -25,7 +25,7 @@ export default container(Session);
 
 const styles = StyleSheet.create({
   destinationsTitle: {
-    marginTop: 30,
+    marginTop: 20,
     textAlign: 'center',
     fontSize: 30,
     fontWeight: 'bold'

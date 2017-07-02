@@ -10,13 +10,12 @@ const onPress = (id, navigation) => {
 };
 
 const Place = ({id, name, image, navigation}) => (
-  <View>
+  <View style={styles.container}>
     <TouchableHighlight onPress={ () => onPress(id, navigation) }>
-      <Image style={ styles.image } source={ { uri: image } } />
+      <Image style={styles.image} source={ { uri: image } }>
+        <Text style={styles.title}>{name}</Text>
+      </Image>
     </TouchableHighlight>
-    <Text>
-      { name }
-    </Text>
     <AddDestination placeId={ id } name={ name } />
   </View>
 );
@@ -24,8 +23,23 @@ const Place = ({id, name, image, navigation}) => (
 export default Place;
 
 const styles = StyleSheet.create({
+  container: { 
+    marginBottom: '1%'
+  },
   image: {
-    width: 50,
-    height: 50
+    width: '100%',
+    height: 100
+  },
+  title: { 
+    alignSelf: 'flex-end',
+    marginRight: '2%',
+    fontSize: 20,
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    textShadowColor : 'black',
+    textShadowOffset: {width: 1, height: 1},
+    textShadowRadius: 10,
+    marginTop: '20%'
   }
 })

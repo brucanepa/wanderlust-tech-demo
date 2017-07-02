@@ -4,8 +4,8 @@ import Regions from '../../regions/Regions';
 import { texts } from '../../../constants';
 
 const Continent = ({name, regions, navigation}) => (
-  <View>
-    <Text>
+  <View style={styles.container}>
+    <Text style={styles.title}>
       { texts.regions }
     </Text>
     <Regions regions={ regions } navigation={navigation}/>
@@ -13,3 +13,14 @@ const Continent = ({name, regions, navigation}) => (
 );
 
 export default Continent;
+
+const styles = StyleSheet.create({
+  container:{ 
+    height: '85%'
+  },
+  title: { 
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center'
+  }
+})
