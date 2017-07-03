@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, View, Text, Button, TextInput, Alert } from 'react-native';
+import { StyleSheet, View, Text, Button, TextInput, Alert, Image } from 'react-native';
 import { placeDetail as placeDetailActions } from '../../../actions';
-import PlaceRating from '../PlaceRating';
 import { texts } from '../../../constants';
+import showImagePicker from '../../../utils/nativeImagePicker';
+import PlaceRating from '../PlaceRating';
 
 class AddReview extends Component {
   constructor(props) {
@@ -13,7 +14,8 @@ class AddReview extends Component {
       placeId: props.placeId,
       signedIn: props.signedIn,
       comment: '',
-      rating: 1
+      rating: 1,
+      imageSource: null
     }
     this.onCommentChange = this.onCommentChange.bind(this);
     this.onAddCommentPress = this.onAddCommentPress.bind(this);
@@ -60,7 +62,14 @@ class AddReview extends Component {
     })
   }
   onAddPhotoPress = () => {
-
+    showImagePicker()
+      .then(imageSource => {
+        if (imageSource) {
+          this.setState({
+            imageSource: { uri: imageSource.uri }
+          })
+        }
+      });
   };
   render() {
     return this.state.signedIn ? (
@@ -71,14 +80,14 @@ class AddReview extends Component {
         <View>
           <PlaceRating onRateClick={ this.onRateClick } />
         </View>
-        <Button title={ texts.addPhoto } onPress={ this.onAddPhotoPress } />
+        {this.state.imageSource && <Image source={this.state.imageSource} style={styles.image}/>}
+        <Button title={ this.state.imageSource ? texts.changeImage : texts.addImage } onPress={ this.onAddPhotoPress } />
         <TextInput style={ styles.input } onChangeText={ this.onCommentChange } placeholder={ texts.comment } value={ this.state.comment } />
         <Button title={ texts.newComment } onPress={ this.onAddCommentPress } />
       </View>
       ) : <View/>;
   }
 }
-;
 
 export default connect()(AddReview);
 
@@ -92,5 +101,9 @@ const styles = StyleSheet.create({
     marginLeft: 16,
     marginRight: 16,
     backgroundColor: 'white',
+  },
+  image: {
+    width: 50,
+    height: 50
   }
 })

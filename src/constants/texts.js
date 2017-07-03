@@ -32,8 +32,12 @@ const texts = {
   added: 'Se agregó exitosamente!',
   error: 'Error',
   signInError: 'Usuario o contraseña incorrecta',
-  addPhoto: 'Agregar foto',
-  regions: 'Regiones'
+  addImage: 'Agregar imagen',
+  changeImage: 'Cambiar imagen',
+  regions: 'Regiones',
+  selectImageOption: 'Seleccione una opción',
+  selectTakePhoto: 'Sacar foto',
+  selectImageFromLibrary: 'Seleccionar imagen de Galería'
 };
 
 export default texts;
