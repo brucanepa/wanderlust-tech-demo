@@ -1,6 +1,6 @@
-import * as firebase from 'firebase'
-import { apiUris } from '../constants'
-import { loadState } from '../utils/localStorage'
+import * as firebase from 'firebase';
+import { apiUris } from '../constants';
+import { loadState } from '../utils/localStorage';
 
 const config = {
   apiKey: 'AIzaSyBHlOtH4VOI-9WB1YgZEC1ZW5xO4dIKriQ',
@@ -11,6 +11,7 @@ const config = {
 
 firebase.initializeApp(config);
 const database = firebase.database();
+const storage = firebase.storage();
 
 let user;
 let userDestinations;
@@ -237,7 +238,9 @@ export const fetchPlaceDetail = (placeId) => {
     })
 };
 
-export const addReview = (review) => {
+const storageRef = storage.ref();
+
+export const addReview = (review, image) => {
   review.userId = user.id;
   review.placeId = parseInt(review.placeId);
   const reviewRef = database.ref(getPlaceDetailUri(review.placeId))
@@ -245,7 +248,10 @@ export const addReview = (review) => {
     .push(review);
   return reviewRef.then(() => {
     review.id = reviewRef.key;
+    if (image) {
+      storageRef.child(image.uri);
+      storageRef.put()
+    }
   });
 };
 // End Places Details
-

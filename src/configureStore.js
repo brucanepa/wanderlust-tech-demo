@@ -1,9 +1,9 @@
-import wanderApp from './reducers'
-import { createStore, applyMiddleware } from 'redux'
-import thunkMiddleware from 'redux-thunk'
+import wanderApp from './reducers';
+import { createStore, applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk';
 //import logger from 'redux-logger';
-import { loadState, saveState } from './utils/localStorage'
-import throttle from 'lodash/throttle'
+import { loadState, saveState } from './utils/localStorage';
+import throttle from 'lodash/throttle';
 
 const configureStore = () => {
   const middlewares = [thunkMiddleware];

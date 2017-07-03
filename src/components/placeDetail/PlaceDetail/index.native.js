@@ -18,7 +18,6 @@ const PlaceDetail = ({placeDetail, regionId, images, signedIn, navigation}) => (
         { placeDetail.placeInformation.name }
       </Text>
       <View>
-        {/*<PlaceRating {...placeDetail.placeRating} rating={ 1 } total={ 1 } />*/}
         <Text>
           { placeDetail.placeRating.rating }
         </Text>
