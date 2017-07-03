@@ -3,9 +3,15 @@ import { StyleSheet, View, Text, Image } from 'react-native';
 import { texts, notFoundImage } from '../../constants';
 
 const NotFound = () => (
-  <View>
+  <View style={styles.imageContainer}>
     <Image source={require('../../resources/loading-gear.gif')}/>
   </View>
 );
 
 export default NotFound;
+
+const styles = StyleSheet.create({
+  imageContainer: {
+    marginLeft: '12%'
+  },
+})
