@@ -11,7 +11,7 @@ const options = {
   }
 };
 
-const showImagePicker = () => {
+const openImagePicker = () => {
   return new Promise((resolve, reject) => {
     ImagePicker.showImagePicker(options, (response) => {
       if (response.didCancel || response.error) {
@@ -25,4 +25,4 @@ const showImagePicker = () => {
   });
 };
 
-export default showImagePicker;
+export default openImagePicker;

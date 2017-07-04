@@ -11,7 +11,8 @@ const config = {
 
 firebase.initializeApp(config);
 const database = firebase.database();
-const storage = firebase.storage();
+
+export const firebaseStorage = firebase.storage();
 
 let user;
 let userDestinations;
@@ -223,24 +224,39 @@ export const removeDestination = (destinationId) => {
 // End Destinations
 
 // // Begin Places Details
-export const fetchPlaceDetail = (placeId) => {
+
+export const fetchPlaceDetail = (placeId, nativePlatform) => {
+  let placeDetail = {};
+  const imagesToDownload = [];
+
   return database.ref(getPlaceDetailUri(placeId))
     .once('value')
     .then((snapshot) => {
-      const placeDetail = snapshot.val();
+      placeDetail = snapshot.val();
       placeDetail.reviews = placeDetail.reviews ?
         placeDetail.reviews = Object.keys(placeDetail.reviews).map((key) => {
-          placeDetail.reviews[key].id = key;
-          return placeDetail.reviews[key];
+          const review = placeDetail.reviews[key];
+          review.id = key;
+          review.withImage && imagesToDownload.push(key);
+          return review;
         })
         : [];
-      return placeDetail;
+      return imagesToDownload;
     })
+    .then((images) => {
+      if (images.length) {
+        return downloadImages(images);
+      }
+    })
+    .then((result) => {
+      if (result) {
+
+      }
+      return placeDetail;
+    });
 };
 
-const storageRef = storage.ref();
-
-export const addReview = (review, image) => {
+export const addReview = (review) => {
   review.userId = user.id;
   review.placeId = parseInt(review.placeId);
   const reviewRef = database.ref(getPlaceDetailUri(review.placeId))
@@ -248,10 +264,35 @@ export const addReview = (review, image) => {
     .push(review);
   return reviewRef.then(() => {
     review.id = reviewRef.key;
-    if (image) {
-      storageRef.child(image.uri);
-      storageRef.put()
-    }
+    return review.id;
   });
 };
 // End Places Details
+
+const downloadImage = (imageName) => {
+  const storageRef = firebase.storage().ref(`reviews/${imageName}`);
+  storageRef
+    .getDownloadURL()
+    .then((url) => {
+      var xhr = new XMLHttpRequest();
+      xhr.responseType = 'blob';
+      xhr.onload = (event) => {
+        var blob = xhr.response;
+      };
+      xhr.open('GET', url);
+      xhr.send();
+    })
+    .catch((error) => {
+      // Handle any errors
+    });
+};
+
+const downloadImages = (images) => {
+  const promises = images.map((image) => {
+    return downloadImage(image);
+  });
+  return Promise.all(promises)
+    .then((result) => {
+      return result;
+    });
+};

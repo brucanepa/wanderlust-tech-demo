@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PlaceRating from '../PlaceRating';
 import { texts } from '../../../constants';
 
-const Review = ({id, comment, rating}) => (
+const Review = ({id, comment, rating, withImage, image}) => (
 	<li>
    <RatingName>{texts.ratingTitle} </RatingName>
    <PlaceRating rating={ rating } />
