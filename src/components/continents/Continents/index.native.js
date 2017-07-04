@@ -17,12 +17,11 @@ class Continents extends Component {
     this.setSelectedContinent = this.setSelectedContinent.bind(this);
   }
   componentWillReceiveProps(nextProps) {
-    const continent = nextProps.continents && nextProps.continents.length && nextProps.continents[0];
     this.setState({
       continents: nextProps.continents,
-      selected: continent && continent.id,
-      continent: continent || {}
     })
+    const continent = nextProps.continents && nextProps.continents.length && nextProps.continents[0];
+    this.setSelectedContinent(nextProps.continents, this.state.selected || continent && continent.id)
   }
   setSelectedContinent(continents, selected) {
     const continent = continents && continents.filter(continent => {
