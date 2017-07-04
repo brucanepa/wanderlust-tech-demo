@@ -1,5 +1,5 @@
 import FetchBlob from 'react-native-fetch-blob';
-import { firebaseStorage, addReview } from './firebase';
+import { firebaseStorage, addReview, addImageToReview } from './firebase';
 
 const storageRef = firebaseStorage.ref('reviews/');
 
@@ -35,18 +35,31 @@ const uploadImage = (image, imageName) => {
         resolve(url);
       })
       .catch((error) => {
-        console.log(error);
-        reject(error);
+        resolve();
       })
   })
 };
 
 export const addReviewNative = (review, image) => {
-  review.withImage = !!image;
   return addReview(review)
     .then((reviewKey) => {
       if (image) {
-        return uploadImage(image, reviewKey);
+        return uploadImage(image, reviewKey)
+      } else {
+        return emptyPromise(); // workaround for reviews that doesn`t have image
+      }
+    })
+    .then(imageUri => {
+      if (imageUri) {
+        return addImageToReview(review, imageUri);
+      } else {
+        return emptyPromise(); // workaround for reviews that doesn`t have image
       }
     });
+};
+
+const emptyPromise = () => {
+  return new Promise(resolve => {
+    resolve()
+  });
 };

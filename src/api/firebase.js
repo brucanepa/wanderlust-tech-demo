@@ -226,32 +226,17 @@ export const removeDestination = (destinationId) => {
 // // Begin Places Details
 
 export const fetchPlaceDetail = (placeId, nativePlatform) => {
-  let placeDetail = {};
-  const imagesToDownload = [];
-
   return database.ref(getPlaceDetailUri(placeId))
     .once('value')
     .then((snapshot) => {
-      placeDetail = snapshot.val();
+      const placeDetail = snapshot.val();
       placeDetail.reviews = placeDetail.reviews ?
-        placeDetail.reviews = Object.keys(placeDetail.reviews).map((key) => {
+        placeDetail.reviews = Object.keys(placeDetail.reviews).map((key, index) => {
           const review = placeDetail.reviews[key];
           review.id = key;
-          review.withImage && imagesToDownload.push(key);
           return review;
         })
         : [];
-      return imagesToDownload;
-    })
-    .then((images) => {
-      if (images.length) {
-        return downloadImages(images);
-      }
-    })
-    .then((result) => {
-      if (result) {
-
-      }
       return placeDetail;
     });
 };
@@ -267,32 +252,14 @@ export const addReview = (review) => {
     return review.id;
   });
 };
+
+export const addImageToReview = (review, imageUri) => {
+  const reviewKey = review.id || review.key;
+  const updatedObjects = {};
+  review.image = imageUri;
+  updatedObjects[`${reviewKey}/image`] = imageUri;
+  return database.ref(getPlaceDetailUri(review.placeId))
+    .child('reviews')
+    .update(updatedObjects)
+};
 // End Places Details
-
-const downloadImage = (imageName) => {
-  const storageRef = firebase.storage().ref(`reviews/${imageName}`);
-  storageRef
-    .getDownloadURL()
-    .then((url) => {
-      var xhr = new XMLHttpRequest();
-      xhr.responseType = 'blob';
-      xhr.onload = (event) => {
-        var blob = xhr.response;
-      };
-      xhr.open('GET', url);
-      xhr.send();
-    })
-    .catch((error) => {
-      // Handle any errors
-    });
-};
-
-const downloadImages = (images) => {
-  const promises = images.map((image) => {
-    return downloadImage(image);
-  });
-  return Promise.all(promises)
-    .then((result) => {
-      return result;
-    });
-};
