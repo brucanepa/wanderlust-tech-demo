@@ -19,7 +19,7 @@ const Navigator = TabNavigator({
   SessionTab: {
     screen: Session,
     navigationOptions: {
-      title: texts.myTripTitle
+      title: texts.myTripTitle,
     }
   },
   ContinentsTab: {

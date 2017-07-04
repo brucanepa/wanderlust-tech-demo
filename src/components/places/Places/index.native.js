@@ -5,22 +5,24 @@ import Place from '../Place';
 import container from '../../../containers/PlacesContainer';
 
 const Places = ({places, regionName, regionImage, navigation}) => (
-  <ScrollView>
-    <Image source={ { uri: regionImage } } />
-    <Text style= {styles.title}>
-      { regionName }
-    </Text>
-    { places && places.map(place => 
-    	<Place key={ place.id } {...place} navigation={ navigation } />) 
-	}
-  </ScrollView>
+  <View style= {styles.container}>
+    <ScrollView>
+      <Image source={ { uri: regionImage } } />
+      <Text style= {styles.title}>
+        { regionName }
+      </Text>
+      { places && places.map(place => 
+      	<Place key={ place.id } {...place} navigation={ navigation } />) 
+  	  }
+    </ScrollView>
+  </View>
 );
 
 export default container(Places);
 
 const styles = StyleSheet.create({
   container:{ 
-    height: '85%'
+    backgroundColor: 'aliceblue'
   },
   title: { 
     fontSize: 20,

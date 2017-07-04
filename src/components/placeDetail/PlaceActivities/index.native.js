@@ -5,17 +5,21 @@ import { texts } from '../../../constants';
 
 const PlaceActivities = ({ activities }) => (
   <View>
-    <Text>{texts.activitiesTitle}</Text>
-    <Text/>
-    <View>
-      { activities.map(activitiy => 
-     	  <PlaceActivity 
-     		key={activitiy.id} 
-     		{...activitiy}/>
+    <Text style={styles.title}>{texts.activitiesTitle}</Text>
+    { 
+      activities.map(activitiy => 
+     	  <PlaceActivity key={activitiy.id} {...activitiy}/>
      	)
-     }
-    </View>
+    }
   </View>
 );
 
 export default PlaceActivities;
+
+const styles = StyleSheet.create({
+  title: { 
+    fontSize: 20,
+    textAlign: 'center',
+    marginTop: '3%'
+  }
+})

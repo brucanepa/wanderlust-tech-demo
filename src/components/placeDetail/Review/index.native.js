@@ -4,15 +4,24 @@ import PlaceRating from '../PlaceRating';
 import { texts } from '../../../constants';
 
 const Review = ({id, comment, rating}) => (
-	<View>
-   <Text>{texts.ratingTitle} {rating} </Text>
-   <Text>
-     { comment }
-   </Text>
-   <Text/>
- </View>
+	<View style={styles.container}>
+	  <Text style={styles.rating}>{texts.ratingTitle} {rating}</Text>
+	  <Text>{comment}</Text> 
+	</View>
 );
 
 export default Review;
 
-//ToDo: last Text is a separator
+const styles = StyleSheet.create({
+  container: {
+  	marginLeft: '5%',
+  	marginRight: '5%',
+  	marginBottom: '2%',
+  	borderBottomColor: '#1e7f7e',
+    borderBottomWidth: StyleSheet.hairlineWidth
+  },
+  rating: { 
+    fontSize: 15,
+    fontWeight: 'bold',
+  }
+})

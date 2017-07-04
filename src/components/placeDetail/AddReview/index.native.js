@@ -72,35 +72,48 @@ class AddReview extends Component {
       });
   };
   render() {
-    return this.state.signedIn ? (
+    return this.state.signedIn &&
       <View>
-        <Text>
+        <Text style={styles.title}>
           { texts.reviewsComment }
         </Text>
-        <View>
+        <TextInput multiline = {true} numberOfLines = {4} style={ styles.input } onChangeText={ this.onCommentChange } placeholder={ texts.comment } value={ this.state.comment } />
+        <View style={styles.reviewContainer}>
+          {this.state.imageSource && <Image source={this.state.imageSource} style={styles.image}/>}
+          <View style={styles.addImage}>
+            <Button color="#1e7f7e" title={ this.state.imageSource ? texts.changeImage : texts.addImage } onPress={ this.onAddPhotoPress } />
+          </View>
           <PlaceRating onRateClick={ this.onRateClick } />
-        </View>
-        {this.state.imageSource && <Image source={this.state.imageSource} style={styles.image}/>}
-        <Button title={ this.state.imageSource ? texts.changeImage : texts.addImage } onPress={ this.onAddPhotoPress } />
-        <TextInput style={ styles.input } onChangeText={ this.onCommentChange } placeholder={ texts.comment } value={ this.state.comment } />
-        <Button title={ texts.newComment } onPress={ this.onAddCommentPress } />
+         </View>
+        <Button color="#1e7f7e" title={ texts.newComment } onPress={ this.onAddCommentPress } />
       </View>
-      ) : <View/>;
   }
 }
 
 export default connect()(AddReview);
 
 const styles = StyleSheet.create({
+  reviewContainer:{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: '3%',
+    marginHorizontal: '2%'
+  },
+  title: { 
+    fontSize: 20,
+    marginTop: '3%',
+    marginLeft: '5%'
+  },
   input: {
-    flex: 1,
-    height: 44,
-    borderWidth: 0.5,
-    borderColor: '#fafafa',
-    padding: 8,
-    marginLeft: 16,
-    marginRight: 16,
-    backgroundColor: 'white',
+    fontSize: 20,
+    marginLeft: '1%',
+    marginBottom: '2%',
+    backgroundColor: '#ffff'
+  },
+  addImage: {
+    marginTop: '7%',
+    marginLeft: '1%',
+    width: '27%'
   },
   image: {
     width: 50,

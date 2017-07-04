@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import CustomPicker from '../../CustomPicker';
+import { texts } from '../../../constants';
 
 const ratings = () => {
 	const elements = ['1', '2', '3', '4', '5'];
@@ -34,12 +35,18 @@ class PlaceRating extends Component {
 
 	render() {
 		return (
-			<View>
+			<View style={styles.container}>
+				<Text>{texts.selectRating}</Text>
 				<CustomPicker values={this.state.values} onSelect={this.onSelect}/>
 			</View>
 		)
 	}
 }
 
-
 export default PlaceRating;
+
+const styles = StyleSheet.create({
+  container: {
+  	flexDirection:'column'
+  }
+})

@@ -5,19 +5,21 @@ import { texts } from '../../../constants';
 
 const Reviews = ({reviews}) => (
 	<View>
-		<Text>{texts.reviewsTitle}</Text>
-		<Text/>
-		<View>
-			{reviews.map(review =>
-				<Review
-					key={review.id}
-					{...review}
-				/>
-			)}
-		</View> 
+		<Text style={styles.title}>{texts.reviewsTitle}</Text>
+		{
+			reviews.map(review =>
+				<Review key={review.id} {...review}/>
+			)
+		} 
 	</View>
 );
 
 export default Reviews;
 
-//ToDO: Text is a separator
+const styles = StyleSheet.create({
+  title: { 
+    fontSize: 20,
+    textAlign: 'center',
+    marginTop: '3%'
+  }
+})

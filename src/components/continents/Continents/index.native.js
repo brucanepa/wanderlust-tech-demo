@@ -36,7 +36,7 @@ class Continents extends Component {
   render() {
     return !this.state.continents.length ? <Loading/> :
       <View style={ styles.container }>
-        <Text>
+        <Text style={ styles.chooseAContinent }>
           { texts.chooseAContinent }
         </Text>
         <CustomPicker values={ this.state.continents } onSelect={ this.setSelectedContinent } />
@@ -49,7 +49,10 @@ export default container(Continents);
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    marginTop: 20
+    backgroundColor: 'aliceblue'
+  },
+  chooseAContinent: {
+    marginTop: '5%',
+    marginLeft: '5%'
   }
 });

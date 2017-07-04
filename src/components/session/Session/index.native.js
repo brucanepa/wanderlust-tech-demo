@@ -8,22 +8,28 @@ import Loading from '../../NotFound';
 import container from '../../../containers/SessionContainer';
 
 const Session = (props) => (
-  <ScrollView>
-    <Text style={ styles.destinationsTitle }>
-      { texts.destinationsTitle }
-    </Text>
-    <Text style={ styles.name }>
-      { props.name }
-    </Text>
-    { props.showLoading && props.signingIn && <Loading/> }
-    { props.signedIn && <DestinationsPanel/> }
-    { props.signingIn ? <View/> : props.signedIn ? <SignedIn {...props}/> : <SignIn {...props} /> }
-  </ScrollView>
+  <View style={styles.container}>
+    <ScrollView>
+      <Text style={ styles.destinationsTitle }>
+        { texts.destinationsTitle }
+      </Text>
+      <Text style={ styles.name }>
+        { props.name }
+      </Text>
+      { props.showLoading && props.signingIn && <Loading/> }
+      { props.signedIn && <DestinationsPanel/> }
+      { props.signingIn ? <View/> : props.signedIn ? <SignedIn {...props}/> : <SignIn {...props} /> }
+    </ScrollView>
+  </View>
 );
 
 export default container(Session);
 
 const styles = StyleSheet.create({
+  container:{
+    backgroundColor: 'aliceblue',
+    height: '100%'
+  },
   destinationsTitle: {
     marginTop: 20,
     textAlign: 'center',

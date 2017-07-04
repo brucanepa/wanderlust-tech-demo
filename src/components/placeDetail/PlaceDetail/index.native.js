@@ -11,41 +11,64 @@ import Reviews from '../../placeDetail/Reviews';
 import container from '../../../containers/PlaceDetailContainer';
 
 const PlaceDetail = ({placeDetail, regionId, images, signedIn, navigation}) => (
-  <ScrollView>
-    <View>
-      <Image style={ styles.image } source={ { uri: images && images[0] } } />
-      <Text>
-        { placeDetail.placeInformation.name }
-      </Text>
-      <View>
-        <Text>
+  <View style={styles.container}>
+    <ScrollView>
+      <Image style={styles.image} source={ { uri: images && images[0] } }>
+        <Text style={styles.title}>
+          { placeDetail.placeInformation.name }
+        </Text>
+        <Text style={styles.rating}>
           { placeDetail.placeRating.rating }
         </Text>
-      </View>
-    </View>
-    <View>
+      </Image>
       <View>
         <AddDestination placeId={ navigation.state.params.placeId } name={ placeDetail.placeInformation.name } />
-        <Text>
-          { signedIn ? texts.addAsDestiantion : texts.signInToAddDestination }
-        </Text>
+        { !signedIn && <Text style={styles.signInToAdd}> { texts.signInToAddDestination } </Text> }
       </View>
       <PlaceDescription description={ placeDetail.placeInformation.description } />
       <PlaceActivities activities={ placeDetail.placeInformation.activities } />
+      <PlaceImages images={ images } />
       <Reviews reviews={ placeDetail.reviewList } />
       <AddReview placeId={ navigation.state.params.placeId } signedIn={ signedIn } />
-    </View>
-    <View>
-      <PlaceImages images={ images } />
-    </View>
-  </ScrollView>
+    </ScrollView>
+  </View>
 );
 
 export default container(PlaceDetail);
 
 const styles = StyleSheet.create({
+  container: { 
+    backgroundColor: 'aliceblue'
+  },
   image: {
-    width: 50,
-    height: 50
+    width: '100%',
+    height: 100,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  title: { 
+    marginLeft: '2%',
+    fontSize: 30,
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    textShadowColor : 'black',
+    textShadowOffset: {width: 1, height: 1},
+    textShadowRadius: 10,
+    marginTop: '15%'
+  },
+  rating: { 
+    marginRight: '2%',
+    fontSize: 30,
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    textShadowColor : 'black',
+    textShadowOffset: {width: 1, height: 1},
+    textShadowRadius: 10,
+    marginTop: '15%'
+  },
+  signInToAdd: { 
+    alignSelf: 'flex-end'
   }
 })
