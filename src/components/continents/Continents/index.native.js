@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Picker, Image } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Picker, Image } from 'react-native';
 import Continent from '../Continent';
 import Loading from '../../NotFound';
 import CustomPicker from '../../CustomPicker';
@@ -35,12 +35,14 @@ class Continents extends Component {
   render() {
     return !this.state.continents.length ? <Loading/> :
       <View style={ styles.container }>
-        <Text style={ styles.chooseAContinent }>
-          { texts.chooseAContinent }
-        </Text>
-        <CustomPicker values={ this.state.continents } onSelect={ this.setSelectedContinent } />
-        <Continent {...this.state.continent} navigation={ this.props.navigation } />
-      </View>;
+        <ScrollView>
+          <Text style={ styles.chooseAContinent }>
+            { texts.chooseAContinent }
+          </Text>
+          <CustomPicker values={ this.state.continents } onSelect={ this.setSelectedContinent } />
+          <Continent {...this.state.continent} navigation={ this.props.navigation } />
+        </ScrollView>
+      </View>
   }
 }
 
@@ -48,7 +50,8 @@ export default container(Continents);
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'aliceblue'
+    backgroundColor: 'aliceblue',
+    height: '100%'
   },
   chooseAContinent: {
     marginTop: '5%',

@@ -81,13 +81,15 @@ class AddReview extends Component {
         <TextInput multiline={ true } numberOfLines={ 4 } style={ styles.input } onChangeText={ this.onCommentChange } placeholder={ texts.comment }
           value={ this.state.comment } />
         <View style={ styles.reviewContainer }>
-          { this.state.imageSource && <Image source={ this.state.imageSource } style={ styles.image } /> }
-          <View style={ styles.addImage }>
-            <Button color="#1e7f7e" title={ this.state.imageSource ? texts.changeImage : texts.addImage } onPress={ this.onAddImagePress } />
+          <View style={styles.addImageContainer}>
+            <View style={ styles.addImage }>
+              <Button color="#1e7f7e" title={ this.state.imageSource ? texts.changeImage : texts.addImage } onPress={ this.onAddImagePress } />
+            </View>
+            { this.state.imageSource && <Image source={ this.state.imageSource } style={ styles.image } /> }
           </View>
           <PlaceRating onRateClick={ this.onRateClick } />
-          <Button color="#1e7f7e" title={ texts.newComment } onPress={ this.onAddCommentPress } />
         </View>
+        <Button color="#1e7f7e" title={ texts.newComment } onPress={ this.onAddCommentPress } />
       </View>
   }
 }
@@ -112,13 +114,20 @@ const styles = StyleSheet.create({
     marginBottom: '2%',
     backgroundColor: '#ffff'
   },
+  addImageContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '55%'
+  },
   addImage: {
-    marginTop: '7%',
+    alignSelf:'flex-start',
+    marginTop: '10%',
     marginLeft: '1%',
-    width: '27%'
+    width: '50%'
   },
   image: {
-    width: 50,
-    height: 50
+    alignSelf: 'flex-end',
+    width: 75,
+    height: 75
   }
 })

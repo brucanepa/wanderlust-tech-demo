@@ -12,6 +12,9 @@ export default NotFound;
 
 const styles = StyleSheet.create({
   imageContainer: {
-    marginLeft: '12%'
+  	flexDirection: 'row',
+  	justifyContent: 'center',
+  	backgroundColor: 'aliceblue',
+  	height: '100%'
   },
 })

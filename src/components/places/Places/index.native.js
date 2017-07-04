@@ -22,7 +22,8 @@ export default container(Places);
 
 const styles = StyleSheet.create({
   container:{ 
-    backgroundColor: 'aliceblue'
+    backgroundColor: 'aliceblue',
+    height: '100%'
   },
   title: { 
     fontSize: 20,

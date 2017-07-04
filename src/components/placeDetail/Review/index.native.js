@@ -5,13 +5,15 @@ import { texts } from '../../../constants';
 
 const Review = ({id, comment, rating, image}) => (
   <View style={ styles.container }>
-    <Text style={ styles.rating }>
-      { texts.ratingTitle } { ': '}
-      { rating }
-    </Text>
-    <Text>
-      { comment }
-    </Text>
+    <View>
+      <Text style={ styles.rating }>
+        { texts.ratingTitle } { ': '}
+        { rating }
+      </Text>
+      <Text>
+        { comment }
+      </Text>
+    </View>
     { image && <Image style={ styles.image } source={ { uri: image } } /> }
   </View>
 );
@@ -24,16 +26,18 @@ const styles = StyleSheet.create({
     marginRight: '5%',
     marginBottom: '2%',
     borderBottomColor: '#1e7f7e',
-    borderBottomWidth: StyleSheet.hairlineWidth
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
   rating: {
     fontSize: 15,
     fontWeight: 'bold',
   },
   image: {
-    width: '100%',
+    alignSelf: 'flex-end',
+    width: '50%',
     height: 100,
-    flexDirection: 'row',
-    justifyContent: 'space-between'
+    marginBottom: '2%'
   }
 })
