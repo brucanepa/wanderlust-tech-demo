@@ -21,4 +21,4 @@ export const actionsTypes = actions;
 
 export const texts = textMessages;
 
-export const wanderLustVR = "http://localhost:8081/vr/?image=";
+export const wanderLustVR = "https://wander-lust-vr.firebaseapp.com/?image=";

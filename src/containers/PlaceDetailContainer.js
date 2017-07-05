@@ -30,7 +30,7 @@ const mapStateToProps = (state, ownProps) => ({
   regionId: getPlace(state, getPlaceId(ownProps)).regionId,
   images: getPlaceDetail(state) && getPlaceDetail(state).placeInformation && getPlaceDetail(state).placeInformation.images,
   signedIn: signedIn(state),
-  vrImage: "pano4"
+  vrImage: getPlaceDetail(state) && getPlaceDetail(state).placeInformation && getPlaceDetail(state).placeInformation.vrImage
 });
 
 const mapDispatchToProps = (dispatch) => ({
