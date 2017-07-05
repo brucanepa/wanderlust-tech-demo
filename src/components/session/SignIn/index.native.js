@@ -40,7 +40,7 @@ const SignIn = ({dispatch}) => {
   return (
     <View style={ styles.inputContainer }>
       <TextInput style={ styles.input } onChangeText={ (text) => onUsernameChange(text) } value={ username } placeholder={ texts.username } />
-      <TextInput style={ styles.input } onChangeText={ (text) => onPasswordChange(text) } value={ password } placeholder={ texts.password } />
+      <TextInput style={ styles.input } secureTextEntry={true} onChangeText={ (text) => onPasswordChange(text) } value={ password } placeholder={ texts.password } />
       <Button color="#1e7f7e" onPress={ () => onPress() } title={ texts.signIn } />
     </View>
     );
