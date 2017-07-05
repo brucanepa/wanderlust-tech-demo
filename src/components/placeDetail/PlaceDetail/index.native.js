@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   title: { 
+    alignSelf: 'flex-end',
     marginLeft: '2%',
     fontSize: 30,
     color: 'white',
@@ -55,9 +56,9 @@ const styles = StyleSheet.create({
     textShadowColor : 'black',
     textShadowOffset: {width: 1, height: 1},
     textShadowRadius: 10,
-    marginTop: '15%'
   },
   rating: { 
+    alignSelf: 'flex-end',
     marginRight: '2%',
     fontSize: 30,
     color: 'white',
@@ -65,8 +66,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     textShadowColor : 'black',
     textShadowOffset: {width: 1, height: 1},
-    textShadowRadius: 10,
-    marginTop: '15%'
+    textShadowRadius: 10
   },
   signInToAdd: { 
     alignSelf: 'flex-end'

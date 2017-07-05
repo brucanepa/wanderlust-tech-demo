@@ -41,7 +41,9 @@ const SignIn = ({dispatch}) => {
     <View style={ styles.inputContainer }>
       <TextInput style={ styles.input } onChangeText={ (text) => onUsernameChange(text) } placeholder={ texts.username } />
       <TextInput style={ styles.input } secureTextEntry={true} onChangeText={ (text) => onPasswordChange(text) } placeholder={ texts.password } />
-      <Button color="#1e7f7e" onPress={ () => onPress() } title={ texts.signIn } />
+      <View style={ styles.signIn} >
+        <Button color="#1e7f7e" onPress={ () => onPress() } title={ texts.signIn } />
+      </View>
     </View>
     );
 };
@@ -53,9 +55,15 @@ const styles = StyleSheet.create({
     fontSize: 20,
     width: '70%',
     marginBottom: '3%',
-    marginLeft: '15%'
+    marginLeft: '5%'
   }, 
   inputContainer: {
-    marginTop: '5%'
+    alignItems: 'center',
+    marginTop: '5%',
+    width: '95%'
+  },
+  signIn: {
+    width: '70%',
+    marginLeft: '5%'
   }
 })
