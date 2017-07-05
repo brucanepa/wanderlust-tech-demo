@@ -5,8 +5,8 @@ import { session as sessionActions } from '../../../actions';
 import { texts } from '../../../constants';
 
 const SignIn = ({dispatch}) => {
-  let username = 'bruno@gmail.com'; //ToDo: delete default username
-  let password = '123456';
+  let username = ''; 
+  let password = '';
 
   const onUsernameChange = (text) => {
     username = text;
@@ -39,8 +39,8 @@ const SignIn = ({dispatch}) => {
 
   return (
     <View style={ styles.inputContainer }>
-      <TextInput style={ styles.input } onChangeText={ (text) => onUsernameChange(text) } value={ username } placeholder={ texts.username } />
-      <TextInput style={ styles.input } secureTextEntry={true} onChangeText={ (text) => onPasswordChange(text) } value={ password } placeholder={ texts.password } />
+      <TextInput style={ styles.input } onChangeText={ (text) => onUsernameChange(text) } placeholder={ texts.username } />
+      <TextInput style={ styles.input } secureTextEntry={true} onChangeText={ (text) => onPasswordChange(text) } placeholder={ texts.password } />
       <Button color="#1e7f7e" onPress={ () => onPress() } title={ texts.signIn } />
     </View>
     );
