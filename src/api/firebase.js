@@ -33,7 +33,7 @@ const setSession = (apiUser) => {
       token: apiUser.uid,
       id: apiUser.id,
       key: apiUser.key,
-      email: apiUser.email,
+      email: apiUser.username,
       name: apiUser.name
     }
   } else {
