@@ -11,7 +11,7 @@ const uploadImage = (image, imageName) => {
 
   return new Promise((resolve, reject) => {
     const imageRef = storageRef.child(`/${imageName}`);
-    const imageUri = getFileWithNoExtension(image.path);
+    const imageUri = image.path;
     let uploadBlob = null;
     const mime = image.type;
     try {
