@@ -1,6 +1,6 @@
 import FetchBlob from 'react-native-fetch-blob';
 import { firebaseStorage, addReview, addImageToReview } from './firebase';
-
+import { getFileWithNoExtension } from '../utils/textHelper';
 const storageRef = firebaseStorage.ref('reviews/');
 
 const uploadImage = (image, imageName) => {
@@ -11,32 +11,36 @@ const uploadImage = (image, imageName) => {
 
   return new Promise((resolve, reject) => {
     const imageRef = storageRef.child(`/${imageName}`);
-
+    const imageUri = getFileWithNoExtension(image.path);
     let uploadBlob = null;
     const mime = image.type;
-
-    fs.readFile(image.uri, 'base64')
-      .then((data) => {
-        return Blob.build(data, {
-          type: `${mime};BASE64`
+    try {
+      fs.readFile(imageUri, 'base64')
+        .then((data) => {
+          return Blob.build(data, {
+            type: `${mime};BASE64`
+          })
         })
-      })
-      .then((blob) => {
-        uploadBlob = blob;
-        return imageRef.put(blob, {
-          contentType: mime
+        .then((blob) => {
+          uploadBlob = blob;
+          return imageRef.put(blob, {
+            contentType: mime
+          })
         })
-      })
-      .then(() => {
-        uploadBlob.close();
-        return imageRef.getDownloadURL();
-      })
-      .then((url) => {
-        resolve(url);
-      })
-      .catch((error) => {
-        resolve();
-      })
+        .then(() => {
+          uploadBlob.close();
+          return imageRef.getDownloadURL();
+        })
+        .then((url) => {
+          resolve(url);
+        })
+        .catch((error) => {
+          console.log(error);
+          resolve();
+        })
+    } catch (err) {
+      console.log(err);
+    }
   })
 };
 

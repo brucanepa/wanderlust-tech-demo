@@ -15,7 +15,8 @@ class AddReview extends Component {
       signedIn: props.signedIn,
       comment: '',
       rating: 1,
-      imageSource: null
+      imageSource: null,
+      requesting: false
     }
     this.onCommentChange = this.onCommentChange.bind(this);
     this.onAddCommentPress = this.onAddCommentPress.bind(this);
@@ -36,9 +37,10 @@ class AddReview extends Component {
   };
   onAddCommentPress = (e) => {
     e && e.preventDefault();
-    if (!this.state.comment.trim() || this.state.rating < 1) {
+    if (!this.state.comment.trim() || this.state.rating < 1 || this.state.requesting) {
       return;
     }
+    this.setState({requesting: true});
     const result = this.state.dispatch(addReviewNative({
       placeId: this.state.placeId,
       comment: this.state.comment,
@@ -48,7 +50,8 @@ class AddReview extends Component {
       result.then(() => {
         this.setState({
           comment: '',
-          imageSource: null
+          imageSource: null,
+          requesting: false
         })
         Alert.alert('', texts.added, [{
           text: 'OK',
@@ -63,14 +66,18 @@ class AddReview extends Component {
     })
   }
   onAddImagePress = () => {
-    openImagePicker()
-      .then(imageSource => {
-        if (imageSource) {
-          this.setState({
-            imageSource
-          })
-        }
-      });
+    try {
+      openImagePicker()
+        .then(imageSource => {
+          if (imageSource) {
+            this.setState({
+              imageSource
+            })
+          }
+        });
+    } catch (error) {
+      console.log(error);
+    }
   };
   render() {
     return this.state.signedIn &&
@@ -78,18 +85,18 @@ class AddReview extends Component {
         <Text style={ styles.title }>
           { texts.reviewsComment }
         </Text>
-        <TextInput multiline={ true } numberOfLines={ 4 } style={ styles.input } onChangeText={ this.onCommentChange } placeholder={ texts.comment }
+        <TextInput multiline={ true } numberOfLines={ 4 } style={ styles.input } onChangeText={ this.onCommentChange } placeholder={ texts.comment } disabled={this.state.requesting}
           value={ this.state.comment } />
         <View style={ styles.reviewContainer }>
-          <View style={styles.addImageContainer}>
+          <View style={ styles.addImageContainer }>
             <View style={ styles.addImage }>
-              <Button color="#1e7f7e" title={ this.state.imageSource ? texts.changeImage : texts.addImage } onPress={ this.onAddImagePress } />
+              <Button color="#1e7f7e" title={ this.state.imageSource ? texts.changeImage : texts.addImage } onPress={ this.onAddImagePress } disabled={this.state.requesting}/>
             </View>
             { this.state.imageSource && <Image source={ this.state.imageSource } style={ styles.image } /> }
           </View>
           <PlaceRating onRateClick={ this.onRateClick } />
         </View>
-        <Button color="#1e7f7e" title={ texts.newComment } onPress={ this.onAddCommentPress } />
+        <Button color="#1e7f7e" title={ this.state.requesting ? texts.loading : texts.newComment } onPress={ this.onAddCommentPress } />
       </View>
   }
 }
@@ -120,7 +127,7 @@ const styles = StyleSheet.create({
     width: '55%'
   },
   addImage: {
-    alignSelf:'flex-start',
+    alignSelf: 'flex-start',
     marginTop: '10%',
     marginLeft: '1%',
     width: '50%'

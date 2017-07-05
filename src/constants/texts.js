@@ -38,7 +38,8 @@ const texts = {
   regions: 'Regiones',
   selectImageOption: 'Seleccione una opción',
   selectTakePhoto: 'Sacar foto',
-  selectImageFromLibrary: 'Seleccionar imagen de Galería'
+  selectImageFromLibrary: 'Seleccionar imagen de Galería',
+  loading: 'Cargando...'
 };
 
 export default texts;
