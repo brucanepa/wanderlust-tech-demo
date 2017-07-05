@@ -13,7 +13,8 @@ const uploadImage = (image, imageName) => {
     const imageRef = storageRef.child(`/${imageName}`);
     const imageUri = image.path;
     let uploadBlob = null;
-    const mime = image.type;
+
+    const mime = image.type || 'image/jpg';
     try {
       fs.readFile(imageUri, 'base64')
         .then((data) => {
