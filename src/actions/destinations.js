@@ -2,8 +2,8 @@ import api from '../api';
 import { normalize } from 'normalizr';
 import * as schema from './schema';
 import { destinations as requests } from './requests';
-import { actionsTypes as actions } from '../constants';
 import errorHandler from './errorHandler';
+import actions from '../constants/actionTypes';
 
 export const fetchDestinations = () => (dispatch) => {
   dispatch(requests.requestDestinations());
@@ -19,7 +19,8 @@ export const add = (destination) => (dispatch) => {
   dispatch(requests.requestAdd());
   return api.addDestination(destination)
     .then(() => {
-      dispatch(requests.receiveAddSuccess(normalize(destination, schema.destination)))
+      dispatch(requests.receiveAddSuccess(normalize(destination, schema.destination)));
+      return true;
     }, () => {
       errorHandler(dispatch, requests.requestAdd().type);
     });

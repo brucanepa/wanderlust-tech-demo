@@ -1,41 +1,50 @@
 # WanderLust-Visca-Canepa
 
+# Datos importantes v2
+  - Todas las funcionalidades fueron implementadas.
+  - Los países de Europa tienen tienen una imagen en VR cada uno.
+  - Para esta nueva versión, todos los Componentes Containers, fueron remplazados por HOCS. Pasando la responsabilidad de qué Container renderizar a los Componentes Presentacionales.
+  - Cada Componente, ahora está dentro de una carpeta con su nombre, y el archivo JS pasa a llamarse index.js o index.native.js. De esta manera el Packager correspondiente (Web, iOS o Android) utiliza el indicado.
 
 # Funcionalidades disponibles
 
    Todos los datos son persistidos en Firebase.
 
-  - Siempre visible
-      - Ver lista de destinos elegidos.
-      - Borrar de la lista un destino.
-      - Mover de posición un elemento en la lista. Para esto, seleccionar el destino deseado, y moverlo con los botones con flechas.
+  - Panel Sesión
+      - Ver lista de destinos elegidos (autenticado).
+      - Borrar de la lista un destino (autenticado).
+      - Mover de posición un elemento en la lista. Para esto, seleccionar el destino deseado, y moverlo con los botones con flechas (autenticado).
+      - Iniciar sesión
 
-  - Desde /continents
+  - Desde Continente
       - Ver la lista de continentes con sus respectivas regiones.
       - Ver la cantidad de lugares de cada región.
       - Ver el nombre de cada región.
       - Ver la foto principal de cada región.
       - Seleccionar una región, para ver los lugares dentro de esta.
 
-  - Desde /regions/id
+  - Desde Región
       - Ver nombre y foto principal de la región, en el encabezado de la página.
       - Ir hacia la página anterior (/continents).
       - Ver lugares ubicados en esta región, con sus respectivos nombres y fotos principales.
       - Agregar un lugar a la lista de destinos.
 
-  - Desde /places/id	
+  - Desde Lugar
       - Ver nombre, foto principal de la región y promedio de calificaciones, en el encabezado de la página.
-      - Ir hacia la página anterior (/regions/id).
-      - Agregar lugar a la lista de destinos.
+      - Ir hacia la página anterior.
+      - Agregar lugar a la lista de destinos (autenticado).
       - Ver todas las fotos disponibles del lugar, en forma de lista.
       - Ver descripción del lugar.
       - Ver actividades del lugar, con sus respectivos nombres, descripciones y precios.
       - Ver lista de calificaciones anteriores al lugar.
-      - Agregar un comentario con su respectiva calificación al lugar.
-
+      - Agregar un comentario con su respectiva calificación al lugar (autenticado).
+      - Imagen VR (Web).
+      - Ver imagen de las calificaciones (App).
+      - Elegir imagen de galería o sacar foto para una calificación (App)(autenticado).
+
 # Jerarquía de componentes
 ## Root
-    Este componente es el que es renderizado por el index.js principal del proyecto.
+    Este componente es el que es renderizado por el index.js o index.android.js principal del proyecto.
     Renderiza los componentes Provider y Router, que son utilizados por el resto de los componentes dentro de estos.
 
     La aplicación está compuesta por cuatro componentes principales.
@@ -156,7 +165,7 @@
   #### PlacesImages
 	  Es un componente presentacional, que muestra cada imagen del lugar.
 
-
+
 ## Estado interno de Redux
 
 ### Destinations
@@ -205,15 +214,40 @@
 
     No contiene selectores.
 
-
+### Session
+	Mantiene la información de la sesión del usuario.
+    Está formado por los siguientes sub-reducers, que son combinados con la función combineReducers:
+      - user: guarda el token de autenticación y el mail del usuario.
+      - signedIn: guarda un boolean para saber si esta logueado o no.
+      - signingIn: guarda un boolean para saber si está autenticándose o no.
+
+##### LocalStorage
+    Para poder cargar la sesión que estaba logeada, Firebase nos ofrece un método llamado 'firebase.auth().onAuthStateChanged', que nos permite saber cuándo el estado de autenticación del usuario cambia. Esto nos permite recibir el usuario que estaba logueado previamente. Pero encontramos ciertos casos en lo que esto no funcionaba, por lo tanto decidimos utilizar localStorage. En este guardamos el token de autenticación y el mail del usuario.
+
+## APP
+  - Decidimos enfocarnos en la plataforma Android.
+  - Utilizamos las siguientes libererías:
+    - react-native-fetch-blob: para la transmisión de archivos.
+    - react-native-image-picker: para la elección de imágenes.
+    - react-navigation: para manejar las rutas de la aplicación.
+  - Para renderizar utilizamos un TabNavigator, el cual contiene las dos pestañas de "Mi Viaje" y "Buscar". La primera tiene las opciones de "Iniciar Sesión" y "Ver Mi Viaje". La segunda contiene un NavigationContainer con el resto de las pantallas.
+
+## Realidad Virtual
+Para el desarrollo de VR se creó una nueva app con react-vr-cli. Debido a que no requiere de una complejidad mayor a la de mostrar una imagen 360, se renderizó la misma con un componente Pano. La imagen se obtiene desde los static assets. El nombre del archivo de la imagen a cargar es recibido por medio de una query string (ej: /?image=pano1). Desde la aplicación web react, se utilizó un iframe que apunta a la aplicación VR hosteada en Firebase, aquí es donde se arma el query string a partir del campo vrImage del lugar. Este campo se obtiene desde la base de datos de Firebase de lugares.
+
+
 ## Instrucciones para configurar un nuevo ambiente
 
     1. Clonar la rama master del repositorio.
 
     2. Posicionarse en la carpeta donde se clonó mediante la Consola o  Terminal.
 
-    3. Ejecutar el comando yarn, para que se descarguen las dependencias del proyecto.
+    3. Ejecutar el comando 'yarn', para que se descarguen las dependencias del proyecto.
 
-    4. Ejecutar el comando yarn start, para que se inicie el servidor local.
+    4. Para ejecutar la Web
+      a. Ejecutar el comando 'yarn web', para que se inicie el servidor local.
+      b. En la dirección localhost:3000, se abrirá en su explorador la página web. 
+    
+    5. Para ejecutar la App (solo Android)
+      a. Ejecutar el comando 'yarn android' o 'react-native run-android', teniendo previamente un emulador o dispositivo conectado.
 
-    5. En la dirección localhost:3000, se abrirá en su explorador la página web. 

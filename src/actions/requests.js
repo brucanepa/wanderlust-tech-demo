@@ -136,3 +136,31 @@ export const errors = {
     }
   }
 };
+
+export const session = {
+  requestSignIn() {
+    return {
+      type: types.requestSignIn,
+      requesting: true
+    }
+  },
+  receiveSignInSuccess(response) {
+    return {
+      type: types.receiveSignInSucces,
+      receive: true,
+      sessionResponse: response
+    }
+  },
+  requestSignOut() {
+    return {
+      type: types.requestSignOut,
+      requesting: true
+    }
+  },
+  receiveSignOutSuccess() {
+    return {
+      type: types.receiveSignOutSucces,
+      receive: true
+    }
+  }
+};

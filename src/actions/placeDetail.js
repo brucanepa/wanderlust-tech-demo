@@ -14,9 +14,9 @@ export const fetchPlaceDetail = (placeId) => (dispatch) => {
     });
 }
 
-export const addReview = (review) => (dispatch) => {
+export const addReview = (review, image) => (dispatch) => {
   dispatch(requests.requestAddReview());
-  return api.addReview(review)
+  return api.addReview(review, image)
     .then(() => {
       dispatch(requests.receiveAddReviewSuccess(normalize(review, schema.review)));
     }, () => {
