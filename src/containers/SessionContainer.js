@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { compose } from 'recompose';
-import { signedIn, getUser, showLoading, signingIn} from '../reducers';
+import { signedIn, getUser, showLoading, signingIn } from '../reducers';
 import { session as sessionActions } from '../actions';
-
-const container = T => class SessionContainer extends Component {
-  render() {
-    return <T {...this.props}/>
-  }
-}
 
 const mapStateToProps = (state) => ({
   signedIn: signedIn(state),
@@ -23,7 +16,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  container
-);
+export default connect(mapStateToProps, mapDispatchToProps);

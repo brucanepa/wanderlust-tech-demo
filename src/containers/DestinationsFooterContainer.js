@@ -3,12 +3,6 @@ import { connect } from 'react-redux';
 import { destinations as destinationsActions } from '../actions';
 import { getSelectedDestinationInfo } from '../reducers';
 
-const container = T => class DestinationsFooterContainer extends Component {
-  render() {
-    return <T {...this.props} />
-  }
-}
-
 const mapStateToProps = (state) => ({
   selectedInfo: getSelectedDestinationInfo(state)
 });
@@ -22,8 +16,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-);
-
+export default connect(mapStateToProps, mapDispatchToProps);

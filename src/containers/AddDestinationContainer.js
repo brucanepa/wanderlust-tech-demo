@@ -5,7 +5,7 @@ import { signedIn } from '../reducers';
 
 const container = T => class AddDestinationContainer extends Component {
   render() {
-    return <T {...this.props} /> 
+    return <T {...this.props} />
   }
 }
 
@@ -24,7 +24,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   }
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-);
+export default connect(mapStateToProps, mapDispatchToProps);
