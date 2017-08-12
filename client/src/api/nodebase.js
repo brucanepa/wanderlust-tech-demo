@@ -11,7 +11,7 @@ const getHeaders = () => {
   })
 };
 
-const get = (url) => {
+const getHttp = (url) => {
   if (user.id && user.token && url.indexOf('users') != -1) {
     const request = new Request(url, {
       method: 'GET',
@@ -23,24 +23,33 @@ const get = (url) => {
   }
 };
 
-const post = (url, data, method) => {
+const postHttp = (url, data) => {
   const headers = {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
     'X-Auth-UserId': user.id.toString(),
     'X-Auth-Token': user.token.toString(),
   };
-  if (user.token && user.id) {
-    user.userid = user.id;
-    user.token = user.token;
-  }
   return fetch(url, {
-    method: method || 'POST',
+    method: 'POST',
     headers,
     body: data && JSON.stringify(data)
   }).then(response => response.json());
 };
 
+const deleteHttp = (url, id) => {
+  const headers = {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'X-Auth-UserId': user.id.toString(),
+    'X-Auth-Token': user.token.toString(),
+  };
+  url = id ? `${url}/${id}` : url;
+  return fetch(url, {
+    method: 'DELETE',
+    headers
+  }).then(response => response.json());
+};
 
 let signingIn = false;
 let user;
@@ -95,7 +104,7 @@ const handleSignInError = () => {
 };
 
 export const signIn = (username, password) => {
-  return post(getUrl('auth', 'signIn'), {
+  return postHttp(getUrl('auth'), {
     username,
     password
   }).then(result => {
@@ -113,7 +122,7 @@ export const signIn = (username, password) => {
 }
 
 export const signOut = () => {
-  return post(getUrl('auth', 'signOut'))
+  return deleteHttp(getUrl('auth'))
     .then(() => {
       setSession();
     })
@@ -123,7 +132,7 @@ export const signOut = () => {
 };
 
 export const fetchContinents = () => {
-  return get(getUrl('continents'))
+  return getHttp(getUrl('continents'))
     .then(continents => {
       if (continents) {
         continents.forEach((continent) => {
@@ -137,14 +146,14 @@ export const fetchContinents = () => {
 };
 
 export const fetchPlaces = (regionId) => {
-  return get(getUrl('places', regionId))
+  return getHttp(getUrl('places', regionId))
     .then(places => {
       return places;
     });
 };
 
 export const fetchPlaceDetail = (placeId) => {
-  return get(getUrl('placesDetail', placeId))
+  return getHttp(getUrl('placesDetail', placeId))
     .then(placeDetail => {
       placeDetail.reviews = placeDetail.reviews ?
         Object
@@ -160,15 +169,14 @@ export const fetchPlaceDetail = (placeId) => {
 };
 
 export const addReview = (review) => {
-  // review.userId = user.id;
-  // review.placeId = parseInt(review.placeId);
-  // const reviewRef = database.ref(getPlaceDetailUri(review.placeId))
-  //   .child('reviews')
-  //   .push(review);
-  // return reviewRef.then(() => {
-  //   review.id = reviewRef._id;
-  //   return review.id;
-  // });
+  review.userId = parseInt(user.id);
+  review.placeId = parseInt(review.placeId);
+  return postHttp(getUrl('placesDetail', 'review'), review)
+    .then(result => {
+      if (result.result == 'success') {
+        review.key = result.data;
+      }
+    });
 };
 
 const updateNextDestinationPosition = (order) => {
@@ -226,7 +234,7 @@ export const fetchDestinations = () => {
 };
 
 const getUserFromApi = () => {
-  return get(getUrl('users'))
+  return getHttp(getUrl('users'))
     .then(result => {
       if (result.result == 'success') {
         result.data.destinations.forEach(destination => {
@@ -239,11 +247,35 @@ const getUserFromApi = () => {
 
 export const addDestination = (destination) => {
   destination.order = ++user.nextDestinationPosition;
-  return post(getUrl('users', 'destinations'), destination)
+  return postHttp(getUrl('users', 'destinations'), destination)
     .then(result => {
       if (result.result == 'success') {
-        destination.key = destination.order;
-        return result.data;
+        const key = destination.key = destination.id = destination.order;
       }
     });
+};
+
+export const swapPositionUpDestination = (selected, selectedUp) => {
+  // const updatedObjects = {};
+  // updatedObjects[selected.id + orderUri] = selectedUp.order;
+  // updatedObjects[selectedUp.id + orderUri] = selected.order;
+  // return database.ref(getActualUserUri())
+  //   .child('destinations')
+  //   .update(updatedObjects);
+};
+
+export const swapPositionDownDestination = (selected, selectedDown) => {
+  // const updatedObjects = {};
+  // updatedObjects[selected.id + orderUri] = selectedDown.order;
+  // updatedObjects[selectedDown.id + orderUri] = selected.order;
+  // return database.ref(getActualUserUri())
+  //   .child('destinations')
+  //   .update(updatedObjects);
+};
+
+export const removeDestination = (destinationId) => {
+  return deleteHttp(getUrl('users', 'destinations'), destinationId)
+    .then(result => {
+      console.log(result);
+    })
 };

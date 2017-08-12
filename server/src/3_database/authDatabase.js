@@ -65,7 +65,7 @@ const signOut = (userId) => {
     userId = parseInt(userId);
     db.collection(sessionCollectionName)
       .deleteOne({
-        userId,
+        userId
       })
       .then(result => {
         resolve(!!result.deletedCount);

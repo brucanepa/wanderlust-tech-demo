@@ -22,7 +22,7 @@ const splitUrl = (req, res, next) => {
 
 const requestMethod = (req, res, next) => {
   return new Promise((resolve, reject) => {
-    req.requestMethod = req.headers['access-control-request-method'];
+    req.requestMethod = req.headers['access-control-request-method'] || req.method;
     resolve(next());
   })
 };

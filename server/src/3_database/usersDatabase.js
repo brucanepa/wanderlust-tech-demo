@@ -42,7 +42,33 @@ const addDestination = (userId, destination) => {
   });
 };
 
+const deleteDestination = (userId, destinationId) => {
+  return new Promise((resolve, reject) => {
+    const db = mongoDbUtils.get();
+    userId = parseInt(userId);
+    destinationId = parseInt(destinationId);
+    db.collection(collectionName)
+      .updateOne({
+        id: userId
+      }, {
+        $pull: {
+          destinations: {
+            order: destinationId
+          }
+        }
+      })
+      .then(result => {
+        resolve(!!result.modifiedCount);
+      })
+      .catch(err => {
+        console.log(err);
+        resolve();
+      });
+  });
+};
+
 module.exports = {
   get,
-  addDestination
+  addDestination,
+  deleteDestination
 };

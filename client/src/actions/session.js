@@ -1,10 +1,10 @@
-import api, { nodeApi } from '../api';
+import api from '../api';
 import { session as requests } from './requests';
 import errorHandler from './errorHandler';
 
 export const signIn = (email, password) => (dispatch) => {
   dispatch(requests.requestSignIn());
-  return nodeApi.signIn(email, password)
+  return api.signIn(email, password)
     .then((response) => {
       if (response.errorCode) {
         errorHandler(dispatch, requests.requestSignIn().type);
@@ -18,7 +18,7 @@ export const signIn = (email, password) => (dispatch) => {
 
 export const signOut = () => (dispatch) => {
   dispatch(requests.requestSignOut());
-  return nodeApi.signOut()
+  return api.signOut()
     .then(() => {
       dispatch(requests.receiveSignOutSuccess())
     });

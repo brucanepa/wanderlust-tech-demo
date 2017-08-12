@@ -1,4 +1,5 @@
 const mongoDbUtils = require('../utils/mongoDbUtils');
+const Review = require('../entities/Review');
 
 const collectionName = 'places';
 

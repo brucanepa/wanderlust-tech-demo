@@ -10,14 +10,14 @@ const signIn = (req, res) => {
 
 const signOut = (req, res) => {
   Provider
-    .signOut(req.body.userId)
+    .signOut(req.authParameters.userId)
     .then(data => {
       res.send(data);
     });
 };
 
 module.exports = (router) => {
-  router.post('/signIn', signIn);
-  router.post('/signOut', signOut);
+  router.post('', signIn);
+  router.delete('', signOut);
   return router;
 };

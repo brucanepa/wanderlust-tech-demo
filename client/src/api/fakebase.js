@@ -1,3 +1,5 @@
+// DEPRECATED
+
 import { swapArrayPosition, removeArrayElement } from '../utils/arrayHelper';
 import { getUserId } from '../constants';
 

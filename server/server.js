@@ -21,8 +21,6 @@ const useThirdPartyMiddlewares = () => {
     app.use(function(req, res, next) { // CORS Support
         res.header('Access-Control-Allow-Origin', config.cors);
         res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-        // res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-        // res.header('Access-Control-Allow-Headers', "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With, Accept, X-Auth-UserId");
         res.header('Access-Control-Allow-Headers', 'Content-Type, Accept, X-Auth-UserId, X-Auth-Token');
         next();
     });

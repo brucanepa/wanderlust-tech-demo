@@ -7,10 +7,7 @@ const publicUrls = {
     method: 'GET'
   }],
   'auth': [{
-    route: ['signIn'],
-    method: 'POST'
-  }, {
-    route: ['signOut'],
+    route: [],
     method: 'POST'
   }],
   'places': [{
@@ -26,22 +23,24 @@ const publicUrls = {
 const getHeadersValue = (req, name) => req.headers[`x-auth-${name.toLowerCase()}`];
 
 const authenticate = (req, res, next) => {
-  const userId = getHeadersValue(req, 'userId');
-  const token = getHeadersValue(req, 'token');
-  if (!userId || !token) res.customSend(undefined, 'invalid headers');
-  else {
-    authProvider.userIsLogged(userId, token)
-      .then(isLogged => {
-        if (!isLogged) res.customSend(undefined, 'not authenticated');
-        else {
-          req.authParameters = {
-            userId,
-            token
-          };
-          next();
-        }
-      });
-  }
+  return new Promise((resolve, reject) => {
+    const userId = getHeadersValue(req, 'userId');
+    const token = getHeadersValue(req, 'token');
+    if (!userId || !token) resolve(res.customSend(undefined, 'invalid headers'));
+    else {
+      authProvider.userIsLogged(userId, token)
+        .then(isLogged => {
+          if (!isLogged) resolve(res.customSend(undefined, 'not authenticated'));
+          else {
+            req.authParameters = {
+              userId,
+              token
+            };
+            resolve(next());
+          }
+        });
+    }
+  })
 };
 
 const authorize = (req, res, next) => {
@@ -51,7 +50,10 @@ const authorize = (req, res, next) => {
     if (url) {
       let stop = false;
       url.every(obj => {
-        if (obj.route.length + 1 != splittedUrl.length || obj.method != req.requestMethod) return true;
+        if (obj.route.length + 1 != splittedUrl.length || obj.method != req.requestMethod) {
+          stop = true;
+          return true;
+        }
         if (!obj.route.length) {
           stop = false;
           return stop;

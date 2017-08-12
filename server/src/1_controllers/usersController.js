@@ -16,8 +16,17 @@ const postDestination = (req, res) => {
     })
 };
 
+const deleteDestination = (req, res) => {
+  Provider
+    .deleteDestination(req.authParameters.userId, req.params.id)
+    .then(data => {
+      res.customSend(data);
+    })
+};
+
 module.exports = (router) => {
   router.get('/', getUser);
   router.post('/destinations', postDestination);
+  router.delete('/destinations/:id', deleteDestination);
   return router;
 };

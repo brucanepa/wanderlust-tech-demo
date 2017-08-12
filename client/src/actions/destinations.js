@@ -1,4 +1,4 @@
-import api, { nodeApi } from '../api';
+import api from '../api';
 import { normalize } from 'normalizr';
 import * as schema from './schema';
 import { destinations as requests } from './requests';
@@ -7,7 +7,7 @@ import actions from '../constants/actionTypes';
 
 export const fetchDestinations = () => (dispatch) => {
   dispatch(requests.requestDestinations());
-  return nodeApi.fetchDestinations()
+  return api.fetchDestinations()
     .then(response => {
       dispatch(requests.receiveDestinationsSuccess(normalize(response, schema.arrayOfDestinations)));
     }, () => {
@@ -17,7 +17,7 @@ export const fetchDestinations = () => (dispatch) => {
 
 export const add = (destination) => (dispatch) => {
   dispatch(requests.requestAdd());
-  return nodeApi.addDestination(destination)
+  return api.addDestination(destination)
     .then(() => {
       dispatch(requests.receiveAddSuccess(normalize(destination, schema.destination)));
       return true;

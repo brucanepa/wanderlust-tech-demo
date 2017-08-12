@@ -11,7 +11,12 @@ const addDestination = (userId, destination) => {
   return DatabaseUsers.addDestination(userId, destination);
 };
 
+const deleteDestination = (userId, destinationId) => {
+  return DatabaseUsers.deleteDestination(userId, destinationId);
+};
+
 module.exports = {
   get,
-  addDestination
+  addDestination,
+  deleteDestination
 };
