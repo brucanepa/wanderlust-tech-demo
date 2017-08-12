@@ -1,0 +1,2 @@
+Para generar un nuevo release del apk hay que sacar la carpeta de WanderLustVR de la raiz
+Por alguna razón el ./gradlew assembleRelease toma archivos de esa carpeta y se rompe por el largo de las rutas

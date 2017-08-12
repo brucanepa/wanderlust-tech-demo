@@ -1,0 +1,87 @@
+{
+  "id": 1,
+  "name": "Europa",
+  "regions": [{
+      "id": 1,
+      "name": "Mediterraneo",
+      "placesCount": 6,
+      "image": "http://cruisecdn.azureedge.net/uploads/geographicarea/140169/16x9_980x0_jj7qwg5wpr5fond.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Norte de Europa",
+      "placesCount": 2,
+      "image": "https://d36tnp772eyphs.cloudfront.net/blogs/1/2011/05/Germany.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Reino Unido",
+      "placesCount": 1,
+      "image": "https://d16teuje7e44sv.cloudfront.net/spa/cities/united-kingdom/london-medium.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Norte de Francia",
+      "placesCount": 1,
+      "image": "http://www.eurocamp.co.uk/images/northern-france-brittany-mont-st-michel_tcm13-30975.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Sur de Italia",
+      "placesCount": 1,
+      "image": "https://d3dqioy2sca31t.cloudfront.net/Projects/cms/production/000/003/585/original/9ea36037d10cd48f450adfd1aee8a51b/south-italy-tour-amalfi-coast-2014.jpg"
+    }
+  ]
+}
+{
+  "id": 2,
+  "name": "América",
+  "regions": [{
+      "id": 7,
+      "name": "Norteamérica",
+      "placesCount": 6,
+      "image": "https://mundoexplora.com/wp-content/uploads/2016/06/Skyline-2.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Riviera Maya",
+      "placesCount": 2,
+      "image": "http://s03.s3c.es/imag/_v0/770x420/9/1/6/caribe-mar-playa.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Patagonia",
+      "placesCount": 1,
+      "image": "https://eu.patagonia.com/images/common/co_info/1400x655_Miciu_e_0081.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Otros Lugares",
+      "placesCount": 1,
+      "image": "http://media.salemwebnetwork.com/cms/CW/faith/30378-heaven-clouds-light.1200w.tn.jpg"
+    }
+  ]
+}
+{
+  "id": 3,
+  "name": "Asia",
+  "regions": [{
+      "id": 11,
+      "name": "Medio Oriente",
+      "placesCount": 1,
+      "image": "http://www.travelgallerypr.com/wp-content/uploads/2016/03/middle9.jpg"
+    },
+    {
+      "id": 12,
+      "name": "Siberia",
+      "placesCount": 1,
+      "image": "http://stampsy-eu-1.s3.amazonaws.com/b894687c-7cfd-4089-aadc-54617eb46782/1389960778697772IMG_6221.JPG"
+    },
+    {
+      "id": 13,
+      "name": "China",
+      "placesCount": 1,
+      "image": "https://www.ciee.org/teach/images/programs/desktop/korea.jpg"
+    }
+  ]
+}
