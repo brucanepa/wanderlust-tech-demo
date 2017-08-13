@@ -5,6 +5,19 @@ import thunkMiddleware from 'redux-thunk';
 import { loadState, saveState } from './utils/localStorage';
 import throttle from 'lodash/throttle';
 
+const updateStore = (store) => {
+  let signedIn = store.getState().session.signedIn;
+  store.subscribe(throttle(() => {
+    const session = store.getState().session;
+    if (signedIn != session.signedIn) {
+      signedIn = session.signedIn;
+      saveState({
+        session
+      });
+    }
+  }), 1000);
+};
+
 const configureStore = () => {
   const middlewares = [thunkMiddleware];
 
@@ -20,12 +33,8 @@ const configureStore = () => {
     //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
     applyMiddleware(...middlewares),
   );
-
-  store.subscribe(throttle(() => {
-    saveState({
-      session: store.getState().session
-    });
-  }), 1000);
+  
+  updateStore(store);
 
   return store;
 }
