@@ -3,19 +3,19 @@ import { loadState } from '../utils/localStorage';
 const nodeApiUrl = 'http://localhost:3001';
 
 const getHeaders = () => {
-  return new Headers({
+  return {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
     'X-Auth-UserId': user.id.toString(),
-    'X-Auth-Token': user.token.toString(),
-  })
+    'X-Auth-Token': user.token.toString()
+  }
 };
 
 const getHttp = (url) => {
   if (user.id && user.token && url.indexOf('users') != -1) {
     const request = new Request(url, {
       method: 'GET',
-      headers: getHeaders()
+      headers: new Headers(getHeaders())
     });
     return fetch(request).then(response => response.json());
   } else {
@@ -23,31 +23,19 @@ const getHttp = (url) => {
   }
 };
 
-const postHttp = (url, data) => {
-  const headers = {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
-    'X-Auth-UserId': user.id.toString(),
-    'X-Auth-Token': user.token.toString(),
-  };
+const postHttp = (url, data, method) => {
   return fetch(url, {
-    method: 'POST',
-    headers,
+    method: method || 'POST',
+    headers: getHeaders(),
     body: data && JSON.stringify(data)
   }).then(response => response.json());
 };
 
 const deleteHttp = (url, id) => {
-  const headers = {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
-    'X-Auth-UserId': user.id.toString(),
-    'X-Auth-Token': user.token.toString(),
-  };
   url = id ? `${url}/${id}` : url;
   return fetch(url, {
     method: 'DELETE',
-    headers
+    headers: getHeaders()
   }).then(response => response.json());
 };
 
@@ -186,10 +174,8 @@ const updateNextDestinationPosition = (order) => {
 };
 
 const mapDestinations = (destinations) => {
-  return Object.keys(destinations)
-    .map((key) => {
-      const destination = destinations[key];
-      destination.id = key;
+  return destinations
+    .map((destination) => {
       updateNextDestinationPosition(destination.order);
       return destination;
     })
@@ -197,7 +183,7 @@ const mapDestinations = (destinations) => {
 };
 
 const anyUserDestinations = () => {
-  return userDestinations && Object.keys(userDestinations).length;
+  return userDestinations && userDestinations.length;
 };
 
 export const fetchDestinations = () => {
@@ -250,27 +236,25 @@ export const addDestination = (destination) => {
   return postHttp(getUrl('users', 'destinations'), destination)
     .then(result => {
       if (result.result == 'success') {
-        const key = destination.key = destination.id = destination.order;
+        destination.key = destination.id = result.data;
       }
     });
 };
 
 export const swapPositionUpDestination = (selected, selectedUp) => {
-  // const updatedObjects = {};
-  // updatedObjects[selected.id + orderUri] = selectedUp.order;
-  // updatedObjects[selectedUp.id + orderUri] = selected.order;
-  // return database.ref(getActualUserUri())
-  //   .child('destinations')
-  //   .update(updatedObjects);
+  return postHttp(getUrl('users', 'destinations', selected.id), {
+    otherId: selectedUp.id,
+    order: selected.order,
+    otherOrder: selectedUp.order
+  }, 'PUT');
 };
 
 export const swapPositionDownDestination = (selected, selectedDown) => {
-  // const updatedObjects = {};
-  // updatedObjects[selected.id + orderUri] = selectedDown.order;
-  // updatedObjects[selectedDown.id + orderUri] = selected.order;
-  // return database.ref(getActualUserUri())
-  //   .child('destinations')
-  //   .update(updatedObjects);
+  return postHttp(getUrl('users', 'destinations', selected.id), {
+    otherId: selectedDown.id,
+    order: selected.order,
+    otherOrder: selectedDown.order
+  }, 'PUT');
 };
 
 export const removeDestination = (destinationId) => {

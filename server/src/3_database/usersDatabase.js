@@ -33,7 +33,7 @@ const addDestination = (userId, destination) => {
         }
       })
       .then(result => {
-        resolve(!!result.modifiedCount);
+        resolve(!!result.modifiedCount && newDestination.id);
       })
       .catch(err => {
         console.log(err);
@@ -46,14 +46,13 @@ const deleteDestination = (userId, destinationId) => {
   return new Promise((resolve, reject) => {
     const db = mongoDbUtils.get();
     userId = parseInt(userId);
-    destinationId = parseInt(destinationId);
     db.collection(collectionName)
       .updateOne({
         id: userId
       }, {
         $pull: {
           destinations: {
-            order: destinationId
+            id: destinationId
           }
         }
       })
@@ -67,8 +66,46 @@ const deleteDestination = (userId, destinationId) => {
   });
 };
 
+const getSwipeQuery = (userId, id, order) => {
+  return {
+    'updateOne': {
+      'filter': {
+        id: userId,
+        'destinations.id': id
+      },
+      'update': {
+        $set: {
+          'destinations.$.order': order
+        }
+      }
+    }
+  }
+};
+
+const swipeDestinationsOrder = (userId, destinationsData) => {
+  return new Promise((resolve, reject) => {
+    const db = mongoDbUtils.get();
+    userId = parseInt(userId);
+    destinationsData.order = parseInt(destinationsData.order);
+    destinationsData.otherOrder = parseInt(destinationsData.otherOrder);
+    db.collection(collectionName)
+      .bulkWrite([
+        getSwipeQuery(userId, destinationsData.id, destinationsData.otherOrder),
+        getSwipeQuery(userId, destinationsData.otherId, destinationsData.order)
+      ])
+      .then(result => {
+        resolve(result.modifiedCount == 2);
+      })
+      .catch(err => {
+        console.log(err);
+        resolve();
+      });
+  });
+};
+
 module.exports = {
   get,
   addDestination,
-  deleteDestination
+  deleteDestination,
+  swipeDestinationsOrder
 };

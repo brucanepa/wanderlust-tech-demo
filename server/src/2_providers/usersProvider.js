@@ -15,8 +15,17 @@ const deleteDestination = (userId, destinationId) => {
   return DatabaseUsers.deleteDestination(userId, destinationId);
 };
 
+const swipeDestinationsOrder = (userId, destinationId, destinationsData) => {
+  return new Promise(resolve => {
+    destinationsData.id = destinationId;
+    DatabaseUsers.swipeDestinationsOrder(userId, destinationsData)
+      .then(result => resolve(result));
+  });
+};
+
 module.exports = {
   get,
   addDestination,
-  deleteDestination
+  deleteDestination,
+  swipeDestinationsOrder
 };

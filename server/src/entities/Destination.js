@@ -4,6 +4,7 @@ function Destination ({placeId, name, order}) {
   self.placeId = placeId;
   self.name = name;
   self.order = order;
+  self.key = self.id = Math.random().toString();
 };
 
 module.exports = Destination;

@@ -6,8 +6,9 @@ const compression = require('compression');
 
 const config = require('./config');
 const routes = require('./routes');
-const customMiddlewares = require('./src/middlewares/alwaysRunMiddlewares');
-const mongoDbUtils = require('./src/utils/mongoDbUtils');
+const customMiddlewares = require('./middlewares/alwaysRunMiddlewares');
+const {connect} = require('./utils/mongoDbUtils');
+const {importEnvVariables} = require('./utils/fileUtils');
 
 const app = express();
 
@@ -48,15 +49,17 @@ const initServer = () => {
     useCustomMiddlewares();
     useControllers();
 
-    app.listen(config.serverPort, function(error) {
-        if (error) {
-            console.log("Error: " + error);
-        } else {
-            console.log("Listening on port " + config.serverPort + "...");
-        }
-    });
-
-    mongoDbUtils.connect();
+    importEnvVariables()
+        .then(result => {
+            if (result) {
+                const port = parseInt(process.env.SERVER_PORT) || config.serverPort;
+                app.listen(parseInt(port), (err) => {
+                    if (err) console.log("Error: " + err);
+                    else console.log("Listening on port " + port + "...");
+                });
+                connect();
+            }
+        });
 };
 
-initServer();
+module.exports = initServer;

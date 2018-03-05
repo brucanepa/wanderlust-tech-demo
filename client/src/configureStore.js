@@ -5,7 +5,7 @@ import thunkMiddleware from 'redux-thunk';
 import { loadState, saveState } from './utils/localStorage';
 import throttle from 'lodash/throttle';
 
-const updateStore = (store) => {
+const updateLocalStorage = (store) => {
   let signedIn = store.getState().session.signedIn;
   store.subscribe(throttle(() => {
     const session = store.getState().session;
@@ -34,7 +34,7 @@ const configureStore = () => {
     applyMiddleware(...middlewares),
   );
   
-  updateStore(store);
+  updateLocalStorage(store);
 
   return store;
 }
